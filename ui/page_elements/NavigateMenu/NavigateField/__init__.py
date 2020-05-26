@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPalette, QColor, QFont, QPainter
+from PyQt5.QtGui import QPalette, QColor, QFont
 from PyQt5.QtCore import pyqtSignal, Qt
 from .NavigateFieldUI import Ui_Form
 
