@@ -24,12 +24,9 @@ class NavigateLabel(QLabel):
 
     def setText(self, p_str):
         self.text = p_str
-        if self.checked:
-            str = '<a href="#{0}"><span style="text-decoration: none; color:rgb(68, 126, 217);">{0}</span></a>'
-        else:
-            str = '<a href="#{0}"><span style="text-decoration: none; color:rgb(0, 0, 0);">{0}</span></a>'
-        str = str.format(self.text)
-        super().setText(str)
+        color = "rgb(68, 126, 217)" if self.checked else "rgb(0, 0, 0)"
+        s = '<a href="#{1}"><span style="text-decoration: none; color:{0};">{1}</span></a>'.format(color, self.text)
+        super().setText(s)
 
 
 class NavigateField(QWidget):
@@ -45,8 +42,10 @@ class NavigateField(QWidget):
 
     def switch(self):
         self.is_hide = not self.is_hide
-        s = '<a href="#"><span style="text-decoration: none; color:rgb(68, 126, 217);">{0}</span></a>'.format(
-            "展开" if self.is_hide else "隐藏")
+        s = '<a href="#">' \
+            '<div>' \
+            '<span style="width:100%;height:100%; text-decoration: none; color:rgb(68, 126, 217);">{0}</span>' \
+            '</div></a>'.format("展开" if self.is_hide else "隐藏")
         self.ui.label_switch.setText(s)
         for i in self.menu_labels:
             if self.is_hide:
