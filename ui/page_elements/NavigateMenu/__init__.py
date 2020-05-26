@@ -5,8 +5,8 @@ from .NavigateField import NavigateField, NavigateLabel
 
 
 class NavigateMenu(QWidget):
-    def __init__(self):
-        QWidget.__init__(self)
+    def __init__(self, parent):
+        QWidget.__init__(self, parent=parent)
         self.setLayout(QVBoxLayout())
         self.fields: [NavigateField] = []
         self.checked_label: Union[None, NavigateLabel] = None

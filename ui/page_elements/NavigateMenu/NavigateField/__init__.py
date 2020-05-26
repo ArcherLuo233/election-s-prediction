@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPalette, QColor, QFont
+from PyQt5.QtGui import QPalette, QColor, QFont, QPainter
 from PyQt5.QtCore import pyqtSignal, Qt
 from .NavigateFieldUI import Ui_Form
 
@@ -53,8 +53,6 @@ class NavigateField(QWidget):
                 i.hide()
             else:
                 i.show()
-        self.adjustSize()
-        self.parent().adjustSize()
 
     def appendMenu(self, text: str, callback=None):
         label = NavigateLabel()
@@ -67,7 +65,6 @@ class NavigateField(QWidget):
         label.checkChanged.connect(self.checkChange)
         self.ui.layout_menu.addWidget(label)
         self.menu_labels.append(label)
-        self.adjustSize()
         return label
 
     def checkChange(self, check):
