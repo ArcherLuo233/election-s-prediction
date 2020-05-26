@@ -26,7 +26,8 @@ class NavigateLabel(QLabel):
     def setText(self, p_str):
         self.text = p_str
         color = "rgb(68, 126, 217)" if self.checked else "rgb(0, 0, 0)"
-        s = '<a href="#goto:{1}"><span style="text-decoration: none; color:{0};">{1}</span></a>'.format(color, self.text)
+        s = '<a href="#goto:{1}"><span style="text-decoration: none; color:{0};">\
+            {1}</span></a>'.format(color, self.text)
         super().setText(s)
 
 
@@ -35,18 +36,25 @@ class NavigateField(QWidget):
         QWidget.__init__(self)
         self.menu_labels: [NavigateLabel] = []
         self.is_hide: bool = True
+        self.title = title
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.ui.label_title.setText(title)
+        self.ui.label_title.setText(self.getLinkHtml(QColor(0, 0, 0)).format(title))
+        self.ui.label_title.linkActivated.connect(self.switch)
         self.ui.label_switch.linkActivated.connect(self.switch)
         self.adjustSize()
 
+    @staticmethod
+    def getLinkHtml(color: QColor = QColor(68, 126, 217)):
+        col = "rgb({0}, {1}, {2})".format(color.red(), color.green(), color.blue())
+        return '<a href="#">' \
+               '<div>' \
+               '<span style="width:100%%; height:100%%; text-decoration: none; color:%s;">{0}</span>' \
+               '</div></a>' % col
+
     def switch(self):
         self.is_hide = not self.is_hide
-        s = '<a href="#">' \
-            '<div>' \
-            '<span style="width:100%; height:100%; text-decoration: none; color:rgb(68, 126, 217);">{0}</span>' \
-            '</div></a>'.format("展开" if self.is_hide else "隐藏")
+        s = self.getLinkHtml().format("展开" if self.is_hide else "隐藏")
         self.ui.label_switch.setText(s)
         for i in self.menu_labels:
             if self.is_hide:
@@ -69,6 +77,4 @@ class NavigateField(QWidget):
 
     def checkChange(self, check):
         text_color = QColor(68, 126, 217) if check else QColor(0, 0, 0)
-        palette = self.ui.label_title.palette()
-        palette.setBrush(QPalette.WindowText, text_color)
-        self.ui.label_title.setPalette(palette)
+        self.ui.label_title.setText(self.getLinkHtml(text_color).format(self.title))

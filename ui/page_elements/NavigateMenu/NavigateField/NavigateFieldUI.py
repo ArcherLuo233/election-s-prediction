@@ -28,6 +28,7 @@ class Ui_Form(object):
         font.setFamily("黑体")
         font.setPointSize(18)
         self.label_title.setFont(font)
+        self.label_title.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label_title.setObjectName("label_title")
         self.horizontalLayout.addWidget(self.label_title)
         self.label_switch = QtWidgets.QLabel(Form)
