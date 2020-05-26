@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'NavigateField.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,6 +35,7 @@ class Ui_Form(object):
         font.setFamily("黑体")
         font.setPointSize(9)
         self.label_switch.setFont(font)
+        self.label_switch.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label_switch.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_switch.setObjectName("label_switch")
         self.horizontalLayout.addWidget(self.label_switch)

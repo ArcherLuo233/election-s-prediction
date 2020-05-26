@@ -14,6 +14,7 @@ class NavigateLabel(QLabel):
         font = QFont("黑体", 14)
         self.setFont(font)
         self.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
+        self.setCursor(Qt.PointingHandCursor)
 
     def setChecked(self, check):
         if self.checked == check:
@@ -25,7 +26,7 @@ class NavigateLabel(QLabel):
     def setText(self, p_str):
         self.text = p_str
         color = "rgb(68, 126, 217)" if self.checked else "rgb(0, 0, 0)"
-        s = '<a href="#{1}"><span style="text-decoration: none; color:{0};">{1}</span></a>'.format(color, self.text)
+        s = '<a href="#goto:{1}"><span style="text-decoration: none; color:{0};">{1}</span></a>'.format(color, self.text)
         super().setText(s)
 
 
@@ -44,7 +45,7 @@ class NavigateField(QWidget):
         self.is_hide = not self.is_hide
         s = '<a href="#">' \
             '<div>' \
-            '<span style="width:100%;height:100%; text-decoration: none; color:rgb(68, 126, 217);">{0}</span>' \
+            '<span style="width:100%; height:100%; text-decoration: none; color:rgb(68, 126, 217);">{0}</span>' \
             '</div></a>'.format("展开" if self.is_hide else "隐藏")
         self.ui.label_switch.setText(s)
         for i in self.menu_labels:
