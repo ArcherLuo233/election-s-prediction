@@ -7,7 +7,7 @@ from ui.widgets.MainPage import MainPage
 def main():
     widget = MainPage()
     qt_app.PageManager.pages['main'] = widget
-    widget.show()
+    widget.showMaximized()
     sys.exit(qt_app.app.exec_())
 
 
