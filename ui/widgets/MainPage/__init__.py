@@ -16,17 +16,19 @@ class MainPage(QWidget):
         print(s)
         if s.startswith("#goto:"):
             w = self.ui.main_widget
-            w.layout().takeAt(0)
+            if w.layout().count():
+                w.layout().takeAt(0).widget().hide()
             page_widget = PageManager.getPage(s[6:])
             if page_widget is None:
                 return
             w.layout().addWidget(page_widget)
+            page_widget.show()
             return
 
     def init_navigate_menu(self, widget) -> NavigateMenu:
         menu = [
             ("信息登记",
-             {"来绍交流": "test1",
+             {"来绍交流": "1_1",
               "台商台干": "",
               "重要人士": "",
               "陆配": "",
