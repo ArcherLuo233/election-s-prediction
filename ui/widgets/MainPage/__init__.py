@@ -16,7 +16,6 @@ class MainPage(QWidget):
         navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
 
     def linkManager(self, s: str):
-        print(s)
         if s.startswith("#goto:"):
             w = self.ui.main_widget
             if w.layout().count():

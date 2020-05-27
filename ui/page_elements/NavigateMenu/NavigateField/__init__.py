@@ -26,7 +26,7 @@ class NavigateLabel(QLabel):
 
     def setTitle(self, title: str, alias: str = ""):
         self.text = title
-        self.alias = alias
+        self.alias = alias if alias != "" else title
         self.updateText()
 
     def updateText(self):
