@@ -13,8 +13,8 @@ class NavigateMenu(QWidget):
 
     def addField(self, title: str, menu: [tuple]):
         field = NavigateField(title)
-        for i, j in menu:
-            label = field.appendMenu(i, j)
+        for text, alias, cb in menu:
+            label = field.appendMenu(text, alias, cb)
             label.linkActivated.connect(self.labelClicked)
         self.fields.append(field)
         self.layout().addWidget(field)

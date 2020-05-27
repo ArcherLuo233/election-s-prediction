@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPalette, QColor, QFont
+from PyQt5.QtGui import QColor, QFont
 from PyQt5.QtCore import pyqtSignal, Qt
 from .NavigateFieldUI import Ui_Form
 
@@ -11,6 +11,7 @@ class NavigateLabel(QLabel):
         QLabel.__init__(self)
         self.checked = False
         self.text = "测试文本"
+        self.alias = ""
         font = QFont("黑体", 14)
         self.setFont(font)
         self.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
@@ -20,14 +21,18 @@ class NavigateLabel(QLabel):
         if self.checked == check:
             return
         self.checked = check
-        self.setText(self.text)
+        self.updateText()
         self.checkChanged.emit(check)
 
-    def setText(self, p_str):
-        self.text = p_str
+    def setTitle(self, title: str, alias: str = ""):
+        self.text = title
+        self.alias = alias
+        self.updateText()
+
+    def updateText(self):
         color = "rgb(68, 126, 217)" if self.checked else "rgb(0, 0, 0)"
-        s = '<a href="#goto:{1}"><span style="text-decoration: none; color:{0};">\
-            {1}</span></a>'.format(color, self.text)
+        s = '<a href="#goto:{2}"><span style="text-decoration: none; color:{0};">\
+            {1}</span></a>'.format(color, self.text, self.alias)
         super().setText(s)
 
 
@@ -62,9 +67,9 @@ class NavigateField(QWidget):
             else:
                 i.show()
 
-    def appendMenu(self, text: str, callback=None):
+    def appendMenu(self, text: str, alias="", callback=None):
         label = NavigateLabel()
-        label.setText(text)
+        label.setTitle(text, alias)
         label.setParent(self)
         if self.is_hide:
             label.hide()
