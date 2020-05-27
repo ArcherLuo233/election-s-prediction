@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>638</width>
-    <height>416</height>
+    <width>639</width>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -145,9 +145,6 @@
         <property name="columnCount">
          <number>6</number>
         </property>
-        <attribute name="horizontalHeaderVisible">
-         <bool>true</bool>
-        </attribute>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>

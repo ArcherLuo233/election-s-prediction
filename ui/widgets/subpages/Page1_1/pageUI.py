@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(638, 416)
+        Form.resize(639, 363)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(Form)
@@ -88,7 +88,6 @@ class Ui_Form(object):
         self.tableWidget.setItem(0, 1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setItem(0, 2, item)
-        self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.verticalHeader().setVisible(False)
         self.verticalLayout_2.addWidget(self.tableWidget)
         self.verticalLayout.addWidget(self.frame_2)
