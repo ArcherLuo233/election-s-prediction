@@ -10,6 +10,9 @@ class MainPage(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.ui.main_widget.setLayout(QHBoxLayout())
+        with open("./static/qss/main.qss") as f:
+            s = f.read()
+            self.setStyleSheet(s)
         navi_widget = self.ui.navigation_widget
         self.init_navigate_menu(navi_widget)
         navi_widget.fields[0].switch()
@@ -35,11 +38,16 @@ class MainPage(QWidget):
               "重要人士": "",
               "陆配": "",
               "陆生": "",
-              "台属": ""}),
-            ("地区统计",
-             {"测试文本1": "",
-              "测试文本2": ""}),
-            ("sbbbg", {})]
+              "台属": "",
+              "公务团组": "",
+              "商务团组": "",
+              "来访团组": "",
+              "居住证人员": "",
+              }),
+            ("地区统计", {}),
+            ("机构信息", {}),
+            ("人士信息", {})
+        ]
         for i in menu:
             j, k = i
             widget.addField(j, [(kk, k[kk], self.linkManager) for kk in k])

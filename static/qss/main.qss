@@ -1,0 +1,20 @@
+QPushButton{
+    background-color: rgb(64, 158, 255);
+    border: 1px;
+    border-radius: 5px;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+}
+
+QPushButton:hover{
+    background-color: rgb(102, 177, 255);
+}
+
+QTableWidget{
+	alternate-background-color: white;
+	background-color: rgb(245,245,245);
+}
+
+QHeaderView::section{
+	font-weight: bold;
+}

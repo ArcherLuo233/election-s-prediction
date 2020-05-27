@@ -7,14 +7,16 @@ from .NavigateFieldUI import Ui_Form
 class NavigateLabel(QLabel):
     checkChanged = pyqtSignal(bool)
 
-    def __init__(self):
-        QLabel.__init__(self)
+    def __init__(self, parent=None):
+        QLabel.__init__(self, parent)
         self.checked = False
         self.text = "测试文本"
         self.alias = ""
-        font = QFont("黑体", 14)
+        font = self.parent().font()
+        font.setPixelSize(20)
         self.setFont(font)
-        self.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
+        self.setAlignment(Qt.AlignBottom | Qt.AlignLeft)
+        self.setStyleSheet("QLabel{margin-left: 10px;}")
         self.setCursor(Qt.PointingHandCursor)
 
     def setChecked(self, check):
@@ -69,7 +71,7 @@ class NavigateField(QWidget):
                 i.show()
 
     def appendMenu(self, text: str, alias="", callback=None):
-        label = NavigateLabel()
+        label = NavigateLabel(self)
         label.setTitle(text, alias)
         label.setParent(self)
         if self.is_hide:

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>146</width>
-    <height>107</height>
+    <width>166</width>
+    <height>121</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,11 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <family>文鼎中隶</family>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -26,8 +31,8 @@
       <widget class="QLabel" name="label_title">
        <property name="font">
         <font>
-         <family>黑体</family>
-         <pointsize>18</pointsize>
+         <family>文鼎中隶</family>
+         <pointsize>20</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -42,8 +47,8 @@
       <widget class="QLabel" name="label_switch">
        <property name="font">
         <font>
-         <family>黑体</family>
-         <pointsize>9</pointsize>
+         <family>文鼎中隶</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -62,10 +67,10 @@
    <item>
     <layout class="QVBoxLayout" name="layout_menu">
      <property name="spacing">
-      <number>10</number>
+      <number>20</number>
      </property>
      <property name="topMargin">
-      <number>10</number>
+      <number>20</number>
      </property>
     </layout>
    </item>
