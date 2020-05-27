@@ -38,8 +38,8 @@ class MainPage(QWidget):
               "台属": ""}),
             ("地区统计",
              {"测试文本1": "",
-              "测试文本2": ""})
-        ]
+              "测试文本2": ""}),
+            ("sbbbg", {})]
         for i in menu:
             j, k = i
             widget.addField(j, [(kk, k[kk], self.linkManager) for kk in k])

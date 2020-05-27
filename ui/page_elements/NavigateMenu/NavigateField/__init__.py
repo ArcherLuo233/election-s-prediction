@@ -47,6 +47,7 @@ class NavigateField(QWidget):
         self.ui.label_title.setText(self.getLinkHtml(QColor(0, 0, 0)).format(title))
         self.ui.label_title.linkActivated.connect(self.switch)
         self.ui.label_switch.linkActivated.connect(self.switch)
+        self.ui.label_switch.hide()
         self.adjustSize()
 
     @staticmethod
@@ -78,6 +79,7 @@ class NavigateField(QWidget):
         label.checkChanged.connect(self.checkChange)
         self.ui.layout_menu.addWidget(label)
         self.menu_labels.append(label)
+        self.ui.label_switch.show()
         return label
 
     def checkChange(self, check):
