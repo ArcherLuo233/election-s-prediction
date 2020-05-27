@@ -9,8 +9,11 @@ class MainPage(QWidget):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.init_navigate_menu(self.ui.navigation_widget)
         self.ui.main_widget.setLayout(QHBoxLayout())
+        navi_widget = self.ui.navigation_widget
+        self.init_navigate_menu(navi_widget)
+        navi_widget.fields[0].switch()
+        navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
 
     def linkManager(self, s: str):
         print(s)
@@ -41,6 +44,4 @@ class MainPage(QWidget):
         for i in menu:
             j, k = i
             widget.addField(j, [(kk, k[kk], self.linkManager) for kk in k])
-        widget.fields[0].switch()
-        widget.fields[0].menu_labels[0].linkActivated.emit("#")
         return widget
