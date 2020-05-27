@@ -12,7 +12,6 @@ class PageManager:
 
     @classmethod
     def getPage(cls, page_name):
-        print(page_name)
         if page_name in cls.pages.keys():
             return cls.pages[page_name]
         if 'Page' + page_name in globals().keys():
