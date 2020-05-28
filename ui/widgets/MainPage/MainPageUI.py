@@ -113,9 +113,9 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "选举预测系统"))
+        Form.setWindowTitle(_translate("Form", "信息管理系统"))
         self.label_logo.setText(_translate("Form", "Logo"))
-        self.label.setText(_translate("Form", "欢迎使用选举预测系统！"))
+        self.label.setText(_translate("Form", "欢迎使用信息管理系统！"))
         self.label_2.setText(_translate("Form", "用户名"))
         self.label_3.setText(_translate("Form", "登出"))
 from ...page_elements.NavigateMenu import NavigateMenu

@@ -80,7 +80,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>选举预测系统</string>
+   <string>信息管理系统</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -140,7 +140,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>欢迎使用选举预测系统！</string>
+         <string>欢迎使用信息管理系统！</string>
         </property>
        </widget>
       </item>
