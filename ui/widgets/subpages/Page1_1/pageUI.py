@@ -81,11 +81,6 @@ class Ui_Form(object):
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout.addWidget(self.pushButton_2)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
-        self.line = QtWidgets.QFrame(self.frame_2)
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.verticalLayout_2.addWidget(self.line)
         self.tableWidget = QtWidgets.QTableWidget(self.frame_2)
         self.tableWidget.setMinimumSize(QtCore.QSize(601, 0))
         font = QtGui.QFont()
@@ -118,6 +113,9 @@ class Ui_Form(object):
         self.tableWidget.setItem(0, 2, item)
         self.tableWidget.verticalHeader().setVisible(False)
         self.verticalLayout_2.addWidget(self.tableWidget)
+        self.page_controller = PageController(self.frame_2)
+        self.page_controller.setObjectName("page_controller")
+        self.verticalLayout_2.addWidget(self.page_controller)
         self.verticalLayout.addWidget(self.frame_2)
 
         self.retranslateUi(Form)
@@ -154,3 +152,4 @@ class Ui_Form(object):
         item = self.tableWidget.item(0, 2)
         item.setText(_translate("Form", "测试"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
+from ui.page_elements.PageController import PageController

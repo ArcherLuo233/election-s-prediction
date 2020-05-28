@@ -246,7 +246,7 @@
   <customwidget>
    <class>NavigateMenu</class>
    <extends>QWidget</extends>
-   <header>...page_elements.NavigateMenu</header>
+   <header>ui.page_elements.NavigateMenu</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

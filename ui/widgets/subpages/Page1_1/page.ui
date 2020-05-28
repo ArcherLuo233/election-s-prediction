@@ -159,13 +159,6 @@
        </layout>
       </item>
       <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QTableWidget" name="tableWidget">
         <property name="minimumSize">
          <size>
@@ -254,11 +247,22 @@
         </item>
        </widget>
       </item>
+      <item>
+       <widget class="PageController" name="page_controller" native="true"/>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PageController</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.page_elements.PageController</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

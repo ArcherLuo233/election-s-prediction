@@ -118,4 +118,4 @@ class Ui_Form(object):
         self.label.setText(_translate("Form", "欢迎使用信息管理系统！"))
         self.label_2.setText(_translate("Form", "用户名"))
         self.label_3.setText(_translate("Form", "登出"))
-from ...page_elements.NavigateMenu import NavigateMenu
+from ui.page_elements.NavigateMenu import NavigateMenu

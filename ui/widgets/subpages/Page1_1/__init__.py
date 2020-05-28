@@ -15,3 +15,4 @@ class Page1_1(QWidget):
         self.ui.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         icon = QIcon("./static/svg/search.svg")
         self.ui.button_search.setIcon(icon)
+        self.ui.page_controller.setMaxPage(10)
