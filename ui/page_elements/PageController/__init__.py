@@ -45,6 +45,10 @@ class PageController(QWidget):
                     but.setChecked(True)
                 self.ui.layout_middle.addWidget(but)
                 self.ui.buttonGroup.addButton(but)
+        if self.page == 1:
+            self.ui.button_left.setChecked(True)
+        elif self.page == self.maxpage:
+            self.ui.button_right.setChecked(True)
         if left >= 3:
             self.ui.label_leftdot.show()
         if right <= self.maxpage - 2:
