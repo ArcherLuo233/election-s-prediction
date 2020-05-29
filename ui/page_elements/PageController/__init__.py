@@ -1,7 +1,8 @@
-from .PageControllerUI import Ui_Form
 from PyQt5.QtWidgets import QWidget, QPushButton
 from PyQt5.QtCore import pyqtSignal
+from PyQt5.Qt import Qt
 
+from .PageControllerUI import Ui_Form
 
 class PageController(QWidget):
     pageChanged = pyqtSignal(int)
@@ -47,6 +48,7 @@ class PageController(QWidget):
                 but.setText(str(i))
                 but.setCheckable(True)
                 but.setFont(self.font())
+                but.setCursor(Qt.PointingHandCursor)
                 if i == self.page:
                     but.setChecked(True)
                 self.ui.layout_middle.addWidget(but)
