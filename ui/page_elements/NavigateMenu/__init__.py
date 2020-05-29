@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import *
 from typing import Union
 
-from .NavigateField import NavigateField, NavigateLabel
+from .NavigateField import NavigateField
+from .NavigateLabel import NavigateLabel
 
 
 class NavigateMenu(QWidget):
@@ -11,10 +12,12 @@ class NavigateMenu(QWidget):
         self.fields: [NavigateField] = []
         self.checked_label: Union[None, NavigateLabel] = None
 
-    def addField(self, title: str, menu: [tuple]):
-        field = NavigateField(title)
-        for text, alias, cb in menu:
-            label = field.appendMenu(text, alias, cb)
+    def addField(self, title: str, alias: str, menu: [tuple], callback):
+        field = NavigateField(title, alias)
+        field.ui.label_title.linkActivated.connect(callback)
+        field.ui.label_title.linkActivated.connect(self.labelClicked)
+        for text, alias in menu:
+            label = field.appendMenu(text, alias, callback)
             label.linkActivated.connect(self.labelClicked)
         self.fields.append(field)
         self.layout().addWidget(field)

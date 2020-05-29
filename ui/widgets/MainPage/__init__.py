@@ -32,7 +32,7 @@ class MainPage(QWidget):
 
     def init_navigate_menu(self, widget) -> NavigateMenu:
         menu = [
-            ("信息登记",
+            ("信息登记", "",
              {"来绍交流": "1_1",
               "台商台干": "",
               "重要人士": "",
@@ -44,11 +44,11 @@ class MainPage(QWidget):
               "来访团组": "",
               "居住证人员": "",
               }),
-            ("地区统计", {}),
-            ("机构信息", {}),
-            ("人士信息", {})
+            ("地区统计", "", {}),
+            ("机构信息", "", {}),
+            ("人士信息", "", {})
         ]
         for i in menu:
-            j, k = i
-            widget.addField(j, [(kk, k[kk], self.linkManager) for kk in k])
+            title, alias, menus = i
+            widget.addField(title, alias, [(menu, menus[menu]) for menu in menus], self.linkManager)
         return widget

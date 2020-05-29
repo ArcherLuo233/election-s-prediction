@@ -28,7 +28,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="label_title">
+      <widget class="NavigateLabel" name="label_title">
        <property name="font">
         <font>
          <family>文鼎中隶</family>
@@ -89,6 +89,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>NavigateLabel</class>
+   <extends>QLabel</extends>
+   <header>ui.page_elements.NavigateMenu.NavigateField</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
