@@ -67,3 +67,26 @@ PageController QSpinBox::up-arrow{
 PageController QSpinBox::down-arrow{
     border-image: url("static/svg/down-arrow.svg");
 }
+
+DetailPage QPushButton{
+    background-color: white;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 50);
+    border-radius: 0px;
+    padding: 10px 20px 10px 20px;
+    color: black;
+}
+
+DetailPage QPushButton:hover{
+    background-color: rgba(64, 158, 255, 150);
+}
+
+DetailPage QPushButton:checked{
+    background-color: rgb(64, 158, 255);
+    color: white;
+}
+
+DetailPage QPushButton:checked:hover{
+    background-color: rgba(64, 158, 255, 150);
+    color: white;
+}
