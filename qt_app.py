@@ -11,9 +11,10 @@ class PageManager:
     pages = dict()
 
     @classmethod
-    def getPage(cls, page_name):
+    def getPage(cls, page_name, reload=True):
         if page_name in cls.pages.keys():
-            return cls.pages[page_name]
+            if not reload:
+                return cls.pages[page_name]
         if 'Page' + page_name in globals().keys():
             cls.pages[page_name] = globals()['Page' + page_name]()
             return cls.pages[page_name]
