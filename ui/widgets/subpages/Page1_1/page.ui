@@ -141,7 +141,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="button_add">
           <property name="font">
            <font>
             <family>黑体</family>
