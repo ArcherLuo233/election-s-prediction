@@ -7,7 +7,7 @@ from .detailPage import DetailPage
 from ui.page_elements.WindowMask import WindowMask
 
 
-class Page1_1(QWidget):
+class Page1_2(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         self.dialog = None

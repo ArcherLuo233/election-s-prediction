@@ -3,6 +3,15 @@ import sys
 
 # subpage import
 from ui.widgets.subpages.Page1_1 import Page1_1
+from ui.widgets.subpages.Page1_2 import Page1_2
+from ui.widgets.subpages.Page1_3 import Page1_3
+from ui.widgets.subpages.Page1_4 import Page1_4
+from ui.widgets.subpages.Page1_5 import Page1_5
+from ui.widgets.subpages.Page1_6 import Page1_6
+from ui.widgets.subpages.Page1_7 import Page1_7
+from ui.widgets.subpages.Page1_8 import Page1_8
+from ui.widgets.subpages.Page1_9 import Page1_9
+from ui.widgets.subpages.Page1_10 import Page1_10
 
 app = QtWidgets.QApplication(sys.argv)
 
