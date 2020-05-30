@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QHBoxLayout
 from .MainPageUI import Ui_Form
 from ...page_elements.NavigateMenu import NavigateMenu
-from qt_app import PageManager
+from libs.PageManager import PageManager
 
 
 class MainPage(QWidget):

@@ -1,14 +1,17 @@
+from PyQt5 import QtWidgets
 import sys
 
-import qt_app
 from ui.widgets.MainPage import MainPage
+from libs.PageManager import PageManager
+
+app = QtWidgets.QApplication(sys.argv)
 
 
 def main():
     widget = MainPage()
-    qt_app.PageManager.pages['main'] = widget
+    PageManager.pages['main'] = widget
     widget.showMaximized()
-    sys.exit(qt_app.app.exec_())
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
