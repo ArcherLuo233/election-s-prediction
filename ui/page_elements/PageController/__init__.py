@@ -4,6 +4,7 @@ from PyQt5.Qt import Qt
 
 from .PageControllerUI import Ui_Form
 
+
 class PageController(QWidget):
     pageChanged = pyqtSignal(int)
 
