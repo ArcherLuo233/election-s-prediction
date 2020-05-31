@@ -34,7 +34,7 @@ class MainPage(QWidget):
 
     def init_navigate_menu(self, widget) -> NavigateMenu:
         menu = [
-            ("信息登记", "",
+            ("信息登记", "1_1",
              {"来绍交流": "1_1",
               "台商台干": "1_2",
               "重要人士": "1_3",
