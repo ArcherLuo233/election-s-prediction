@@ -32,7 +32,7 @@ class Page1_2(QWidget):
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
 
     def detail(self, link):
-        print(link)
+
         self.openDialog(False, data={'id': link[len("#detail:"):]})
 
     def action_add(self):

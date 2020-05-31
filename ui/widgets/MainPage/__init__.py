@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout
 from .MainPageUI import Ui_Form
 from ...page_elements.NavigateMenu import NavigateMenu
 from libs.PageManager import PageManager
+from libs.LinkManager import link_manager
 
 
 class MainPage(QWidget):
@@ -14,6 +15,7 @@ class MainPage(QWidget):
             s = f.read()
             self.setStyleSheet(s)
         navi_widget = self.ui.navigation_widget
+        link_manager.linkActivated.connect(self.linkManager)
         self.init_navigate_menu(navi_widget)
         navi_widget.fields[0].switch()
         navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
@@ -44,11 +46,11 @@ class MainPage(QWidget):
               "来访团组": "1_9",
               "居住证人员": "1_10",
               }),
-            ("地区统计", "", {}),
-            ("机构信息", "", {}),
-            ("人士信息", "", {})
+            ("地区统计", "3", {}),
+            ("机构信息", "4", {}),
+            ("人士信息", "5", {})
         ]
         for i in menu:
             title, alias, menus = i
-            widget.addField(title, alias, [(menu, menus[menu]) for menu in menus], self.linkManager)
+            widget.addField(title, alias, [(menu, menus[menu]) for menu in menus])
         return widget

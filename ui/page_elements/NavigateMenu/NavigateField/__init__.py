@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from ui.page_elements.NavigateMenu.NavigateLabel import NavigateLabel
 
 from .NavigateFieldUI import Ui_Form
+from libs.LinkManager import link_manager
 
 
 class NavigateField(QWidget):
@@ -30,15 +31,14 @@ class NavigateField(QWidget):
             else:
                 i.show()
 
-    def appendMenu(self, text: str, alias="", callback=None):
+    def appendMenu(self, text: str, alias=""):
         label = NavigateLabel(self)
         label.setTitle(text, alias)
         label.setParent(self)
         label.setStyleSheet("QLabel{margin-left: 10px;}")
         if self.is_hide:
             label.hide()
-        if callback:
-            label.linkActivated.connect(callback)
+        label.linkActivated.connect(link_manager.activate)
         label.checkChanged.connect(self.ui.label_title.setChecked)
         self.ui.layout_menu.addWidget(label)
         self.menu_labels.append(label)

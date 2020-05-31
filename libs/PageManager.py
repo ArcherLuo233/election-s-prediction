@@ -9,6 +9,7 @@ from ui.widgets.subpages.Page1_7 import Page1_7
 from ui.widgets.subpages.Page1_8 import Page1_8
 from ui.widgets.subpages.Page1_9 import Page1_9
 from ui.widgets.subpages.Page1_10 import Page1_10
+from ui.widgets.subpages.Page4 import Page4
 
 
 class PageManager:
