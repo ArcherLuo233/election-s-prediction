@@ -32,11 +32,11 @@ class Ui_Form(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout_2.addWidget(self.line)
-        self.layout_candidate = QtWidgets.QVBoxLayout()
-        self.layout_candidate.setContentsMargins(20, 20, -1, -1)
-        self.layout_candidate.setSpacing(20)
-        self.layout_candidate.setObjectName("layout_candidate")
-        self.verticalLayout_2.addLayout(self.layout_candidate)
+        self.layout_ins = QtWidgets.QVBoxLayout()
+        self.layout_ins.setContentsMargins(20, 20, -1, -1)
+        self.layout_ins.setSpacing(20)
+        self.layout_ins.setObjectName("layout_ins")
+        self.verticalLayout_2.addLayout(self.layout_ins)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
 
@@ -46,4 +46,4 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "人士信息"))
+        self.label.setText(_translate("Form", "机构信息"))

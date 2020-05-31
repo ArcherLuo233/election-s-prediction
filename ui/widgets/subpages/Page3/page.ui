@@ -29,7 +29,7 @@
       </font>
      </property>
      <property name="text">
-      <string>人士信息</string>
+      <string>机构信息</string>
      </property>
     </widget>
    </item>
@@ -41,7 +41,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="layout_candidate">
+    <layout class="QVBoxLayout" name="layout_ins">
      <property name="spacing">
       <number>20</number>
      </property>
