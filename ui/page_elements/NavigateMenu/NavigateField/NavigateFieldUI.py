@@ -14,11 +14,6 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(166, 121)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
-        Form.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("文鼎中隶")
         Form.setFont(font)
@@ -59,5 +54,5 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_title.setText(_translate("Form", "测试文本"))
-        self.label_switch.setText(_translate("Form", "<html><head/><body><p><a href=\"#open\"><span style=\" text-decoration: none; color:rgb(68, 126, 217);\">展开</span></a></p></body></html>"))
+        self.label_switch.setText(_translate("Form", "<html><head/><body><p><a href=\"#open\"><span style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>"))
 from ui.page_elements.NavigateMenu.NavigateField import NavigateLabel

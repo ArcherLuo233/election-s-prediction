@@ -23,7 +23,6 @@ class Page1_1(QWidget):
 
         self.ui.button_add.clicked.connect(self.action_add)
 
-        # test label
         detail_label = QLabel(self)
         detail_label.setText('<a href="#detail:%d">详细信息</a>' % (0))
         detail_label.linkActivated.connect(self.detail)
@@ -32,8 +31,7 @@ class Page1_1(QWidget):
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
 
     def detail(self, link):
-
-        self.openDialog(False, data={'id': link[len("#detail:"):]})
+        self.openDialog(True, data={'id': link[len("#detail:"):]})
 
     def action_add(self):
         self.openDialog(True)
@@ -61,8 +59,10 @@ class Page1_1(QWidget):
     def locationDialog(self):
         if self.dialog:
             geo = self.geometry()
-            geo.setLeft(geo.left() + 50)
-            geo.setRight(geo.right() - 50)
+            width = 500
+            left = (geo.width() - width) / 2
+            geo.setLeft(left)
+            geo.setRight(left + width)
             geo.setTop(geo.top() + 30)
             geo.setBottom(geo.bottom() - 50)
             self.dialog.setGeometry(geo)

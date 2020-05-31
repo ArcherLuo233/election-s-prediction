@@ -15,15 +15,13 @@ class NavigateField(QWidget):
         self.ui.setupUi(self)
         self.ui.label_title.setTitle(title, alias)
         self.ui.label_switch.linkActivated.connect(self.switch)
-        self.ui.label_switch.hide()
+        self.ui.label_switch.close()
         self.adjustSize()
 
     def switch(self):
         self.is_hide = not self.is_hide
-        s = '<a href="#">' \
-            '<div>' \
-            '<span style="width:100%; height:100%; text-decoration: none; color: rgb(68, 126 ,217);">{0}</span>' \
-            '</div></a>'.format("展开" if self.is_hide else "隐藏")
+        s = '<a href="#" style="text-decoration: none;' \
+            'color: white;">{0}</a>'.format("展开" if self.is_hide else "隐藏")
         self.ui.label_switch.setText(s)
         for i in self.menu_labels:
             if self.is_hide:

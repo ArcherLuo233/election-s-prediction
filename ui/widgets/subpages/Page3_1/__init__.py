@@ -48,7 +48,7 @@ class Page3_1(QWidget):
         self.ui.label_staff.linkActivated.connect(self.detail)
 
     def back(self):
-        link_manager.activate("#goto:4")
+        link_manager.activate("#goto:3")
 
     def detail(self, link):
         mask = WindowMask(self)

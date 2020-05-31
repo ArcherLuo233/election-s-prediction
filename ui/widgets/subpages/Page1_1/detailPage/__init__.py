@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QHeaderView
+from PyQt5.QtWidgets import QDialog, QHeaderView, QTableWidgetItem
 from PyQt5.QtGui import QPainter
 from PyQt5.Qt import Qt
 
@@ -13,6 +13,12 @@ class DetailPage(QDialog):
         self.ui.setupUi(self)
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.ui.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.ui.tableWidget.setSpan(0, 2, 2, 1)
+        self.ui.tableWidget.setSpan(0, 3, 2, 1)
+        item = QTableWidgetItem()
+        item.setText("照片")
+        item.setFlags(Qt.NoItemFlags)
+        self.ui.tableWidget.setItem(0, 2, item)
 
     def paintEvent(self, QPaintEvent):
         painter = QPainter(self)

@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QLabel
+from PyQt5.QtWidgets import QWidget, QLabel, QHeaderView, QTableWidget
+from PyQt5.Qt import Qt
 
 from .pageUI import Ui_Form
 from libs.LinkManager import link_manager
@@ -15,11 +16,19 @@ class Page3(QWidget):
         info = {}
         for i in range(1, 11):
             info["机构%d" % i] = "3_%d" % 1
-        for text in info.keys():
+        table = self.ui.tableWidget
+        table.setColumnCount(1)
+        table.setRowCount(len(info))
+        table.horizontalHeader().setVisible(False)
+        table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        table.verticalHeader().setVisible(False)
+        table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        for i, text in enumerate(info.keys(), 0):
             label = QLabel()
             label.setText(self.info2Str(text, info[text]))
             label.linkActivated.connect(link_manager.activate)
-            self.ui.layout_ins.addWidget(label)
+            self.ui.tableWidget.setCellWidget(i, 0, label)
+        self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
 
     @staticmethod
     def info2Str(text, page) -> str:
