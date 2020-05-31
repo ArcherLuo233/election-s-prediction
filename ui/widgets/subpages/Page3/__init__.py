@@ -14,7 +14,7 @@ class Page3(QWidget):
     def setInsInfo(self):
         info = {}
         for i in range(1, 11):
-            info["机构%d" % i] = "4_%d" % 1
+            info["机构%d" % i] = "3_%d" % 1
         for text in info.keys():
             label = QLabel()
             label.setText(self.info2Str(text, info[text]))
