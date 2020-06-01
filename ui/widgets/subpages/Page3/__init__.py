@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QHeaderView, QTableWidget
-from PyQt5.Qt import Qt
+from PyQt5.QtGui import QIcon
 
 from .pageUI import Ui_Form
 from libs.LinkManager import link_manager
@@ -11,6 +11,8 @@ class Page3(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.setInsInfo()
+        self.ui.button_search.setIcon(QIcon("./static/svg/search.svg"))
+        self.ui.page_controller.setMaxPage(50)
 
     def setInsInfo(self):
         info = {}
