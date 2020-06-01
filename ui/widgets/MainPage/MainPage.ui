@@ -195,7 +195,7 @@ color: white;</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_logout">
         <property name="font">
          <font>
           <family>黑体</family>
@@ -203,7 +203,7 @@ color: white;</string>
          </font>
         </property>
         <property name="text">
-         <string>登出</string>
+         <string>&lt;a href=&quot;#logout&quot; style=&quot;text-decoration:none; color:white;&quot;&gt;登出&lt;/a&gt;</string>
         </property>
        </widget>
       </item>

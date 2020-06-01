@@ -10,6 +10,7 @@ class MainPage(QWidget):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        self.ui.label_logout.linkActivated.connect(self.logout)
         self.ui.main_widget.setLayout(QHBoxLayout())
         with open("./static/qss/main.qss") as f:
             s = f.read()
@@ -54,3 +55,7 @@ class MainPage(QWidget):
             title, alias, menus = i
             widget.addField(title, alias, [(menu, menus[menu]) for menu in menus])
         return widget
+
+    def logout(self):
+        PageManager.getPage("Login", False).show()
+        self.close()
