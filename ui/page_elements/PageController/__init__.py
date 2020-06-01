@@ -28,6 +28,7 @@ class PageController(QWidget):
             but = self.ui.layout_middle.takeAt(0).widget()
             self.ui.buttonGroup.removeButton(but)
             self.ui.layout_middle.removeWidget(but)
+            but.close()
             but.deleteLater()
         if self.maxpage == 1:
             self.ui.button_right.hide()
@@ -35,15 +36,15 @@ class PageController(QWidget):
             self.ui.button_right.show()
         left: int = self.page - 2
         right: int = self.page + 2
-        if left <= 1:
-            left = 2
-        if right >= self.maxpage:
-            right = self.maxpage - 1
         if left <= 2:
             right = min(5, self.maxpage)
         if right >= self.maxpage - 1:
             left = max(1, self.maxpage - 4)
-        if left < right:
+        if left <= 1:
+            left = 2
+        if right >= self.maxpage:
+            right = self.maxpage - 1
+        if left <= right:
             for i in range(left, right + 1):
                 but = QPushButton(self)
                 but.setText(str(i))
