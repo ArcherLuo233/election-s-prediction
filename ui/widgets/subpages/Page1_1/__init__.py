@@ -59,7 +59,7 @@ class Page1_1(QWidget):
     def locationDialog(self):
         if self.dialog:
             geo = self.geometry()
-            width = 500
+            width = 700
             left = (geo.width() - width) / 2
             geo.setLeft(left)
             geo.setRight(left + width)

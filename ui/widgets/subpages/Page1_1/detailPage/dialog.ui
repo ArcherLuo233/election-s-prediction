@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>304</width>
-    <height>298</height>
+    <width>436</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="font">
@@ -36,8 +36,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>286</width>
-        <height>280</height>
+        <width>418</width>
+        <height>452</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -144,7 +144,7 @@ padding: 10px</string>
           </font>
          </property>
          <property name="verticalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
+          <enum>Qt::ScrollBarAsNeeded</enum>
          </property>
          <property name="horizontalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -158,6 +158,11 @@ padding: 10px</string>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>
+         <row>
+          <property name="text">
+           <string>New Row</string>
+          </property>
+         </row>
          <row>
           <property name="text">
            <string>New Row</string>
@@ -223,7 +228,12 @@ padding: 10px</string>
            <string>姓名</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="0" column="2">
+          <property name="text">
+           <string>照片</string>
           </property>
          </item>
          <item row="1" column="0">
@@ -231,12 +241,12 @@ padding: 10px</string>
            <string>编号</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="1" column="2">
           <property name="text">
-           <string>照片</string>
+           <string/>
           </property>
          </item>
          <item row="2" column="0">
@@ -244,7 +254,7 @@ padding: 10px</string>
            <string>社会身份</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="2" column="1">
@@ -254,7 +264,7 @@ padding: 10px</string>
          </item>
          <item row="2" column="2">
           <property name="text">
-           <string>职业</string>
+           <string/>
           </property>
           <property name="flags">
            <set>NoItemFlags</set>
@@ -262,15 +272,15 @@ padding: 10px</string>
          </item>
          <item row="3" column="0">
           <property name="text">
-           <string>地区</string>
+           <string>职业</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="3" column="2">
           <property name="text">
-           <string>户籍所在地</string>
+           <string/>
           </property>
           <property name="flags">
            <set>NoItemFlags</set>
@@ -278,66 +288,82 @@ padding: 10px</string>
          </item>
          <item row="4" column="0">
           <property name="text">
-           <string>结婚登记日期</string>
+           <string>地区</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="4" column="2">
           <property name="text">
-           <string>所在社区/镇村</string>
+           <string>户籍所在地</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="5" column="0">
           <property name="text">
-           <string>性别</string>
+           <string>结婚登记日期</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="5" column="2">
           <property name="text">
-           <string>活跃度</string>
+           <string>所在社区/镇村</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="6" column="0">
           <property name="text">
-           <string>出生日期</string>
+           <string>性别</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="6" column="2">
           <property name="text">
-           <string>大陆工作单位</string>
+           <string>活跃度</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="7" column="0">
           <property name="text">
-           <string>学历</string>
+           <string>出生日期</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
          <item row="7" column="2">
           <property name="text">
+           <string>大陆工作单位</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="8" column="0">
+          <property name="text">
+           <string>学历</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="8" column="2">
+          <property name="text">
            <string>地址</string>
           </property>
           <property name="flags">
-           <set>NoItemFlags</set>
+           <set>ItemIsEnabled</set>
           </property>
          </item>
         </widget>
