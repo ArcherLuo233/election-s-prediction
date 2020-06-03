@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainPage.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(751, 363)
+        Form.resize(804, 363)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -38,15 +38,17 @@ class Ui_Form(object):
         font.setFamily("黑体")
         Form.setFont(font)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget = QtWidgets.QWidget(Form)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(14)
         self.widget.setFont(font)
-        self.widget.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-"padding: 20px;\n"
-"color: white;")
+        self.widget.setStyleSheet("padding: 20px;\n"
+"color: white;\n"
+"background-color: rgb(230, 182, 102);")
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -100,23 +102,29 @@ class Ui_Form(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.navigation_widget = NavigateMenu(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.navigation_widget.sizePolicy().hasHeightForWidth())
+        self.navigation_widget.setSizePolicy(sizePolicy)
+        self.navigation_widget.setMinimumSize(QtCore.QSize(300, 0))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush = QtGui.QBrush(QtGui.QColor(122, 122, 122))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         self.navigation_widget.setPalette(palette)

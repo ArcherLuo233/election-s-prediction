@@ -15,9 +15,9 @@ class NavigateLabel(QLabel):
         font.setBold(50)
         font.setPixelSize(20)
         self.setFont(font)
-        self.setAlignment(Qt.AlignBottom | Qt.AlignLeft)
-        self.setCursor(Qt.PointingHandCursor)
+        self.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         self.setAutoFillBackground(True)
+        self.setContentsMargins(10, 10, 10, 10)
 
     def setChecked(self, check):
         if self.checked == check:
@@ -32,11 +32,11 @@ class NavigateLabel(QLabel):
         self.updateText()
 
     def updateText(self):
-        color = "black" if self.checked else "white"
+        color = "white"
         s = '<a href="#goto:{2}" style="text-decoration: none; color:{0};">' \
             '{1}</a>'.format(color, self.text, self.alias)
         super().setText(s)
-        bgcolor = QColor("white") if self.checked else QColor(51, 51, 51)
+        bgcolor = QColor(230, 182, 102) if self.checked else QColor(122, 122, 122)
         palette: QPalette = self.palette()
         palette.setColor(QPalette.Background, bgcolor)
         self.setPalette(palette)
