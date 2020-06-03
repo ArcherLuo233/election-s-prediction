@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>211</width>
-    <height>128</height>
+    <width>228</width>
+    <height>47</height>
    </rect>
   </property>
   <property name="font">
@@ -36,6 +36,31 @@
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_icon">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">padding: 10px;</string>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../../../static/svg/list.svg</pixmap>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="NavigateLabel" name="label_title">
        <property name="sizePolicy">
