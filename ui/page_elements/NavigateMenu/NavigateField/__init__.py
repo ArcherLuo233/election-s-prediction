@@ -1,4 +1,6 @@
 from PyQt5.QtWidgets import QWidget
+from PyQt5.QtGui import QColor, QPalette, QPixmap
+
 from ui.page_elements.NavigateMenu.NavigateLabel import NavigateLabel
 
 from .NavigateFieldUI import Ui_Form
@@ -13,9 +15,19 @@ class NavigateField(QWidget):
         self.title = title
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+
         self.ui.label_title.setTitle(title, alias)
+        self.ui.label_title.checkChanged.connect(self.refreshUI)
+
+        self.ui.label_icon.setPixmap(QPixmap("./static/svg/list.svg").scaled(30, 30))
+        self.ui.label_icon.setAutoFillBackground(True)
+
+        self.ui.label_switch.setAutoFillBackground(True)
         self.ui.label_switch.linkActivated.connect(self.switch)
         self.ui.label_switch.close()
+
+        self.refreshUI(False)
+
         self.adjustSize()
 
     def switch(self):
@@ -42,3 +54,10 @@ class NavigateField(QWidget):
         self.menu_labels.append(label)
         self.ui.label_switch.show()
         return label
+
+    def refreshUI(self, checked):
+        bgcolor = QColor(230, 182, 102) if checked else QColor(122, 122, 122)
+        pal = self.ui.label_switch.palette()
+        pal.setColor(QPalette.Background, bgcolor)
+        self.ui.label_switch.setPalette(pal)
+        self.ui.label_icon.setPalette(pal)

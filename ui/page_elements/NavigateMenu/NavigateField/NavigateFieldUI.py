@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(211, 128)
+        Form.resize(228, 47)
         font = QtGui.QFont()
         font.setFamily("文鼎中隶")
         Form.setFont(font)
@@ -23,6 +23,14 @@ class Ui_Form(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_icon = QtWidgets.QLabel(Form)
+        self.label_icon.setMinimumSize(QtCore.QSize(50, 0))
+        self.label_icon.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.label_icon.setStyleSheet("padding: 10px;")
+        self.label_icon.setPixmap(QtGui.QPixmap("../../../../static/svg/list.svg"))
+        self.label_icon.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTop|QtCore.Qt.AlignTrailing)
+        self.label_icon.setObjectName("label_icon")
+        self.horizontalLayout.addWidget(self.label_icon)
         self.label_title = NavigateLabel(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)

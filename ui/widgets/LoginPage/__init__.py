@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtGui import QPixmap
 
 from libs.PageManager import PageManager
+from model.user import User
 from .pageUI import Ui_Form
 
 
@@ -18,5 +19,18 @@ class LoginPage(QWidget):
         self.ui.pushButton.clicked.connect(self.login)
 
     def login(self):
+        un = self.ui.lineEdit_un.text()
+        psd = self.ui.lineEdit_psd.text()
+        user = User.search(username=un)['data']
+        if len(user) == 0:
+            self.logerror()
+            return
+        user = user[0]
+        if not user.check_password(psd):
+            self.logerror()
+            return
         PageManager.getPage("Main", False).showMaximized()
         self.close()
+
+    def logerror(self):
+        print("登录失败")

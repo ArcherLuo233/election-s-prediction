@@ -17,7 +17,7 @@ class NavigateLabel(QLabel):
         self.setFont(font)
         self.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         self.setAutoFillBackground(True)
-        self.setContentsMargins(10, 10, 10, 10)
+        self.setContentsMargins(0, 10, 0, 10)
 
     def setChecked(self, check):
         if self.checked == check:
