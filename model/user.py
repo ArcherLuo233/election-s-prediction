@@ -9,10 +9,10 @@ class User(Base):
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(20), nullable=False, unique=True)
-    nickname = Column(String(20), nullable=False)
-    password_ = Column('password', String(32), nullable=False)
-    permission = Column(SmallInteger, nullable=False)
+    username = Column(String(20), nullable=False, unique=True, comment='用户名')
+    nickname = Column(String(20), nullable=False, comment='姓名')
+    password_ = Column('password', String(32), nullable=False, comment='密码')
+    permission = Column(SmallInteger, nullable=False, comment='权限')
 
     @property
     def password(self):
