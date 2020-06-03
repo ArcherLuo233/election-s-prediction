@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
 import sys
 
+from model.base import init_database
 from ui.widgets.LoginPage import LoginPage
 from ui.widgets.MainPage import MainPage
 from libs.PageManager import PageManager
@@ -18,4 +19,5 @@ def main():
 
 
 if __name__ == '__main__':
+    init_database()
     main()
