@@ -3,6 +3,7 @@ from .MainPageUI import Ui_Form
 from ...page_elements.NavigateMenu import NavigateMenu
 from libs.PageManager import PageManager
 from libs.LinkManager import link_manager
+from libs.g import g
 
 
 class MainPage(QWidget):
@@ -55,6 +56,9 @@ class MainPage(QWidget):
             title, alias, menus = i
             widget.addField(title, alias, [(menu, menus[menu]) for menu in menus])
         return widget
+
+    def refreshUser(self):
+        self.ui.label_username.setText(g.current_user.nickname)
 
     def logout(self):
         PageManager.getPage("Login", False).show()
