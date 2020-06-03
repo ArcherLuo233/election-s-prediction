@@ -9,7 +9,10 @@ from libs.LinkManager import link_manager
 class NavigateMenu(QWidget):
     def __init__(self, parent):
         QWidget.__init__(self, parent=parent)
-        self.setLayout(QVBoxLayout())
+        layout = QVBoxLayout()
+        layout.setContentsMargins(0, 20, 0, 0)
+        layout.setSpacing(20)
+        self.setLayout(layout)
         self.fields: [NavigateField] = []
         self.checked_label: Union[None, NavigateLabel] = None
 
@@ -28,4 +31,3 @@ class NavigateMenu(QWidget):
             self.checked_label.setChecked(False)
         self.sender().setChecked(True)
         self.checked_label = self.sender()
-        self.adjustSize()

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>166</width>
-    <height>121</height>
+    <width>211</width>
+    <height>128</height>
    </rect>
   </property>
   <property name="font">
@@ -19,10 +19,31 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="NavigateLabel" name="label_title">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>文鼎中隶</family>
@@ -48,6 +69,9 @@
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
+       <property name="styleSheet">
+        <string notr="true">padding-bottom: 10px;</string>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;#open&quot;&gt;&lt;span style=&quot; text-decoration: none; color:white;&quot;&gt;展开&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -61,10 +85,10 @@
    <item>
     <layout class="QVBoxLayout" name="layout_menu">
      <property name="spacing">
-      <number>20</number>
+      <number>0</number>
      </property>
      <property name="topMargin">
-      <number>20</number>
+      <number>0</number>
      </property>
     </layout>
    </item>

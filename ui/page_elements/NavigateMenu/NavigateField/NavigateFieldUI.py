@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'NavigateField.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,15 +13,22 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(166, 121)
+        Form.resize(211, 128)
         font = QtGui.QFont()
         font.setFamily("文鼎中隶")
         Form.setFont(font)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_title = NavigateLabel(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_title.sizePolicy().hasHeightForWidth())
+        self.label_title.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("文鼎中隶")
         font.setPointSize(20)
@@ -35,13 +42,14 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.label_switch.setFont(font)
         self.label_switch.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.label_switch.setStyleSheet("padding-bottom: 10px;")
         self.label_switch.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_switch.setObjectName("label_switch")
         self.horizontalLayout.addWidget(self.label_switch)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.layout_menu = QtWidgets.QVBoxLayout()
-        self.layout_menu.setContentsMargins(-1, 20, -1, -1)
-        self.layout_menu.setSpacing(20)
+        self.layout_menu.setContentsMargins(-1, 0, -1, -1)
+        self.layout_menu.setSpacing(0)
         self.layout_menu.setObjectName("layout_menu")
         self.verticalLayout.addLayout(self.layout_menu)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
