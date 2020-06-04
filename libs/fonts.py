@@ -10,3 +10,4 @@ def loadFonts():
         filename = fonturl + file
         id = QFontDatabase.addApplicationFont(filename)
         print(file, id)
+    print(QFontDatabase().families(QFontDatabase.SimplifiedChinese))
