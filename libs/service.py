@@ -15,7 +15,7 @@ def login(username, password):
 
 def read_excel(filename, start_row):
     wb = load_workbook(filename)
-    ws = wb[wb.sheetnames[0]]
+    ws = wb.active
 
     col = ws.max_column
     row = ws.max_row
@@ -25,3 +25,15 @@ def read_excel(filename, start_row):
         data.append([str(ws[chr(65 + i)][idx].internal_value) if ws[chr(65 + i)][idx].internal_value is not None
                      else None for i in range(col)])
     return data
+
+
+def save_excel(template_filename, start_row, data, filename):
+    wb = load_workbook(template_filename)
+    ws = wb.active
+
+    for idx in range(start_row, len(data) + start_row):
+        for i in range(len(data[0])):
+            name = '{}{}'.format(chr(65 + i), idx + 1)
+            ws[name] = data[idx - start_row][i]
+
+    wb.save(filename)
