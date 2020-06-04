@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, SmallInteger, String
 
+from libs.service import read_excel
 from model.base import Base
 
 
@@ -28,3 +29,30 @@ class TS(Base):
     relatives_job = Column(String(20), comment='在台亲属单位职位')
     relatives_degree_of_contact = Column(String(20), comment='在台亲属联系程度')
     remark = Column(String(100), comment='备注')
+
+
+def import_ts(filename):
+    res = read_excel(filename, 3)
+    for i in res:
+        TS.create(
+            area=i[0],
+            nickname=i[1],
+            sex=i[2] == '男',
+            birth=i[3],
+            hometown=i[4],
+            mailing_address=i[5],
+            job=i[6],
+            social_identity=i[7],
+            phone=i[8],
+            family_member_nickname=i[9],
+            family_member_birth=i[10],
+            family_member_job=i[11],
+            relatives_relation=i[12],
+            relatives_nickname=i[13],
+            relatives_sex=i[14] == '男',
+            relatives_birth=i[15],
+            relatives_address=i[16],
+            relatives_job=i[17],
+            relatives_degree_of_contact=i[18],
+            remark=i[19],
+        )

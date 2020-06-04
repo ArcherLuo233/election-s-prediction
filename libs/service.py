@@ -1,3 +1,5 @@
+from openpyxl import load_workbook
+
 from model.user import User
 
 
@@ -9,3 +11,17 @@ def login(username, password):
     if user.check_password(password) is False:
         return False, '用户名或密码错误'
     return True, user
+
+
+def read_excel(filename, start_row):
+    wb = load_workbook(filename)
+    ws = wb[wb.sheetnames[0]]
+
+    col = ws.max_column
+    row = ws.max_row
+
+    data = []
+    for idx in range(start_row, row):
+        data.append([str(ws[chr(65 + i)][idx].internal_value) if ws[chr(65 + i)][idx].internal_value is not None
+                     else None for i in range(col)])
+    return data
