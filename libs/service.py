@@ -1,3 +1,4 @@
+from docxtpl import DocxTemplate
 from openpyxl import load_workbook
 
 from libs.helper import md5
@@ -51,3 +52,9 @@ def upload_file(filename):
     with open(filename, "wb") as f:
         f.write(raw)
     return True, filename
+
+
+def save_word(template_file, data, filename):
+    doc = DocxTemplate(template_file)
+    doc.render(data)
+    doc.save(filename)
