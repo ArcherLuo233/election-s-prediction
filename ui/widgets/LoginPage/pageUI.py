@@ -42,7 +42,7 @@ class Ui_Form(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         Form.setPalette(palette)
         font = QtGui.QFont()
-        font.setFamily("SimHei")
+        font.setFamily("黑体")
         font.setPointSize(18)
         Form.setFont(font)
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(Form)

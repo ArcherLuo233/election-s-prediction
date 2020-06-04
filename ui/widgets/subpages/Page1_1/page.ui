@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>SimHei</family>
+    <family>黑体</family>
     <pointsize>14</pointsize>
    </font>
   </property>
@@ -27,7 +27,7 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>SimHei</family>
+       <family>黑体</family>
        <pointsize>28</pointsize>
       </font>
      </property>
@@ -40,7 +40,7 @@
     <widget class="QFrame" name="frame">
      <property name="font">
       <font>
-       <family>SimHei</family>
+       <family>黑体</family>
        <pointsize>14</pointsize>
       </font>
      </property>
@@ -262,7 +262,7 @@
          <widget class="QPushButton" name="button_add">
           <property name="font">
            <font>
-            <family>SimHei</family>
+            <family>黑体</family>
             <pointsize>14</pointsize>
            </font>
           </property>
@@ -292,7 +292,7 @@
         </property>
         <property name="font">
          <font>
-          <family>SimHei</family>
+          <family>黑体</family>
           <pointsize>14</pointsize>
          </font>
         </property>
