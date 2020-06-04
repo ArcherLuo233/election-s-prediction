@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtGui import QPalette, QColor
+from PyQt5.QtGui import QPalette, QColor, QMouseEvent
 
 
 class NavigateLabel(QLabel):
@@ -18,6 +18,7 @@ class NavigateLabel(QLabel):
         self.setAlignment(Qt.AlignVCenter | Qt.AlignLeft)
         self.setAutoFillBackground(True)
         self.setContentsMargins(0, 10, 0, 10)
+        self.setCursor(Qt.PointingHandCursor)
 
     def setChecked(self, check):
         if self.checked == check:
@@ -32,12 +33,18 @@ class NavigateLabel(QLabel):
         self.updateText()
 
     def updateText(self):
-        color = "white"
-        s = '<a href="#goto:{2}" style="text-decoration: none; color:{0};">' \
-            '{1}</a>'.format(color, self.text, self.alias)
-        super().setText(s)
+        s = self.text
+        self.setText(s)
+        color = QColor("white")
         bgcolor = QColor(230, 182, 102) if self.checked else QColor(122, 122, 122)
         palette: QPalette = self.palette()
+        palette.setColor(QPalette.WindowText, color)
         palette.setColor(QPalette.Background, bgcolor)
         self.setPalette(palette)
         self.update()
+
+    def mouseReleaseEvent(self, event: QMouseEvent):
+        if event.button() != Qt.LeftButton:
+            return False
+        link = "#goto:{}".format(self.alias)
+        self.linkActivated.emit(link)
