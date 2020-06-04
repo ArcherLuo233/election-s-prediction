@@ -16,14 +16,22 @@ from ui.widgets.subpages.Page4 import Page4
 
 class PageManager:
     pages = dict()
+    current_page_name = None
+    current_page = None
 
     @classmethod
-    def getPage(cls, page_name, reload=True):
+    def getPage(cls, page_name, reload=True, forceReload=False):
+        if not forceReload and cls.current_page_name == page_name:
+            return cls.current_page
+        cls.current_page_name = page_name
         if page_name in cls.pages.keys():
             if not reload:
+                cls.current_page = cls.pages[page_name]
                 return cls.pages[page_name]
         if 'Page' + page_name in globals().keys():
-            cls.pages[page_name] = globals()['Page' + page_name]()
+            cls.current_page = cls.pages[page_name] = globals()['Page' + page_name]()
             return cls.pages[page_name]
+        cls.current_page_name = None
+        cls.current_page = None
         print("Can't find page: %s" % page_name)
         return None
