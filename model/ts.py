@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 
-from libs.service import read_excel
+from libs.service import read_excel, save_excel
 from model.base import Base
 
 
@@ -56,3 +56,32 @@ def import_ts(filename):
             relatives_degree_of_contact=i[18],
             remark=i[19],
         )
+
+
+def export_ts(filename, **kwargs):
+    res = TS.search(page_size=100000000, **kwargs)['data']
+    data = []
+    for i in res:
+        data.append([
+            i.area,
+            i.nickname,
+            i.sex,
+            i.birth,
+            i.hometown,
+            i.mailing_address,
+            i.job,
+            i.social_identity,
+            i.phone,
+            i.family_member_nickname,
+            i.family_member_birth,
+            i.family_member_job,
+            i.relatives_relation,
+            i.relatives_nickname,
+            i.relatives_sex,
+            i.relatives_birth,
+            i.relatives_address,
+            i.relatives_job,
+            i.relatives_degree_of_contact,
+            i.remark
+        ])
+    save_excel('template/ts.xlsx', 3, data, filename)
