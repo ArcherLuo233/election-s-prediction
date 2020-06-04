@@ -25,9 +25,11 @@ class PageManager:
             return cls.current_page
         cls.current_page_name = page_name
         if page_name in cls.pages.keys():
-            if not reload:
+            if not reload and not forceReload:
                 cls.current_page = cls.pages[page_name]
                 return cls.pages[page_name]
+            else:
+                cls.pages[page_name].deleteLater()
         if 'Page' + page_name in globals().keys():
             cls.current_page = cls.pages[page_name] = globals()['Page' + page_name]()
             return cls.pages[page_name]
