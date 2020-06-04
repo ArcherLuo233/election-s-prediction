@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, SmallInteger, String
+from sqlalchemy import Column, Integer, String
 
 from libs.service import read_excel
 from model.base import Base
@@ -23,7 +23,7 @@ class TS(Base):
     family_member_job = Column(String(20), comment='家庭重要成员单位职位')
     relatives_relation = Column(String(20), comment='在台亲属关系')
     relatives_nickname = Column(String(20), comment='在台亲属姓名')
-    relatives_sex = Column(SmallInteger, comment='在台亲属性别')
+    relatives_sex = Column(String(1), comment='在台亲属性别')
     relatives_birth = Column(String(20), comment='在台亲属出生年月')
     relatives_address = Column(String(20), comment='在台亲属地址')
     relatives_job = Column(String(20), comment='在台亲属单位职位')
