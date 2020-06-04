@@ -179,7 +179,7 @@
        </property>
        <property name="font">
         <font>
-         <family>微软雅黑</family>
+         <family>Microsoft YaHei UI</family>
          <pointsize>28</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -265,7 +265,7 @@
          </property>
          <property name="font">
           <font>
-           <family>微软雅黑</family>
+           <family>Microsoft YaHei UI</family>
            <pointsize>20</pointsize>
            <weight>75</weight>
            <bold>true</bold>
@@ -374,7 +374,7 @@
          </property>
          <property name="font">
           <font>
-           <family>微软雅黑</family>
+           <family>Microsoft YaHei UI</family>
           </font>
          </property>
          <property name="autoFillBackground">
@@ -570,7 +570,7 @@ border-radius: 0px;</string>
                   </property>
                   <property name="font">
                    <font>
-                    <family>微软雅黑</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
@@ -643,7 +643,7 @@ border-radius: 0px;</string>
                   </property>
                   <property name="font">
                    <font>
-                    <family>微软雅黑</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
@@ -673,7 +673,7 @@ border-radius: 0px;</string>
            <widget class="QPushButton" name="pushButton">
             <property name="font">
              <font>
-              <family>微软雅黑</family>
+              <family>Microsoft YaHei UI</family>
               <pointsize>14</pointsize>
               <weight>75</weight>
               <bold>true</bold>
