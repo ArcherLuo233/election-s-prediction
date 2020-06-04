@@ -11,7 +11,7 @@ class TS(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     area = Column(String(20), comment='地区')
     nickname = Column(String(20), nullable=False, comment='姓名')
-    sex = Column(SmallInteger, comment='性别')
+    sex = Column(String(1), comment='性别')
     birth = Column(String(20), comment='出生年月')
     hometown = Column(String(20), comment='籍贯')
     mailing_address = Column(String(100), comment='通讯地址')
@@ -37,7 +37,7 @@ def import_ts(filename):
         TS.create(
             area=i[0],
             nickname=i[1],
-            sex=i[2] == '男',
+            sex=i[2],
             birth=i[3],
             hometown=i[4],
             mailing_address=i[5],
@@ -49,7 +49,7 @@ def import_ts(filename):
             family_member_job=i[11],
             relatives_relation=i[12],
             relatives_nickname=i[13],
-            relatives_sex=i[14] == '男',
+            relatives_sex=i[14],
             relatives_birth=i[15],
             relatives_address=i[16],
             relatives_job=i[17],
