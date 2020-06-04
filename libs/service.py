@@ -1,5 +1,6 @@
 from openpyxl import load_workbook
 
+from libs.helper import md5
 from model.user import User
 
 
@@ -37,3 +38,16 @@ def save_excel(template_filename, start_row, data, filename):
             ws[name] = data[idx - start_row][i]
 
     wb.save(filename)
+
+
+def upload_file(filename):
+    suffix = filename.rsplit('.', 1)
+    if len(suffix) == 1:
+        return False, "文件没有后缀"
+    with open(filename, "rb") as f:
+        raw = f.read()
+        filename = md5(raw) + "." + suffix
+    filename = 'file/{}'.format(filename)
+    with open(filename, "wb") as f:
+        f.write(raw)
+    return True, filename
