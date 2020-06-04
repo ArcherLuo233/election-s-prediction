@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QHeaderView, QLabel
+from PyQt5.QtWidgets import QWidget, QHeaderView, QLabel, QTableWidget
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QEventLoop
 
@@ -29,6 +29,7 @@ class Page1_1(QWidget):
         detail_label.show()
 
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
+        self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
 
     def detail(self, link):
         self.openDialog(True, data={'id': link[len("#detail:"):]})
