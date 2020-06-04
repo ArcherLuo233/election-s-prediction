@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainPage.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -77,13 +77,13 @@ class Ui_Form(object):
         self.horizontalLayout.addWidget(self.label)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.label_2 = QtWidgets.QLabel(self.widget)
+        self.label_username = QtWidgets.QLabel(self.widget)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(14)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout.addWidget(self.label_2)
+        self.label_username.setFont(font)
+        self.label_username.setObjectName("label_username")
+        self.horizontalLayout.addWidget(self.label_username)
         self.line_2 = QtWidgets.QFrame(self.widget)
         self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -154,6 +154,6 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "信息管理系统"))
         self.label_logo.setText(_translate("Form", "Logo"))
         self.label.setText(_translate("Form", "欢迎使用信息管理系统！"))
-        self.label_2.setText(_translate("Form", "用户名"))
+        self.label_username.setText(_translate("Form", "用户名"))
         self.label_logout.setText(_translate("Form", "<a href=\"#logout\" style=\"text-decoration:none; color:white;\">登出</a>"))
 from ui.page_elements.NavigateMenu import NavigateMenu
