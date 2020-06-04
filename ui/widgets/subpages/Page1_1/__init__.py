@@ -1,10 +1,11 @@
-from PyQt5.QtWidgets import QWidget, QHeaderView, QLabel, QTableWidget
-from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QEventLoop
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QHeaderView, QLabel, QTableWidget, QWidget
 
-from .pageUI import Ui_Form
-from .detailPage import DetailPage
 from ui.page_elements.WindowMask import WindowMask
+
+from .detailPage import DetailPage
+from .pageUI import Ui_Form
 
 
 class Page1_1(QWidget):

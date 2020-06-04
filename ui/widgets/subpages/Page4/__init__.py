@@ -1,9 +1,10 @@
-from PyQt5.QtWidgets import QWidget, QLabel
 from PyQt5.QtCore import QEventLoop
+from PyQt5.QtWidgets import QLabel, QWidget
 
-from .pageUI import Ui_Form
 from ui.page_elements.WindowMask import WindowMask
+
 from .detailPage import DetailPage
+from .pageUI import Ui_Form
 
 
 class Page4(QWidget):

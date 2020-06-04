@@ -1,5 +1,5 @@
-from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtCore import QDir
+from PyQt5.QtGui import QFontDatabase
 
 
 def loadFonts():

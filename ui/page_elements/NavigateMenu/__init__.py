@@ -1,9 +1,11 @@
-from PyQt5.QtWidgets import *
 from typing import Union
+
+from PyQt5.QtWidgets import *
+
+from libs.LinkManager import link_manager
 
 from .NavigateField import NavigateField
 from .NavigateLabel import NavigateLabel
-from libs.LinkManager import link_manager
 
 
 class NavigateMenu(QWidget):

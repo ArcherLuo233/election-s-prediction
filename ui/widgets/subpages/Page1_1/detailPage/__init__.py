@@ -1,6 +1,7 @@
-from PyQt5.QtWidgets import QDialog, QHeaderView, QTableWidget, QTableWidgetItem
-from PyQt5.QtGui import QPainter
 from PyQt5.Qt import Qt
+from PyQt5.QtGui import QPainter
+from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
+                             QTableWidgetItem)
 
 from .dialogUI import Ui_Dialog
 

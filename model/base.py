@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, asc, desc
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import asc, create_engine, desc
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 from config.secure import SQLALCHEMY_URL
 

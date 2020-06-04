@@ -1,10 +1,11 @@
-from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import QEventLoop
+from PyQt5.QtWidgets import QWidget
 
-from .pageUI import Ui_Form
-from ui.page_elements.WindowMask import WindowMask
-from .detailPage import DetailPage
 from libs.LinkManager import link_manager
+from ui.page_elements.WindowMask import WindowMask
+
+from .detailPage import DetailPage
+from .pageUI import Ui_Form
 
 
 class Page3_1(QWidget):

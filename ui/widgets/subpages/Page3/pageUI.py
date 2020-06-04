@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui.page_elements.PageController import PageController
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -82,4 +84,3 @@ class Ui_Form(object):
         self.label.setText(_translate("Form", "机构信息"))
         self.label_2.setText(_translate("Form", "机构名称"))
         self.button_search.setText(_translate("Form", "搜索"))
-from ui.page_elements.PageController import PageController
