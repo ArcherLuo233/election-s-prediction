@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>黑体</family>
+    <family>SimHei</family>
     <pointsize>14</pointsize>
    </font>
   </property>
@@ -24,7 +24,7 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>黑体</family>
+       <family>SimHei</family>
        <pointsize>20</pointsize>
       </font>
      </property>
@@ -115,7 +115,7 @@ padding: 10px</string>
        <widget class="QTableWidget" name="tableWidget">
         <property name="font">
          <font>
-          <family>黑体</family>
+          <family>SimHei</family>
           <pointsize>12</pointsize>
          </font>
         </property>

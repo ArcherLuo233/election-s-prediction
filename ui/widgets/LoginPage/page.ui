@@ -94,7 +94,7 @@
   </property>
   <property name="font">
    <font>
-    <family>黑体</family>
+    <family>SimHei</family>
     <pointsize>18</pointsize>
    </font>
   </property>

@@ -76,7 +76,7 @@
   </property>
   <property name="font">
    <font>
-    <family>黑体</family>
+    <family>SimHei</family>
    </font>
   </property>
   <property name="windowTitle">
@@ -102,7 +102,7 @@
     <widget class="QWidget" name="widget" native="true">
      <property name="font">
       <font>
-       <family>黑体</family>
+       <family>SimHei</family>
        <pointsize>14</pointsize>
       </font>
      </property>
@@ -144,7 +144,7 @@ background-color: rgb(230, 182, 102);</string>
        <widget class="QLabel" name="label_logo">
         <property name="font">
          <font>
-          <family>黑体</family>
+          <family>SimHei</family>
           <pointsize>14</pointsize>
          </font>
         </property>
@@ -167,7 +167,7 @@ background-color: rgb(230, 182, 102);</string>
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
-          <family>黑体</family>
+          <family>SimHei</family>
           <pointsize>14</pointsize>
          </font>
         </property>
@@ -193,7 +193,7 @@ background-color: rgb(230, 182, 102);</string>
        <widget class="QLabel" name="label_username">
         <property name="font">
          <font>
-          <family>黑体</family>
+          <family>SimHei</family>
           <pointsize>14</pointsize>
          </font>
         </property>
@@ -213,7 +213,7 @@ background-color: rgb(230, 182, 102);</string>
        <widget class="QLabel" name="label_logout">
         <property name="font">
          <font>
-          <family>黑体</family>
+          <family>SimHei</family>
           <pointsize>14</pointsize>
          </font>
         </property>
