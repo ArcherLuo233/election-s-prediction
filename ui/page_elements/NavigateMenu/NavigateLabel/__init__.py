@@ -45,6 +45,6 @@ class NavigateLabel(QLabel):
 
     def mouseReleaseEvent(self, event: QMouseEvent):
         if event.button() != Qt.LeftButton:
-            return False
+            return
         link = "#goto:{}".format(self.alias)
         self.linkActivated.emit(link)
