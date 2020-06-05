@@ -5,6 +5,9 @@ from ui.page_elements.detailPage import DetailPage
 
 from .pageUI import Ui_Form
 
+from .detailPage import DetailPage
+from .pageUI import Ui_Form
+
 
 class Page1_3(QWidget):
     def __init__(self):
