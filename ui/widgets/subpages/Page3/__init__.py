@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QLabel, QHeaderView, QTableWidget
 from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QHeaderView, QLabel, QTableWidget, QWidget
+
+from libs.LinkManager import link_manager
 
 from .pageUI import Ui_Form
-from libs.LinkManager import link_manager
 
 
 class Page3(QWidget):

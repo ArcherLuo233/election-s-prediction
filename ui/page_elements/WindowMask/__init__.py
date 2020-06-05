@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtGui import QPainter, QColor
 from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtGui import QColor, QPainter
+from PyQt5.QtWidgets import QWidget
 
 
 class WindowMask(QWidget):

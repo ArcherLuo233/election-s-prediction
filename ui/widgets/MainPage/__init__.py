@@ -1,9 +1,11 @@
-from PyQt5.QtWidgets import QWidget, QHBoxLayout
-from .MainPageUI import Ui_Form
-from ...page_elements.NavigateMenu import NavigateMenu
-from libs.PageManager import PageManager
-from libs.LinkManager import link_manager
+from PyQt5.QtWidgets import QHBoxLayout, QWidget
+
 from libs.g import g
+from libs.LinkManager import link_manager
+from libs.PageManager import PageManager
+
+from ...page_elements.NavigateMenu import NavigateMenu
+from .MainPageUI import Ui_Form
 
 
 class MainPage(QWidget):

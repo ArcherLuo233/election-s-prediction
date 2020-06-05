@@ -1,10 +1,10 @@
-from PyQt5.QtWidgets import QWidget
 from PyQt5.QtGui import QColor, QPalette, QPixmap
+from PyQt5.QtWidgets import QWidget
 
+from libs.LinkManager import link_manager
 from ui.page_elements.NavigateMenu.NavigateLabel import NavigateLabel
 
 from .NavigateFieldUI import Ui_Form
-from libs.LinkManager import link_manager
 
 
 class NavigateField(QWidget):

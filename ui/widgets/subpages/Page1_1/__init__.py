@@ -1,7 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QHeaderView, QLabel, QTableWidget
 from PyQt5.QtGui import QIcon
-from .pageUI import Ui_Form
+from PyQt5.QtWidgets import QHeaderView, QLabel, QTableWidget, QWidget
+
 from ui.page_elements.detailPage import DetailPage
+
+from .pageUI import Ui_Form
 
 
 class Page1_1(QWidget):

@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QWidget, QPushButton
-from PyQt5.QtCore import pyqtSignal
 from PyQt5.Qt import Qt
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QPushButton, QWidget
 
 from .PageControllerUI import Ui_Form
 

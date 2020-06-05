@@ -1,10 +1,11 @@
-from PyQt5.QtWidgets import QWidget, QMessageBox
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMessageBox, QWidget
 
+from libs.g import g
 from libs.PageManager import PageManager
 from libs.service import login
+
 from .pageUI import Ui_Form
-from libs.g import g
 
 
 class LoginPage(QWidget):

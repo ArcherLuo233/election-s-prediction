@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Column, String, SmallInteger
+from sqlalchemy import Column, Integer, SmallInteger, String
 
 from config.secure import PASSWORD_SALT
 from libs.helper import md5

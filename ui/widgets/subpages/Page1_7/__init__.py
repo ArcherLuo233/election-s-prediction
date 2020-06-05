@@ -2,6 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QHeaderView, QLabel, QWidget
 
 from ui.page_elements.detailPage import DetailPage
+
 from .pageUI import Ui_Form
 
 

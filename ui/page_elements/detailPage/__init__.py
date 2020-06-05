@@ -1,10 +1,12 @@
-from PyQt5.QtWidgets import QDialog, QHeaderView, QTableWidget, QTableWidgetItem
-from PyQt5.QtGui import QPainter
-from PyQt5.QtCore import QEventLoop
 from PyQt5.Qt import Qt
+from PyQt5.QtCore import QEventLoop
+from PyQt5.QtGui import QPainter
+from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
+                             QTableWidgetItem)
+
+from ui.page_elements.WindowMask import WindowMask
 
 from .dialogUI import Ui_Dialog
-from ui.page_elements.WindowMask import WindowMask
 
 
 class DetailPage(QDialog):
