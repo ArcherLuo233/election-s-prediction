@@ -35,8 +35,8 @@ class NavigateLabel(QLabel):
     def updateText(self):
         s = self.text
         self.setText(s)
-        color = QColor("white")
-        bgcolor = QColor(230, 182, 102) if self.checked else QColor(122, 122, 122)
+        color = QColor("black")
+        bgcolor = QColor(77, 128, 228) if self.checked else QColor(223, 246, 240)
         palette: QPalette = self.palette()
         palette.setColor(QPalette.WindowText, color)
         palette.setColor(QPalette.Background, bgcolor)

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>804</width>
-    <height>363</height>
+    <height>374</height>
    </rect>
   </property>
   <property name="palette">
@@ -109,7 +109,7 @@
      <property name="styleSheet">
       <string notr="true">padding: 20px;
 color: white;
-background-color: rgb(230, 182, 102);</string>
+background-color: rgb(77, 128, 228);</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="leftMargin">
@@ -272,9 +272,9 @@ background-color: rgb(230, 182, 102);</string>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
             <color alpha="255">
-             <red>122</red>
-             <green>122</green>
-             <blue>122</blue>
+             <red>223</red>
+             <green>246</green>
+             <blue>240</blue>
             </color>
            </brush>
           </colorrole>
@@ -292,9 +292,9 @@ background-color: rgb(230, 182, 102);</string>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
             <color alpha="255">
-             <red>122</red>
-             <green>122</green>
-             <blue>122</blue>
+             <red>223</red>
+             <green>246</green>
+             <blue>240</blue>
             </color>
            </brush>
           </colorrole>
@@ -303,18 +303,18 @@ background-color: rgb(230, 182, 102);</string>
           <colorrole role="Base">
            <brush brushstyle="SolidPattern">
             <color alpha="255">
-             <red>122</red>
-             <green>122</green>
-             <blue>122</blue>
+             <red>223</red>
+             <green>246</green>
+             <blue>240</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
             <color alpha="255">
-             <red>122</red>
-             <green>122</green>
-             <blue>122</blue>
+             <red>223</red>
+             <green>246</green>
+             <blue>240</blue>
             </color>
            </brush>
           </colorrole>

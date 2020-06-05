@@ -56,7 +56,7 @@ class NavigateField(QWidget):
         return label
 
     def refreshUI(self, checked):
-        bgcolor = QColor(230, 182, 102) if checked else QColor(122, 122, 122)
+        bgcolor = QColor(77, 128, 228) if checked else QColor(223, 246, 240)
         pal = self.ui.label_switch.palette()
         pal.setColor(QPalette.Background, bgcolor)
         self.ui.label_switch.setPalette(pal)
