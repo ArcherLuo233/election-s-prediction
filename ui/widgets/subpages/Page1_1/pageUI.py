@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'page.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -21,13 +21,13 @@ class Ui_Form(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtWidgets.QLabel(Form)
+        self.label_title = QtWidgets.QLabel(Form)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(28)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
+        self.label_title.setFont(font)
+        self.label_title.setObjectName("label_title")
+        self.verticalLayout.addWidget(self.label_title)
         self.frame = QtWidgets.QFrame(Form)
         font = QtGui.QFont()
         font.setFamily("黑体")
@@ -186,7 +186,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "来绍交流人员信息查询/登记"))
+        self.label_title.setText(_translate("Form", "来绍交流人员信息查询/登记"))
         self.label_6.setText(_translate("Form", "字段4"))
         self.label_4.setText(_translate("Form", "字段2"))
         self.label_5.setText(_translate("Form", "字段3:"))

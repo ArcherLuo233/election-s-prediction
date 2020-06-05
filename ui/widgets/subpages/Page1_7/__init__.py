@@ -1,10 +1,8 @@
-from PyQt5.QtWidgets import QWidget, QHeaderView, QLabel
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QEventLoop
+from PyQt5.QtWidgets import QHeaderView, QLabel, QWidget
 
+from ui.page_elements.detailPage import DetailPage
 from .pageUI import Ui_Form
-from .detailPage import DetailPage
-from ui.page_elements.WindowMask import WindowMask
 
 
 class Page1_7(QWidget):
@@ -32,37 +30,16 @@ class Page1_7(QWidget):
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
 
     def detail(self, link):
-
         self.openDialog(False, data={'id': link[len("#detail:"):]})
 
     def action_add(self):
         self.openDialog(True)
 
     def openDialog(self, enable: bool, data=None):
-        mask = WindowMask(self)
-        self.dialog = DetailPage()
-        self.dialog.setParent(self)
-        self.locationDialog()
-        self.dialog.ui.tableWidget.setEnabled(enable)
-        loop = QEventLoop()
-        mask.clicked.connect(loop.quit)
-        mask.show()
+        self.dialog = DetailPage(self, enable)
         self.dialog.show()
-        loop.exec()
-        self.dialog.close()
-        mask.close()
         self.dialog.deleteLater()
-        self.dialog = None
-        mask.deleteLater()
 
     def resizeEvent(self, QResizeEvent):
-        self.locationDialog()
-
-    def locationDialog(self):
         if self.dialog:
-            geo = self.geometry()
-            geo.setLeft(geo.left() + 50)
-            geo.setRight(geo.right() - 50)
-            geo.setTop(geo.top() + 30)
-            geo.setBottom(geo.bottom() - 50)
-            self.dialog.setGeometry(geo)
+            self.dialog.locationDialog()
