@@ -10,34 +10,46 @@ from .dialogUI import Ui_Dialog
 
 
 class DetailPage(QDialog):
-    def __init__(self, parent, enabled: bool = True):
+    def __init__(self, parent):
         QDialog.__init__(self)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.setParent(parent)
-        hor_header: QHeaderView = self.ui.tableWidget.horizontalHeader()
-        hor_header.setSectionResizeMode(QHeaderView.Stretch)
+        # mask
+        self.mask_ = WindowMask(parent)
+        self.mask_.close()
+        # event-loop
+        self.loop = QEventLoop()
+        self.mask_.clicked.connect(self.loop.quit)
+        # tableWidget
         self.ui.tableWidget.setSpan(0, 2, 4, 1)
         self.ui.tableWidget.setSpan(0, 3, 4, 1)
+        # pic-item
         item = QTableWidgetItem()
         item.setText("照片")
         self.ui.tableWidget.setItem(0, 2, item)
         self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
-        self.ui.tableWidget.setEnabled(enabled)
+        # tableWidget-header
+        hor_header: QHeaderView = self.ui.tableWidget.horizontalHeader()
+        hor_header.setSectionResizeMode(QHeaderView.Stretch)
         self.locationDialog()
+        self.close()
+
+    def setEnabled(self, enable):
+        self.ui.tableWidget.setEnabled(enable)
 
     def show(self):
-        mask = WindowMask(self.parent())
-        loop = QEventLoop()
-        mask.clicked.connect(loop.quit)
-        mask.show()
+        self.mask_.show()
         super().show()
         self.raise_()
-        loop.exec()
+        self.loop.exec()
         self.close()
-        mask.close()
-        mask.deleteLater()
+        self.mask_.close()
+
+    def closeEvent(self, QCloseEvent):
+        if self.loop.isRunning():
+            self.loop.quit()
 
     def paintEvent(self, QPaintEvent):
         painter = QPainter(self)
@@ -45,6 +57,7 @@ class DetailPage(QDialog):
         painter.drawRect(0, 0, self.width() - 1, self.height() - 1)
 
     def locationDialog(self):
+        self.mask_.resize(self.parent().size())
         geo = self.parent().geometry()
         width = 700
         left = (geo.width() - width) / 2

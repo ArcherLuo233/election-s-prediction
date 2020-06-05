@@ -29,6 +29,7 @@ class PageManager:
                 cls.current_page = cls.pages[page_name]
                 return cls.pages[page_name]
             else:
+                cls.pages[page_name].close()
                 cls.pages[page_name].deleteLater()
         if 'Page' + page_name in globals().keys():
             cls.current_page = cls.pages[page_name] = globals()['Page' + page_name]()
