@@ -26,7 +26,7 @@ class LoginPage(QWidget):
             if debug:
                 self.ui.lineEdit_un.setText("admin")
                 self.ui.lineEdit_psd.setText("admin")
-        except:
+        except AttributeError:
             pass
 
     def login(self):
