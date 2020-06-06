@@ -1,8 +1,10 @@
+from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QHBoxLayout, QWidget
 
 from libs.g import g
 from libs.LinkManager import link_manager
 from libs.PageManager import PageManager
+from libs.uicolor import UIColor as color
 from ui.page_elements.NavigateMenu import NavigateMenu
 
 from .MainPageUI import Ui_Form
@@ -23,6 +25,18 @@ class MainPage(QWidget):
         self.init_navigate_menu(navi_widget)
         navi_widget.fields[0].switch()
         navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
+        # header-palette
+        self.ui.widget_header.setAutoFillBackground(True)
+        pal: QPalette = self.ui.widget_header.palette()
+        pal.setColor(QPalette.WindowText, color.HeaderText)
+        pal.setColor(QPalette.Background, color.HeaderBackground)
+        self.ui.widget_header.setPalette(pal)
+        self.ui.label.setPalette(pal)
+        self.ui.label_username.setPalette(pal)
+        self.ui.label_logo.setPalette(pal)
+        self.ui.label_logout.setText('<a href="#logout"'
+                                     'style="text-decoration:none;'
+                                     'color: %s">登出</a>' % color.HeaderText.name())
 
     def linkManager(self, s: str):
         if s.startswith("#goto:"):

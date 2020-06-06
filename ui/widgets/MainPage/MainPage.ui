@@ -99,30 +99,25 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="widget_header" native="true">
      <property name="font">
       <font>
        <family>黑体</family>
        <pointsize>14</pointsize>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">padding: 20px;
-color: white;
-background-color: rgb(77, 128, 228);</string>
-     </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="leftMargin">
-       <number>0</number>
+       <number>20</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>20</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>20</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>20</number>
       </property>
       <item>
        <spacer name="horizontalSpacer_2">
@@ -218,7 +213,7 @@ background-color: rgb(77, 128, 228);</string>
          </font>
         </property>
         <property name="text">
-         <string>&lt;a href=&quot;#logout&quot; style=&quot;text-decoration:none; color:white;&quot;&gt;登出&lt;/a&gt;</string>
+         <string>&lt;a href=&quot;#logout&quot;&gt;登出&lt;/a&gt;</string>
         </property>
        </widget>
       </item>
