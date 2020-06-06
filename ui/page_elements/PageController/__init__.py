@@ -21,7 +21,7 @@ class PageController(QWidget):
         self.setMaxPage(maxpage)
         self.refresh()
 
-    def refresh(self):
+    def refresh(self):  # noqa: C901
         self.ui.label_leftdot.hide()
         self.ui.label_rightdot.hide()
         while self.ui.layout_middle.count():
