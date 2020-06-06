@@ -68,8 +68,8 @@ class Page1_x(QWidget):
         try:
             with open("template/%s.xlsx" % self.alias, "rb") as f:
                 data = f.read()
-        except:
-            QMessageBox.warning(None, "错误", "下载失败")
+        except FileNotFoundError:
+            QMessageBox.warning(None, "错误", "下载失败，找不到该模板")
             return
         with open(filename, "wb") as f:
             f.write(data)
