@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QHeaderView, QLabel, QTableWidget, QWidget
+from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
+                             QTableWidget, QWidget)
 
 from ui.page_elements.detailPage import DetailPage
 
@@ -37,6 +38,12 @@ class Page1_x(QWidget):
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
         # detail_page
         self.dialog = DetailPage(self)
+        # downloadTemplate
+        self.ui.btn_downloadTemplate.clicked.connect(self.downloadTemplate)
+        # import
+        self.ui.button_import.clicked.connect(self.importFromFile)
+        # export
+        self.ui.button_export.clicked.connect(self.exportToFile)
 
     def detail(self, link):
         self.openDialog(True, data={'id': link[len("#detail:"):]})
@@ -53,3 +60,35 @@ class Page1_x(QWidget):
 
     def closeEvent(self, QCloseEvent):
         self.dialog.close()
+
+    def downloadTemplate(self):
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
+        if filename == "":
+            return
+        try:
+            with open("template/%s.xlsx" % self.alias, "rb") as f:
+                data = f.read()
+        except:
+            QMessageBox.warning(None, "错误", "下载失败")
+            return
+        with open(filename, "wb") as f:
+            f.write(data)
+        QMessageBox.information(None, "下载模板", "下载完毕")
+
+    def importDataFromFile(self, filename):
+        print("Undefined Import: %s", self.title)
+
+    def importFromFile(self):
+        filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "excel文件(*.xls *.xlsx)")[0]
+        if filename == "":
+            return
+        self.importDataFromFile(filename)
+
+    def exportDataToFile(self, filename):
+        print("Undefined Export: %s", self.title)
+
+    def exportToFile(self):
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
+        if filename == "":
+            return
+        self.exportDataToFile(filename)
