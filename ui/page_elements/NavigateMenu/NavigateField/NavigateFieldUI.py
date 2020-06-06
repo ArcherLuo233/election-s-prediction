@@ -30,7 +30,7 @@ class Ui_Form(object):
         self.label_icon.setMaximumSize(QtCore.QSize(50, 16777215))
         self.label_icon.setStyleSheet("padding: 10px;")
         self.label_icon.setPixmap(QtGui.QPixmap("../../../../static/svg/list.svg"))
-        self.label_icon.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTop|QtCore.Qt.AlignTrailing)
+        self.label_icon.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTop | QtCore.Qt.AlignTrailing)
         self.label_icon.setObjectName("label_icon")
         self.horizontalLayout.addWidget(self.label_icon)
         self.label_title = NavigateLabel(Form)
@@ -53,7 +53,7 @@ class Ui_Form(object):
         self.label_switch.setFont(font)
         self.label_switch.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label_switch.setStyleSheet("padding-bottom: 10px;")
-        self.label_switch.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_switch.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft)
         self.label_switch.setObjectName("label_switch")
         self.horizontalLayout.addWidget(self.label_switch)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -72,4 +72,5 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_title.setText(_translate("Form", "测试文本"))
-        self.label_switch.setText(_translate("Form", "<html><head/><body><p><a href=\"#open\"><span style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>"))
+        self.label_switch.setText(_translate("Form",
+                                             "<html><head/><body><p><a href=\"#open\"><span style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>"))

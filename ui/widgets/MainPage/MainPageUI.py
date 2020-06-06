@@ -49,8 +49,8 @@ class Ui_Form(object):
         font.setPointSize(14)
         self.widget.setFont(font)
         self.widget.setStyleSheet("padding: 20px;\n"
-"color: white;\n"
-"background-color: rgb(77, 128, 228);")
+                                  "color: white;\n"
+                                  "background-color: rgb(77, 128, 228);")
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -62,7 +62,7 @@ class Ui_Form(object):
         font.setFamily("黑体")
         font.setPointSize(14)
         self.label_logo.setFont(font)
-        self.label_logo.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_logo.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_logo.setObjectName("label_logo")
         self.horizontalLayout.addWidget(self.label_logo)
         self.line = QtWidgets.QFrame(self.widget)
@@ -157,4 +157,5 @@ class Ui_Form(object):
         self.label_logo.setText(_translate("Form", "Logo"))
         self.label.setText(_translate("Form", "欢迎使用信息管理系统！"))
         self.label_username.setText(_translate("Form", "用户名"))
-        self.label_logout.setText(_translate("Form", "<a href=\"#logout\" style=\"text-decoration:none; color:white;\">登出</a>"))
+        self.label_logout.setText(
+            _translate("Form", "<a href=\"#logout\" style=\"text-decoration:none; color:white;\">登出</a>"))
