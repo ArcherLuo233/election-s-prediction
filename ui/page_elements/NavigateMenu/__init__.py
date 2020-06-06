@@ -1,6 +1,6 @@
 from typing import Union
 
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QVBoxLayout, QWidget
 
 from libs.LinkManager import link_manager
 
