@@ -19,9 +19,9 @@ class PageController(QWidget):
         self.page = page
         self.maxpage = maxpage
         self.setMaxPage(maxpage)
-        self.refreshButtons()
+        self.refresh()
 
-    def refreshButtons(self):
+    def refresh(self):
         self.ui.label_leftdot.hide()
         self.ui.label_rightdot.hide()
         while self.ui.layout_middle.count():
@@ -76,7 +76,7 @@ class PageController(QWidget):
         if self.page != page:
             self.page = page
             self.ui.spinBox.setValue(page)
-            self.refreshButtons()
+            self.refresh()
             self.pageChanged.emit(page)
 
     def setPage(self, page):
@@ -95,7 +95,7 @@ class PageController(QWidget):
         if maxpage < self.page:
             self.pageChange(1)
         self.ui.spinBox.setRange(1, maxpage)
-        self.refreshButtons()
+        self.refresh()
 
     def gotoClicked(self):
         self.setPage(self.ui.spinBox.value())
