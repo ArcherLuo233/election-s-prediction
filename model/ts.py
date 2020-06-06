@@ -85,10 +85,3 @@ class TS(Base):
                 i.remark
             ])
         save_excel('template/ts.xlsx', 3, data, filename)
-
-    @staticmethod
-    def export_template(filename):
-        with open('template/ts.xlsx', 'rb') as f:
-            data = f.read()
-        with open(filename, 'wb') as f:
-            f.write(data)
