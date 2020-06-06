@@ -30,58 +30,58 @@ class TS(Base):
     relatives_degree_of_contact = Column(String(20), comment='在台亲属联系程度')
     remark = Column(String(100), comment='备注')
 
+    @staticmethod
+    def import_(filename):
+        res = read_excel(filename, 3)
+        for i in res:
+            TS.create(
+                area=i[0],
+                nickname=i[1],
+                sex=i[2],
+                birth=i[3],
+                hometown=i[4],
+                mailing_address=i[5],
+                job=i[6],
+                social_identity=i[7],
+                phone=i[8],
+                family_member_nickname=i[9],
+                family_member_birth=i[10],
+                family_member_job=i[11],
+                relatives_relation=i[12],
+                relatives_nickname=i[13],
+                relatives_sex=i[14],
+                relatives_birth=i[15],
+                relatives_address=i[16],
+                relatives_job=i[17],
+                relatives_degree_of_contact=i[18],
+                remark=i[19],
+            )
 
-def import_ts(filename):
-    res = read_excel(filename, 3)
-    for i in res:
-        TS.create(
-            area=i[0],
-            nickname=i[1],
-            sex=i[2],
-            birth=i[3],
-            hometown=i[4],
-            mailing_address=i[5],
-            job=i[6],
-            social_identity=i[7],
-            phone=i[8],
-            family_member_nickname=i[9],
-            family_member_birth=i[10],
-            family_member_job=i[11],
-            relatives_relation=i[12],
-            relatives_nickname=i[13],
-            relatives_sex=i[14],
-            relatives_birth=i[15],
-            relatives_address=i[16],
-            relatives_job=i[17],
-            relatives_degree_of_contact=i[18],
-            remark=i[19],
-        )
-
-
-def export_ts(filename, **kwargs):
-    res = TS.search(page_size=100000000, **kwargs)['data']
-    data = []
-    for i in res:
-        data.append([
-            i.area,
-            i.nickname,
-            i.sex,
-            i.birth,
-            i.hometown,
-            i.mailing_address,
-            i.job,
-            i.social_identity,
-            i.phone,
-            i.family_member_nickname,
-            i.family_member_birth,
-            i.family_member_job,
-            i.relatives_relation,
-            i.relatives_nickname,
-            i.relatives_sex,
-            i.relatives_birth,
-            i.relatives_address,
-            i.relatives_job,
-            i.relatives_degree_of_contact,
-            i.remark
-        ])
-    save_excel('template/ts.xlsx', 3, data, filename)
+    @staticmethod
+    def export(filename, **kwargs):
+        res = TS.search(page_size=100000000, **kwargs)['data']
+        data = []
+        for i in res:
+            data.append([
+                i.area,
+                i.nickname,
+                i.sex,
+                i.birth,
+                i.hometown,
+                i.mailing_address,
+                i.job,
+                i.social_identity,
+                i.phone,
+                i.family_member_nickname,
+                i.family_member_birth,
+                i.family_member_job,
+                i.relatives_relation,
+                i.relatives_nickname,
+                i.relatives_sex,
+                i.relatives_birth,
+                i.relatives_address,
+                i.relatives_job,
+                i.relatives_degree_of_contact,
+                i.remark
+            ])
+        save_excel('template/ts.xlsx', 3, data, filename)
