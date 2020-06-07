@@ -8,6 +8,13 @@ from model.base import Base
 class TS(Base):
     __tablename__ = 'ts'
 
+    field = [
+        'area', 'nickname', 'sex', 'birth', 'hometown', 'mailing_address', 'job',
+        'social_identity', 'phone', 'family_member_nickname', 'family_member_birth',
+        'relatives_relation', 'relatives_nickname', 'relatives_sex', 'relatives_birth',
+        'relatives_address', 'relatives_job', 'relatives_degree_of_contact', 'remark'
+    ]
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     area = Column(String(20), comment='地区')
     nickname = Column(String(20), nullable=False, comment='姓名')
