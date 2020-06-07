@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, String
 
-from libs.service import read_excel, save_excel
 from model.base import Base
 
 
@@ -15,6 +14,9 @@ class TS(Base):
         'relatives_birth', 'relatives_address', 'relatives_job', 'relatives_degree_of_contact',
         'remark'
     ]
+
+    template_filename = 'template/ts.xlsx'
+    template_start_row = 3
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     area = Column(String(20), comment='地区')
@@ -37,19 +39,3 @@ class TS(Base):
     relatives_job = Column(String(20), comment='在台亲属单位职位')
     relatives_degree_of_contact = Column(String(20), comment='在台亲属联系程度')
     remark = Column(String(100), comment='备注')
-
-    @classmethod
-    def import_(cls, filename):
-        res = read_excel(filename, 3)
-        for i in res:
-            data = {cls.field[idx]: i[idx + 1] for idx in range(len(cls.field))}
-            if TS.search(**data)['meta']['count'] == 0:
-                TS.create(**data)
-
-    @classmethod
-    def export(cls, filename, **kwargs):
-        res = TS.search(page_size=-1, **kwargs)['data']
-        data = []
-        for i in res:
-            data.append([getattr(i, key) for key in cls.field])
-        save_excel('template/ts.xlsx', 3, data, filename)
