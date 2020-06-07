@@ -66,7 +66,7 @@ class TS(Base):
 
     @staticmethod
     def export(filename, **kwargs):
-        res = TS.search(page_size=100000000, **kwargs)['data']
+        res = TS.search(page_size=-1, **kwargs)['data']
         data = []
         for i in res:
             data.append([
