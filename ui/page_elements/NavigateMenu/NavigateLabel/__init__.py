@@ -2,6 +2,8 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QColor, QMouseEvent, QPalette
 from PyQt5.QtWidgets import QLabel
 
+from libs.uicolor import UIColor as color
+
 
 class NavigateLabel(QLabel):
     checkChanged = pyqtSignal(bool)
@@ -35,13 +37,12 @@ class NavigateLabel(QLabel):
     def updateText(self):
         s = self.text
         self.setText(s)
-        color = QColor("black")
-        bgcolor = QColor(77, 128, 228) if self.checked else QColor(223, 246, 240)
+        textcolor = color.NavigateTextHighlight if self.checked else color.NavigateText
+        bgcolor = color.NavigateBackgroundHighlight if self.checked else color.NavigateBackground
         palette: QPalette = self.palette()
-        palette.setColor(QPalette.WindowText, color)
+        palette.setColor(QPalette.WindowText, textcolor)
         palette.setColor(QPalette.Background, bgcolor)
         self.setPalette(palette)
-        self.update()
 
     def mouseReleaseEvent(self, event: QMouseEvent):
         if event.button() != Qt.LeftButton:

@@ -2,6 +2,7 @@ from PyQt5.QtGui import QColor, QPalette, QPixmap
 from PyQt5.QtWidgets import QWidget
 
 from libs.LinkManager import link_manager
+from libs.uicolor import UIColor as color
 from ui.page_elements.NavigateMenu.NavigateLabel import NavigateLabel
 
 from .NavigateFieldUI import Ui_Form
@@ -56,7 +57,7 @@ class NavigateField(QWidget):
         return label
 
     def refreshUI(self, checked):
-        bgcolor = QColor(77, 128, 228) if checked else QColor(223, 246, 240)
+        bgcolor = color.NavigateBackgroundHighlight if checked else color.NavigateBackground
         pal = self.ui.label_switch.palette()
         pal.setColor(QPalette.Background, bgcolor)
         self.ui.label_switch.setPalette(pal)
