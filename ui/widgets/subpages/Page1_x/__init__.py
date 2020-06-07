@@ -14,6 +14,7 @@ class Page1_x(QWidget):
         self.ui.setupUi(self)
         self.title = title
         self.alias = alias
+        self.model = None
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % title)
         # button_search
@@ -66,13 +67,13 @@ class Page1_x(QWidget):
         if filename == "":
             return
         try:
-            with open("template/%s.xlsx" % self.alias, "rb") as f:
-                data = f.read()
+            if self.model is None:
+                QMessageBox.warning(None, "错误", "找不到该模型")
+                return
+            self.model.export_template(filename)
         except FileNotFoundError:
             QMessageBox.warning(None, "错误", "下载失败，找不到该模板")
             return
-        with open(filename, "wb") as f:
-            f.write(data)
         QMessageBox.information(None, "下载模板", "下载完毕")
 
     def importDataFromFile(self, filename):
