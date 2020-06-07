@@ -11,8 +11,9 @@ class TS(Base):
     field = [
         'area', 'nickname', 'sex', 'birth', 'hometown', 'mailing_address', 'job',
         'social_identity', 'phone', 'family_member_nickname', 'family_member_birth',
-        'relatives_relation', 'relatives_nickname', 'relatives_sex', 'relatives_birth',
-        'relatives_address', 'relatives_job', 'relatives_degree_of_contact', 'remark'
+        'family_member_job', 'relatives_relation', 'relatives_nickname', 'relatives_sex',
+        'relatives_birth', 'relatives_address', 'relatives_job', 'relatives_degree_of_contact',
+        'remark'
     ]
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -41,7 +42,7 @@ class TS(Base):
     def import_(cls, filename):
         res = read_excel(filename, 3)
         for i in res:
-            data = {cls.field[idx]: i[idx] for idx in range(len(cls.field))}
+            data = {cls.field[idx]: i[idx + 1] for idx in range(len(cls.field))}
             if TS.search(**data)['meta']['count'] == 0:
                 TS.create(**data)
 
