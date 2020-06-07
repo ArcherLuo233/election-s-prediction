@@ -77,7 +77,9 @@ class Page1_x(QWidget):
         QMessageBox.information(None, "下载模板", "下载完毕")
 
     def importDataFromFile(self, filename):
-        raise Exception("Undefined Import: %s" % self.title)
+        if self.model is None:
+            raise Exception("Undefined Import: %s" % self.title)
+        self.model.import_(filename)
 
     def importFromFile(self):
         filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "excel文件(*.xls *.xlsx)")[0]
@@ -91,7 +93,9 @@ class Page1_x(QWidget):
         QMessageBox.information(None, "导入数据", "导入完毕")
 
     def exportDataToFile(self, filename):
-        raise Exception("Undefined Export: %s" % self.title)
+        if self.model is None:
+            raise Exception("Undefined Export: %s" % self.title)
+        self.model.export(filename)
 
     def exportToFile(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
