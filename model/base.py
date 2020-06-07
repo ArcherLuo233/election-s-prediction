@@ -47,7 +47,7 @@ class Base(base_class):
         session.commit()
 
     @classmethod
-    def search(cls, **kwargs):
+    def search(cls, **kwargs):  # noqa: C901
         res = session.query(cls)
         for key, value in kwargs.items():
             if value is not None:
