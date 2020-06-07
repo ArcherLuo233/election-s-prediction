@@ -67,6 +67,8 @@ class Base(base_class):
 
         page = kwargs.get('page') if kwargs.get('page') else 1
         page_size = kwargs.get('page_size') if kwargs.get('page_size') else 20
+        if page_size == -1:
+            page_size = 100000000
         data = {
             'meta': {
                 'count': res.count(),
