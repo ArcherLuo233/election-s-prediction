@@ -51,7 +51,5 @@ class TS(Base):
         res = TS.search(page_size=-1, **kwargs)['data']
         data = []
         for i in res:
-            tmp = [getattr(cls, key) for key in cls.field]
-            tmp.insert(0, i.id)
-            data.append(tmp)
+            data.append([getattr(i, key) for key in cls.field])
         save_excel('template/ts.xlsx', 3, data, filename)
