@@ -12,10 +12,6 @@ session = DBSession()
 base_class = declarative_base()
 
 
-def init_database():
-    base_class.metadata.create_all(engine)
-
-
 class Base(base_class):
     __abstract__ = True
     __table_args__ = {"extend_existing": True}
