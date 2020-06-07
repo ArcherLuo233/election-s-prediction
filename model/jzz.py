@@ -7,6 +7,13 @@ from model.base import Base
 class JZZ(Base):
     __tablename__ = 'ts'
 
+    field = [
+        'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'
+    ]
+
+    template_filename = 'template/jzz.xlsx'
+    template_start_row = 2
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     nickname = Column(String(20), nullable=False, comment='姓名')
     sex = Column(String(1), comment='性别')
