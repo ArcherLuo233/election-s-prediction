@@ -87,7 +87,7 @@ class Base(base_class):
     def import_(cls, filename):
         res = read_excel(filename, cls.template_start_row)
         for i in res:
-            data = {cls.field[idx]: i[idx + 1] for idx in range(len(cls.field))}
+            data = {cls.field[idx]: i[idx] for idx in range(len(cls.field))}
             if cls.search(**data)['meta']['count'] == 0:
                 cls.create(**data)
 
