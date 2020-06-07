@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox, QWidget
 
 from libs.g import g
 from libs.PageManager import PageManager
-from libs.service import login
+from model.user import User
 
 from .pageUI import Ui_Form
 
@@ -32,7 +32,7 @@ class LoginPage(QWidget):
     def login(self):
         un = self.ui.lineEdit_un.text()
         psd = self.ui.lineEdit_psd.text()
-        ok, data = login(un, psd)
+        ok, data = User.login(un, psd)
         if not ok:
             self.logerror(data)
             return
