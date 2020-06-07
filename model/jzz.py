@@ -5,7 +5,7 @@ from model.base import Base
 
 # 居住证
 class JZZ(Base):
-    __tablename__ = 'ts'
+    __tablename__ = 'jzz'
 
     field = [
         'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'
