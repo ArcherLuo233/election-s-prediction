@@ -39,7 +39,7 @@ def upload_file(filename):
         raise AppException('文件没有后缀')
     with open(filename, "rb") as f:
         raw = f.read()
-        filename = md5(raw) + "." + suffix
+    filename = md5(raw) + "." + suffix
     filename = 'file/{}'.format(filename)
     if not os.path.exists('file/'):
         os.makedirs('file/')
