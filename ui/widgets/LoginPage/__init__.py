@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMessageBox, QWidget
 
 from libs.g import g
 from libs.PageManager import PageManager
+from libs.exception import AppException
 from model.user import User
 
 from .pageUI import Ui_Form
@@ -32,15 +33,13 @@ class LoginPage(QWidget):
     def login(self):
         un = self.ui.lineEdit_un.text()
         psd = self.ui.lineEdit_psd.text()
-        ok, data = User.login(un, psd)
-        if not ok:
-            self.logerror(data)
+        try:
+            user = User.login(un, psd)
+        except AppException as e:
+            QMessageBox.warning(None, "登录失败", e.msg)
             return
-        g.current_user = data
+        g.current_user = user
         main_widget = PageManager.getPage("Main", False)
         main_widget.refreshUser()
         main_widget.show()
         self.close()
-
-    def logerror(self, data):
-        QMessageBox.warning(None, "登录失败", data, QMessageBox.Ok)
