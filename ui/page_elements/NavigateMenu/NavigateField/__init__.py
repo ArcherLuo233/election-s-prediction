@@ -1,8 +1,8 @@
-from PyQt5.QtGui import QColor, QPalette, QPixmap
+from PyQt5.QtGui import QPalette, QPixmap
 from PyQt5.QtWidgets import QWidget
 
 from libs.LinkManager import link_manager
-from libs.uicolor import UIColor as color
+from config.uicolor import UIColor as color
 from ui.page_elements.NavigateMenu.NavigateLabel import NavigateLabel
 
 from .NavigateFieldUI import Ui_Form

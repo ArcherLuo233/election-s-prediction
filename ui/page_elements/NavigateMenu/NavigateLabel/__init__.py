@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QColor, QMouseEvent, QPalette
+from PyQt5.QtGui import QMouseEvent, QPalette
 from PyQt5.QtWidgets import QLabel
 
-from libs.uicolor import UIColor as color
+from config.uicolor import UIColor as color
 
 
 class NavigateLabel(QLabel):
