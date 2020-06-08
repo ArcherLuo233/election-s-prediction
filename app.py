@@ -17,7 +17,6 @@ def main():
     login_widget = LoginPage()
     PageManager.pages['Login'] = login_widget
     main_widget = MainPage()
-    main_widget.setFixedSize(1600, 900)
     PageManager.pages['Main'] = main_widget
     login_widget.show()
     sys.exit(app.exec_())
