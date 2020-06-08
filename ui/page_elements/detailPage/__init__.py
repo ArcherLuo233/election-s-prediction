@@ -36,18 +36,17 @@ class DetailPage(QDialog):
             # todo: 增加信息
             return
         meta = model.get_by_id(id)
-        l = []
+        data_list = []
         for field_ in meta.field:
             comment = getattr(model, field_).comment
             value = getattr(meta, field_)
             if value is None:
                 value = ""
-            l.append({
+            data_list.append({
                 'comment': comment,
                 'value': str(value)
             })
-        print(l)
-        self.refreshTable(l)
+        self.refreshTable(data_list)
 
     def refreshTable(self, list):
         tableWidget = self.ui.tableWidget
