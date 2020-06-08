@@ -9,8 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.PageController import PageController
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -158,7 +156,6 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.tableWidget = QtWidgets.QTableWidget(self.frame_2)
         self.tableWidget.setMinimumSize(QtCore.QSize(601, 0))
-        self.tableWidget.setMaximumSize(QtCore.QSize(16777215, 400))
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(14)
@@ -234,3 +231,4 @@ class Ui_Form(object):
         item = self.tableWidget.item(0, 2)
         item.setText(_translate("Form", "测试"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
+from ui.page_elements.PageController import PageController
