@@ -4,11 +4,10 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
                              QTableWidgetItem)
 
+from model.base import Base
 from ui.page_elements.WindowMask import WindowMask
 
 from .dialogUI import Ui_Dialog
-
-from model.base import Base
 
 
 class DetailPage(QDialog):

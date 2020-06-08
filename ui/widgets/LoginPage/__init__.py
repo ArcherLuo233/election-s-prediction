@@ -1,9 +1,9 @@
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
+from libs.exception import AppException
 from libs.g import g
 from libs.PageManager import PageManager
-from libs.exception import AppException
 from model.user import User
 
 from .pageUI import Ui_Form
