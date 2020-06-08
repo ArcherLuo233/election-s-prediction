@@ -33,7 +33,7 @@ class Page1_x(QWidget):
         self.ui.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         # detail_label
         detail_label = QLabel(self)
-        detail_label.setText('<a href="#detail:%d">详细信息</a>' % (0))
+        detail_label.setText('<a href="#detail:%d">详细信息</a>' % 1)
         detail_label.linkActivated.connect(self.detail)
         detail_label.show()
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
@@ -50,9 +50,14 @@ class Page1_x(QWidget):
         self.openDialog(True, data={'id': link[len("#detail:"):]})
 
     def action_add(self):
-        self.openDialog(True)
+        self.openDialog(True, data={'id': -1})
 
-    def openDialog(self, enable: bool, data=None):
+    def openDialog(self, enable: bool, data):
+        if self.model is None:
+            print("jiubei: 没有设置Model: ", self.title)
+            return
+        data['model'] = self.model
+        self.dialog.setData(data)
         self.dialog.setEnabled(enable)
         self.dialog.show()
 

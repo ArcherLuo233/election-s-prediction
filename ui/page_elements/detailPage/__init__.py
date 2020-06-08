@@ -22,19 +22,67 @@ class DetailPage(QDialog):
         # event-loop
         self.loop = QEventLoop()
         self.mask_.clicked.connect(self.loop.quit)
-        # tableWidget
-        self.ui.tableWidget.setSpan(0, 2, 4, 1)
-        self.ui.tableWidget.setSpan(0, 3, 4, 1)
-        # pic-item
-        item = QTableWidgetItem()
-        item.setText("照片")
-        self.ui.tableWidget.setItem(0, 2, item)
         self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
         # tableWidget-header
         hor_header: QHeaderView = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         self.locationDialog()
         self.close()
+
+    def setData(self, data: dict):
+        model = data['model']
+        id = int(data['id'])
+        if id == -1:
+            # todo: 增加信息
+            return
+        meta = model.get_by_id(id)
+        l = []
+        for field_ in meta.field:
+            comment = getattr(model, field_).comment
+            value = getattr(meta, field_)
+            if value is None:
+                value = ""
+            l.append({
+                'comment': comment,
+                'value': str(value)
+            })
+        print(l)
+        self.refreshTable(l)
+
+    def refreshTable(self, list):
+        tableWidget = self.ui.tableWidget
+        pic_height = 4
+        row_count = (len(list) - pic_height + 1) // 2 + pic_height
+        column_count = 4
+        tableWidget.clearContents()
+        tableWidget.setRowCount(row_count)
+        tableWidget.setColumnCount(column_count)
+        # pic-item
+        self.ui.tableWidget.setSpan(0, 2, pic_height, 1)
+        self.ui.tableWidget.setSpan(0, 3, pic_height, 1)
+        item = QTableWidgetItem()
+        item.setFlags(Qt.ItemIsEnabled)
+        item.setText("照片")
+        self.ui.tableWidget.setItem(0, 2, item)
+        # list-set
+        for i, item in enumerate(list[:pic_height]):
+            comment_item = QTableWidgetItem()
+            comment_item.setText(item['comment'])
+            comment_item.setFlags(Qt.ItemIsEnabled)
+            tableWidget.setItem(i, 0, comment_item)
+            value_item = QTableWidgetItem()
+            value_item.setText(item['value'])
+            tableWidget.setItem(i, 1, value_item)
+        for i, item in enumerate(list[pic_height:]):
+            row = pic_height + i // 2
+            column = 0 if i % 2 == 0 else 2
+            comment_item = QTableWidgetItem()
+            comment_item.setText(item['comment'])
+            comment_item.setFlags(Qt.ItemIsEnabled)
+            tableWidget.setItem(row, column, comment_item)
+            value_item = QTableWidgetItem()
+            value_item.setText(item['value'])
+            tableWidget.setItem(row, column + 1, value_item)
 
     def setEnabled(self, enable):
         self.ui.tableWidget.setEnabled(enable)
