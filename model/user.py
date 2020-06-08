@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, SmallInteger, String
 
 from config.secure import PASSWORD_SALT
+from libs.exception import AppException
 from libs.helper import md5
 from model.base import Base
 
@@ -33,8 +34,8 @@ class User(Base):
     def login(username, password):
         users = User.search(username=username)['data']
         if not users:
-            return False, '用户不存在'
+            raise AppException('用户不存在')
         user = users[0]
         if user.check_password(password) is False:
-            return False, '用户名或密码错误'
-        return True, user
+            raise AppException('用户名或密码错误')
+        return user
