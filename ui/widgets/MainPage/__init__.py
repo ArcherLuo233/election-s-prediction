@@ -1,10 +1,10 @@
 from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QHBoxLayout, QWidget
 
+from config.uicolor import UIColor as color
 from libs.g import g
 from libs.LinkManager import link_manager
 from libs.PageManager import PageManager
-from config.uicolor import UIColor as color
 from ui.page_elements.NavigateMenu import NavigateMenu
 
 from .MainPageUI import Ui_Form
