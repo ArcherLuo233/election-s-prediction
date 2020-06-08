@@ -22,6 +22,7 @@ class DetailPage(QDialog):
         self.setParent(parent)
         # model
         self.model = model
+        self.data_id = 0
         field2text = dict()
         text2field = dict()
         for idx in model.field:
@@ -43,8 +44,27 @@ class DetailPage(QDialog):
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         # btn-bind
         self.ui.btn_close.clicked.connect(self.close)
+        self.ui.btn_append.clicked.connect(self.append)
+        self.ui.btn_modify.clicked.connect(self.modify)
+        self.ui.btn_delete.clicked.connect(self.delete)
         # widget-init
         self.locationDialog()
+        self.close()
+
+    def append(self):
+        data = self.get_data_from_table()
+        self.model.create(**data)
+        self.close()
+
+    def modify(self):
+        data = self.get_data_from_table()
+        item = self.model.get_by_id(self.data_id)
+        item.modify(**data)
+        self.close()
+
+    def delete(self):
+        item = self.model.get_by_id(self.data_id)
+        item.delete()
         self.close()
 
     def refresh_data(self, id_: int):
@@ -64,9 +84,6 @@ class DetailPage(QDialog):
             })
         self.refresh_table(data_list)
 
-    def get_data_from_table(self):
-        pass
-
     def refresh_table(self, data_list):
         tableWidget = self.ui.tableWidget
         pic_height = self.pic_item_height
@@ -82,7 +99,7 @@ class DetailPage(QDialog):
         item.setFlags(Qt.ItemIsEnabled)
         item.setText("照片")
         self.ui.tableWidget.setItem(0, 2, item)
-        # list-set
+        # data-list-set
         for i, item in enumerate(data_list[:pic_height]):
             comment_item = QTableWidgetItem()
             comment_item.setText(item['comment'])
@@ -101,10 +118,37 @@ class DetailPage(QDialog):
             value_item = QTableWidgetItem()
             value_item.setText(item['value'])
             tableWidget.setItem(row, column + 1, value_item)
+        # 处理奇数情况
+        if (len(data_list) - pic_height) % 2 == 1:
+            item = QTableWidgetItem()
+            item.setFlags(Qt.NoItemFlags)
+            tableWidget.setItem(row_count - 1, 2, item)
+            item = QTableWidgetItem()
+            item.setFlags(Qt.NoItemFlags)
+            tableWidget.setItem(row_count - 1, 3, item)
+
+    def get_data_from_table(self) -> dict:
+        tableWidget = self.ui.tableWidget
+        pic_height = self.pic_item_height
+        row_cnt = tableWidget.rowCount()
+        data = dict()
+        # 先不管照片了
+        for row in range(0, row_cnt):
+            cols = [0] if row < pic_height else [0, 2]
+            for col in cols:
+                item: QTableWidgetItem = tableWidget.item(row, col)
+                if item is None or item.text() == '':
+                    continue
+                text = item.text()
+                field = self.text2field[text]
+                content = tableWidget.item(row, col + 1).text()
+                data[field] = content
+        return data
 
     def show_(self, enable: bool, data):
         self.ui.tableWidget.setEnabled(enable)
         id_ = data['id']
+        self.data_id = id_
         if id_ == -1:
             self.ui.btn_append.show()
             self.ui.btn_modify.hide()
