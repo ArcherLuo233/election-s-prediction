@@ -34,9 +34,10 @@ def save_excel(template_filename, start_row, data, filename):
 
 
 def upload_file(filename):
-    suffix = filename.rsplit('.', 1)[1]
+    suffix = filename.rsplit('.', 1)
     if len(suffix) == 1:
         raise AppException('文件没有后缀')
+    suffix = suffix[1]
     with open(filename, "rb") as f:
         raw = f.read()
     filename = md5(raw) + "." + suffix
