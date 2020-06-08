@@ -39,7 +39,7 @@ class LoginPage(QWidget):
         g.current_user = data
         main_widget = PageManager.getPage("Main", False)
         main_widget.refreshUser()
-        main_widget.showMaximized()
+        main_widget.show()
         self.close()
 
     def logerror(self, data):
