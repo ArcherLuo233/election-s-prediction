@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui.page_elements.PageController import PageController
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -231,4 +233,3 @@ class Ui_Form(object):
         item = self.tableWidget.item(0, 2)
         item.setText(_translate("Form", "测试"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
-from ui.page_elements.PageController import PageController
