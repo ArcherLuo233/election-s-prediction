@@ -44,34 +44,34 @@ class Page1_x(QWidget):
             self.dialog = DetailPage(self, self.model)
         else:
             self.dialog = None
-        # downloadTemplate
-        self.ui.btn_downloadTemplate.clicked.connect(self.downloadTemplate)
+        # download-template
+        self.ui.btn_downloadTemplate.clicked.connect(self.download_template)
         # import
-        self.ui.button_import.clicked.connect(self.importFromFile)
+        self.ui.button_import.clicked.connect(self.import_from_file)
         # export
-        self.ui.button_export.clicked.connect(self.exportToFile)
+        self.ui.button_export.clicked.connect(self.export_to_file)
 
     def detail(self, link):
-        self.openDialog(True, data={'id': link[len("#detail:"):]})
+        self.open_dialog(True, data={'id': link[len("#detail:"):]})
 
     def action_add(self):
-        self.openDialog(True, data={'id': -1})
+        self.open_dialog(True, data={'id': -1})
 
-    def openDialog(self, enable: bool, data):
+    def open_dialog(self, enable: bool, data):
         if self.model is None:
             print("jiubei: 没有设置Model: ", self.title)
             return
         self.dialog.show_(enable, data)
 
-    def resizeEvent(self, QResizeEvent):
+    def resizeEvent(self, e):
         if self.dialog:
             self.dialog.locationDialog()
 
-    def closeEvent(self, QCloseEvent):
+    def closeEvent(self, e):
         if self.dialog:
             self.dialog.close()
 
-    def downloadTemplate(self):
+    def download_template(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
         if filename == "":
             return
@@ -85,33 +85,27 @@ class Page1_x(QWidget):
             return
         QMessageBox.information(None, "下载模板", "下载完毕")
 
-    def importDataFromFile(self, filename):
-        if self.model is None:
-            raise Exception("Undefined Import: %s" % self.title)
-        self.model.import_(filename)
-
-    def importFromFile(self):
+    def import_from_file(self):
         filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "excel文件(*.xls *.xlsx)")[0]
         if filename == "":
             return
         try:
-            self.importDataFromFile(filename)
+            if self.model is None:
+                raise Exception("Undefined Import: %s" % self.title)
+            self.model.import_(filename)
         except AppException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
             return
         QMessageBox.information(None, "导入数据", "导入完毕")
 
-    def exportDataToFile(self, filename):
-        if self.model is None:
-            raise Exception("Undefined Export: %s" % self.title)
-        self.model.export(filename)
-
-    def exportToFile(self):
+    def export_to_file(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
         if filename == "":
             return
         try:
-            self.exportDataToFile(filename)
+            if self.model is None:
+                raise Exception("Undefined Export: %s" % self.title)
+            self.model.export(filename)
         except AppException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
             return
