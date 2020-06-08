@@ -1,8 +1,6 @@
 import sys
 
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import QTranslator
-
 from libs.fonts import loadFonts
 from libs.g import g
 from libs.PageManager import PageManager
