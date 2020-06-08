@@ -71,6 +71,9 @@ class DetailPage(QDialog):
             meta = self.model()
         else:
             meta = self.model.get_by_id(id_)
+            if meta is None:
+                print("Not found:", type(self.model), "id:", id_)
+                return
         data_list = []
         for idx in meta.field:
             comment = self.field2text[idx]
