@@ -1,6 +1,7 @@
 import sys
 
 from PyQt5 import QtWidgets
+
 from libs.fonts import loadFonts
 from libs.g import g
 from libs.PageManager import PageManager
