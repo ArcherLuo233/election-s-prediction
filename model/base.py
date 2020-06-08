@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 from config.secure import SQLALCHEMY_URL
+from config.settings import DEFAULT_PAGE_SIZE
 from libs.service import read_excel, save_excel
 
 engine = create_engine(SQLALCHEMY_URL)
@@ -71,7 +72,7 @@ class Base(base_class):
                         res = res.order_by(desc(getattr(cls, key)))
 
         page = kwargs.get('page') if kwargs.get('page') else 1
-        page_size = kwargs.get('page_size') if kwargs.get('page_size') else 20
+        page_size = kwargs.get('page_size') if kwargs.get('page_size') else DEFAULT_PAGE_SIZE
         if page_size == -1:
             page_size = 100000000
         data = {
