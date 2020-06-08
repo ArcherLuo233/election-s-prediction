@@ -9,13 +9,14 @@ from .pageUI import Ui_Form
 
 
 class Page1_x(QWidget):
+    model = None
+
     def __init__(self, title: str, alias: str = None):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.title = title
         self.alias = alias
-        self.model = None
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % title)
         # button_search
@@ -39,7 +40,10 @@ class Page1_x(QWidget):
         detail_label.show()
         self.ui.tableWidget.setCellWidget(0, 5, detail_label)
         # detail_page
-        self.dialog = DetailPage(self)
+        if self.model is not None:
+            self.dialog = DetailPage(self, self.model)
+        else:
+            self.dialog = None
         # downloadTemplate
         self.ui.btn_downloadTemplate.clicked.connect(self.downloadTemplate)
         # import
@@ -57,13 +61,11 @@ class Page1_x(QWidget):
         if self.model is None:
             print("jiubei: 没有设置Model: ", self.title)
             return
-        data['model'] = self.model
-        self.dialog.setData(data)
-        self.dialog.setEnabled(enable)
-        self.dialog.show()
+        self.dialog.show_(enable, data)
 
     def resizeEvent(self, QResizeEvent):
-        self.dialog.locationDialog()
+        if self.dialog:
+            self.dialog.locationDialog()
 
     def closeEvent(self, QCloseEvent):
         self.dialog.close()
