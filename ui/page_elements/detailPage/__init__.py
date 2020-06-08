@@ -13,7 +13,7 @@ from .dialogUI import Ui_Dialog
 class DetailPage(QDialog):
     pic_item_height = 4
 
-    def __init__(self, parent, model: Base):
+    def __init__(self, parent, model: Base, need_pic=False):
         QDialog.__init__(self)
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.ui = Ui_Dialog()
@@ -21,6 +21,7 @@ class DetailPage(QDialog):
         self.setParent(parent)
         # model
         self.model = model
+        self.need_pic = need_pic
         self.data_id = 0
         field2text = dict()
         text2field = dict()
@@ -71,6 +72,9 @@ class DetailPage(QDialog):
             meta = self.model()
         else:
             meta = self.model.get_by_id(id_)
+            if meta is None:
+                print("Not found:", type(self.model), "id:", id_)
+                return
         data_list = []
         for idx in meta.field:
             comment = self.field2text[idx]
@@ -84,13 +88,13 @@ class DetailPage(QDialog):
         self.refresh_table(data_list)
 
     def refresh_table(self, data_list):
-        tableWidget = self.ui.tableWidget
-        pic_height = self.pic_item_height
+        table_widget = self.ui.tableWidget
+        pic_height = self.pic_item_height if self.need_pic else 0
         row_count = (len(data_list) - pic_height + 1) // 2 + pic_height
         column_count = 4
-        tableWidget.clearContents()
-        tableWidget.setRowCount(row_count)
-        tableWidget.setColumnCount(column_count)
+        table_widget.clearContents()
+        table_widget.setRowCount(row_count)
+        table_widget.setColumnCount(column_count)
         # pic-item
         self.ui.tableWidget.setSpan(0, 2, pic_height, 1)
         self.ui.tableWidget.setSpan(0, 3, pic_height, 1)
@@ -103,28 +107,28 @@ class DetailPage(QDialog):
             comment_item = QTableWidgetItem()
             comment_item.setText(item['comment'])
             comment_item.setFlags(Qt.ItemIsEnabled)
-            tableWidget.setItem(i, 0, comment_item)
+            table_widget.setItem(i, 0, comment_item)
             value_item = QTableWidgetItem()
             value_item.setText(item['value'])
-            tableWidget.setItem(i, 1, value_item)
+            table_widget.setItem(i, 1, value_item)
         for i, item in enumerate(data_list[pic_height:]):
             row = pic_height + i // 2
             column = 0 if i % 2 == 0 else 2
             comment_item = QTableWidgetItem()
             comment_item.setText(item['comment'])
             comment_item.setFlags(Qt.ItemIsEnabled)
-            tableWidget.setItem(row, column, comment_item)
+            table_widget.setItem(row, column, comment_item)
             value_item = QTableWidgetItem()
             value_item.setText(item['value'])
-            tableWidget.setItem(row, column + 1, value_item)
+            table_widget.setItem(row, column + 1, value_item)
         # 处理奇数情况
         if (len(data_list) - pic_height) % 2 == 1:
             item = QTableWidgetItem()
             item.setFlags(Qt.NoItemFlags)
-            tableWidget.setItem(row_count - 1, 2, item)
+            table_widget.setItem(row_count - 1, 2, item)
             item = QTableWidgetItem()
             item.setFlags(Qt.NoItemFlags)
-            tableWidget.setItem(row_count - 1, 3, item)
+            table_widget.setItem(row_count - 1, 3, item)
 
     def get_data_from_table(self) -> dict:
         tableWidget = self.ui.tableWidget
