@@ -2,6 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidget, QWidget)
 
+from libs.exception import AppException
 from ui.page_elements.detailPage import DetailPage
 
 from .pageUI import Ui_Form
@@ -76,8 +77,8 @@ class Page1_x(QWidget):
                 QMessageBox.warning(None, "错误", "找不到该模型")
                 return
             self.model.export_template(filename)
-        except FileNotFoundError:
-            QMessageBox.warning(None, "错误", "下载失败，找不到该模板")
+        except AppException as e:
+            QMessageBox.warning(None, "错误", e.msg)
             return
         QMessageBox.information(None, "下载模板", "下载完毕")
 
@@ -92,8 +93,8 @@ class Page1_x(QWidget):
             return
         try:
             self.importDataFromFile(filename)
-        except Exception as e:
-            QMessageBox.warning(None, "导入数据", str(e))
+        except AppException as e:
+            QMessageBox.warning(None, "导入数据", e.msg)
             return
         QMessageBox.information(None, "导入数据", "导入完毕")
 
@@ -108,7 +109,7 @@ class Page1_x(QWidget):
             return
         try:
             self.exportDataToFile(filename)
-        except Exception as e:
-            QMessageBox.warning(None, "导入数据", str(e))
+        except AppException as e:
+            QMessageBox.warning(None, "导入数据", e.msg)
             return
         QMessageBox.information(None, "导出数据", "导出完毕")
