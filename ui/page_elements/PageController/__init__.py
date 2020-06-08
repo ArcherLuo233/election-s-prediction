@@ -19,7 +19,6 @@ class PageController(QWidget):
         self.page = page
         self.maxpage = maxpage
         self.setMaxPage(maxpage)
-        self.refresh()
 
     def refresh(self):  # noqa: C901
         self.ui.label_leftdot.hide()
@@ -89,6 +88,7 @@ class PageController(QWidget):
         self.setPage(self.page - 1)
 
     def setMaxPage(self, maxpage: int):
+        maxpage = max(1, maxpage)
         self.maxpage = maxpage
         self.ui.label.setText("共 %d 页" % maxpage)
         self.ui.button_right.setText(str(maxpage))
