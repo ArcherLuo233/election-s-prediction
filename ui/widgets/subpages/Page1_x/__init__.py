@@ -68,7 +68,8 @@ class Page1_x(QWidget):
             self.dialog.locationDialog()
 
     def closeEvent(self, QCloseEvent):
-        self.dialog.close()
+        if self.dialog:
+            self.dialog.close()
 
     def downloadTemplate(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
