@@ -12,9 +12,6 @@ from ui.widgets.MainPage import MainPage
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    translator = QTranslator()
-    translator.load("qt_zh_CN.qm", "./static/translations/")
-    app.installTranslator(translator)
     g.app = app
     g.debug = True
     loadFonts()
