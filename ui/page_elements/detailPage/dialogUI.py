@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(436, 470)
+        Dialog.resize(436, 469)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(14)
@@ -26,7 +26,7 @@ class Ui_Dialog(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 418, 452))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 414, 447))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -253,6 +253,6 @@ class Ui_Dialog(object):
         item.setText(_translate("Dialog", "地址"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
         self.btn_append.setText(_translate("Dialog", "添加"))
-        self.btn_modify.setText(_translate("Dialog", "修改"))
+        self.btn_modify.setText(_translate("Dialog", "保存"))
         self.btn_delete.setText(_translate("Dialog", "删除"))
         self.btn_close.setText(_translate("Dialog", "关闭"))

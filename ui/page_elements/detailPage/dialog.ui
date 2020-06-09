@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>436</width>
-    <height>470</height>
+    <height>469</height>
    </rect>
   </property>
   <property name="font">
@@ -36,8 +36,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>418</width>
-        <height>452</height>
+        <width>414</width>
+        <height>447</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -375,54 +375,54 @@ padding: 10px</string>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-              <property name="sizeHint" stdset="0">
-                  <size>
-                      <width>40</width>
-                      <height>20</height>
-                  </size>
-              </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
           </spacer>
          </item>
-            <item>
-                <widget class="QPushButton" name="btn_append">
-                    <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                        <string>添加</string>
-                    </property>
-                </widget>
-            </item>
-            <item>
-                <widget class="QPushButton" name="btn_modify">
-                    <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                        <string>修改</string>
-                    </property>
-                </widget>
-            </item>
-            <item>
-                <widget class="QPushButton" name="btn_delete">
-                    <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                        <string>删除</string>
-                    </property>
-                </widget>
-            </item>
-            <item>
-                <widget class="QPushButton" name="btn_close">
-                    <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                        <string>关闭</string>
-                    </property>
-                </widget>
-            </item>
+         <item>
+          <widget class="QPushButton" name="btn_append">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>添加</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_modify">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>保存</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_delete">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>删除</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_close">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>关闭</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
