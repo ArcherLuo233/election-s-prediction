@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui.page_elements.PageController import PageController
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -248,6 +250,3 @@ class Ui_Form(object):
         self.btn_select_all.setText(_translate("Form", "全选"))
         self.btn_select_null.setText(_translate("Form", "全不选"))
         self.btn_mul_delete.setText(_translate("Form", "批量删除"))
-
-
-from ui.page_elements.PageController import PageController
