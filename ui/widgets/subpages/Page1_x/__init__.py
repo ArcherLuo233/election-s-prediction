@@ -107,12 +107,16 @@ class Page1_x(QWidget):
         sender.deleteLater()
 
     def refresh_conditions(self):
+        if not self.condition_boxes:
+            return
+        col = (self.width() - 100) // 400
         layout = self.ui.layout_conditions
         cnt = layout.count()
         for i in range(0, cnt):
             layout.takeAt(i)
         for i, w in enumerate(self.condition_boxes):
-            layout.addWidget(w, i // 3, i % 3)
+            layout.addWidget(w, i // col, i % col)
+        print(self.condition_boxes[0].width())
 
     @property
     def cols(self):
@@ -123,7 +127,6 @@ class Page1_x(QWidget):
             count = 0
         else:
             count = self.model.search()['meta']['count']
-        page_size = DEFAULT_PAGE_SIZE
         max_page = math.ceil(count / page_size)
         self.ui.page_controller.setMaxPage(max_page)
         data = {}
@@ -220,6 +223,7 @@ class Page1_x(QWidget):
     def resizeEvent(self, e):
         if self.dialog:
             self.dialog.locationDialog()
+        self.refresh_conditions()
 
     def closeEvent(self, e):
         if self.dialog:
