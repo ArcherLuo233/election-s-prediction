@@ -4,6 +4,7 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
                              QTableWidgetItem)
 
+from libs.FieldsTranslater import FieldsTranslater
 from model.base import Base
 from ui.page_elements.WindowMask import WindowMask
 
@@ -23,14 +24,7 @@ class DetailPage(QDialog):
         self.model = model
         self.need_pic = need_pic
         self.data_id = 0
-        field2text = dict()
-        text2field = dict()
-        for idx in model.field:
-            comment = getattr(model, idx).comment
-            field2text[idx] = comment
-            text2field[comment] = idx
-        self.field2text = field2text
-        self.text2field = text2field
+        self.translator = FieldsTranslater(self.model)
         # mask
         self.mask_ = WindowMask(parent)
         self.mask_.close()
@@ -77,7 +71,7 @@ class DetailPage(QDialog):
                 return
         data_list = []
         for idx in meta.field:
-            comment = self.field2text[idx]
+            comment = self.translator.to_text(idx)
             value = getattr(meta, idx)
             if value is None:
                 value = ""
@@ -131,20 +125,20 @@ class DetailPage(QDialog):
             table_widget.setItem(row_count - 1, 3, item)
 
     def get_data_from_table(self) -> dict:
-        tableWidget = self.ui.tableWidget
-        pic_height = self.pic_item_height
-        row_cnt = tableWidget.rowCount()
+        table_widget = self.ui.tableWidget
+        pic_height = self.pic_item_height if self.need_pic else 0
+        row_cnt = table_widget.rowCount()
         data = dict()
         # 先不管照片了
         for row in range(0, row_cnt):
             cols = [0] if row < pic_height else [0, 2]
             for col in cols:
-                item: QTableWidgetItem = tableWidget.item(row, col)
+                item: QTableWidgetItem = table_widget.item(row, col)
                 if item is None or item.text() == '':
                     continue
                 text = item.text()
-                field = self.text2field[text]
-                content = tableWidget.item(row, col + 1).text()
+                field = self.translator.to_field(text)
+                content = table_widget.item(row, col + 1).text()
                 data[field] = content
         return data
 

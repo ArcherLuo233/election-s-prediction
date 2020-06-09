@@ -3,10 +3,12 @@ import math
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
-                             QTableWidget, QTableWidgetItem, QWidget)
+                             QTableWidgetItem, QWidget)
 
 from config.settings import DEFAULT_PAGE_SIZE
 from libs.exception import AppException
+from libs.FieldsTranslater import FieldsTranslater
+from ui.page_elements.ConditionBox import ConditionBox
 from ui.page_elements.detailPage import DetailPage
 
 from .pageUI import Ui_Form
@@ -24,11 +26,18 @@ class Page1_x(QWidget):
         self.title = title
         self.alias = alias
         self.id_selected = set()
+        if self.model:
+            self.translator = FieldsTranslater(self.model)
+        self.condition_boxes = []
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % title)
         # button_search
         icon = QIcon("./static/svg/search.svg")
         self.ui.button_search.setIcon(icon)
+        # btn_add_condition
+        self.ui.btn_add_condition.clicked.connect(self.add_condition)
+        # button_search
+        self.ui.button_search.clicked.connect(self.refresh_page)
         # button_add
         self.ui.button_add.clicked.connect(self.action_add)
         # btn_select_all
@@ -43,9 +52,6 @@ class Page1_x(QWidget):
         table_widget = self.ui.tableWidget
         table_widget.clear()
         table_widget.setColumnCount(cols)
-        table_widget.setSortingEnabled(True)
-        table_widget.setSelectionMode(QTableWidget.NoSelection)
-        table_widget.setEditTriggers(QTableWidget.NoEditTriggers)
         table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         table_widget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Fixed)
         table_widget.horizontalHeader().setSectionResizeMode(1, QHeaderView.Fixed)
@@ -81,6 +87,38 @@ class Page1_x(QWidget):
         # export
         self.ui.button_export.clicked.connect(self.export_to_file)
         # page_controller
+        self.ui.page_controller.pageChanged.connect(self.refresh_page)
+        # refresh-table
+        self.refresh_page()
+
+    def add_condition(self):
+        box = ConditionBox()
+        if self.model:
+            box.set_fields(self.translator.to_text(self.model.field))
+        box.delete_clicked.connect(self.del_condition)
+        self.condition_boxes.append(box)
+        self.refresh_conditions()
+
+    def del_condition(self):
+        sender = self.sender()
+        self.condition_boxes.remove(sender)
+        self.refresh_conditions()
+        sender.delete_clicked.disconnect(self.del_condition)
+        sender.deleteLater()
+
+    def refresh_conditions(self):
+        layout = self.ui.layout_conditions
+        cnt = layout.count()
+        for i in range(0, cnt):
+            layout.takeAt(i)
+        for i, w in enumerate(self.condition_boxes):
+            layout.addWidget(w, i // 3, i % 3)
+
+    @property
+    def cols(self):
+        return len(self.summary) + 3
+
+    def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
         if self.model is None:
             count = 0
         else:
@@ -88,19 +126,14 @@ class Page1_x(QWidget):
         page_size = DEFAULT_PAGE_SIZE
         max_page = math.ceil(count / page_size)
         self.ui.page_controller.setMaxPage(max_page)
-        self.ui.page_controller.pageChanged.connect(self.refresh_page)
-        # refresh-table
-        self.refresh_page()
-
-    @property
-    def cols(self):
-        return len(self.summary) + 3
-
-    def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
-        # todo:custom search
+        data = {}
+        for w in self.condition_boxes:
+            c = w.get()
+            field = self.translator.to_field(c['field'])
+            data[field] = c['val']
         if self.model is None:
             return
-        data = self.model.search(page=page, page_size=page_size)
+        data = self.model.search(page=page, page_size=page_size, **data)
         self.refresh_table(data['data'], page_size)
 
     def refresh_table(self, records: list, page_size=DEFAULT_PAGE_SIZE):
@@ -110,7 +143,6 @@ class Page1_x(QWidget):
         table_widget.clearContents()
         table_widget.setRowCount(page_size)
         # load data
-
         for i, info in enumerate(records):
             # checkbox
             item = QTableWidgetItem()
@@ -134,7 +166,6 @@ class Page1_x(QWidget):
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
         table_widget.resizeColumnToContents(0)
-        table_widget.resizeColumnToContents(1)
 
     def cell_changed(self, row, col):
         if col != 0:
@@ -220,6 +251,7 @@ class Page1_x(QWidget):
             QMessageBox.warning(None, "导入数据", e.msg)
             return
         QMessageBox.information(None, "导入数据", "导入完毕")
+        self.refresh_page()
 
     def export_to_file(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
