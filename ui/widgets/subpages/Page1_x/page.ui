@@ -4,10 +4,10 @@
  <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>715</width>
-    <height>421</height>
+       <x>0</x>
+       <y>0</y>
+       <width>705</width>
+       <height>450</height>
    </rect>
   </property>
   <property name="font">
@@ -384,20 +384,58 @@
          </property>
         </item>
         <item row="0" column="1">
-         <property name="text">
-          <string>test</string>
-         </property>
+            <property name="text">
+                <string>test</string>
+            </property>
         </item>
-        <item row="0" column="2">
-         <property name="text">
-          <string>测试</string>
-         </property>
-        </item>
+           <item row="0" column="2">
+               <property name="text">
+                   <string>测试</string>
+               </property>
+           </item>
        </widget>
       </item>
-      <item>
-       <widget class="PageController" name="page_controller" native="true"/>
-      </item>
+         <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <item>
+                     <widget class="QPushButton" name="btn_select_all">
+                         <property name="text">
+                             <string>全选</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item>
+                     <widget class="QPushButton" name="btn_select_null">
+                         <property name="text">
+                             <string>全不选</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item>
+                     <spacer name="horizontalSpacer_6">
+                         <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                             <size>
+                                 <width>40</width>
+                                 <height>20</height>
+                             </size>
+                         </property>
+                     </spacer>
+                 </item>
+                 <item>
+                     <widget class="QPushButton" name="btn_mul_delete">
+                         <property name="text">
+                             <string>批量删除</string>
+                         </property>
+                     </widget>
+                 </item>
+             </layout>
+         </item>
+         <item>
+             <widget class="PageController" name="page_controller" native="true"/>
+         </item>
      </layout>
     </widget>
    </item>

@@ -9,13 +9,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.PageController import PageController
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(715, 421)
+        Form.resize(705, 450)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(14)
@@ -188,6 +186,20 @@ class Ui_Form(object):
         self.tableWidget.setItem(0, 2, item)
         self.tableWidget.verticalHeader().setVisible(False)
         self.verticalLayout_2.addWidget(self.tableWidget)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.btn_select_all = QtWidgets.QPushButton(self.frame_2)
+        self.btn_select_all.setObjectName("btn_select_all")
+        self.horizontalLayout_8.addWidget(self.btn_select_all)
+        self.btn_select_null = QtWidgets.QPushButton(self.frame_2)
+        self.btn_select_null.setObjectName("btn_select_null")
+        self.horizontalLayout_8.addWidget(self.btn_select_null)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem5)
+        self.btn_mul_delete = QtWidgets.QPushButton(self.frame_2)
+        self.btn_mul_delete.setObjectName("btn_mul_delete")
+        self.horizontalLayout_8.addWidget(self.btn_mul_delete)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_8)
         self.page_controller = PageController(self.frame_2)
         self.page_controller.setObjectName("page_controller")
         self.verticalLayout_2.addWidget(self.page_controller)
@@ -233,3 +245,9 @@ class Ui_Form(object):
         item = self.tableWidget.item(0, 2)
         item.setText(_translate("Form", "测试"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
+        self.btn_select_all.setText(_translate("Form", "全选"))
+        self.btn_select_null.setText(_translate("Form", "全不选"))
+        self.btn_mul_delete.setText(_translate("Form", "批量删除"))
+
+
+from ui.page_elements.PageController import PageController

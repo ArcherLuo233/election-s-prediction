@@ -23,6 +23,7 @@ class Page1_x(QWidget):
         self.ui.setupUi(self)
         self.title = title
         self.alias = alias
+        self.id_selected = set()
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % title)
         # button_search
@@ -30,23 +31,36 @@ class Page1_x(QWidget):
         self.ui.button_search.setIcon(icon)
         # button_add
         self.ui.button_add.clicked.connect(self.action_add)
+        # btn_select_all
+        self.ui.btn_select_all.clicked.connect(self.select_all)
+        # btn_select_null
+        self.ui.btn_select_null.clicked.connect(self.select_null)
+        # btn_mul_delete
+        self.ui.btn_mul_delete.clicked.connect(self.mul_delete)
 
         # tableWidget
-        cols = len(self.summary) + 2
+        cols = self.cols
         table_widget = self.ui.tableWidget
         table_widget.clear()
         table_widget.setColumnCount(cols)
         table_widget.setSortingEnabled(True)
         table_widget.setSelectionMode(QTableWidget.NoSelection)
+        table_widget.setEditTriggers(QTableWidget.NoEditTriggers)
         table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        table_widget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Fixed)
+        table_widget.horizontalHeader().setSectionResizeMode(1, QHeaderView.Fixed)
         table_widget.horizontalHeader().setFixedHeight(30)
         table_widget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        table_widget.cellChanged.connect(self.cell_changed)
 
         # set-header
         item = QTableWidgetItem()
-        item.setText("编号")
+        item.setText("")
         table_widget.setHorizontalHeaderItem(0, item)
-        for i, text in enumerate(self.summary.keys(), 1):
+        item = QTableWidgetItem()
+        item.setText("编号")
+        table_widget.setHorizontalHeaderItem(1, item)
+        for i, text in enumerate(self.summary.keys(), 2):
             item = QTableWidgetItem()
             item.setText(text)
             table_widget.setHorizontalHeaderItem(i, item)
@@ -78,29 +92,38 @@ class Page1_x(QWidget):
         # refresh-table
         self.refresh_page()
 
-    def refresh_page(self, page: int = 1):
-        # todo:custom search
-        self.refresh_table(page)
+    @property
+    def cols(self):
+        return len(self.summary) + 3
 
-    def refresh_table(self, page=1, page_size=DEFAULT_PAGE_SIZE, data=None):
-        if data is None:
-            data = dict()
+    def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
+        # todo:custom search
         if self.model is None:
             return
-        cols = len(self.summary) + 2
+        data = self.model.search(page=page, page_size=page_size)
+        self.refresh_table(data['data'], page_size)
+
+    def refresh_table(self, records: list, page_size=DEFAULT_PAGE_SIZE):
+        self.id_selected = set()
+        cols = self.cols
         table_widget = self.ui.tableWidget
         table_widget.clearContents()
         table_widget.setRowCount(page_size)
         # load data
-        data = self.model.search(page=page, page_size=page_size, **data)
-        for i, info in enumerate(data['data']):
+
+        for i, info in enumerate(records):
+            # checkbox
             item = QTableWidgetItem()
-            item.setFlags(Qt.ItemIsEnabled)
-            item.setData(Qt.DisplayRole, info.id)
+            item.setCheckState(Qt.Unchecked)
+            item.setData(Qt.UserRole, info.id)
             table_widget.setItem(i, 0, item)
-            for j, k in enumerate(self.summary.keys(), 1):
+            # id-column
+            item = QTableWidgetItem()
+            item.setData(Qt.DisplayRole, info.id)
+            table_widget.setItem(i, 1, item)
+            # summarys
+            for j, k in enumerate(self.summary.keys(), 2):
                 item = QTableWidgetItem()
-                item.setFlags(Qt.ItemIsEnabled)
                 item.setText(getattr(info, self.summary[k]))
                 table_widget.setItem(i, j, item)
             # detail_label
@@ -110,6 +133,44 @@ class Page1_x(QWidget):
             detail_label.linkActivated.connect(self.detail)
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
+        table_widget.resizeColumnToContents(0)
+        table_widget.resizeColumnToContents(1)
+
+    def cell_changed(self, row, col):
+        if col != 0:
+            return
+        table_widget = self.ui.tableWidget
+        item = table_widget.item(row, col)
+        checked = item.checkState()
+        id_ = item.data(Qt.UserRole)
+        if checked == Qt.Checked:
+            self.id_selected.add(id_)
+        elif id_ in self.id_selected:
+            self.id_selected.remove(id_)
+
+    def mul_delete(self):
+        for id_ in self.id_selected:
+            rec = self.model.get_by_id(id_)
+            rec.delete()
+        self.refresh_page()
+
+    def select_all(self):
+        table_widget = self.ui.tableWidget
+        rows = table_widget.rowCount()
+        for row in range(0, rows):
+            item = table_widget.item(row, 0)
+            if item is None:
+                break
+            item.setCheckState(Qt.Checked)
+
+    def select_null(self):
+        table_widget = self.ui.tableWidget
+        rows = table_widget.rowCount()
+        for row in range(0, rows):
+            item = table_widget.item(row, 0)
+            if item is None:
+                break
+            item.setCheckState(Qt.Unchecked)
 
     def detail(self, link):
         self.open_dialog(True, data={'id': int(link[len("#detail:"):])})
