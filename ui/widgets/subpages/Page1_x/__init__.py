@@ -155,16 +155,20 @@ class Page1_x(QWidget):
         self.ui.page_controller.setMaxPage(max_page)
         if self.model is None:
             return
+        conditions = self.get_conditions()
+        data = self.model.search(page=page,
+                                 page_size=page_size,
+                                 order={self.sort_field: self.sort_order},
+                                 **conditions)
+        self.refresh_table(data['data'], page_size)
+
+    def get_conditions(self):
         data = {}
         for w in self.condition_boxes:
             c = w.get()
             field = self.translator.to_field(c['field'])
             data[field] = c['val']
-        data = self.model.search(page=page,
-                                 page_size=page_size,
-                                 order={self.sort_field: self.sort_order},
-                                 **data)
-        self.refresh_table(data['data'], page_size)
+        return data
 
     def refresh_table(self, records: list, page_size=DEFAULT_PAGE_SIZE):
         self.id_selected = set()
@@ -293,7 +297,8 @@ class Page1_x(QWidget):
         try:
             if self.model is None:
                 raise Exception("Undefined Export: %s" % self.title)
-            self.model.export(filename)
+            conditions = self.get_conditions()
+            self.model.export(filename, **conditions)
         except AppException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
             return
