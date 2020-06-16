@@ -26,6 +26,8 @@ class Page1_x(QWidget):
         self.title = title
         self.alias = alias
         self.id_selected = set()
+        self.sort_field = 'id'
+        self.sort_order = 'asc'
         if self.model:
             self.translator = FieldsTranslater(self.model)
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
@@ -93,15 +95,6 @@ class Page1_x(QWidget):
         # refresh-table
         self.refresh_page()
 
-    def section_clicked(self, id_):
-        table_widget = self.ui.tableWidget
-        hor_header = table_widget.horizontalHeader()
-        if id_ == 0 or id_ == hor_header.count() - 1:
-            hor_header.setSortIndicatorShown(False)
-            return
-        else:
-            hor_header.setSortIndicatorShown(True)
-
     def add_condition(self):
         if not self.model:
             return
@@ -138,6 +131,21 @@ class Page1_x(QWidget):
     def cols(self):
         return len(self.summary) + 3
 
+    def section_clicked(self, id_):
+        table_widget = self.ui.tableWidget
+        hor_header = table_widget.horizontalHeader()
+        if id_ == 0 or id_ == hor_header.count() - 1:
+            hor_header.setSortIndicatorShown(False)
+            return
+        else:
+            hor_header.setSortIndicatorShown(True)
+        order = hor_header.sortIndicatorOrder()
+        if self.model:
+            text = table_widget.horizontalHeaderItem(id_).text()
+            self.sort_field = self.translator.to_field(text)
+            self.sort_order = 'asc' if order == Qt.AscendingOrder else 'desc'
+        self.refresh_page()
+
     def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
         if self.model is None:
             count = 0
@@ -152,13 +160,17 @@ class Page1_x(QWidget):
             c = w.get()
             field = self.translator.to_field(c['field'])
             data[field] = c['val']
-        data = self.model.search(page=page, page_size=page_size, **data)
+        data = self.model.search(page=page,
+                                 page_size=page_size,
+                                 order={self.sort_field: self.sort_order},
+                                 **data)
         self.refresh_table(data['data'], page_size)
 
     def refresh_table(self, records: list, page_size=DEFAULT_PAGE_SIZE):
         self.id_selected = set()
         cols = self.cols
         table_widget = self.ui.tableWidget
+        table_widget.setSortingEnabled(False)
         table_widget.clearContents()
         table_widget.setRowCount(page_size)
         # load data
@@ -185,6 +197,7 @@ class Page1_x(QWidget):
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
         table_widget.resizeColumnToContents(0)
+        table_widget.setSortingEnabled(True)
 
     def cell_changed(self, row, col):
         if col != 0:
