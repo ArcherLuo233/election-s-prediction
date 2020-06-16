@@ -6,12 +6,11 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
 from config.settings import DEFAULT_PAGE_SIZE
-from libs.exception import AppException
 from libs.FieldsTranslater import FieldsTranslater
+from libs.exception import AppException
 from ui.page_elements.ConditionBox import ConditionBox
 from ui.page_elements.ConditionGroup import ConditionGroup
 from ui.page_elements.detailPage import DetailPage
-
 from .pageUI import Ui_Form
 
 
@@ -58,6 +57,7 @@ class Page1_x(QWidget):
         table_widget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Fixed)
         table_widget.horizontalHeader().setSectionResizeMode(1, QHeaderView.Fixed)
         table_widget.horizontalHeader().setFixedHeight(30)
+        table_widget.horizontalHeader().sectionClicked.connect(self.section_clicked)
         table_widget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         table_widget.cellChanged.connect(self.cell_changed)
 
@@ -92,6 +92,15 @@ class Page1_x(QWidget):
         self.ui.page_controller.pageChanged.connect(self.refresh_page)
         # refresh-table
         self.refresh_page()
+
+    def section_clicked(self, id_):
+        table_widget = self.ui.tableWidget
+        hor_header = table_widget.horizontalHeader()
+        if id_ == 0 or id_ == hor_header.count() - 1:
+            hor_header.setSortIndicatorShown(False)
+            return
+        else:
+            hor_header.setSortIndicatorShown(True)
 
     def add_condition(self):
         if not self.model:
