@@ -1,7 +1,12 @@
 class FieldsTranslater:
+    default_translations = {'id': '编号'}
+
     def __init__(self, model):
         field2text = dict()
         text2field = dict()
+        for idx, tr in self.default_translations.items():
+            field2text[idx] = tr
+            text2field[tr] = idx
         for idx in model.field:
             comment = getattr(model, idx).comment
             field2text[idx] = comment
