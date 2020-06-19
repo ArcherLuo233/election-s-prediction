@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui.page_elements.NavigateMenu.NavigateField import NavigateLabel
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -80,6 +82,3 @@ class Ui_Form(object):
         self.label_switch.setText(_translate("Form", "<html><head/><body><p><a href=\"#open\"><span\n"
                                                      "                                  style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>\n"
                                                      "                              "))
-
-
-from ui.page_elements.NavigateMenu.NavigateField import NavigateLabel
