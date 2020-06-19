@@ -34,9 +34,10 @@ class MainPage(QWidget):
         self.ui.label.setPalette(pal)
         self.ui.label_username.setPalette(pal)
         self.ui.label_logo.setPalette(pal)
+        self.ui.label_logout.setStyleSheet("padding-top: 2px")
         self.ui.label_logout.setText('<a href="#logout"'
                                      'style="text-decoration:none;'
-                                     'color: %s">登出</a>' % color.HeaderText.name())
+                                     'color:%s;">登出</a>' % color.HeaderText.name())
 
     def linkManager(self, s: str):
         if s.startswith("#goto:"):

@@ -6,11 +6,11 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
 from config.settings import DEFAULT_PAGE_SIZE
-from libs.exception import AppException
 from libs.FieldsTranslater import FieldsTranslater
+from libs.exception import AppException
 from ui.page_elements.ConditionBox import ConditionBox
+from ui.page_elements.ConditionGroup import ConditionGroup
 from ui.page_elements.detailPage import DetailPage
-
 from .pageUI import Ui_Form
 
 
@@ -26,9 +26,12 @@ class Page1_x(QWidget):
         self.title = title
         self.alias = alias
         self.id_selected = set()
+        self.sort_field = 'id'
+        self.sort_order = 'asc'
         if self.model:
             self.translator = FieldsTranslater(self.model)
-        self.condition_boxes = []
+            self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
+            self.condition_boxes = []
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % title)
         # button_search
@@ -56,6 +59,7 @@ class Page1_x(QWidget):
         table_widget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Fixed)
         table_widget.horizontalHeader().setSectionResizeMode(1, QHeaderView.Fixed)
         table_widget.horizontalHeader().setFixedHeight(30)
+        table_widget.horizontalHeader().sectionClicked.connect(self.section_clicked)
         table_widget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         table_widget.cellChanged.connect(self.cell_changed)
 
@@ -92,54 +96,85 @@ class Page1_x(QWidget):
         self.refresh_page()
 
     def add_condition(self):
+        if not self.model:
+            return
+        if len(self.condition_boxes) == len(self.model.field):
+            QMessageBox.information(None, "添加筛选器", "没有其他的字段了")
+            return
         box = ConditionBox()
-        if self.model:
-            box.set_fields(self.translator.to_text(self.model.field))
         box.delete_clicked.connect(self.del_condition)
         self.condition_boxes.append(box)
+        self.condition_group.add_box(box)
         self.refresh_conditions()
 
     def del_condition(self):
         sender = self.sender()
         self.condition_boxes.remove(sender)
+        self.condition_group.del_box(sender)
         self.refresh_conditions()
-        sender.delete_clicked.disconnect(self.del_condition)
         sender.deleteLater()
 
     def refresh_conditions(self):
+        if not self.model:
+            return
+        if not self.condition_boxes:
+            return
+        col = (self.width() - 100) // 400
         layout = self.ui.layout_conditions
         cnt = layout.count()
         for i in range(0, cnt):
             layout.takeAt(i)
         for i, w in enumerate(self.condition_boxes):
-            layout.addWidget(w, i // 3, i % 3)
+            layout.addWidget(w, i // col, i % col)
 
     @property
     def cols(self):
         return len(self.summary) + 3
+
+    def section_clicked(self, id_):
+        table_widget = self.ui.tableWidget
+        hor_header = table_widget.horizontalHeader()
+        if id_ == 0 or id_ == hor_header.count() - 1:
+            hor_header.setSortIndicatorShown(False)
+            return
+        else:
+            hor_header.setSortIndicatorShown(True)
+        order = hor_header.sortIndicatorOrder()
+        if self.model:
+            text = table_widget.horizontalHeaderItem(id_).text()
+            self.sort_field = self.translator.to_field(text)
+            self.sort_order = 'asc' if order == Qt.AscendingOrder else 'desc'
+        self.refresh_page()
 
     def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
         if self.model is None:
             count = 0
         else:
             count = self.model.search()['meta']['count']
-        page_size = DEFAULT_PAGE_SIZE
         max_page = math.ceil(count / page_size)
         self.ui.page_controller.setMaxPage(max_page)
+        if self.model is None:
+            return
+        conditions = self.get_conditions()
+        data = self.model.search(page=page,
+                                 page_size=page_size,
+                                 order={self.sort_field: self.sort_order},
+                                 **conditions)
+        self.refresh_table(data['data'], page_size)
+
+    def get_conditions(self):
         data = {}
         for w in self.condition_boxes:
             c = w.get()
             field = self.translator.to_field(c['field'])
             data[field] = c['val']
-        if self.model is None:
-            return
-        data = self.model.search(page=page, page_size=page_size, **data)
-        self.refresh_table(data['data'], page_size)
+        return data
 
     def refresh_table(self, records: list, page_size=DEFAULT_PAGE_SIZE):
         self.id_selected = set()
         cols = self.cols
         table_widget = self.ui.tableWidget
+        table_widget.setSortingEnabled(False)
         table_widget.clearContents()
         table_widget.setRowCount(page_size)
         # load data
@@ -166,6 +201,7 @@ class Page1_x(QWidget):
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
         table_widget.resizeColumnToContents(0)
+        table_widget.setSortingEnabled(True)
 
     def cell_changed(self, row, col):
         if col != 0:
@@ -220,6 +256,7 @@ class Page1_x(QWidget):
     def resizeEvent(self, e):
         if self.dialog:
             self.dialog.locationDialog()
+        self.refresh_conditions()
 
     def closeEvent(self, e):
         if self.dialog:
@@ -260,7 +297,8 @@ class Page1_x(QWidget):
         try:
             if self.model is None:
                 raise Exception("Undefined Export: %s" % self.title)
-            self.model.export(filename)
+            conditions = self.get_conditions()
+            self.model.export(filename, **conditions)
         except AppException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
             return

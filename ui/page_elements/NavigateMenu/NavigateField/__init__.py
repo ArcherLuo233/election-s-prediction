@@ -33,14 +33,23 @@ class NavigateField(QWidget):
 
     def switch(self):
         self.is_hide = not self.is_hide
-        s = '<a href="#" style="text-decoration: none;' \
-            'color: white;">{0}</a>'.format("展开" if self.is_hide else "隐藏")
-        self.ui.label_switch.setText(s)
+        t = self.ui.label_switch.text()
+        if self.is_hide:
+            t.replace('展开', '隐藏')
+        else:
+            t.replace('隐藏', '展开')
+        self.ui.label_switch.setText(t)
         for i in self.menu_labels:
             if self.is_hide:
                 i.hide()
             else:
                 i.show()
+
+    def refresh_switch_button(self, checked):
+        text_color = color.NavigateHideTextHighlight if checked else color.NavigateHideText
+        s = '<a href="#" style="text-decoration: none;' \
+            'color: {color};">{0}</a>'.format("展开" if self.is_hide else "隐藏", color=text_color.name())
+        self.ui.label_switch.setText(s)
 
     def appendMenu(self, text: str, alias=""):
         label = NavigateLabel(self)
@@ -62,3 +71,4 @@ class NavigateField(QWidget):
         pal.setColor(QPalette.Background, bgcolor)
         self.ui.label_switch.setPalette(pal)
         self.ui.label_icon.setPalette(pal)
+        self.refresh_switch_button(checked)
