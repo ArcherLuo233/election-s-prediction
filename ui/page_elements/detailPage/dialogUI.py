@@ -23,7 +23,7 @@ class Ui_Dialog(object):
         self.scrollArea = QtWidgets.QScrollArea(Dialog)
         self.scrollArea.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.scrollArea.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 418, 451))
@@ -37,7 +37,7 @@ class Ui_Dialog(object):
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-"padding: 10px")
+                                 "padding: 10px")
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
         self.tableWidget = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
