@@ -164,12 +164,6 @@
         </item>
         <item>
          <widget class="QPushButton" name="button_add">
-          <property name="font">
-           <font>
-            <family>黑体</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>

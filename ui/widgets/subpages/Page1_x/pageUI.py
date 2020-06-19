@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'page.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -81,10 +81,6 @@ class Ui_Form(object):
         self.button_export.setObjectName("button_export")
         self.horizontalLayout.addWidget(self.button_export)
         self.button_add = QtWidgets.QPushButton(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(14)
-        self.button_add.setFont(font)
         self.button_add.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_add.setObjectName("button_add")
         self.horizontalLayout.addWidget(self.button_add)
