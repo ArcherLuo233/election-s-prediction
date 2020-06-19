@@ -9,8 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.NavigateMenu.NavigateField import NavigateLabel
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -27,6 +25,8 @@ class Ui_Form(object):
         self.title_widget.setAutoFillBackground(True)
         self.title_widget.setObjectName("title_widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.title_widget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_icon = QtWidgets.QLabel(self.title_widget)
         self.label_icon.setMinimumSize(QtCore.QSize(50, 0))
@@ -77,5 +77,9 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_title.setText(_translate("Form", "测试文本"))
-        self.label_switch.setText(_translate("Form",
-                                             "<html><head/><body><p><a href=\"#open\"><span style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>"))
+        self.label_switch.setText(_translate("Form", "<html><head/><body><p><a href=\"#open\"><span\n"
+                                                     "                                  style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>\n"
+                                                     "                              "))
+
+
+from ui.page_elements.NavigateMenu.NavigateField import NavigateLabel
