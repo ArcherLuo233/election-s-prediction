@@ -90,12 +90,13 @@ class DetailPage(QDialog):
         table_widget.setRowCount(row_count)
         table_widget.setColumnCount(column_count)
         # pic-item
-        self.ui.tableWidget.setSpan(0, 2, pic_height, 1)
-        self.ui.tableWidget.setSpan(0, 3, pic_height, 1)
-        item = QTableWidgetItem()
-        item.setFlags(Qt.ItemIsEnabled)
-        item.setText("照片")
-        self.ui.tableWidget.setItem(0, 2, item)
+        if self.need_pic:
+            self.ui.tableWidget.setSpan(0, 2, pic_height, 1)
+            self.ui.tableWidget.setSpan(0, 3, pic_height, 1)
+            item = QTableWidgetItem()
+            item.setFlags(Qt.ItemIsEnabled)
+            item.setText("照片")
+            self.ui.tableWidget.setItem(0, 2, item)
         # data-list-set
         for i, item in enumerate(data_list[:pic_height]):
             comment_item = QTableWidgetItem()

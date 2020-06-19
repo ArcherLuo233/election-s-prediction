@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -23,10 +23,10 @@ class Ui_Dialog(object):
         self.scrollArea = QtWidgets.QScrollArea(Dialog)
         self.scrollArea.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+        self.scrollArea.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 414, 447))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 418, 451))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -37,34 +37,9 @@ class Ui_Dialog(object):
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-                                 "padding: 10px")
+"padding: 10px")
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setContentsMargins(20, -1, -1, -1)
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.button_self = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
-        self.button_self.setCheckable(True)
-        self.button_self.setChecked(True)
-        self.button_self.setObjectName("button_self")
-        self.buttonGroup = QtWidgets.QButtonGroup(Dialog)
-        self.buttonGroup.setObjectName("buttonGroup")
-        self.buttonGroup.addButton(self.button_self)
-        self.horizontalLayout.addWidget(self.button_self)
-        self.button_couple = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
-        self.button_couple.setCheckable(True)
-        self.button_couple.setObjectName("button_couple")
-        self.buttonGroup.addButton(self.button_couple)
-        self.horizontalLayout.addWidget(self.button_couple)
-        self.button_children = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
-        self.button_children.setCheckable(True)
-        self.button_children.setObjectName("button_children")
-        self.buttonGroup.addButton(self.button_children)
-        self.horizontalLayout.addWidget(self.button_children)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.tableWidget = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
         font.setFamily("黑体")
@@ -161,8 +136,8 @@ class Ui_Dialog(object):
         self.verticalLayout_2.addWidget(self.tableWidget)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
         self.btn_append = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.btn_append.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_append.setObjectName("btn_append")
@@ -190,9 +165,6 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "详细信息"))
         self.label.setText(_translate("Dialog", "详细信息"))
-        self.button_self.setText(_translate("Dialog", "本人"))
-        self.button_couple.setText(_translate("Dialog", "配偶"))
-        self.button_children.setText(_translate("Dialog", "子女"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Dialog", "New Row"))
         item = self.tableWidget.verticalHeaderItem(1)
