@@ -25,6 +25,7 @@ class MainPage(QWidget):
         self.init_navigate_menu(navi_widget)
         navi_widget.fields[0].switch()
         navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
+        navi_widget.fields[1].switch()
         # header-palette
         self.ui.widget_header.setAutoFillBackground(True)
         pal: QPalette = self.ui.widget_header.palette()
@@ -65,7 +66,35 @@ class MainPage(QWidget):
               "来访团组": "1_9",
               "居住证人员": "1_10",
               }),
-            ("地区统计", "2", {}),
+            ("地区统计", "2_1",
+             {"炎峰里": "2_1",
+              "中正里": "2_2",
+              "玉峰里": "2_3",
+              "明正里": "2_4",
+              "和平里": "2_5",
+              "中山里": "2_6",
+              "敦和里": "2_7",
+              "山脚里": "2_8",
+              "新厝里": "2_9",
+              "上林里": "2_10",
+              "碧峰里": "2_11",
+              "碧洲里": "2_12",
+              "复兴里": "2_13",
+              "北投里": "2_14",
+              "石川里": "2_15",
+              "加老里": "2_16",
+              "新庄里": "2_17",
+              "新丰里": "2_18",
+              "御史里": "2_19",
+              "北势里": "2_20",
+              "中原里": "2_21",
+              "富寮里": "2_22",
+              "南埔里": "2_23",
+              "坪顶里": "2_24",
+              "土城里": "2_25",
+              "平林里": "2_26",
+              "双冬里": "2_27",
+              }),
             ("机构信息", "3", {}),
             ("人士信息", "4", {})
         ]
