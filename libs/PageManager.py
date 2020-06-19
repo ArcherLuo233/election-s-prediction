@@ -9,14 +9,11 @@ from ui.widgets.subpages.Page1_7 import Page1_7
 from ui.widgets.subpages.Page1_8 import Page1_8
 from ui.widgets.subpages.Page1_9 import Page1_9
 from ui.widgets.subpages.Page1_10 import Page1_10
+from ui.widgets.subpages.Page2_1 import Page2_1
+from ui.widgets.subpages.Page2_2 import Page2_2
 from ui.widgets.subpages.Page3 import Page3
 from ui.widgets.subpages.Page3_1 import Page3_1
 from ui.widgets.subpages.Page4 import Page4
-from ui.widgets.subpages.Page2_1 import Page2_1
-from ui.widgets.subpages.Page2_2 import Page2_2
-
-
-
 
 
 class PageManager:

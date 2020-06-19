@@ -71,4 +71,5 @@ class NavigateField(QWidget):
         pal.setColor(QPalette.Background, bgcolor)
         self.ui.label_switch.setPalette(pal)
         self.ui.label_icon.setPalette(pal)
+        self.ui.title_widget.setPalette(pal)
         self.refresh_switch_button(checked)
