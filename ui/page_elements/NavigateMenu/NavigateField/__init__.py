@@ -35,9 +35,9 @@ class NavigateField(QWidget):
         self.is_hide = not self.is_hide
         t = self.ui.label_switch.text()
         if self.is_hide:
-            t.replace('展开', '隐藏')
+            t = t.replace('隐藏', '展开')
         else:
-            t.replace('隐藏', '展开')
+            t = t.replace('展开', '隐藏')
         self.ui.label_switch.setText(t)
         for i in self.menu_labels:
             if self.is_hide:
