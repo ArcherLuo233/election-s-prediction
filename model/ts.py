@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Text
 
 from model.base import Base
 
@@ -37,4 +37,4 @@ class TS(Base):
     relatives_address = Column(String(100), comment='在台亲属地址')
     relatives_job = Column(String(100), comment='在台亲属单位职位')
     relatives_degree_of_contact = Column(String(100), comment='在台亲属联系程度')
-    remark = Column(String(100), comment='备注')
+    remark = Column(Text, comment='备注')
