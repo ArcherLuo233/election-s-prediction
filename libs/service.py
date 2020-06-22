@@ -14,7 +14,7 @@ def read_excel(filename, start_row):
     row = ws.max_row
 
     data = []
-    for idx in range(start_row, row):
+    for idx in range(start_row, row + 1):
         try:
             data.append(
                 [ws.cell(idx, i + 1).value if ws.cell(idx, i + 1).value is not None else None for i in range(1, col)])

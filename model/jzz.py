@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Date, Integer, String
+from sqlalchemy import Column, Integer, String
 
 from model.base import Base
 
@@ -21,4 +21,4 @@ class JZZ(Base):
     pass_card = Column(String(100), comment='通行证号码')
     address = Column(String(100), comment='地址')
     phone = Column(String(100), comment='联系电话')
-    process_date = Column(Date, comment='处理日期')
+    process_date = Column(String(100), comment='处理日期')
