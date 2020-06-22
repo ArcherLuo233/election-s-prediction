@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Date, Integer, String
+from sqlalchemy import Column, Date, Integer, String, Text
 
 from model.base import Base
 
@@ -12,7 +12,7 @@ class TSTG(Base):
         'domicile', 'nation', 'marital_status', 'partisan', 'religious_belief', 'community_identity',
         'resident_address', 'taiwan_phone', 'mainland_phone', 'company', 'job', 'rank_title', 'main_experience',
         'political_views', 'participate_in_social_activities', 'representative_work', 'receive_honor', 'media_reports',
-        'reporting_company', 'reporting_date', 'others'
+        'reporting_company', 'reporting_date', 'remark'
     ]
 
     template_filename = 'template/tstg.xlsx'
@@ -47,4 +47,4 @@ class TSTG(Base):
     media_reports = Column(String(100), comment='媒体报道')
     reporting_company = Column(String(100), comment='填报单位')
     reporting_date = Column(String(100), comment='填报日期')
-    others = Column(String(100), comment='其他需要说明事项')
+    remark = Column(Text, comment='其他需要说明事项')
