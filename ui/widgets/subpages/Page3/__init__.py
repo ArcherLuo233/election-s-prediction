@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QHeaderView, QLabel, QTableWidget, QWidget
 
-from libs.LinkManager import link_manager
+from libs.link_manager import link_manager
 
 from .pageUI import Ui_Form
 

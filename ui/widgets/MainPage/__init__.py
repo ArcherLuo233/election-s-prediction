@@ -3,8 +3,8 @@ from PyQt5.QtWidgets import QHBoxLayout, QWidget
 
 from config.uicolor import UIColor as color
 from libs.g import g
-from libs.LinkManager import link_manager
-from libs.PageManager import PageManager
+from libs.link_manager import link_manager
+from libs.page_magager import PageManager
 from ui.page_elements.NavigateMenu import NavigateMenu
 
 from .MainPageUI import Ui_Form

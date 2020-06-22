@@ -4,7 +4,7 @@ from PyQt5 import QtWidgets
 
 from libs.fonts import loadFonts
 from libs.g import g
-from libs.PageManager import PageManager
+from libs.page_magager import PageManager
 from model.base import init_database
 from ui.widgets.LoginPage import LoginPage
 from ui.widgets.MainPage import MainPage

@@ -4,7 +4,7 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
                              QTableWidgetItem)
 
-from libs.FieldsTranslater import FieldsTranslater
+from libs.fields_translater import FieldsTranslater
 from model.base import Base
 from ui.page_elements.WindowMask import WindowMask
 

@@ -2,7 +2,7 @@ from typing import Union
 
 from PyQt5.QtWidgets import QVBoxLayout, QWidget
 
-from libs.LinkManager import link_manager
+from libs.link_manager import link_manager
 
 from .NavigateField import NavigateField
 from .NavigateLabel import NavigateLabel
