@@ -1,8 +1,8 @@
 import os
 
+from docxtpl import DocxTemplate
 from openpyxl import load_workbook
 
-from docxtpl import DocxTemplate
 from libs.exception import AppException
 from libs.helper import md5
 
