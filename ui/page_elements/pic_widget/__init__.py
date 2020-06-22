@@ -2,7 +2,6 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QFileDialog, QWidget
 
-from libs.exception import AppException
 from libs.service import upload_file
 
 from .pageUI import Ui_Form
