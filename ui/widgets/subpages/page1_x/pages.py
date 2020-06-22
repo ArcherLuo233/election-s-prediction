@@ -1,6 +1,7 @@
 from model.jzz import JZZ
 from model.ts import TS
 from model.tstg import TSTG
+from model.lp import LP
 from ui.widgets.subpages.page1_x import Page1_x
 
 
@@ -24,6 +25,12 @@ class Page1_3(Page1_x):
 
 class Page1_4(Page1_x):
     title = "陆配"
+    model = LP
+    summary = {
+        '地区': 'area',
+        '姓名': 'nickname',
+        '性别': 'sex'
+    }
 
 
 class Page1_5(Page1_x):

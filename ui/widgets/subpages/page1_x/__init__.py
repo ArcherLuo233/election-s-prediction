@@ -21,7 +21,7 @@ class Page1_x(QWidget):
     need_pic = False
     title: str = None
 
-    def __init__(self, *args):
+    def __init__(self):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
