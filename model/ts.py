@@ -15,7 +15,7 @@ class TS(Base):
     ]
 
     template_filename = 'template/ts.xlsx'
-    template_start_row = 3
+    template_start_row = 4
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     area = Column(String(100), comment='地区')

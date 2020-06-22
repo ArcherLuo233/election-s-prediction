@@ -16,9 +16,8 @@ def read_excel(filename, start_row):
     data = []
     for idx in range(start_row, row):
         try:
-            data.append([str(ws[chr(65 + i)][idx].internal_value)
-                         if ws[chr(65 + i)][idx].internal_value is not None
-                         else None for i in range(1, col)])
+            data.append(
+                [ws.cell(idx, i + 1).value if ws.cell(idx, i + 1).value is not None else None for i in range(1, col)])
         except IndexError:
             raise AppException('导入数据错误，请使用模板导入数据')
     return data

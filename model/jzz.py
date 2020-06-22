@@ -12,7 +12,7 @@ class JZZ(Base):
     ]
 
     template_filename = 'template/jzz.xlsx'
-    template_start_row = 2
+    template_start_row = 3
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     nickname = Column(String(100), nullable=False, comment='姓名')

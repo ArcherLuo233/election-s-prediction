@@ -16,7 +16,7 @@ class TSTG(Base):
     ]
 
     template_filename = 'template/tstg.xlsx'
-    template_start_row = 3
+    template_start_row = 4
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     photo = Column(String(100), comment='照片')
