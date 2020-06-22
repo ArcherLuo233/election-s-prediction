@@ -8,7 +8,7 @@ class JZZ(Base):
     __tablename__ = 'jzz'
 
     field = [
-        'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'
+        'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'
     ]
 
     template_filename = 'template/jzz.xlsx'

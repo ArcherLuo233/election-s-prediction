@@ -10,7 +10,7 @@ class LFTZ(Base):
     __tablename__ = 'lftz'
 
     field = [
-        'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'member'
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'member'
     ]
 
     template_filename = ''
