@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, LargeBinary, String
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from model.base import Base
@@ -26,9 +26,9 @@ class GWTZ(Base):
     number_of_day = Column(String(100), comment='天数')
     approval_time = Column(String(100), comment='报批赴台时间')
     actual_time = Column(String(100), comment='实际赴台时间')
-    stroke = Column(LargeBinary, comment='行程')
-    necessity_statement = Column(LargeBinary, comment='必要性说明')
-    summary = Column(LargeBinary, comment='总结')
+    stroke = Column(String(100), comment='行程')
+    necessity_statement = Column(String(100), comment='必要性说明')
+    summary = Column(String(100), comment='总结')
     contact_person = Column(String(100), comment='联系人')
     contact_phone = Column(String(100), comment='联系电话')
     members = relationship(GWTZ_TY)

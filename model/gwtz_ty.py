@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, LargeBinary, String
+from sqlalchemy import Column, ForeignKey, Integer, String
 
 from model.base import Base
 
@@ -22,4 +22,4 @@ class GWTZ_TY(Base):
     taiwan_position = Column(String(100), comment='赴台身份及职务')
     entry_number = Column(String(100), comment='入台证号')
     pass_number = Column(String(100), comment='通行证号')
-    filing_form = Column(LargeBinary, comment='备案表')
+    filing_form = Column(String(100), comment='备案表')
