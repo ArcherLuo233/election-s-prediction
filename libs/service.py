@@ -1,10 +1,7 @@
-import os
-
 from docxtpl import DocxTemplate
 from openpyxl import load_workbook
 
 from libs.exception import AppException
-from libs.helper import md5
 
 
 def read_excel(filename, start_row):
