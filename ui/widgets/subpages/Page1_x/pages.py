@@ -1,7 +1,7 @@
-from ui.widgets.subpages.Page1_x import Page1_x
-from model.tstg import TSTG
-from model.ts import TS
 from model.jzz import JZZ
+from model.ts import TS
+from model.tstg import TSTG
+from ui.widgets.subpages.Page1_x import Page1_x
 
 
 class Page1_1(Page1_x):
