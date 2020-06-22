@@ -40,6 +40,6 @@ class LoginPage(QWidget):
             return
         g.current_user = user
         main_widget = PageManager.get_page("Main")
-        main_widget.refreshUser()
+        main_widget.refresh_user()
         main_widget.showMaximized()
         self.close()

@@ -6,6 +6,7 @@ from libs.g import g
 from libs.link_manager import link_manager
 from libs.page_magager import PageManager
 from ui.page_elements.navigate_menu import NavigateMenu
+from ui.page_elements.user_info import UserInfoPage
 
 from .MainPageUI import Ui_Form
 
@@ -16,12 +17,14 @@ class MainPage(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.ui.label_logout.linkActivated.connect(self.logout)
+        self.ui.label_username.linkActivated.connect(self.modify_user_info)
         self.ui.main_widget.setLayout(QHBoxLayout())
+        self.user_info_dialog = UserInfoPage(self)
         with open("./static/qss/main.qss") as f:
             s = f.read()
             self.setStyleSheet(s)
         navi_widget = self.ui.navigation_widget
-        link_manager.linkActivated.connect(self.linkManager)
+        link_manager.linkActivated.connect(self.handle_link)
         self.init_navigate_menu(navi_widget)
         navi_widget.fields[0].switch()
         navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
@@ -35,12 +38,10 @@ class MainPage(QWidget):
         self.ui.label.setPalette(pal)
         self.ui.label_username.setPalette(pal)
         self.ui.label_logo.setPalette(pal)
-        self.ui.label_logout.setStyleSheet("padding-top: 2px")
         self.ui.label_logout.setText('<a href="#logout"'
-                                     'style="text-decoration:none;'
-                                     'color:%s;">登出</a>' % color.HeaderText.name())
+                                     'style="color:%s;">登出</a>' % color.HeaderText.name())
 
-    def linkManager(self, s: str):
+    def handle_link(self, s: str):
         if s.startswith("#goto:"):
             w = self.ui.main_widget
             if w.layout().count():
@@ -52,7 +53,8 @@ class MainPage(QWidget):
             page_widget.show()
             return
 
-    def init_navigate_menu(self, widget) -> NavigateMenu:
+    @staticmethod
+    def init_navigate_menu(widget) -> NavigateMenu:
         menu = [
             ("信息登记", "1_1",
              {"来绍交流": "1_1",
@@ -103,8 +105,21 @@ class MainPage(QWidget):
             widget.addField(title, alias, [(menu, menus[menu]) for menu in menus])
         return widget
 
-    def refreshUser(self):
-        self.ui.label_username.setText(g.current_user.nickname)
+    def refresh_user(self):
+        self.ui.label_username.setText('<a href="#nickname"'
+                                       'style="color:{};">{}</a>'.format(color.HeaderText.name(),
+                                                                         g.current_user.nickname))
+
+    def modify_user_info(self):
+        self.user_info_dialog.ui.LineEdit.setText(g.current_user.nickname)
+        self.user_info_dialog.ui.LineEdit_2.setText("")
+        self.user_info_dialog.ui.LineEdit_3.setText("")
+        self.user_info_dialog.ui.LineEdit_4.setText("")
+        self.user_info_dialog.show()
+        self.refresh_user()
+
+    def resizeEvent(self, e):
+        self.user_info_dialog.location_dialog()
 
     def logout(self):
         PageManager.get_page("Login").show()
