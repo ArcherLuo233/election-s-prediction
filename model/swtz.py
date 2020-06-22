@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from model.base import Base
-
 from model.swtz_ty import SWTZ_TY
 
 
