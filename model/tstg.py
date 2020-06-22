@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text, LargeBinary
 
 from model.base import Base
 
@@ -19,7 +19,7 @@ class TSTG(Base):
     template_start_row = 4
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    photo = Column(String(100), comment='照片')
+    photo = Column(LargeBinary, comment='照片')
     nickname = Column(String(100), nullable=False, comment='姓名')
     sex = Column(String(100), comment='性别')
     birth = Column(String(100), comment='出生日期')
