@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Date, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text
 
 from model.base import Base
 
@@ -22,7 +22,7 @@ class TSTG(Base):
     photo = Column(String(100), comment='照片')
     nickname = Column(String(100), nullable=False, comment='姓名')
     sex = Column(String(100), comment='性别')
-    birth = Column(Date, comment='出生日期')
+    birth = Column(String(100), comment='出生日期')
     id_card = Column(String(100), comment='身份证号')
     taiwanese_id = Column(String(100), comment='台胞证号')
     residence_id = Column(String(100), comment='居住证号')
