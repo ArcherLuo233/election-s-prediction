@@ -282,7 +282,7 @@ class Page1_x(QWidget):
             return
         try:
             if self.model is None:
-                raise Exception("Undefined Import: %s" % self.title)
+                raise AppException("Undefined Import: %s" % self.title)
             self.model.import_(filename)
         except AppException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
@@ -296,7 +296,7 @@ class Page1_x(QWidget):
             return
         try:
             if self.model is None:
-                raise Exception("Undefined Export: %s" % self.title)
+                raise AppException("Undefined Export: %s" % self.title)
             conditions = self.get_conditions()
             self.model.export(filename, **conditions)
         except AppException as e:
