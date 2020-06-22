@@ -17,10 +17,10 @@ class LFTZ(Base):
     template_start_row = 0
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    datetime = Column(String(20), comment='时间')
+    datetime = Column(String(100), comment='时间')
     name = Column(String(100), comment='团组名称')
     number_of_people = Column(Integer, comment='人数')
     number_of_day = Column(Integer, comment='天数')
     stroke = Column(Text, comment='行程')
-    group_organization = Column(String(20), comment='组团单位')
+    group_organization = Column(String(100), comment='组团单位')
     member = relationship(LFTZ_TY)
