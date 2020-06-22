@@ -1,14 +1,5 @@
 # subpage import
-from ui.widgets.subpages.Page1_1 import Page1_1
-from ui.widgets.subpages.Page1_2 import Page1_2
-from ui.widgets.subpages.Page1_3 import Page1_3
-from ui.widgets.subpages.Page1_4 import Page1_4
-from ui.widgets.subpages.Page1_5 import Page1_5
-from ui.widgets.subpages.Page1_6 import Page1_6
-from ui.widgets.subpages.Page1_7 import Page1_7
-from ui.widgets.subpages.Page1_8 import Page1_8
-from ui.widgets.subpages.Page1_9 import Page1_9
-from ui.widgets.subpages.Page1_10 import Page1_10
+from ui.widgets.subpages.Page1_x.pages import *  # noqa:F403
 from ui.widgets.subpages.Page2_1 import Page2_1
 from ui.widgets.subpages.Page2_2 import Page2_2
 from ui.widgets.subpages.Page3 import Page3

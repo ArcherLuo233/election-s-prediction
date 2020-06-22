@@ -70,7 +70,10 @@ class DetailPage(QDialog):
                 print("Not found:", type(self.model), "id:", id_)
                 return
         data_list = []
+        filter_list = ['id', 'photo']
         for idx in meta.field:
+            if idx in filter_list:
+                continue
             comment = self.translator.to_text(idx)
             value = getattr(meta, idx)
             if value is None:

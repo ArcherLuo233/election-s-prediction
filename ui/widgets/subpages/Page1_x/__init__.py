@@ -18,14 +18,13 @@ from .pageUI import Ui_Form
 class Page1_x(QWidget):
     model = None
     summary = {}
-    need_pic = True
+    need_pic = False
+    title: str = None
 
-    def __init__(self, title: str, alias: str = None):
+    def __init__(self, *args):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.title = title
-        self.alias = alias
         self.id_selected = set()
         self.sort_field = 'id'
         self.sort_order = 'asc'
@@ -34,7 +33,7 @@ class Page1_x(QWidget):
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
             self.condition_boxes = []
         # label_title
-        self.ui.label_title.setText("%s人员信息查询/登记" % title)
+        self.ui.label_title.setText("%s人员信息查询/登记" % self.title)
         # button_search
         icon = QIcon("./static/svg/search.svg")
         self.ui.button_search.setIcon(icon)
