@@ -8,7 +8,7 @@ class LFTZ_TY(Base):
     __tablename__ = 'lftz_ty'
 
     field = [
-        'id', 'lftz_id', 'nickname', 'job', 'type'
+        'id', 'nickname', 'job', 'type'
     ]
 
     id = Column(Integer, primary_key=True, autoincrement=True)
