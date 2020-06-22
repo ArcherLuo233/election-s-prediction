@@ -71,6 +71,8 @@ class DetailPage(QDialog):
                 return
         data_list = []
         for idx in meta.field:
+            if idx == 'id':
+                continue
             comment = self.translator.to_text(idx)
             value = getattr(meta, idx)
             if value is None:
