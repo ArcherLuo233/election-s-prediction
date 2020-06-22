@@ -1,5 +1,5 @@
 # subpage import
-from ui.widgets.subpages.Page1_x.pages import *  # noqa:F403
+from ui.widgets.subpages.Page1_x.pages import *  # noqa: F403
 from ui.widgets.subpages.Page2_1 import Page2_1
 from ui.widgets.subpages.Page2_2 import Page2_2
 from ui.widgets.subpages.Page3 import Page3
