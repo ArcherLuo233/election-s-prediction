@@ -1,7 +1,10 @@
+import os
+
 from docxtpl import DocxTemplate
 from openpyxl import load_workbook
 
 from libs.exception import AppException
+from libs.helper import md5
 
 
 def read_excel(filename, start_row):
@@ -33,9 +36,19 @@ def save_excel(template_filename, start_row, data, filename):
 
 
 def upload_file(filename):
+    suffix = filename.rsplit('.', 1)
+    if len(suffix) == 1:
+        raise AppException('文件没有后缀')
+    suffix = suffix[1]
     with open(filename, "rb") as f:
         raw = f.read()
-    return raw
+    filename = md5(raw) + "." + suffix
+    filename = 'file/{}'.format(filename)
+    if not os.path.exists('file/'):
+        os.makedirs('file/')
+    with open(filename, "wb") as f:
+        f.write(raw)
+    return filename
 
 
 def save_word(template_file, data, filename):
