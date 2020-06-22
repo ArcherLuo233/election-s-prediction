@@ -8,9 +8,9 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
 from config.settings import DEFAULT_PAGE_SIZE
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
-from ui.page_elements.ConditionBox import ConditionBox
-from ui.page_elements.ConditionGroup import ConditionGroup
-from ui.page_elements.detailPage import DetailPage
+from ui.page_elements.condition_box import ConditionBox
+from ui.page_elements.condition_group import ConditionGroup
+from ui.page_elements.detail_page import DetailPage
 
 from .pageUI import Ui_Form
 

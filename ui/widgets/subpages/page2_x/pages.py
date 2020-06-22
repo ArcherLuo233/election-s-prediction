@@ -1,4 +1,4 @@
-from ui.widgets.subpages.Page2_x import Page2_x
+from ui.widgets.subpages.page2_x import Page2_x
 
 
 class Page2_1(Page2_x):

@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget
 
 from config.uicolor import UIColor as color
 from libs.link_manager import link_manager
-from ui.page_elements.NavigateMenu.NavigateLabel import NavigateLabel
+from ui.page_elements.navigate_menu.NavigateLabel import NavigateLabel
 
 from .NavigateFieldUI import Ui_Form
 

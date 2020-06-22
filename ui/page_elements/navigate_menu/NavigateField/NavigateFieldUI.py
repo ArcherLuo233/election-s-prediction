@@ -9,7 +9,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.NavigateMenu.NavigateField import NavigateLabel
+from ui.page_elements.navigate_menu.NavigateField import NavigateLabel
 
 
 class Ui_Form(object):

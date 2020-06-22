@@ -9,7 +9,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.PageController import PageController
+from ui.page_elements.page_controller import PageController
 
 
 class Ui_Form(object):

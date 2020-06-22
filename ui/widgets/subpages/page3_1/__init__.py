@@ -2,7 +2,7 @@ from PyQt5.QtCore import QEventLoop
 from PyQt5.QtWidgets import QWidget
 
 from libs.link_manager import link_manager
-from ui.page_elements.WindowMask import WindowMask
+from ui.page_elements.window_mask import WindowMask
 
 from .detailPage import DetailPage
 from .pageUI import Ui_Form

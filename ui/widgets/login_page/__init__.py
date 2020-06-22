@@ -39,7 +39,7 @@ class LoginPage(QWidget):
             QMessageBox.warning(None, "登录失败", e.msg)
             return
         g.current_user = user
-        main_widget = PageManager.getPage("Main", False)
+        main_widget = PageManager.get_page("Main")
         main_widget.refreshUser()
         main_widget.showMaximized()
         self.close()

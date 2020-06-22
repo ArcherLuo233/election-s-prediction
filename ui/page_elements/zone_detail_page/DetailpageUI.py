@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'zoneDetailpage.ui'
+# Form implementation generated from reading ui file 'zone_detail_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.0
 #

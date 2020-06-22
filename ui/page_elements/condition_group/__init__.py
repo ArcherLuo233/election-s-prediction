@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 
-from ui.page_elements.ConditionBox import ConditionBox
+from ui.page_elements.condition_box import ConditionBox
 
 
 class ConditionGroup(QObject):

@@ -5,7 +5,7 @@ from config.uicolor import UIColor as color
 from libs.g import g
 from libs.link_manager import link_manager
 from libs.page_magager import PageManager
-from ui.page_elements.NavigateMenu import NavigateMenu
+from ui.page_elements.navigate_menu import NavigateMenu
 
 from .MainPageUI import Ui_Form
 
@@ -45,7 +45,7 @@ class MainPage(QWidget):
             w = self.ui.main_widget
             if w.layout().count():
                 w.layout().takeAt(0).widget().hide()
-            page_widget = PageManager.getPage(s[6:])
+            page_widget = PageManager.get_page(s[6:], reload=True)
             if page_widget is None:
                 return
             w.layout().addWidget(page_widget)
@@ -107,5 +107,5 @@ class MainPage(QWidget):
         self.ui.label_username.setText(g.current_user.nickname)
 
     def logout(self):
-        PageManager.getPage("Login", False).show()
+        PageManager.get_page("Login").show()
         self.close()

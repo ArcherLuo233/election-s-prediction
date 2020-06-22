@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainPage.ui'
+# Form implementation generated from reading ui file 'main_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -9,7 +9,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.NavigateMenu import NavigateMenu
+from ui.page_elements.navigate_menu import NavigateMenu
 
 
 class Ui_Form(object):

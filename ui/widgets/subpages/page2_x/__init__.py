@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 
 from libs.fields_translater import FieldsTranslater
-from ui.page_elements.zoneDetailpage import DetailPage
+from ui.page_elements.zone_detail_page import DetailPage
 
 from .pageUI import Ui_Form
 

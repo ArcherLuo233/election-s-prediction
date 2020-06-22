@@ -6,8 +6,8 @@ from libs.fonts import loadFonts
 from libs.g import g
 from libs.page_magager import PageManager
 from model.base import init_database
-from ui.widgets.LoginPage import LoginPage
-from ui.widgets.MainPage import MainPage
+from ui.widgets.login_page import LoginPage
+from ui.widgets.main_page import MainPage
 
 
 def main():
