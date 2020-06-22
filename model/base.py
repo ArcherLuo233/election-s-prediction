@@ -99,9 +99,11 @@ class Base(base_class):
     @classmethod
     def export(cls, filename, **kwargs):
         res = cls.search(page_size=-1, **kwargs)['data']
+        field = cls.field.copy()
+        field.insert(0, 'id')
         data = []
         for i in res:
-            data.append([getattr(i, key) for key in cls.field])
+            data.append([getattr(i, key) for key in field])
         save_excel(cls.template_filename, cls.template_start_row, data, filename)
 
     @classmethod

@@ -8,8 +8,7 @@ from libs.helper import md5
 
 
 def read_excel(filename, start_row):
-    wb = load_workbook(filename)
-    ws = wb.active
+    ws = load_workbook(filename).active
 
     col = ws.max_column
     row = ws.max_row
@@ -17,8 +16,8 @@ def read_excel(filename, start_row):
     data = []
     for idx in range(start_row, row):
         try:
-            data.append([str(ws[chr(65 + i)][idx].internal_value)
-                         if ws[chr(65 + i)][idx].internal_value is not None
+            data.append([str(ws[chr(65 + i + 1)][idx].internal_value)
+                         if ws[chr(65 + i + 1)][idx].internal_value is not None
                          else None for i in range(col)])
         except IndexError:
             raise AppException('导入数据错误，请使用模板导入数据')
