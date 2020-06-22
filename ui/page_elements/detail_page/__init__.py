@@ -36,6 +36,8 @@ class DetailPage(QDialog):
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
+        hor_header.setSectionResizeMode(0, QHeaderView.Fixed)
+        hor_header.setSectionResizeMode(2, QHeaderView.Fixed)
         # btn-bind
         self.ui.btn_close.clicked.connect(self.close)
         self.ui.btn_append.clicked.connect(self.append)
@@ -127,6 +129,7 @@ class DetailPage(QDialog):
             item = QTableWidgetItem()
             item.setFlags(Qt.NoItemFlags)
             table_widget.setItem(row_count - 1, 3, item)
+        table_widget.resizeColumnsToContents()
 
     def get_data_from_table(self) -> dict:
         table_widget = self.ui.tableWidget
@@ -181,7 +184,7 @@ class DetailPage(QDialog):
     def location_dialog(self):
         self.mask_.resize(self.parent().size())
         geo = self.parent().geometry()
-        width = 700
+        width = 1000
         left = (geo.width() - width) / 2
         geo.setLeft(left)
         geo.setRight(left + width)
