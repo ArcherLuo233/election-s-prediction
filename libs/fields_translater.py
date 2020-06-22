@@ -8,6 +8,8 @@ class FieldsTranslater:
             field2text[idx] = tr
             text2field[tr] = idx
         for idx in model.field:
+            if idx in self.default_translations:
+                continue
             comment = getattr(model, idx).comment
             field2text[idx] = comment
             text2field[comment] = idx
