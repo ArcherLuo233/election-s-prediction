@@ -1,7 +1,7 @@
 from model.jzz import JZZ
+from model.lp import LP
 from model.ts import TS
 from model.tstg import TSTG
-from model.lp import LP
 from ui.widgets.subpages.page1_x import Page1_x
 
 
