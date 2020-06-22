@@ -22,8 +22,6 @@ class PicWidget(QWidget):
         self.set_picture(raw)
 
     def set_picture(self, raw_data):
-        with open("files/test2.png", "wb") as f:
-            f.write(raw_data)
         self.pixmap = QPixmap()
         if self.pixmap.loadFromData(raw_data):
             self.raw_data = raw_data
@@ -40,8 +38,6 @@ class PicWidget(QWidget):
         if filename == "":
             return
         raw = upload_file(filename)
-        with open("files/test1.png", 'wb') as f:
-            f.write(raw)
         self.set_picture(raw)
 
     def paintEvent(self, e):
