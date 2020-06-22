@@ -7,12 +7,13 @@ from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
 from libs.fields_translater import FieldsTranslater
 from model.base import Base
 from ui.page_elements.window_mask import WindowMask
+from ui.page_elements.pic_widget import PicWidget
 
 from .dialogUI import Ui_Dialog
 
 
 class DetailPage(QDialog):
-    pic_item_height = 4
+    pic_item_height = 6
 
     def __init__(self, parent, model: Base, need_pic=False):
         QDialog.__init__(self)
@@ -73,8 +74,10 @@ class DetailPage(QDialog):
                 return
         data_list = []
         filter_list = ['id', 'photo']
+        filtered_data = {}
         for idx in meta.field:
             if idx in filter_list:
+                filtered_data[idx] = getattr(meta, idx)
                 continue
             comment = self.translator.to_text(idx)
             value = getattr(meta, idx)
@@ -84,9 +87,9 @@ class DetailPage(QDialog):
                 'comment': comment,
                 'value': str(value)
             })
-        self.refresh_table(data_list)
+        self.refresh_table(data_list, **filtered_data)
 
-    def refresh_table(self, data_list):
+    def refresh_table(self, data_list, **kwargs):
         table_widget = self.ui.tableWidget
         pic_height = self.pic_item_height if self.need_pic else 0
         row_count = (len(data_list) - pic_height + 1) // 2 + pic_height
@@ -96,12 +99,15 @@ class DetailPage(QDialog):
         table_widget.setColumnCount(column_count)
         # pic-item
         if self.need_pic:
-            self.ui.tableWidget.setSpan(0, 2, pic_height, 1)
-            self.ui.tableWidget.setSpan(0, 3, pic_height, 1)
+            table_widget.setSpan(0, 2, pic_height, 1)
+            table_widget.setSpan(0, 3, pic_height, 1)
             item = QTableWidgetItem()
             item.setFlags(Qt.ItemIsEnabled)
             item.setText("照片")
-            self.ui.tableWidget.setItem(0, 2, item)
+            table_widget.setItem(0, 2, item)
+            pic_widget = PicWidget()
+            pic_widget.set_picture(kwargs.get('photo'))
+            table_widget.setCellWidget(0, 3, pic_widget)
         # data-list-set
         for i, item in enumerate(data_list[:pic_height]):
             comment_item = QTableWidgetItem()
@@ -136,7 +142,9 @@ class DetailPage(QDialog):
         pic_height = self.pic_item_height if self.need_pic else 0
         row_cnt = table_widget.rowCount()
         data = dict()
-        # 先不管照片了
+        if self.need_pic:
+            pic_widget = table_widget.cellWidget(0, 3)
+            data['photo'] = pic_widget.get_data()
         for row in range(0, row_cnt):
             cols = [0] if row < pic_height else [0, 2]
             for col in cols:
