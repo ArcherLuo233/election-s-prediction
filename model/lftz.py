@@ -23,4 +23,4 @@ class LFTZ(Base):
     number_of_day = Column(Integer, comment='天数')
     stroke = Column(Text, comment='行程')
     group_organization = Column(String(100), comment='组团单位')
-    member = relationship(LFTZ_TY)
+    members = relationship(LFTZ_TY)
