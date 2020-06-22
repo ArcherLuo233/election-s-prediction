@@ -6,8 +6,8 @@ from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
 
 from libs.fields_translater import FieldsTranslater
 from model.base import Base
-from ui.page_elements.window_mask import WindowMask
 from ui.page_elements.pic_widget import PicWidget
+from ui.page_elements.window_mask import WindowMask
 
 from .dialogUI import Ui_Dialog
 
