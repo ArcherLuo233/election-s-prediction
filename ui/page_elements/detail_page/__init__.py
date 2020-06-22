@@ -42,7 +42,7 @@ class DetailPage(QDialog):
         self.ui.btn_modify.clicked.connect(self.modify)
         self.ui.btn_delete.clicked.connect(self.delete)
         # widget-init
-        self.locationDialog()
+        self.location_dialog()
         self.close()
 
     def append(self):
@@ -169,16 +169,16 @@ class DetailPage(QDialog):
         self.close()
         self.mask_.close()
 
-    def closeEvent(self, QCloseEvent):
+    def closeEvent(self, e):
         if self.loop.isRunning():
             self.loop.quit()
 
-    def paintEvent(self, QPaintEvent):
+    def paintEvent(self, e):
         painter = QPainter(self)
         painter.setBrush(self.palette().window())
         painter.drawRect(0, 0, self.width() - 1, self.height() - 1)
 
-    def locationDialog(self):
+    def location_dialog(self):
         self.mask_.resize(self.parent().size())
         geo = self.parent().geometry()
         width = 700

@@ -255,7 +255,7 @@ class Page1_x(QWidget):
 
     def resizeEvent(self, e):
         if self.dialog:
-            self.dialog.locationDialog()
+            self.dialog.location_dialog()
         self.refresh_conditions()
 
     def closeEvent(self, e):

@@ -45,7 +45,7 @@ class MainPage(QWidget):
             w = self.ui.main_widget
             if w.layout().count():
                 w.layout().takeAt(0).widget().hide()
-            page_widget = PageManager.get_page(s[6:], reload=True)
+            page_widget = PageManager.get_page(s[6:])
             if page_widget is None:
                 return
             w.layout().addWidget(page_widget)
