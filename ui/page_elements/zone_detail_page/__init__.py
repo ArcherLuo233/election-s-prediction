@@ -4,7 +4,7 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
                              QTableWidgetItem)
 
-from ui.page_elements.WindowMask import WindowMask
+from ui.page_elements.window_mask import WindowMask
 
 from .DetailpageUI import Ui_Dialog
 
@@ -61,15 +61,6 @@ class DetailPage(QDialog):
     def show_(self, enable: bool, data):
         self.ui.tableWidget.setEnabled(enable)
         id_ = data['id']
-        self.data_id = id_
-        if id_ == -1:
-            self.ui.btn_append.show()
-            self.ui.btn_modify.hide()
-            self.ui.btn_delete.hide()
-        else:
-            self.ui.btn_append.hide()
-            self.ui.btn_modify.show()
-            self.ui.btn_delete.show()
         self.refresh_data(id_)
         self.show()
 
