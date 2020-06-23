@@ -1,7 +1,7 @@
 import math
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QColor, QIcon, QPalette
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
@@ -114,6 +114,7 @@ class Page1_x(QWidget):
 
     def set_default_conditions(self, **kwargs):
         self.default_conditions = kwargs
+        self.refresh_page()
 
     def refresh_conditions(self):
         if not self.model:
