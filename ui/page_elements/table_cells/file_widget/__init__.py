@@ -1,8 +1,8 @@
 import os
 
-from PyQt5.QtWidgets import QFileDialog, QWidget
+from PyQt5.QtWidgets import QFileDialog, QWidget, QMessageBox
 
-from libs.service import upload_file
+from libs.service import upload_file, download_file
 
 from .pageUI import Ui_Form
 
@@ -23,22 +23,24 @@ class FileWidget(QWidget):
 
     def delete(self):
         self.set_file_path(None)
+        QMessageBox.information(None, "删除文件", "已删除，保存后生效")
 
     def upload(self):
-        filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "文件(*.*)")[0]
+        filename = QFileDialog.getOpenFileName(self, "上传文件", "./", "文件(*.*)")[0]
         if filename == "":
             return
         path = upload_file(filename)
         self.set_file_path(path)
+        QMessageBox.information(None, "上传文件", "上传完成，保存后生效")
 
     def download(self):
         suffix = os.path.splitext(self.path)[1]
         default_name = "download" + suffix
         filename = QFileDialog.getSaveFileName(self, "下载文件", default_name)[0]
-        print(filename)
         if filename == "":
             return
-        # todo: save_file
+        download_file(self.path, filename)
+        QMessageBox.information(None, "下载文件", "下载完成")
 
     def get_data(self):
         return self.path
