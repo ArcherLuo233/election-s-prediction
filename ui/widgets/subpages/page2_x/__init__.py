@@ -31,7 +31,6 @@ class Page2_x(QWidget):
         # init_
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
-        _translate = QtCore.QCoreApplication.translate
         table_widget = self.ui.tableWidget
         table_widget.setSelectionMode(QTableWidget.NoSelection)
         item = QTableWidgetItem()
