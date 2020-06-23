@@ -59,7 +59,7 @@ class Ui_Form(object):
         font.setFamily("黑体")
         font.setPointSize(14)
         self.label_logo.setFont(font)
-        self.label_logo.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_logo.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_logo.setObjectName("label_logo")
         self.horizontalLayout.addWidget(self.label_logo)
         self.line = QtWidgets.QFrame(self.widget_header)

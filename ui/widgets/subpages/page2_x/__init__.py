@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtGui
 from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QHeaderView, QTableWidget, QTableWidgetItem,
                              QWidget)
@@ -34,8 +34,9 @@ class Page2_x(QWidget):
         self.ui.tableWidget.setSpan(3, 0, 1, 2)
         self.ui.tableWidget.setItem(3, 0, item)
         self.reload()
+
     def reload(self):
-        data=Area.search(name=self.title)["data"][0]
+        data = Area.search(name=self.title)["data"][0]
         item = QTableWidgetItem()
         item.setText(data.introduction)
         item.setFont(self.font)

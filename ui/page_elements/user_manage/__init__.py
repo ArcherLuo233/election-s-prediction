@@ -56,7 +56,7 @@ class UserManager(ModalDialog):
             hLayout = QHBoxLayout()
             widget = QWidget()
             hLayout.addWidget(item)
-            hLayout.setContentsMargins(0,0,0,0)
+            hLayout.setContentsMargins(0, 0, 0, 0)
             hLayout.setAlignment(Qt.AlignCenter)
             widget.setLayout(hLayout)
             if i.permission == 1:

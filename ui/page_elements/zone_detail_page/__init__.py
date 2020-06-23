@@ -42,5 +42,6 @@ class DetailPage(ModalDialog):
         # btn-bind
         self.ui.button_ok.clicked.connect(self.close)
         self.reload()
+
     def reload(self):
         return
