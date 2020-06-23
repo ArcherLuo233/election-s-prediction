@@ -11,12 +11,14 @@ from libs.fields_translater import FieldsTranslater
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
 from ui.page_elements.detail_page import DetailPage
+from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .pageUI import Ui_Form
 
 
 class Page1_x(QWidget):
     model = None
+    members_model = None
     summary = {}
     need_pic = False
     title: str = None
@@ -102,11 +104,11 @@ class Page1_x(QWidget):
         self.refresh_conditions()
 
     def del_condition(self):
-        sender = self.sender()
-        self.condition_boxes.remove(sender)
-        self.condition_group.del_box(sender)
+        box = self.sender()
+        self.condition_boxes.remove(box)
+        self.condition_group.del_box(box)
         self.refresh_conditions()
-        sender.deleteLater()
+        box.deleteLater()
 
     def refresh_conditions(self):
         if not self.model:
@@ -189,7 +191,10 @@ class Page1_x(QWidget):
                 table_widget.setItem(i, j, item)
             # detail_label
             detail_label = QLabel(self)
-            detail_label.setText('<a href="#detail:{}">详细信息</a>'.format(info.id))
+            detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
+            if self.members_model:
+                detail_text += '   <a href="#members:{}">团员信息</a>'.format(info.id)
+            detail_label.setText(detail_text)
             detail_label.setFont(self.font())
             detail_label.linkActivated.connect(self.detail)
             detail_label.show()
@@ -233,14 +238,23 @@ class Page1_x(QWidget):
                 break
             item.setCheckState(Qt.Unchecked)
 
-    def detail(self, link):
-        self.open_dialog(True, data={'id': int(link[len("#detail:"):])})
+    def detail(self, link: str):
+        print(link)
+        if link.startswith("#detail:"):
+            self.open_detail(True, data={'id': int(link[len("#detail:"):])})
+        else:
+            self.open_members({'id': int(link[len("#members:"):])})
 
     def action_add(self):
-        self.open_dialog(True, data={'id': -1})
+        self.open_detail(True, data={'id': -1})
         self.refresh_page()
 
-    def open_dialog(self, enable: bool, data):
+    def open_members(self, data):
+        print(data)
+        dialog = create_dialog_like_widget(self, self.members_model.__name__)
+        dialog.exec_()
+
+    def open_detail(self, enable: bool, data):
         if self.model is None:
             print("jiubei: 没有设置Model: ", self.title)
             return

@@ -16,10 +16,6 @@ class UserInfoPage(ModalDialog):
         # btn_
         self.ui.btn_close.clicked.connect(self.close)
         self.ui.btn_modifyuserinfo.clicked.connect(self.modify)
-        # widget-init
-        self.message = QMessageBox()
-        self.message.setStandardButtons(QMessageBox.Yes)
-        self.message.button(QMessageBox.Yes).setText('确认')
 
     def modify(self):
         newname = self.ui.LineEdit.text()
@@ -37,4 +33,4 @@ class UserInfoPage(ModalDialog):
             else:
                 g.current_user.modify(password=newpwd1)
                 QMessageBox.information(None, "修改用户信息", "修改密码成功")
-        self.close()
+                self.close()
