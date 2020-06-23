@@ -13,6 +13,6 @@ class LFTZ_TY(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     lftz_id = Column(Integer, ForeignKey('lftz.id'))
-    nickname = Column(String(10000), comment='姓名')
-    job = Column(String(10000), comment='单位职务')
-    type = Column(String(10000), comment='人物类型')
+    nickname = Column(String(100), comment='姓名')
+    job = Column(String(100), comment='单位职务')
+    type = Column(String(100), comment='人物类型')
