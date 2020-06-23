@@ -7,3 +7,4 @@ class Page2_1(Page2_x):
 
 class Page2_2(Page2_x):
     title = "中正里"
+

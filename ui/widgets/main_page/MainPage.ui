@@ -185,6 +185,13 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="btn_manage">
+        <property name="text">
+         <string>权限管理</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_username">
         <property name="font">
          <font>
@@ -260,8 +267,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>318</width>
-          <height>310</height>
+          <width>300</width>
+          <height>305</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">

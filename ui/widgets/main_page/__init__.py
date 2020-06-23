@@ -7,6 +7,7 @@ from libs.link_manager import link_manager
 from libs.page_magager import PageManager
 from ui.page_elements.navigate_menu import NavigateMenu
 from ui.page_elements.user_info import UserInfoPage
+from ui.page_elements.user_manage import Usermanager
 
 from .MainPageUI import Ui_Form
 
@@ -18,7 +19,9 @@ class MainPage(QWidget):
         self.ui.setupUi(self)
         self.ui.label_logout.linkActivated.connect(self.logout)
         self.ui.label_username.linkActivated.connect(self.modify_user_info)
+        self.ui.btn_manage.clicked.connect(self.manage)
         self.ui.main_widget.setLayout(QHBoxLayout())
+        self.user_manage_dialog= Usermanager(self)
         self.user_info_dialog = UserInfoPage(self)
         with open("./static/qss/main.qss") as f:
             s = f.read()
@@ -109,6 +112,15 @@ class MainPage(QWidget):
         self.ui.label_username.setText('<a href="#nickname"'
                                        'style="color:{};">{}</a>'.format(color.HeaderText.name(),
                                                                          g.current_user.nickname))
+        if (g.current_user.permission!=1):
+            self.ui.btn_manage.hide()
+        else:
+            self.ui.btn_manage.show()
+
+    def manage(self):
+        self.user_manage_dialog.refresh()
+        self.user_manage_dialog.show()
+        self.refresh_user()
 
     def modify_user_info(self):
         self.user_info_dialog.ui.LineEdit.setText(g.current_user.nickname)
@@ -120,6 +132,7 @@ class MainPage(QWidget):
 
     def resizeEvent(self, e):
         self.user_info_dialog.location_dialog()
+        self.user_manage_dialog.location_dialog()
 
     def logout(self):
         PageManager.get_page("Login").show()
