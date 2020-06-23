@@ -1,5 +1,5 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import QHeaderView, QMessageBox, QTableWidgetItem
+from PyQt5.QtWidgets import QWidget,QHeaderView, QMessageBox, QTableWidgetItem,QCheckBox,QHBoxLayout
 
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
@@ -23,7 +23,7 @@ class UserManager(ModalDialog):
         # widget-init
         self.user_add_dialog = UserAdd(self)
         hor_header = self.ui.tableWidget.horizontalHeader()
-        hor_header.setFixedHeight(20)
+        hor_header.setFixedHeight(25)
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         hor_header.setSectionResizeMode(2, QHeaderView.Fixed)
         self.ui.tableWidget.resizeColumnToContents(2)
@@ -51,12 +51,18 @@ class UserManager(ModalDialog):
             item.setTextAlignment(Qt.AlignCenter)
             table_widget.setItem(index, 1, item)
 
-            item = QTableWidgetItem()
+            item = QCheckBox()
+            hLayout = QHBoxLayout()
+            widget = QWidget()
+            hLayout.addWidget(item)
+            hLayout.setContentsMargins(0,0,0,0)
+            hLayout.setAlignment(Qt.AlignCenter)
+            widget.setLayout(hLayout)
             if i.permission == 1:
                 item.setCheckState(Qt.Checked)
             else:
                 item.setCheckState(Qt.Unchecked)
-            table_widget.setItem(index, 2, item)
+            table_widget.setCellWidget(index, 2, widget)
         self.ui.tableWidget.horizontalHeader().setFont(self.font())
 
     def modify(self):

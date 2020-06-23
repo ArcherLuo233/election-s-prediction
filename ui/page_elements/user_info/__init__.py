@@ -22,6 +22,8 @@ class UserInfoPage(ModalDialog):
         oldpwd = self.ui.LineEdit_2.text()
         newpwd1 = self.ui.LineEdit_3.text()
         newpwd2 = self.ui.LineEdit_4.text()
+        if newname == g.current_user.nickname and newpwd1 == '' and newpwd2 == '':
+            self.close()
         if newname != g.current_user.nickname:
             g.current_user.modify(nickname=newname)
             QMessageBox.information(None, "修改用户信息", "修改用户名成功")

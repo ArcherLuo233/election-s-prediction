@@ -41,3 +41,9 @@ class DetailPage(ModalDialog):
         table_widget.setItem(21, 0, item)
         # btn-bind
         self.ui.button_ok.clicked.connect(self.close)
+        self.reload()
+    def reload(self):
+        return
+
+
+

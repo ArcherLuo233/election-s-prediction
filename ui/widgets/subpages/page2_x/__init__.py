@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (QHeaderView, QTableWidget, QTableWidgetItem,
 from ui.page_elements.zone_detail_page import DetailPage
 
 from .pageUI import Ui_Form
+from model.area import Area
 
 
 class Page2_x(QWidget):
@@ -22,31 +23,34 @@ class Page2_x(QWidget):
         # init_
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
-        table_widget = self.ui.tableWidget
-        table_widget.setSelectionMode(QTableWidget.NoSelection)
+        self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
         item = QTableWidgetItem()
         item.setText("基本情况")
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(14)
-        item.setFont(font)
+        self.font = QtGui.QFont()
+        self.font.setFamily("黑体")
+        self.font.setPointSize(14)
+        item.setFont(self.font)
         item.setTextAlignment(Qt.AlignCenter)
-        table_widget.setSpan(3, 0, 1, 2)
-        table_widget.setItem(3, 0, item)
-
+        self.ui.tableWidget.setSpan(3, 0, 1, 2)
+        self.ui.tableWidget.setItem(3, 0, item)
+        self.reload()
+    def reload(self):
+        data=Area.search(name=self.title)["data"][0]
         item = QTableWidgetItem()
-        item.setText("  日月潭位于中国台湾省阿里山以北、能高山之南的南投县鱼池乡水社村，"
-                     "旧称水沙连、龙湖、水社大湖、珠潭、双潭，亦名水里社。"
-                     "日月潭湖面海拔748米，常态面积为7.93㎞²（满水位时10㎞²），"
-                     "最大水深27米，湖周长约37千米，是中国台湾外来种生物最多的淡水湖泊之一"
-                     "。它以光华岛为界，北半湖形状如圆日，南半湖形状如弯月。2009年，"
-                     "日月潭入选世界纪录协会“中国台湾最大的天然淡水湖”，"
-                     "在清朝时即被选为台湾八大景之一，有 “海外别一洞天” 之称。")
-        item.setFont(font)
-        table_widget.setSpan(4, 0, 1, 2)
-        table_widget.setItem(4, 0, item)
-        table_widget.setRowHeight(4, 200)
-        table_widget.setWordWrap(True)
+        item.setText(data.introduction)
+        item.setFont(self.font)
+        self.ui.tableWidget.setSpan(4, 0, 1, 2)
+        self.ui.tableWidget.setItem(4, 0, item)
+        self.ui.tableWidget.setRowHeight(4, 500)
+        self.ui.tableWidget.setWordWrap(True)
+        item = QTableWidgetItem()
+        item.setText(data.mayor)
+        item.setFont(self.font)
+        self.ui.tableWidget.setItem(0, 1, item)
+        item = QTableWidgetItem()
+        item.setText(data.population)
+        item.setFont(self.font)
+        self.ui.tableWidget.setItem(1, 1, item)
 
     def findzone(self):
         dialog = DetailPage(self)

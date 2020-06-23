@@ -122,6 +122,7 @@ class MainPage(QWidget):
 
     def modify_user_info(self):
         dialog = UserInfoPage(self)
+        dialog.ui.LineEdit.setText(g.current_user.nickname)
         dialog.exec_()
         self.refresh_user()
 
