@@ -1,8 +1,8 @@
 import os
 
-from PyQt5.QtWidgets import QFileDialog, QWidget, QMessageBox
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
 
-from libs.service import upload_file, download_file
+from libs.service import download_file, upload_file
 
 from .pageUI import Ui_Form
 
