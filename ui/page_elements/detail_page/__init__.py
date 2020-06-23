@@ -18,6 +18,7 @@ class DetailPage(ModalDialog):
         self.setFixedSize(1000, 800)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.default_conditions = {}
         # model
         self.model = model
         self.need_pic = need_pic
@@ -35,6 +36,9 @@ class DetailPage(ModalDialog):
         self.ui.btn_append.clicked.connect(self.append)
         self.ui.btn_modify.clicked.connect(self.modify)
         self.ui.btn_delete.clicked.connect(self.delete)
+
+    def set_default_conditions(self, **kwargs):
+        self.default_conditions = kwargs
 
     def append(self):
         data = self.get_data_from_table()
@@ -157,6 +161,8 @@ class DetailPage(ModalDialog):
                 else:
                     content = widget.get_data()
                 data[field] = content
+        for field, val in self.default_conditions.items():
+            data[field] = val
         return data
 
     def show_(self, enable: bool, data):

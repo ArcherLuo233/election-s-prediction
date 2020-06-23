@@ -9,8 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.navigate_menu import NavigateMenu
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -179,3 +177,4 @@ class Ui_Form(object):
         self.btn_manage.setText(_translate("Form", "权限管理"))
         self.label_username.setText(_translate("Form", "用户名"))
         self.label_logout.setText(_translate("Form", "<a href=\"#logout\">登出</a>"))
+from ui.page_elements.navigate_menu import NavigateMenu

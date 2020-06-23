@@ -1,7 +1,7 @@
 import math
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPalette, QColor
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
@@ -30,6 +30,8 @@ class Page1_x(QWidget):
         self.id_selected = set()
         self.sort_field = 'id'
         self.sort_order = 'asc'
+        self.default_conditions = {}
+        self.dialog_parent = self
         if self.model:
             self.translator = FieldsTranslater(self.model)
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
@@ -110,6 +112,9 @@ class Page1_x(QWidget):
         self.refresh_conditions()
         box.deleteLater()
 
+    def set_default_conditions(self, **kwargs):
+        self.default_conditions = kwargs
+
     def refresh_conditions(self):
         if not self.model:
             return
@@ -126,6 +131,9 @@ class Page1_x(QWidget):
     @property
     def cols(self):
         return len(self.summary) + 3
+
+    def set_dialog_parent(self, parent):
+        self.dialog_parent = parent
 
     def section_clicked(self, id_):
         table_widget = self.ui.tableWidget
@@ -164,6 +172,8 @@ class Page1_x(QWidget):
             c = w.get()
             field = self.translator.to_field(c['field'])
             data[field] = c['val']
+        for field, val in self.default_conditions.items():
+            data[field] = val
         return data
 
     def refresh_table(self, records: list, page_size=DEFAULT_PAGE_SIZE):
@@ -239,7 +249,6 @@ class Page1_x(QWidget):
             item.setCheckState(Qt.Unchecked)
 
     def detail(self, link: str):
-        print(link)
         if link.startswith("#detail:"):
             self.open_detail(True, data={'id': int(link[len("#detail:"):])})
         else:
@@ -250,15 +259,20 @@ class Page1_x(QWidget):
         self.refresh_page()
 
     def open_members(self, data):
-        print(data)
-        dialog = create_dialog_like_widget(self, self.members_model.__name__)
+        page_name = self.members_model.__name__
+        dialog = create_dialog_like_widget(self.dialog_parent, page_name.lower())
+        dialog.setFixedSize(1500, 800)
+        field = self.model.__name__.lower() + '_id'
+        dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
+        dialog.wrapped_widget.set_dialog_parent(self)
         dialog.exec_()
 
     def open_detail(self, enable: bool, data):
         if self.model is None:
             print("jiubei: 没有设置Model: ", self.title)
             return
-        dialog = DetailPage(self, self.model, self.need_pic)
+        dialog = DetailPage(self.dialog_parent, self.model, self.need_pic)
+        dialog.set_default_conditions(**self.default_conditions)
         dialog.show_(enable, data)
         self.refresh_page(self.ui.page_controller.page)
 

@@ -2,14 +2,12 @@
 
 # Form implementation generated from reading ui file 'page.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-from ui.page_elements.page_controller import PageController
 
 
 class Ui_Form(object):
@@ -21,6 +19,7 @@ class Ui_Form(object):
         font.setPointSize(14)
         Form.setFont(font)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label_title = QtWidgets.QLabel(Form)
@@ -178,3 +177,6 @@ class Ui_Form(object):
         self.btn_select_all.setText(_translate("Form", "全选"))
         self.btn_select_null.setText(_translate("Form", "全不选"))
         self.btn_mul_delete.setText(_translate("Form", "批量删除"))
+
+
+from ui.page_elements.page_controller import PageController
