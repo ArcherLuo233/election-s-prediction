@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
 
 from model.base import Base
-from model.swtz_ty import SWTZ_TY
 
 
 # 商务团组
@@ -23,4 +21,3 @@ class SWTZ(Base):
     taiwan_main_business = Column(String(100), comment='台方主营业务')
     taiwan_company_address = Column(String(100), comment='台方企业地址')
     taiwan_company_legal_people = Column(String(100), comment='台方企业法人代表')
-    members = relationship(SWTZ_TY)

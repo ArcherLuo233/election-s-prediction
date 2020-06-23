@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
 
 from model.base import Base
-from model.lftz_ty import LFTZ_TY
 
 
 # 来访团组
@@ -20,4 +18,3 @@ class LFTZ(Base):
     number_of_day = Column(String(100), comment='天数')
     stroke = Column(String(100), comment='行程')
     group_organization = Column(String(100), comment='组团单位')
-    members = relationship(LFTZ_TY)

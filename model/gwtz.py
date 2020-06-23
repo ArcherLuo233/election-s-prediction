@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
 
 from model.base import Base
-from model.gwtz_ty import GWTZ_TY
 
 
 # 公务团组
@@ -29,4 +27,3 @@ class GWTZ(Base):
     summary = Column(String(100), comment='总结')
     contact_person = Column(String(100), comment='联系人')
     contact_phone = Column(String(100), comment='联系电话')
-    members = relationship(GWTZ_TY)
