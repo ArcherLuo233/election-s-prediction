@@ -1,12 +1,13 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.Qt import Qt
+from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
+                             QTableWidgetItem, QWidget)
 
 from libs.fields_translater import FieldsTranslater
 from ui.page_elements.zone_detail_page import DetailPage
-from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
-                             QTableWidgetItem)
+
 from .pageUI import Ui_Form
-from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Page2_x(QWidget):
     model = None

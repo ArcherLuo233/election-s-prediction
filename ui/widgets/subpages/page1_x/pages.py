@@ -1,10 +1,10 @@
 from model.jzz import JZZ
 from model.lp import LP
+from model.ls import LS
+from model.lsjl import LSJL
 from model.ts import TS
 from model.tstg import TSTG
-from model.lsjl import LSJL
 from model.zyrs import ZYRS
-from model.ls import LS
 from ui.widgets.subpages.page1_x import Page1_x
 
 
