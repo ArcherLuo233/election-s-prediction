@@ -78,12 +78,6 @@ class Page1_x(QWidget):
         item.setText("详情")
         table_widget.setHorizontalHeaderItem(cols - 1, item)
 
-        # detail_page
-        if self.model is not None:
-            self.dialog = DetailPage(self, self.model, self.need_pic)
-        else:
-            self.dialog = None
-
         # download-template
         self.ui.btn_downloadTemplate.clicked.connect(self.download_template)
         # import
@@ -250,17 +244,12 @@ class Page1_x(QWidget):
         if self.model is None:
             print("jiubei: 没有设置Model: ", self.title)
             return
-        self.dialog.show_(enable, data)
+        dialog = DetailPage(self, self.model, self.need_pic)
+        dialog.show_(enable, data)
         self.refresh_page(self.ui.page_controller.page)
 
     def resizeEvent(self, e):
-        if self.dialog:
-            self.dialog.location_dialog()
         self.refresh_conditions()
-
-    def closeEvent(self, e):
-        if self.dialog:
-            self.dialog.close()
 
     def download_template(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]

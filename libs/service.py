@@ -51,6 +51,13 @@ def upload_file(filename):
     return filename
 
 
+def download_file(from_filename, to_filename):
+    with open(from_filename, "rb") as f:
+        raw = f.read()
+    with open(to_filename, "wb") as f:
+        f.write(raw)
+
+
 def save_word(template_file, data, filename):
     doc = DocxTemplate(template_file)
     doc.render(data)

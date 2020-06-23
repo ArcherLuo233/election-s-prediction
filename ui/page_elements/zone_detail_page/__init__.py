@@ -1,29 +1,17 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtCore import QEventLoop
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
-                             QTableWidgetItem)
+from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
 
-from ui.page_elements.window_mask import WindowMask
+from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailpageUI import Ui_Dialog
 
 
-class DetailPage(QDialog):
-    pic_item_height = 4
-
+class DetailPage(ModalDialog):
     def __init__(self, parent):
-        QDialog.__init__(self)
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        super().__init__(parent)
+        self.setFixedSize(1000, 800)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.setParent(parent)
-        # mask
-        self.mask_ = WindowMask(parent)
-        self.mask_.close()
-        # event-loop
-        self.loop = QEventLoop()
-        self.mask_.clicked.connect(self.loop.quit)
         # tableWidget
         table_widget = self.ui.tableWidget
         table_widget.setSelectionMode(QTableWidget.NoSelection)
@@ -51,43 +39,5 @@ class DetailPage(QDialog):
         item.setTextAlignment(Qt.AlignCenter)
         table_widget.setSpan(21, 0, 6, 1)
         table_widget.setItem(21, 0, item)
-
         # btn-bind
         self.ui.button_ok.clicked.connect(self.close)
-        # widget-init
-        self.locationDialog()
-        self.close()
-
-    def show_(self, enable: bool, data):
-        self.ui.tableWidget.setEnabled(enable)
-        id_ = data['id']
-        self.refresh_data(id_)
-        self.show()
-
-    def show(self):
-        self.mask_.show()
-        super().show()
-        self.raise_()
-        self.loop.exec()
-        self.close()
-        self.mask_.close()
-
-    def closeEvent(self, QCloseEvent):
-        if self.loop.isRunning():
-            self.loop.quit()
-
-    def paintEvent(self, QPaintEvent):
-        painter = QPainter(self)
-        painter.setBrush(self.palette().window())
-        painter.drawRect(0, 0, self.width() - 1, self.height() - 1)
-
-    def locationDialog(self):
-        self.mask_.resize(self.parent().size())
-        geo = self.parent().geometry()
-        width = 1000
-        left = (geo.width() - width) / 2
-        geo.setLeft(left)
-        geo.setRight(left + width)
-        geo.setTop(geo.top() + 30)
-        geo.setBottom(geo.bottom() - 50)
-        self.setGeometry(geo)

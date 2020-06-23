@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'zone_detail_page.ui'
+# Form implementation generated from reading ui file 'Detailpage.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -222,6 +222,7 @@ class Ui_Dialog(object):
         font.setFamily("黑体")
         font.setPointSize(14)
         self.button_ok.setFont(font)
+        self.button_ok.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_ok.setObjectName("button_ok")
         self.horizontalLayout.addWidget(self.button_ok)
         self.verticalLayout.addLayout(self.horizontalLayout)

@@ -1,4 +1,5 @@
 import sys
+import traceback
 
 from PyQt5 import QtWidgets
 
@@ -28,4 +29,4 @@ if __name__ == '__main__':
     try:
         main()
     except Exception as e:
-        print(e)
+        traceback.print_exc()
