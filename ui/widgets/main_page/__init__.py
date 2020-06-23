@@ -27,7 +27,7 @@ class MainPage(QWidget):
         link_manager.linkActivated.connect(self.handle_link)
         self.init_navigate_menu(navi_widget)
         navi_widget.fields[0].switch()
-        navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:1_1")
+        navi_widget.fields[0].menu_labels[0].linkActivated.emit("#goto:lsjl")
         navi_widget.fields[1].switch()
         # header-palette
         self.ui.widget_header.setAutoFillBackground(True)
@@ -56,16 +56,16 @@ class MainPage(QWidget):
     @staticmethod
     def init_navigate_menu(widget) -> NavigateMenu:
         menu = [
-            ("信息登记", "1_1",
-             {"来绍交流": "1_1",
+            ("信息登记", "lsjl",
+             {"来绍交流": "lsjl",
               "台商台干": "tstg",
-              "重要人士": "1_3",
+              "重要人士": "zyrs",
               "陆配": "lp",
-              "陆生": "1_5",
+              "陆生": "ls",
               "台属": "ts",
-              "公务团组": "1_7",
-              "商务团组": "1_8",
-              "来访团组": "1_9",
+              "公务团组": "gwtz",
+              "商务团组": "swtz",
+              "来访团组": "lftz",
               "居住证人员": "jzz",
               }),
             ("地区统计", "2_1",
