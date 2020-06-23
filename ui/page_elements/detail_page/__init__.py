@@ -1,37 +1,27 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtCore import QEventLoop
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import (QDialog, QHeaderView, QTableWidget,
-                             QTableWidgetItem)
+from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
 
 from libs.fields_translater import FieldsTranslater
 from model.base import Base
+from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.pic_widget import PicWidget
-from ui.page_elements.window_mask import WindowMask
 
 from .dialogUI import Ui_Dialog
 
 
-class DetailPage(QDialog):
+class DetailPage(ModalDialog):
     pic_item_height = 6
 
     def __init__(self, parent, model: Base, need_pic=False):
-        QDialog.__init__(self)
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        super().__init__(parent)
+        self.setFixedSize(1000, 800)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.setParent(parent)
         # model
         self.model = model
         self.need_pic = need_pic
         self.data_id = 0
         self.translator = FieldsTranslater(self.model)
-        # mask
-        self.mask_ = WindowMask(parent)
-        self.mask_.close()
-        # event-loop
-        self.loop = QEventLoop()
-        self.mask_.clicked.connect(self.loop.quit)
         # tableWidget
         self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
         # tableWidget-header
@@ -44,9 +34,6 @@ class DetailPage(QDialog):
         self.ui.btn_append.clicked.connect(self.append)
         self.ui.btn_modify.clicked.connect(self.modify)
         self.ui.btn_delete.clicked.connect(self.delete)
-        # widget-init
-        self.location_dialog()
-        self.close()
 
     def append(self):
         data = self.get_data_from_table()
@@ -170,32 +157,4 @@ class DetailPage(QDialog):
             self.ui.btn_modify.show()
             self.ui.btn_delete.show()
         self.refresh_data(id_)
-        self.show()
-
-    def show(self):
-        self.mask_.show()
-        super().show()
-        self.raise_()
-        self.loop.exec()
-        self.close()
-        self.mask_.close()
-
-    def closeEvent(self, e):
-        if self.loop.isRunning():
-            self.loop.quit()
-
-    def paintEvent(self, e):
-        painter = QPainter(self)
-        painter.setBrush(self.palette().window())
-        painter.drawRect(0, 0, self.width() - 1, self.height() - 1)
-
-    def location_dialog(self):
-        self.mask_.resize(self.parent().size())
-        geo = self.parent().geometry()
-        width = 1000
-        left = (geo.width() - width) / 2
-        geo.setLeft(left)
-        geo.setRight(left + width)
-        geo.setTop(geo.top() + 30)
-        geo.setBottom(geo.bottom() - 50)
-        self.setGeometry(geo)
+        self.exec_()

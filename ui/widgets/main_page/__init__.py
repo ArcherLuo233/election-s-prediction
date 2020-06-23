@@ -19,7 +19,6 @@ class MainPage(QWidget):
         self.ui.label_logout.linkActivated.connect(self.logout)
         self.ui.label_username.linkActivated.connect(self.modify_user_info)
         self.ui.main_widget.setLayout(QHBoxLayout())
-        self.user_info_dialog = UserInfoPage(self)
         with open("./static/qss/main.qss") as f:
             s = f.read()
             self.setStyleSheet(s)
@@ -111,15 +110,9 @@ class MainPage(QWidget):
                                                                          g.current_user.nickname))
 
     def modify_user_info(self):
-        self.user_info_dialog.ui.LineEdit.setText(g.current_user.nickname)
-        self.user_info_dialog.ui.LineEdit_2.setText("")
-        self.user_info_dialog.ui.LineEdit_3.setText("")
-        self.user_info_dialog.ui.LineEdit_4.setText("")
-        self.user_info_dialog.show()
+        dialog = UserInfoPage(self)
+        dialog.exec_()
         self.refresh_user()
-
-    def resizeEvent(self, e):
-        self.user_info_dialog.location_dialog()
 
     def logout(self):
         PageManager.get_page("Login").show()
