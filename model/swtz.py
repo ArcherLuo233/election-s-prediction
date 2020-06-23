@@ -9,7 +9,7 @@ class SWTZ(Base):
 
     field = [
         'id', 'company_name', 'main_business', 'datetime', 'reason', 'taiwan_company_name', 'taiwan_main_business',
-        'taiwan_company_address', 'taiwan_company_legal_people', 'members'
+        'taiwan_company_address', 'taiwan_company_legal_people'
     ]
 
     id = Column(Integer, primary_key=True, autoincrement=True)

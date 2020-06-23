@@ -8,7 +8,7 @@ class LFTZ(Base):
     __tablename__ = 'lftz'
 
     field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'members'
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization'
     ]
 
     id = Column(Integer, primary_key=True, autoincrement=True)
