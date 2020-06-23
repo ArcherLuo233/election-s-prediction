@@ -8,7 +8,10 @@ class LS(Base):
     __tablename__ = 'ls'
 
     field = [
-        'id'
+        'id', 'area', 'level', 'nickname', 'id_card', 'political_status', 'is_undergraduate', 'college', 'major',
+        'undergraduate_college', 'undergraduate_major', 'master_college', 'master_major', 'phone',
+        'join_clubs_and_duties', 'address', 'community', 'activity', 'father_nickname', 'father_job', 'father_phone',
+        'mather_nickname', 'mather_job', 'mather_phone', 'in_shao', 'company', 'remark',
     ]
 
     template_filename = 'template/ls.xlsx'
