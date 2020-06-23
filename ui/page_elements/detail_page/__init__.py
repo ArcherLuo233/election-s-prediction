@@ -4,7 +4,8 @@ from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
 from libs.fields_translater import FieldsTranslater
 from model.base import Base
 from ui.page_elements.modal_dialog import ModalDialog
-from ui.page_elements.pic_widget import PicWidget
+from ui.page_elements.table_cells.file_widget import FileWidget
+from ui.page_elements.table_cells.pic_widget import PicWidget
 
 from .dialogUI import Ui_Dialog
 
@@ -68,11 +69,13 @@ class DetailPage(ModalDialog):
                 continue
             comment = self.translator.to_text(idx)
             value = getattr(meta, idx)
-            if value is None:
-                value = ""
+            type_ = "normal"
+            if idx in self.model.file_field:
+                type_ = "file"
             data_list.append({
                 'comment': comment,
-                'value': str(value)
+                'value': value,
+                'type': type_
             })
         self.refresh_table(data_list, **filtered_data)
 
@@ -97,24 +100,12 @@ class DetailPage(ModalDialog):
             table_widget.setCellWidget(0, 3, pic_widget)
         # data-list-set
         for i, item in enumerate(data_list[:pic_height]):
-            comment_item = QTableWidgetItem()
-            comment_item.setText(item['comment'])
-            comment_item.setFlags(Qt.ItemIsEnabled)
-            table_widget.setItem(i, 0, comment_item)
-            value_item = QTableWidgetItem()
-            value_item.setText(item['value'])
-            table_widget.setItem(i, 1, value_item)
+            self.generate_item(item, i, 0)
         for i, item in enumerate(data_list[pic_height:]):
             row = pic_height + i // 2
-            column = 0 if i % 2 == 0 else 2
-            comment_item = QTableWidgetItem()
-            comment_item.setText(item['comment'])
-            comment_item.setFlags(Qt.ItemIsEnabled)
-            table_widget.setItem(row, column, comment_item)
-            value_item = QTableWidgetItem()
-            value_item.setText(item['value'])
-            table_widget.setItem(row, column + 1, value_item)
-        # 处理奇数情况
+            col = 0 if i % 2 == 0 else 2
+            self.generate_item(item, row, col)
+        # 奇数时不可编辑
         if (len(data_list) - pic_height) % 2 == 1:
             item = QTableWidgetItem()
             item.setFlags(Qt.NoItemFlags)
@@ -123,6 +114,25 @@ class DetailPage(ModalDialog):
             item.setFlags(Qt.NoItemFlags)
             table_widget.setItem(row_count - 1, 3, item)
         table_widget.resizeColumnsToContents()
+        table_widget.resizeRowsToContents()
+
+    def generate_item(self, item, row, col):
+        table_widget = self.ui.tableWidget
+        comment_item = QTableWidgetItem()
+        comment_item.setText(item['comment'])
+        comment_item.setFlags(Qt.ItemIsEnabled)
+        table_widget.setItem(row, col, comment_item)
+        if item['type'] == 'normal':
+            value_item = QTableWidgetItem()
+            value = item['value']
+            if value is None:
+                value = ""
+            value_item.setText(str(value))
+            table_widget.setItem(row, col + 1, value_item)
+        elif item['type'] == 'file':
+            file_widget = FileWidget()
+            file_widget.set_file_path(item['value'])
+            table_widget.setCellWidget(row, col + 1, file_widget)
 
     def get_data_from_table(self) -> dict:
         table_widget = self.ui.tableWidget
@@ -135,12 +145,17 @@ class DetailPage(ModalDialog):
         for row in range(0, row_cnt):
             cols = [0] if row < pic_height else [0, 2]
             for col in cols:
-                item: QTableWidgetItem = table_widget.item(row, col)
+                item = table_widget.item(row, col)
                 if item is None or item.text() == '':
                     continue
                 text = item.text()
                 field = self.translator.to_field(text)
-                content = table_widget.item(row, col + 1).text()
+                item = table_widget.item(row, col + 1)
+                widget = table_widget.cellWidget(row, col + 1)
+                if item:
+                    content = item.text()
+                else:
+                    content = widget.get_data()
                 data[field] = content
         return data
 
