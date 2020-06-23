@@ -22,6 +22,7 @@ class Base(base_class):
     __table_args__ = {"extend_existing": True}
 
     field = []
+    file_field = []
     template_filename = ''
     template_start_row = 0
 

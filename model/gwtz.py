@@ -13,6 +13,7 @@ class GWTZ(Base):
         'id', 'year', 'name', 'company', 'taiwan_invite_company', 'number_of_people', 'number_of_day', 'approval_time',
         'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone',
     ]
+    file_field = ['stroke', 'necessity_statement', 'summary']
 
     template_filename = ''
     template_start_row = 0

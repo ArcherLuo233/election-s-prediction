@@ -11,6 +11,7 @@ class GWTZ_TY(Base):
         'id', 'nickname', 'sex', 'job', 'type', 'nature', 'taiwan_position', 'entry_number', 'pass_number',
         'filing_form'
     ]
+    file_field = ['filing_form']
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     gwtz_id = Column(Integer, ForeignKey('gwtz.id'))
