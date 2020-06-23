@@ -1,7 +1,7 @@
 import math
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon, QPalette, QColor
+from PyQt5.QtGui import QColor, QIcon, QPalette
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
@@ -156,7 +156,7 @@ class Page1_x(QWidget):
         else:
             count = self.model.search()['meta']['count']
         max_page = math.ceil(count / page_size)
-        self.ui.page_controller.setMaxPage(max_page)
+        self.ui.page_controller.set_max_page(max_page)
         if self.model is None:
             return
         conditions = self.get_conditions()

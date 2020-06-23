@@ -13,7 +13,7 @@ class Page3(QWidget):
         self.ui.setupUi(self)
         self.setInsInfo()
         self.ui.button_search.setIcon(QIcon("./static/svg/search.svg"))
-        self.ui.page_controller.setMaxPage(50)
+        self.ui.page_controller.set_max_page(50)
 
     def setInsInfo(self):
         info = {}

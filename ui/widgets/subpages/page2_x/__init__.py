@@ -3,10 +3,10 @@ from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QHeaderView, QTableWidget, QTableWidgetItem,
                              QWidget)
 
+from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
 
 from .pageUI import Ui_Form
-from model.area import Area
 
 
 class Page2_x(QWidget):

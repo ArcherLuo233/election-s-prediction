@@ -12,13 +12,13 @@ class PageController(QWidget):
         QWidget.__init__(self, parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.ui.button_goto.clicked.connect(self.gotoClicked)
-        self.ui.buttonGroup.buttonClicked.connect(self.pageChange)
-        self.ui.button_prev.clicked.connect(self.prevPage)
-        self.ui.button_next.clicked.connect(self.nextPage)
+        self.ui.button_goto.clicked.connect(self.goto_clicked)
+        self.ui.buttonGroup.buttonClicked.connect(self.page_change)
+        self.ui.button_prev.clicked.connect(self.prev_page)
+        self.ui.button_next.clicked.connect(self.next_page)
         self.page = page
         self.maxpage = maxpage
-        self.setMaxPage(maxpage)
+        self.set_max_page(maxpage)
 
     def refresh(self):  # noqa: C901
         self.ui.label_leftdot.hide()
@@ -63,7 +63,7 @@ class PageController(QWidget):
         if right <= self.maxpage - 2:
             self.ui.label_rightdot.show()
 
-    def pageChange(self, x):
+    def page_change(self, x):
         if isinstance(x, int):
             page = x
         elif isinstance(x, str):
@@ -78,24 +78,24 @@ class PageController(QWidget):
             self.refresh()
             self.pageChanged.emit(page)
 
-    def setPage(self, page):
-        self.pageChange(page)
+    def set_page(self, page):
+        self.page_change(page)
 
-    def nextPage(self):
-        self.setPage(self.page + 1)
+    def next_page(self):
+        self.set_page(self.page + 1)
 
-    def prevPage(self):
-        self.setPage(self.page - 1)
+    def prev_page(self):
+        self.set_page(self.page - 1)
 
-    def setMaxPage(self, maxpage: int):
+    def set_max_page(self, maxpage: int):
         maxpage = max(1, maxpage)
         self.maxpage = maxpage
         self.ui.label.setText("共 %d 页" % maxpage)
         self.ui.button_right.setText(str(maxpage))
         if maxpage < self.page:
-            self.pageChange(1)
+            self.page_change(1)
         self.ui.spinBox.setRange(1, maxpage)
         self.refresh()
 
-    def gotoClicked(self):
-        self.setPage(self.ui.spinBox.value())
+    def goto_clicked(self):
+        self.set_page(self.ui.spinBox.value())

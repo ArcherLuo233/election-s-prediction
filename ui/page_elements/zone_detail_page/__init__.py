@@ -44,6 +44,3 @@ class DetailPage(ModalDialog):
         self.reload()
     def reload(self):
         return
-
-
-

@@ -1,5 +1,6 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import QWidget,QHeaderView, QMessageBox, QTableWidgetItem,QCheckBox,QHBoxLayout
+from PyQt5.QtWidgets import (QCheckBox, QHBoxLayout, QHeaderView, QMessageBox,
+                             QTableWidgetItem, QWidget)
 
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
