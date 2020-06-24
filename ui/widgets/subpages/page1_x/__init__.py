@@ -6,14 +6,14 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
 from config.settings import DEFAULT_PAGE_SIZE
+from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
+from libs.g import g
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
-from libs.g import g
-from libs.enumrations import UserPermission
 
 from .pageUI import Ui_Form
 
