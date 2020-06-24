@@ -515,6 +515,22 @@ padding: 10px</string>
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="btn_save">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>保存</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="button_ok">
        <property name="font">
         <font>
