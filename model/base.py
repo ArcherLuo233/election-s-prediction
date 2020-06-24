@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from config.secure import SQLALCHEMY_URL
 from config.settings import DEFAULT_PAGE_SIZE
-from libs.service import read_excel, save_excel, save_word
+from libs.service import read_excel, save_excel, save_word, download_file
 
 engine = create_engine(SQLALCHEMY_URL)
 DBSession = sessionmaker(bind=engine)
@@ -121,10 +121,7 @@ class Base(base_class):
 
     @classmethod
     def export_template(cls, filename):
-        with open(cls.template_filename, 'rb') as f:
-            data = f.read()
-        with open(filename, 'wb') as f:
-            f.write(data)
+        download_file(cls.template_filename, filename)
 
     @classmethod
     def export_document(cls, id_, filename):
