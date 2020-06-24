@@ -76,6 +76,8 @@ def download_file(from_filename, to_filename):
 
 
 def save_word(filename, title, data, pic=False, ty_data=None):
+    if ty_data is None:
+        ty_data = []
     document = Document()
     document.styles['Normal'].font.name = u'宋体'
     document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'宋体')
@@ -118,6 +120,7 @@ def save_word(filename, title, data, pic=False, ty_data=None):
         cell_v = table.cell(0, 3)
         cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
         cell_k.text = '照片'
-        cell_v.add_paragraph().add_run().add_picture(data['照片'], width=Inches(1.5))
+        if data['照片']:
+            cell_v.add_paragraph().add_run().add_picture(data['照片'], width=Inches(1.5))
 
     document.save(filename)
