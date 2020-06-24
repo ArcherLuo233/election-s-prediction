@@ -94,7 +94,9 @@ class Base(base_class):
         res = read_excel(filename, cls.template_start_row)
         for i in res:
             field = cls.field.copy()
-            field.pop(0)
+            field.remove('id')
+            for file in cls.file_field:
+                field.remove(file)
             data = {field[idx]: i[idx] for idx in range(len(field))}
             if cls.search(**data)['meta']['count'] == 0:
                 cls.create(**data)
@@ -102,9 +104,10 @@ class Base(base_class):
     @classmethod
     def export(cls, filename, **kwargs):
         res = cls.search(page_size=-1, **kwargs)['data']
-        data = []
-        for i in res:
-            data.append([getattr(i, key) for key in cls.field])
+        field = cls.field.copy()
+        for file in cls.file_field:
+            field.remove(file)
+        data = [[getattr(i, key) for key in field] for i in res]
         save_excel(cls.template_filename, cls.template_start_row, data, filename)
 
     @classmethod
