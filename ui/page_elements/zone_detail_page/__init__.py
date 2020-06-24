@@ -1,10 +1,12 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem,QMessageBox
+from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
+                             QTableWidgetItem)
 
+from model.area_info import AreaInfo
 from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailpageUI import Ui_Dialog
-from model.area_info import  AreaInfo
+
 
 class DetailPage(ModalDialog):
     def __init__(self, parent):

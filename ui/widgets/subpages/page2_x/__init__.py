@@ -1,8 +1,9 @@
 from PyQt5 import QtGui
 from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import (QHeaderView, QTableWidget, QTableWidgetItem,
-                             QWidget,QMessageBox)
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
+                             QTableWidgetItem, QWidget)
+
 from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
 
