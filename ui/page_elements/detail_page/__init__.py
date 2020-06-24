@@ -54,6 +54,9 @@ class DetailPage(ModalDialog):
         self.close()
 
     def delete(self):
+        res = QMessageBox.question(None, "删除", "确认删除吗？")
+        if res == QMessageBox.No:
+            return
         item = self.model.get_by_id(self.data_id)
         item.delete()
         self.close()
