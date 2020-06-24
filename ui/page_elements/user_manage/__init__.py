@@ -23,7 +23,6 @@ class UserManager(ModalDialog):
         self.ui.btn_deluser.clicked.connect(self.del_user)
         self.ui.reload.clicked.connect(self.refresh)
         # widget-init
-        self.user_add_dialog = UserAdd(self)
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setFixedHeight(25)
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
@@ -38,6 +37,7 @@ class UserManager(ModalDialog):
         data = User.search(page_size=-1)
         table_widget = self.ui.tableWidget
         table_widget.clearContents()
+        table_widget.setRowCount(0)
         for index, i in enumerate(data["data"]):
             if index >= self.ui.tableWidget.rowCount():
                 table_widget.insertRow(index)
@@ -87,11 +87,8 @@ class UserManager(ModalDialog):
             QMessageBox.information(None, "管理用户", "保存成功")
 
     def add_user(self):
-        self.user_add_dialog.ui.LineEdit.setText("")
-        self.user_add_dialog.ui.LineEdit_2.setText("")
-        self.user_add_dialog.ui.LineEdit_3.setText("")
-        self.user_add_dialog.ui.LineEdit_4.setText("")
-        self.user_add_dialog.show()
+        dialog = UserAdd(self)
+        dialog.exec_()
         self.refresh()
 
     def del_user(self):

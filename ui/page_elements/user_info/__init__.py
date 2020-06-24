@@ -30,7 +30,7 @@ class UserInfoPage(ModalDialog):
         if newpwd1 != '' or newpwd2 != '':
             if newpwd1 != newpwd2:
                 QMessageBox.warning(None, "修改用户信息", "两次密码输入不一致!")
-            elif oldpwd != g.current_user.password_:
+            elif not g.current_user.check_password(oldpwd):
                 QMessageBox.critical(None, "修改用户信息", "旧密码错误")
             else:
                 g.current_user.modify(password=newpwd1)

@@ -2,7 +2,9 @@ from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
                              QTableWidget, QTableWidgetItem)
 
+from libs.enumrations import UserPermission
 from libs.fields_translater import FieldsTranslater
+from libs.g import g
 from model.base import Base
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.table_cells.file_widget import FileWidget
@@ -191,5 +193,9 @@ class DetailPage(ModalDialog):
             self.ui.btn_modify.show()
             self.ui.btn_delete.show()
             self.ui.btn_export.show()
+        if g.current_user.permission != UserPermission.Admin:
+            self.ui.btn_append.hide()
+            self.ui.btn_modify.hide()
+            self.ui.btn_delete.hide()
         self.refresh_data(id_)
         self.exec_()
