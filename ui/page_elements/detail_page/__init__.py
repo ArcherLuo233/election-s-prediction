@@ -16,7 +16,7 @@ from .dialogUI import Ui_Dialog
 class DetailPage(ModalDialog):
     pic_item_height = 6
 
-    def __init__(self, parent, model: Base, need_pic=False):
+    def __init__(self, parent, model: Base):
         super().__init__(parent)
         self.setFixedSize(1000, 800)
         self.ui = Ui_Dialog()
@@ -24,7 +24,7 @@ class DetailPage(ModalDialog):
         self.default_conditions = {}
         # model
         self.model = model
-        self.need_pic = need_pic
+        self.need_pic = self.model.pic
         self.data_id = 0
         self.translator = FieldsTranslater(self.model)
         # tableWidget
@@ -95,6 +95,8 @@ class DetailPage(ModalDialog):
                 'value': value,
                 'type': type_
             })
+        if meta.pic:
+            filtered_data['photo'] = meta.photo
         self.refresh_table(data_list, **filtered_data)
 
     def refresh_table(self, data_list, **kwargs):

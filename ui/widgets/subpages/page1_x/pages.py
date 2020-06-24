@@ -89,6 +89,11 @@ class Pagegwtz(Page1_x):
 class Pagegwtz_ty(Page1_x):
     title = "公务团组团员"
     model = GWTZ_TY
+    summary = {
+        '姓名': 'nickname',
+        '单位职务': 'job',
+        '人物类型': 'type'
+    }
 
 
 class Pageswtz(Page1_x):
@@ -105,6 +110,11 @@ class Pageswtz(Page1_x):
 class Pageswtz_ty(Page1_x):
     title = "商务团组团员"
     model = SWTZ_TY
+    summary = {
+        '姓名': 'nickname',
+        '单位职务': 'job',
+        '身份证号': 'id_card'
+    }
 
 
 class Pagelftz(Page1_x):
@@ -121,6 +131,11 @@ class Pagelftz(Page1_x):
 class Pagelftz_ty(Page1_x):
     title = "来访团组团员"
     model = LFTZ_TY
+    summary = {
+        '姓名': 'nickname',
+        '单位职务': 'job',
+        '人物类型': 'type'
+    }
 
 
 class Pagejzz(Page1_x):

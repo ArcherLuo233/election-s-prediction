@@ -63,6 +63,10 @@ class Base(base_class):
         session.commit()
 
     def delete(self):
+        if self.ty:
+            for ty in self.ty.search(**{self.foreign_key: self.id}, page_size=-1)['data']:
+                ty.delete()
+
         session.delete(self)
         session.commit()
 
