@@ -62,8 +62,11 @@ def upload_file(filename):
 
 
 def download_file(from_filename, to_filename):
-    with open(from_filename, "rb") as f:
-        raw = f.read()
+    try:
+        with open(from_filename, "rb") as f:
+            raw = f.read()
+    except OSError:
+        raise AppException('打开原始文件失败，文件可能已经丢失')
     with open(to_filename, "wb") as f:
         f.write(raw)
 
