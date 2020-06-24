@@ -12,6 +12,8 @@ from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
+from libs.g import g
+from libs.enumrations import UserPermission
 
 from .pageUI import Ui_Form
 
@@ -284,6 +286,12 @@ class Page1_x(QWidget):
 
     def resizeEvent(self, e):
         self.refresh_conditions()
+
+    def paintEvent(self, e):
+        if g.current_user.permission != UserPermission.Admin:
+            self.ui.btn_mul_delete.hide()
+        else:
+            self.ui.btn_mul_delete.show()
 
     def download_template(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
