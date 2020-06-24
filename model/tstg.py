@@ -8,7 +8,7 @@ class TSTG(Base):
     __tablename__ = 'tstg'
 
     field = [
-        'id', 'photo', 'nickname', 'sex', 'birth', 'id_card', 'taiwanese_id', 'residence_id', 'in_taiwan_area',
+        'id', 'nickname', 'sex', 'birth', 'id_card', 'taiwanese_id', 'residence_id', 'in_taiwan_area',
         'domicile', 'nation', 'marital_status', 'partisan', 'religious_belief', 'community_identity',
         'resident_address', 'taiwan_phone', 'mainland_phone', 'company', 'job', 'rank_title', 'main_experience',
         'political_views', 'participate_in_social_activities', 'representative_work', 'receive_honor', 'media_reports',

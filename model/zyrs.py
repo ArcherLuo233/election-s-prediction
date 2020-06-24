@@ -8,7 +8,7 @@ class ZYRS(Base):
     __tablename__ = 'zyrs'
 
     field = [
-        'id', 'photo', 'nickname', 'sex', 'birth', 'taiwanese_id', 'residence_id', 'in_taiwan_area', 'domicile',
+        'id', 'nickname', 'sex', 'birth', 'taiwanese_id', 'residence_id', 'in_taiwan_area', 'domicile',
         'nation', 'marital_status', 'family_structure', 'partisan', 'tendency', 'religious_belief',
         'community_identity', 'number_of_elections', 'votes', 'competitors', 'competition', 'address', 'phone',
         'social_relationship', 'job', 'education', 'main_remarks', 'main_experience', 'number_of_visits', 'schedule',
