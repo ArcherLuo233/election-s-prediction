@@ -2,10 +2,11 @@ from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QCheckBox, QHBoxLayout, QHeaderView, QMessageBox,
                              QTableWidgetItem, QWidget)
 
+from libs.g import g
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.user_add import UserAdd
-from libs.g import g
+
 from .usermanagerUI import Ui_Dialog
 
 

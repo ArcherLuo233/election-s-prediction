@@ -6,14 +6,14 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QLabel, QMessageBox,
                              QTableWidgetItem, QWidget)
 
 from config.settings import DEFAULT_PAGE_SIZE
+from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
+from libs.g import g
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
-from libs.g import g
-from libs.enumrations import UserPermission
 
 from .pageUI import Ui_Form
 
@@ -38,6 +38,7 @@ class Page1_x(QWidget):
             self.translator = FieldsTranslater(self.model)
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
             self.condition_boxes = []
+            self.need_pic = self.model.pic
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % self.title)
         # button_search
@@ -55,7 +56,8 @@ class Page1_x(QWidget):
         self.ui.btn_select_null.clicked.connect(self.select_null)
         # btn_mul_delete
         self.ui.btn_mul_delete.clicked.connect(self.mul_delete)
-
+        # btn_mul_export
+        self.ui.btn_mul_export.clicked.connect(self.mul_export)
         # tableWidget
         cols = self.cols
         table_widget = self.ui.tableWidget
@@ -237,6 +239,17 @@ class Page1_x(QWidget):
             rec = self.model.get_by_id(id_)
             rec.delete()
         self.refresh_page()
+
+    def mul_export(self):
+        if len(self.id_selected) == 0:
+            return
+        filedir = QFileDialog.getExistingDirectory(None, "请选择存放文件夹", "./")
+        for id_ in self.id_selected:
+            filename = '/{modelname}-{id}.docx'.format(modelname=self.model.class_name, id=id_)
+            filename = filedir + filename
+            print(filename)
+            self.model.export_document(id_, filename)
+        QMessageBox.information(None, "批量导出", "批量导出完成")
 
     def select_all(self):
         table_widget = self.ui.tableWidget
