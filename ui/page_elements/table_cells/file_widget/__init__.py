@@ -2,6 +2,7 @@ import os
 
 from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
 
+from libs.exception import AppException
 from libs.service import download_file, upload_file
 
 from .pageUI import Ui_Form
@@ -39,7 +40,11 @@ class FileWidget(QWidget):
         filename = QFileDialog.getSaveFileName(self, "下载文件", default_name)[0]
         if filename == "":
             return
-        download_file(self.path, filename)
+        try:
+            download_file(self.path, filename)
+        except AppException as e:
+            QMessageBox.critical(None, "下载文件", e.msg)
+            return
         QMessageBox.information(None, "下载文件", "下载完成")
 
     def get_data(self):
