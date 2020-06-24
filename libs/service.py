@@ -130,8 +130,12 @@ def save_word(filename, title, data, pic=False, ty_data=None):
         cell_v = table.cell(0, 3)
         cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
         cell_k.text = '照片'
-        if data['照片']:
+        try:
+            with open(data['照片'], 'rb'):
+                pass
             cell_v.add_paragraph().add_run().add_picture(data['照片'], width=Inches(1.5))
+        except OSError:
+            pass
 
     if ty_data:
         title_paragraph = document.add_paragraph()
