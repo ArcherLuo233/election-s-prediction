@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (QCheckBox, QHBoxLayout, QHeaderView, QMessageBox,
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.user_add import UserAdd
-
+from libs.g import g
 from .usermanagerUI import Ui_Dialog
 
 
@@ -74,9 +74,9 @@ class UserManager(ModalDialog):
             nickname = self.ui.tableWidget.item(i, 1).text()
             ckb = self.ui.tableWidget.cellWidget(i, 2).children()[1]
             if ckb.checkState() == Qt.Checked:
-                permission = UserPermission.Admin
+                permission = 1
             else:
-                permission = UserPermission.Normal
+                permission = 0
             target_user = User.search(username=username, page_size=-1)["data"][0]
             if target_user.nickname != nickname:
                 target_user.modify(nickname=nickname)
@@ -92,7 +92,6 @@ class UserManager(ModalDialog):
             QMessageBox.information(None, "管理用户", "保存成功,本人权限未修改!")
         self.refresh()
 
-            QMessageBox.information(None, "管理用户", "保存成功")
 
     def add_user(self):
         dialog = UserAdd(self)
