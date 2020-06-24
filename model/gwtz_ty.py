@@ -7,6 +7,7 @@ class GWTZ_TY(Base):
     __tablename__ = 'gwtz_ty'
 
     class_name = '公务团组_团员'
+    foreign_key = 'gwtz_id'
 
     field = [
         'id', 'nickname', 'sex', 'job', 'type', 'nature', 'taiwan_position', 'entry_number', 'pass_number',

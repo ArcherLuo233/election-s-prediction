@@ -25,6 +25,7 @@ class Base(base_class):
     class_name = ''
     pic = False
     ty = None
+    foreign_key = ''
     field = []
     file_field = []
 
