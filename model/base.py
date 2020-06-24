@@ -135,6 +135,8 @@ class Base(base_class):
         field.remove("id")
         if cls.pic:
             field.insert(1, "photo")
+        for file in cls.file_field:
+            field.remove(file)
         for item in field:
             attr = getattr(cls, item)
             data[attr.comparator.comment] = getattr(base, item) if getattr(base, item) else ''
