@@ -7,6 +7,7 @@ class ZYRS(Base):
     __tablename__ = 'zyrs'
 
     class_name = '重要人士'
+    pic = True
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'taiwanese_id', 'residence_id', 'in_taiwan_area', 'domicile',

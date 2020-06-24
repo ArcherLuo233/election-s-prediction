@@ -1,12 +1,14 @@
 from sqlalchemy import Column, Integer, String
 
 from model.base import Base
+from model.gwtz_ty import GWTZ_TY
 
 
 class GWTZ(Base):
     __tablename__ = 'gwtz'
 
     class_name = '公务团组'
+    ty = GWTZ_TY
 
     field = [
         'id', 'year', 'name', 'company', 'taiwan_invite_company', 'number_of_people', 'number_of_day', 'approval_time',

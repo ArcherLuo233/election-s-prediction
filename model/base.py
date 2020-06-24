@@ -23,6 +23,8 @@ class Base(base_class):
     __table_args__ = {"extend_existing": True}
 
     class_name = ''
+    pic = False
+    ty = None
     field = []
     file_field = []
 
@@ -128,8 +130,6 @@ class Base(base_class):
     def export_document(cls, id_, filename):
         base = cls.get_by_id(id_)
         data = dict()
-        idx = 0
         for field in cls.field:
-            data['_' + str(idx)] = getattr(base, field) if getattr(base, field) else ''
-            idx += 1
-        save_word(filename, )
+            data[field] = getattr(base, field) if getattr(base, field) else ''
+        save_word(filename, cls.class_name, data)

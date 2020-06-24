@@ -1,12 +1,14 @@
 from sqlalchemy import Column, Integer, String
 
 from model.base import Base
+from model.swtz_ty import SWTZ_TY
 
 
 class SWTZ(Base):
     __tablename__ = 'swtz'
 
     class_name = '商务团组'
+    ty = SWTZ_TY
 
     field = [
         'id', 'company_name', 'main_business', 'datetime', 'reason', 'taiwan_company_name', 'taiwan_main_business',

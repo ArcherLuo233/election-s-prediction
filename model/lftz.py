@@ -1,12 +1,14 @@
 from sqlalchemy import Column, Integer, String
 
 from model.base import Base
+from model.lftz_ty import LFTZ_TY
 
 
 class LFTZ(Base):
     __tablename__ = 'lftz'
 
     class_name = '来访团组'
+    ty = LFTZ_TY
 
     field = [
         'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization'

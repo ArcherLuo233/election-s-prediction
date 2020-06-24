@@ -7,6 +7,7 @@ class TSTG(Base):
     __tablename__ = 'tstg'
 
     class_name = '台商台干'
+    pic = True
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'id_card', 'taiwanese_id', 'residence_id', 'in_taiwan_area',
