@@ -17,6 +17,11 @@ from ui.widgets.subpages.page1_x import Page1_x
 class Pagelsjl(Page1_x):
     title = "来绍交流"
     model = LSJL
+    summary = {
+        '姓名': 'nickname',
+        '性别': 'sex',
+        '出生日期': 'birth'
+    }
 
 
 class Pagetstg(Page1_x):
@@ -24,7 +29,8 @@ class Pagetstg(Page1_x):
     model = TSTG
     summary = {
         '姓名': 'nickname',
-        '性别': 'sex'
+        '性别': 'sex',
+        '出生日期': 'birth'
     }
     need_pic = True
 
@@ -32,21 +38,31 @@ class Pagetstg(Page1_x):
 class Pagezyrs(Page1_x):
     title = "重要人士"
     model = ZYRS
+    summary = {
+        '姓名': 'nickname',
+        '性别': 'sex',
+        '出生日期': 'birth'
+    }
 
 
 class Pagelp(Page1_x):
     title = "陆配"
     model = LP
     summary = {
-        '地区': 'area',
         '姓名': 'nickname',
-        '性别': 'sex'
+        '性别': 'sex',
+        '出生日期': 'birth'
     }
 
 
 class Pagels(Page1_x):
     title = "陆生"
     model = LS
+    summary = {
+        '地区': 'area',
+        '届别': 'level',
+        '姓名': 'nickname'
+    }
 
 
 class Pagets(Page1_x):
@@ -63,6 +79,11 @@ class Pagegwtz(Page1_x):
     title = "公务团组"
     model = GWTZ
     members_model = GWTZ_TY
+    summary = {
+        '年度': 'year',
+        '团组名称': 'name',
+        '组团单位': 'company'
+    }
 
 
 class Pagegwtz_ty(Page1_x):
@@ -74,6 +95,11 @@ class Pageswtz(Page1_x):
     title = "商务团组"
     model = SWTZ
     members_model = SWTZ_TY
+    summary = {
+        '企业名称': 'company_name',
+        '主营业务': 'main_business',
+        '时间': 'datetime'
+    }
 
 
 class Pageswtz_ty(Page1_x):
@@ -85,6 +111,11 @@ class Pagelftz(Page1_x):
     title = "来访团组"
     model = LFTZ
     members_model = SWTZ_TY
+    summary = {
+        '时间': 'datetime',
+        '团组名称': 'name',
+        '组团单位': 'group_organization'
+    }
 
 
 class Pagelftz_ty(Page1_x):
