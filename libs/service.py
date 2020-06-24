@@ -59,7 +59,6 @@ def upload_file(filename, is_pic=False):
             image.verify()
         except Exception:
             raise AppException('图片无法打开')
-        image.save()
         filename = 'tmp.png'
         image.save(filename)
 
