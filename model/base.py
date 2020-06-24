@@ -140,4 +140,18 @@ class Base(base_class):
         for item in field:
             attr = getattr(cls, item)
             data[attr.comparator.comment] = getattr(base, item) if getattr(base, item) else ''
-        save_word(filename, cls.class_name, data, cls.pic, None)
+        ty_data = []
+        if cls.ty:
+            ty_field = cls.ty.field.copy()
+            ty_field.remove("id")
+            for file in cls.ty.file_field:
+                ty_field.remove(file)
+            ty_list = cls.ty.search(**{cls.foreign_key: id_}, page_size=-1)['data']
+            for ty in ty_list:
+                tmp = dict()
+                for item in ty_field:
+                    attr = getattr(cls.ty, item)
+                    tmp[attr.comparator.comment] = getattr(ty, item) if getattr(ty, item) else ''
+                ty_data.append(tmp)
+
+        save_word(filename, cls.class_name, data, cls.pic, ty_data)
