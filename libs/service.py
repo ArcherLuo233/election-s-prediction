@@ -1,5 +1,6 @@
 import os
 
+from PIL import Image
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
@@ -49,19 +50,28 @@ def save_excel(template_filename, start_row, data, filename):
     wb.save(filename)
 
 
-def upload_file(filename):
+def upload_file(filename, pic=False):
+    if not os.path.exists('file/'):
+        os.makedirs('file/')
     suffix = filename.rsplit('.', 1)
     if len(suffix) == 1:
         raise AppException('文件没有后缀')
     suffix = suffix[1]
     with open(filename, "rb") as f:
         raw = f.read()
-    filename = md5(raw) + "." + suffix
-    filename = 'file/{}'.format(filename)
-    if not os.path.exists('file/'):
-        os.makedirs('file/')
-    with open(filename, "wb") as f:
-        f.write(raw)
+    if pic:
+        try:
+            image = Image.open(filename).verify()
+        except Exception:
+            raise AppException('图片无法打开')
+        with open(filename, "rb") as f:
+            raw = f.read()
+        filename = 'file/{}'.format(md5(raw) + ".png")
+        image.save(filename)
+    else:
+        filename = 'file/{}'.format(md5(raw) + "." + suffix)
+        with open(filename, "wb") as f:
+            f.write(raw)
     return filename
 
 
