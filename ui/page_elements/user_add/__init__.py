@@ -41,6 +41,6 @@ class UserAdd(ModalDialog):
         elif len(User.search(username=account)["data"]) != 0:
             QMessageBox.warning(None, "添加用户失败", "用户名已存在!")
         else:
-            User.create(username=account, nickname=name, password_=pwd, permission=0)
+            User.create(username=account, nickname=name, password=pwd, permission=0)
             QMessageBox.information(None, "添加用户", "添加用户成功")
             self.close()

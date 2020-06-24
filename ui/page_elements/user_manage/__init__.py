@@ -2,6 +2,7 @@ from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QCheckBox, QHBoxLayout, QHeaderView, QMessageBox,
                              QTableWidgetItem, QWidget)
 
+from libs.enumrations import UserPermission
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.user_add import UserAdd
@@ -22,7 +23,6 @@ class UserManager(ModalDialog):
         self.ui.btn_deluser.clicked.connect(self.del_user)
         self.ui.reload.clicked.connect(self.refresh)
         # widget-init
-        self.user_add_dialog = UserAdd(self)
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setFixedHeight(25)
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
@@ -37,6 +37,7 @@ class UserManager(ModalDialog):
         data = User.search(page_size=-1)
         table_widget = self.ui.tableWidget
         table_widget.clearContents()
+        table_widget.setRowCount(0)
         for index, i in enumerate(data["data"]):
             if index >= self.ui.tableWidget.rowCount():
                 table_widget.insertRow(index)
@@ -59,7 +60,7 @@ class UserManager(ModalDialog):
             hLayout.setContentsMargins(0, 0, 0, 0)
             hLayout.setAlignment(Qt.AlignCenter)
             widget.setLayout(hLayout)
-            if i.permission == 1:
+            if i.permission == UserPermission.Admin:
                 item.setCheckState(Qt.Checked)
             else:
                 item.setCheckState(Qt.Unchecked)
@@ -73,9 +74,9 @@ class UserManager(ModalDialog):
             nickname = self.ui.tableWidget.item(i, 1).text()
             ckb = self.ui.tableWidget.item(i, 2)
             if ckb.checkState() == Qt.Checked:
-                permission = 1
+                permission = UserPermission.Admin
             else:
-                permission = 0
+                permission = UserPermission.Normal
             target_user = User.search(username=username, page_size=-1)["data"][0]
             if target_user.nickname != nickname:
                 target_user.modify(nickname=nickname)
@@ -86,11 +87,8 @@ class UserManager(ModalDialog):
             QMessageBox.information(None, "管理用户", "保存成功")
 
     def add_user(self):
-        self.user_add_dialog.ui.LineEdit.setText("")
-        self.user_add_dialog.ui.LineEdit_2.setText("")
-        self.user_add_dialog.ui.LineEdit_3.setText("")
-        self.user_add_dialog.ui.LineEdit_4.setText("")
-        self.user_add_dialog.show()
+        dialog = UserAdd(self)
+        dialog.exec_()
         self.refresh()
 
     def del_user(self):

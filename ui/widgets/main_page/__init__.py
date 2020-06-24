@@ -2,6 +2,7 @@ from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QHBoxLayout, QWidget
 
 from config.uicolor import UIColor as color
+from libs.enumrations import UserPermission
 from libs.g import g
 from libs.link_manager import link_manager
 from libs.page_magager import PageManager
@@ -110,7 +111,7 @@ class MainPage(QWidget):
         self.ui.label_username.setText('<a href="#nickname"'
                                        'style="color:{};">{}</a>'.format(color.HeaderText.name(),
                                                                          g.current_user.nickname))
-        if g.current_user.permission != 1:
+        if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_manage.hide()
         else:
             self.ui.btn_manage.show()
