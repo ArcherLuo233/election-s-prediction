@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from config.secure import SQLALCHEMY_URL
 from config.settings import DEFAULT_PAGE_SIZE
-from libs.service import read_excel, save_excel
+from libs.service import read_excel, save_excel, save_word
 
 engine = create_engine(SQLALCHEMY_URL)
 DBSession = sessionmaker(bind=engine)
@@ -25,6 +25,7 @@ class Base(base_class):
     file_field = []
     template_filename = ''
     template_start_row = 0
+    template_document_filename = ''
 
     def __getitem__(self, item):
         return getattr(self, item)
@@ -116,3 +117,13 @@ class Base(base_class):
             data = f.read()
         with open(filename, 'wb') as f:
             f.write(data)
+
+    @classmethod
+    def export_document(cls, id_, filename):
+        base = cls.get_by_id(id_)
+        data = dict()
+        idx = 0
+        for field in cls.field:
+            data['_' + str(idx)] = getattr(base, field) if getattr(base, field) else ''
+            idx += 1
+        save_word(cls.template_document_filename, data, filename)
