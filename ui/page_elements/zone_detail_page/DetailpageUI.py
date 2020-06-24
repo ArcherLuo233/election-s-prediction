@@ -369,4 +369,4 @@ class Ui_Dialog(object):
         item.setText(_translate("Dialog", "双冬里"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
         self.btn_save.setText(_translate("Dialog", "保存"))
-        self.button_ok.setText(_translate("Dialog", "确定"))
+        self.button_ok.setText(_translate("Dialog", "关闭"))
