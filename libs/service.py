@@ -55,7 +55,8 @@ def upload_file(filename, is_pic=False):
         os.makedirs('file/')
     if is_pic:
         try:
-            image = Image.open(filename).verify()
+            image = Image.open(filename)
+            image.verify()
         except Exception:
             raise AppException('图片无法打开')
         image.save()
