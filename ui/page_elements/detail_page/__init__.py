@@ -95,6 +95,8 @@ class DetailPage(ModalDialog):
                 'value': value,
                 'type': type_
             })
+        if meta.pic:
+            filtered_data['photo'] = meta.photo
         self.refresh_table(data_list, **filtered_data)
 
     def refresh_table(self, data_list, **kwargs):
