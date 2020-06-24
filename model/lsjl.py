@@ -15,6 +15,7 @@ class LSJL(Base):
 
     template_filename = 'template/lsjl.xlsx'
     template_start_row = 3
+    template_document_filename = 'template/lsjl.docx'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     nickname = Column(String(100), comment='姓名')
