@@ -1,8 +1,8 @@
 from PyQt5 import QtGui
 from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QHeaderView, QTableWidget, QTableWidgetItem,
-                             QWidget)
-
+                             QWidget,QMessageBox)
+from PyQt5.QtGui import QPixmap
 from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
 
@@ -20,11 +20,19 @@ class Page2_x(QWidget):
         self.ui.label_title.setText("南投县%s镇" % self.title)
         # button_findzone
         self.ui.btn_findzone.clicked.connect(self.findzone)
+        self.ui.btn_save.clicked.connect(self.saveall)
+        self.ui.btn_savemap.clicked.connect(self.save_map)
+        # messagebox
+        self.message = QMessageBox()
+        self.message.setStandardButtons(QMessageBox.Yes)
+        self.message.button(QMessageBox.Yes).setText('确认')
         # init_
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
+
         item = QTableWidgetItem()
+        item.setFlags(Qt.ItemIsEnabled)
         item.setText("基本情况")
         self.font = QtGui.QFont()
         self.font.setFamily("黑体")
@@ -34,7 +42,25 @@ class Page2_x(QWidget):
         self.ui.tableWidget.setSpan(3, 0, 1, 2)
         self.ui.tableWidget.setItem(3, 0, item)
         self.reload()
+        self.show_map()
+    def save_map(self):
+        return
+    def saveall(self):
+        mayor = self.ui.tableWidget.item(0, 1).text()
+        population = self.ui.tableWidget.item(1, 1).text()
+        number_of_family = self.ui.tableWidget.item(2, 1).text()
+        introduction = self.ui.tableWidget.item(4, 0).text()
+        target_area = Area.search(name=self.title)["data"][0]
+        target_area.modify(mayor=mayor, population=population, number_of_family=number_of_family,
+                               introduction=introduction)
+        QMessageBox.information(None, "选区", "保存成功!")
 
+
+
+
+    def show_map(self):
+        pix=QPixmap("static/img/{}.jpg".format(self.title))
+        self.ui.lab_img.setPixmap(pix)
     def reload(self):
         data = Area.search(name=self.title)["data"][0]
         item = QTableWidgetItem()
@@ -52,6 +78,10 @@ class Page2_x(QWidget):
         item.setText(data.population)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(1, 1, item)
+        item = QTableWidgetItem()
+        item.setText(data.number_of_family)
+        item.setFont(self.font)
+        self.ui.tableWidget.setItem(2, 1, item)
 
     def findzone(self):
         dialog = DetailPage(self)
