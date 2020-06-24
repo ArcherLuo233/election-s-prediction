@@ -2,6 +2,7 @@ from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QCheckBox, QHBoxLayout, QHeaderView, QMessageBox,
                              QTableWidgetItem, QWidget)
 
+from libs.enumrations import UserPermission
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.user_add import UserAdd
@@ -59,7 +60,7 @@ class UserManager(ModalDialog):
             hLayout.setContentsMargins(0, 0, 0, 0)
             hLayout.setAlignment(Qt.AlignCenter)
             widget.setLayout(hLayout)
-            if i.permission == 1:
+            if i.permission == UserPermission.Admin:
                 item.setCheckState(Qt.Checked)
             else:
                 item.setCheckState(Qt.Unchecked)
@@ -73,9 +74,9 @@ class UserManager(ModalDialog):
             nickname = self.ui.tableWidget.item(i, 1).text()
             ckb = self.ui.tableWidget.item(i, 2)
             if ckb.checkState() == Qt.Checked:
-                permission = 1
+                permission = UserPermission.Admin
             else:
-                permission = 0
+                permission = UserPermission.Normal
             target_user = User.search(username=username, page_size=-1)["data"][0]
             if target_user.nickname != nickname:
                 target_user.modify(nickname=nickname)

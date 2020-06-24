@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, String, Text
 from model.base import Base
 
 
-
 class TS(Base):
     __tablename__ = 'ts'
 
