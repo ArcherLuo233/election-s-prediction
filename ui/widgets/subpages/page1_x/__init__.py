@@ -226,6 +226,11 @@ class Page1_x(QWidget):
             self.id_selected.remove(id_)
 
     def mul_delete(self):
+        if len(self.id_selected) == 0:
+            return
+        res = QMessageBox.question(None, "删除", "确认删除吗？")
+        if res == QMessageBox.No:
+            return
         for id_ in self.id_selected:
             rec = self.model.get_by_id(id_)
             rec.delete()
