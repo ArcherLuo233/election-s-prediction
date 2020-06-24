@@ -23,7 +23,6 @@ class LP(Base):
         'remark'
     ]
 
-    template_filename = 'template/lp.xlsx'
     template_start_row = 5
 
     id = Column(Integer, primary_key=True, autoincrement=True)

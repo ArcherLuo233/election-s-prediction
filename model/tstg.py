@@ -15,7 +15,6 @@ class TSTG(Base):
         'reporting_company', 'reporting_date', 'remark'
     ]
 
-    template_filename = 'template/tstg.xlsx'
     template_start_row = 4
 
     id = Column(Integer, primary_key=True, autoincrement=True)

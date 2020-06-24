@@ -14,7 +14,6 @@ class LS(Base):
         'mather_nickname', 'mather_job', 'mather_phone', 'in_shao', 'company', 'remark',
     ]
 
-    template_filename = 'template/ls.xlsx'
     template_start_row = 4
 
     id = Column(Integer, primary_key=True, autoincrement=True)

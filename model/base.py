@@ -19,13 +19,21 @@ def init_database():
 
 class Base(base_class):
     __abstract__ = True
+    __tablename__ = ''
     __table_args__ = {"extend_existing": True}
 
     field = []
     file_field = []
-    template_filename = ''
+
+    @property
+    def template_filename(self):
+        return 'template/{}.xlsx'.format(self.__tablename__)
+
+    @property
+    def template_document_filename(self):
+        return 'template/{}.docx'.format(self.__tablename__)
+
     template_start_row = 0
-    template_document_filename = ''
 
     def __getitem__(self, item):
         return getattr(self, item)

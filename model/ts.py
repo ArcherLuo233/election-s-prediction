@@ -14,7 +14,6 @@ class TS(Base):
         'relatives_degree_of_contact', 'remark'
     ]
 
-    template_filename = 'template/ts.xlsx'
     template_start_row = 4
 
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -11,7 +11,6 @@ class JZZ(Base):
         'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'
     ]
 
-    template_filename = 'template/jzz.xlsx'
     template_start_row = 3
 
     id = Column(Integer, primary_key=True, autoincrement=True)

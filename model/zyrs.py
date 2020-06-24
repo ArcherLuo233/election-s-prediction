@@ -16,7 +16,6 @@ class ZYRS(Base):
     ]
     file_field = ['schedule']
 
-    template_filename = 'template/zyrs.xlsx'
     template_start_row = 3
 
     id = Column(Integer, primary_key=True, autoincrement=True)
