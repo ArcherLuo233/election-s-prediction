@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (QCheckBox, QHBoxLayout, QHeaderView, QMessageBox,
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.user_add import UserAdd
-from libs.g import g
+
 from .usermanagerUI import Ui_Dialog
 
 
@@ -46,7 +46,6 @@ class UserManager(ModalDialog):
             item.setTextAlignment(Qt.AlignCenter)
             item.setFlags(Qt.ItemIsEnabled)
             table_widget.setItem(index, 0, item)
-
             item = QTableWidgetItem()
             item.setFont(self.font())
             item.setText(i.nickname)
@@ -75,13 +74,12 @@ class UserManager(ModalDialog):
             nickname = self.ui.tableWidget.item(i, 1).text()
             ckb = self.ui.tableWidget.cellWidget(i, 2).children()[1]
             if ckb.checkState() == Qt.Checked:
-                permission = 1
+                permission = UserPermission.Admin
             else:
-                permission = 0
+                permission = UserPermission.Normal
             target_user = User.search(username=username, page_size=-1)["data"][0]
             if target_user.nickname != nickname:
                 target_user.modify(nickname=nickname)
-
 
             if target_user.permission != permission:
                 if target_user.username!= g.current_user.username :
@@ -94,14 +92,12 @@ class UserManager(ModalDialog):
             QMessageBox.information(None, "管理用户", "保存成功,本人权限未修改!")
         self.refresh()
 
+            QMessageBox.information(None, "管理用户", "保存成功")
 
     def add_user(self):
-        self.user_add_dialog = UserAdd(self)
-        self.user_add_dialog.ui.LineEdit.setText("")
-        self.user_add_dialog.ui.LineEdit_2.setText("")
-        self.user_add_dialog.ui.LineEdit_3.setText("")
-        self.user_add_dialog.ui.LineEdit_4.setText("")
-        self.user_add_dialog.show()
+        dialog = UserAdd(self)
+        dialog.exec_()
+        self.refresh()
 
     def del_user(self):
         select_row = self.ui.tableWidget.currentRow()

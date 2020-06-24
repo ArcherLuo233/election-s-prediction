@@ -1,10 +1,11 @@
 import os
 
+from PIL import Image
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
-from docx.shared import Pt, Inches
+from docx.shared import Inches, Pt
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
 
@@ -49,17 +50,26 @@ def save_excel(template_filename, start_row, data, filename):
     wb.save(filename)
 
 
-def upload_file(filename):
+def upload_file(filename, is_pic=False):
+    if not os.path.exists('file/'):
+        os.makedirs('file/')
+    if is_pic:
+        try:
+            image = Image.open(filename)
+        except Exception:
+            raise AppException('图片无法打开')
+        filename = 'tmp.png'
+        image.save(filename)
+
     suffix = filename.rsplit('.', 1)
     if len(suffix) == 1:
         raise AppException('文件没有后缀')
     suffix = suffix[1]
     with open(filename, "rb") as f:
         raw = f.read()
-    filename = md5(raw) + "." + suffix
-    filename = 'file/{}'.format(filename)
-    if not os.path.exists('file/'):
-        os.makedirs('file/')
+    if is_pic:
+        os.remove(filename)
+    filename = 'file/{}'.format(md5(raw) + "." + suffix)
     with open(filename, "wb") as f:
         f.write(raw)
     return filename
