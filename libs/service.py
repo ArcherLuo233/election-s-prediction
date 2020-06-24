@@ -123,4 +123,29 @@ def save_word(filename, title, data, pic=False, ty_data=None):
         if data['照片']:
             cell_v.add_paragraph().add_run().add_picture(data['照片'], width=Inches(1.5))
 
+    if ty_data:
+        title_paragraph = document.add_paragraph()
+        title_run = title_paragraph.add_run('团员')
+        title_run.font.size = Pt(16)
+        title_paragraph.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+        row = len(ty_data) + 1
+        col = len(ty_data[0])
+
+        table = document.add_table(rows=row, cols=col, style='Table Grid')
+        idx = 0
+        for k in ty_data[0].keys():
+            cell = table.cell(0, idx)
+            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            cell.text = k
+            idx += 1
+
+        for row_idx in range(1, row):
+            idx = 0
+            for v in ty_data[row_idx - 1].values():
+                cell = table.cell(row_idx, idx)
+                cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                cell.text = v
+                idx += 1
+
     document.save(filename)
