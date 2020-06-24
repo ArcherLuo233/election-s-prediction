@@ -12,4 +12,5 @@ class Area(Base):
     name = Column(String(100), comment='名字')
     mayor = Column(String(100), comment='镇长')
     population = Column(String(100), comment='人口')
+    number_of_family = Column(String(100), comment='户数')
     introduction = Column(String(10000), comment='基本情况')
