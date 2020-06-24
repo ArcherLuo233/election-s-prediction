@@ -1,5 +1,6 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
+                             QTableWidget, QTableWidgetItem)
 
 from libs.fields_translater import FieldsTranslater
 from model.base import Base
@@ -36,6 +37,7 @@ class DetailPage(ModalDialog):
         self.ui.btn_append.clicked.connect(self.append)
         self.ui.btn_modify.clicked.connect(self.modify)
         self.ui.btn_delete.clicked.connect(self.delete)
+        self.ui.btn_export.clicked.connect(self.export)
 
     def set_default_conditions(self, **kwargs):
         self.default_conditions = kwargs
@@ -55,6 +57,13 @@ class DetailPage(ModalDialog):
         item = self.model.get_by_id(self.data_id)
         item.delete()
         self.close()
+
+    def export(self):
+        filename = QFileDialog.getSaveFileName(None, "导出文档", "./", "word文档(*.docx)")[0]
+        if filename == "":
+            return
+        self.model.export_document(self.data_id, filename)
+        QMessageBox.information(None, "导出文档", "导出完成")
 
     def refresh_data(self, id_: int):
         if id_ == -1:
@@ -173,9 +182,11 @@ class DetailPage(ModalDialog):
             self.ui.btn_append.show()
             self.ui.btn_modify.hide()
             self.ui.btn_delete.hide()
+            self.ui.btn_export.hide()
         else:
             self.ui.btn_append.hide()
             self.ui.btn_modify.show()
             self.ui.btn_delete.show()
+            self.ui.btn_export.show()
         self.refresh_data(id_)
         self.exec_()

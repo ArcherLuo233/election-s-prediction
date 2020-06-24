@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>436</width>
-    <height>469</height>
+    <width>690</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="font">
@@ -36,8 +36,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>418</width>
-        <height>451</height>
+        <width>672</width>
+        <height>532</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -317,6 +317,22 @@ padding: 10px</string>
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_export">
+           <property name="font">
+            <font>
+             <family>黑体</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>导出</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_append">
