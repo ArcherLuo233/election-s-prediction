@@ -3,9 +3,11 @@ from sqlalchemy import Column, Integer, String, Text
 from model.base import Base
 
 
-# 台属
+
 class TS(Base):
     __tablename__ = 'ts'
+
+    class_name = '台属'
 
     field = [
         'id', 'area', 'nickname', 'sex', 'birth', 'hometown', 'mailing_address', 'job', 'social_identity', 'phone',

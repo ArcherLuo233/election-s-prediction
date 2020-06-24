@@ -3,9 +3,10 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from model.base import Base
 
 
-# 公务团组_团员
 class GWTZ_TY(Base):
     __tablename__ = 'gwtz_ty'
+
+    class_name = '公务团组_团员'
 
     field = [
         'id', 'nickname', 'sex', 'job', 'type', 'nature', 'taiwan_position', 'entry_number', 'pass_number',

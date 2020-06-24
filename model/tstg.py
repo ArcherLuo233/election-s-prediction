@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String, Text
 from model.base import Base
 
 
-# 台商台干
 class TSTG(Base):
     __tablename__ = 'tstg'
+
+    class_name = '台商台干'
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'id_card', 'taiwanese_id', 'residence_id', 'in_taiwan_area',

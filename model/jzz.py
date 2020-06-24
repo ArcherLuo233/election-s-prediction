@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String
 from model.base import Base
 
 
-# 居住证
 class JZZ(Base):
     __tablename__ = 'jzz'
+
+    class_name = '居住证'
 
     field = [
         'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'

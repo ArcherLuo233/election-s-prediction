@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String, Text
 from model.base import Base
 
 
-# 陆配
 class LP(Base):
     __tablename__ = 'lp'
+
+    class_name = '陆配'
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'area', 'education', 'job', 'marriage_status', 'marriage_registration_date',

@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String, Text
 from model.base import Base
 
 
-# 陆生
 class LS(Base):
     __tablename__ = 'ls'
+
+    class_name = '陆生'
 
     field = [
         'id', 'area', 'level', 'nickname', 'id_card', 'political_status', 'is_undergraduate', 'college', 'major',

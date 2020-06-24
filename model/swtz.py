@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String
 from model.base import Base
 
 
-# 商务团组
 class SWTZ(Base):
     __tablename__ = 'swtz'
+
+    class_name = '商务团组'
 
     field = [
         'id', 'company_name', 'main_business', 'datetime', 'reason', 'taiwan_company_name', 'taiwan_main_business',

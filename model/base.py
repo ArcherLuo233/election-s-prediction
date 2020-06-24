@@ -22,6 +22,7 @@ class Base(base_class):
     __tablename__ = ''
     __table_args__ = {"extend_existing": True}
 
+    class_name = ''
     field = []
     file_field = []
 
@@ -131,4 +132,4 @@ class Base(base_class):
         for field in cls.field:
             data['_' + str(idx)] = getattr(base, field) if getattr(base, field) else ''
             idx += 1
-        save_word(cls.template_document_filename, data, filename)
+        save_word(filename, )

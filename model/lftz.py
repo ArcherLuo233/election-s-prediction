@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String
 from model.base import Base
 
 
-# 来访团组
 class LFTZ(Base):
     __tablename__ = 'lftz'
+
+    class_name = '来访团组'
 
     field = [
         'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization'

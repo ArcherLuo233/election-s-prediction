@@ -3,9 +3,10 @@ from sqlalchemy import Column, Integer, String, Text
 from model.base import Base
 
 
-# 来绍交流
 class LSJL(Base):
     __tablename__ = 'lsjl'
+
+    class_name = '来绍交流'
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'type_of_certificate', 'number_of_certificate', 'in_taiwan_area', 'partisan',
