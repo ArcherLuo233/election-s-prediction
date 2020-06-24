@@ -8,7 +8,7 @@ class AreaInfo(Base):
     __tablename__ = 'area_info'
 
     field = [
-        'id', 'mayor', 'area_mayor', 'representative', 'community', 'peasant_association', 'tag'
+        'mayor', 'area_mayor', 'representative', 'community', 'peasant_association'
     ]
 
     id = Column(Integer, primary_key=True, autoincrement=True)
