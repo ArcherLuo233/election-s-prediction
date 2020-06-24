@@ -130,6 +130,11 @@ class Base(base_class):
     def export_document(cls, id_, filename):
         base = cls.get_by_id(id_)
         data = dict()
-        for field in cls.field:
-            data[field] = getattr(base, field) if getattr(base, field) else ''
-        save_word(filename, cls.class_name, data)
+        field = cls.field.copy()
+        field.remove("id")
+        if cls.pic:
+            field.insert(1, "photo")
+        for item in field:
+            attr = getattr(cls, item)
+            data[attr.comparator.comment] = getattr(base, item) if getattr(base, item) else ''
+        save_word(filename, cls.class_name, data, cls.pic, None)

@@ -1,6 +1,10 @@
 import os
 
-from docxtpl import DocxTemplate
+from docx import Document
+from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.oxml.ns import qn
+from docx.shared import Pt, Inches
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
 
@@ -71,7 +75,45 @@ def download_file(from_filename, to_filename):
         f.write(raw)
 
 
-def save_word(template_file, data, filename):
-    doc = DocxTemplate(template_file)
-    doc.render(data)
-    doc.save(filename)
+def save_word(filename, title, data, pic=False, ty_data=None):
+    document = Document()
+    document.styles['Normal'].font.name = u'宋体'
+    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'宋体')
+
+    title_paragraph = document.add_paragraph()
+    title_run = title_paragraph.add_run(title)
+    title_run.font.size = Pt(20)
+    title_paragraph.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+    pic_row = 5
+    row = (len(data) + pic_row) // 2
+    table = document.add_table(rows=row, cols=4, style='Table Grid')
+    table.cell(0, 2).merge(table.cell(pic_row - 1, 2))
+    table.cell(0, 3).merge(table.cell(pic_row - 1, 3))
+
+    row_idx = 0
+    col_idx = 0
+    for k, v in data.items():
+        if k == '照片':
+            continue
+        cell_k = table.cell(row_idx, col_idx)
+        cell_k.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        cell_v = table.cell(row_idx, col_idx + 1)
+        cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        cell_k.text = k
+        cell_v.text = v
+
+        if (pic and row_idx < pic_row) or col_idx == 2:
+            row_idx += 1
+            col_idx = 0
+        else:
+            col_idx = 2
+    if pic:
+        cell_k = table.cell(0, 2)
+        cell_k.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        cell_v = table.cell(0, 3)
+        cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        cell_k.text = '照片'
+        cell_v.add_paragraph().add_run().add_picture(data['照片'], width=Inches(1.5))
+
+    document.save(filename)
