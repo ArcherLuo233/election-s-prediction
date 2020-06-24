@@ -32,7 +32,7 @@ class PicWidget(QWidget):
         filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "图片文件(*.jpg *.png)")[0]
         if filename == "":
             return
-        path = upload_file(filename)
+        path = upload_file(filename, True)
         self.set_picture(path)
 
     def paintEvent(self, e):

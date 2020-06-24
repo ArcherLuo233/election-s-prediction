@@ -50,10 +50,10 @@ def save_excel(template_filename, start_row, data, filename):
     wb.save(filename)
 
 
-def upload_file(filename, pic=False):
+def upload_file(filename, is_pic=False):
     if not os.path.exists('file/'):
         os.makedirs('file/')
-    if pic:
+    if is_pic:
         try:
             image = Image.open(filename).verify()
         except Exception:
@@ -68,7 +68,7 @@ def upload_file(filename, pic=False):
     suffix = suffix[1]
     with open(filename, "rb") as f:
         raw = f.read()
-    if pic:
+    if is_pic:
         os.remove(filename)
     filename = 'file/{}'.format(md5(raw) + "." + suffix)
     with open(filename, "wb") as f:
