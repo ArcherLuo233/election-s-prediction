@@ -53,6 +53,15 @@ def save_excel(template_filename, start_row, data, filename):
 def upload_file(filename, pic=False):
     if not os.path.exists('file/'):
         os.makedirs('file/')
+    if pic:
+        try:
+            image = Image.open(filename).verify()
+        except Exception:
+            raise AppException('图片无法打开')
+        image.save()
+        filename = 'tmp.png'
+        image.save(filename)
+
     suffix = filename.rsplit('.', 1)
     if len(suffix) == 1:
         raise AppException('文件没有后缀')
@@ -60,18 +69,10 @@ def upload_file(filename, pic=False):
     with open(filename, "rb") as f:
         raw = f.read()
     if pic:
-        try:
-            image = Image.open(filename).verify()
-        except Exception:
-            raise AppException('图片无法打开')
-        with open(filename, "rb") as f:
-            raw = f.read()
-        filename = 'file/{}'.format(md5(raw) + ".png")
-        image.save(filename)
-    else:
-        filename = 'file/{}'.format(md5(raw) + "." + suffix)
-        with open(filename, "wb") as f:
-            f.write(raw)
+        os.remove(filename)
+    filename = 'file/{}'.format(md5(raw) + "." + suffix)
+    with open(filename, "wb") as f:
+        f.write(raw)
     return filename
 
 
