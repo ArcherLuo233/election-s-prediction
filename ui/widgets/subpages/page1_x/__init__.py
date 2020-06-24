@@ -22,7 +22,6 @@ class Page1_x(QWidget):
     model = None
     members_model = None
     summary = {}
-    need_pic = False
     title: str = None
 
     def __init__(self):
@@ -38,7 +37,6 @@ class Page1_x(QWidget):
             self.translator = FieldsTranslater(self.model)
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
             self.condition_boxes = []
-            self.need_pic = self.model.pic
         # label_title
         self.ui.label_title.setText("%s人员信息查询/登记" % self.title)
         # button_search
@@ -292,7 +290,7 @@ class Page1_x(QWidget):
         if self.model is None:
             print("jiubei: 没有设置Model: ", self.title)
             return
-        dialog = DetailPage(self.dialog_parent, self.model, self.need_pic)
+        dialog = DetailPage(self.dialog_parent, self.model)
         dialog.set_default_conditions(**self.default_conditions)
         dialog.show_(enable, data)
         self.refresh_page(self.ui.page_controller.page)
