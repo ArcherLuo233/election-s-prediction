@@ -15,6 +15,9 @@ class ZYRS(Base):
         'contact_person', 'contact_person_phone', 'remark',
     ]
 
+    template_filename = 'template/zyrs.xlsx'
+    template_start_row = 3
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     photo = Column(String(100), comment='照片')
     nickname = Column(String(100), nullable=False, comment='姓名')
