@@ -86,10 +86,14 @@ def save_word(filename, title, data, pic=False, ty_data=None):
     title_paragraph.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
     pic_row = 5
-    row = (len(data) + pic_row) // 2
+    if pic:
+        row = (len(data) + pic_row) // 2
+    else:
+        row = (len(data) + 1) // 2
     table = document.add_table(rows=row, cols=4, style='Table Grid')
-    table.cell(0, 2).merge(table.cell(pic_row - 1, 2))
-    table.cell(0, 3).merge(table.cell(pic_row - 1, 3))
+    if pic:
+        table.cell(0, 2).merge(table.cell(pic_row - 1, 2))
+        table.cell(0, 3).merge(table.cell(pic_row - 1, 3))
 
     row_idx = 0
     col_idx = 0
