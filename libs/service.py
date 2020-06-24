@@ -2,6 +2,7 @@ import os
 
 from docxtpl import DocxTemplate
 from openpyxl import load_workbook
+from openpyxl.styles import Border, Side
 
 from libs.exception import AppException
 from libs.helper import md5
@@ -17,11 +18,12 @@ def read_excel(filename, start_row):
     for row_idx in range(start_row, row + 1):
         try:
             tmp = []
-            for col_idx in range(1, col + 1):
+            for col_idx in range(2, col + 1):
                 cell = ws.cell(row_idx, col_idx)
                 tmp.append(str(cell.value) if cell.value else None)
         except IndexError:
             raise AppException('导入数据错误，请使用模板导入数据')
+        data.append(tmp)
     return data
 
 
@@ -29,10 +31,16 @@ def save_excel(template_filename, start_row, data, filename):
     wb = load_workbook(template_filename)
     ws = wb.active
 
-    for idx in range(start_row, len(data) + start_row):
-        for i in range(len(data[0])):
-            name = '{}{}'.format(chr(65 + i), idx + 1)
-            ws[name] = data[idx - start_row][i]
+    thin_border = Border(left=Side(style='thin'),
+                         right=Side(style='thin'),
+                         top=Side(style='thin'),
+                         bottom=Side(style='thin'))
+
+    for row_idx in range(start_row, len(data) + start_row):
+        for col_idx in range(1, len(data[0]) + 1):
+            cell = ws.cell(row_idx, col_idx)
+            cell.value = data[row_idx - start_row][col_idx - 1]
+            cell.border = thin_border
 
     wb.save(filename)
 
