@@ -14,10 +14,12 @@ def read_excel(filename, start_row):
     row = ws.max_row
 
     data = []
-    for idx in range(start_row, row + 1):
+    for row_idx in range(start_row, row + 1):
         try:
-            data.append(
-                [ws.cell(idx, i + 1).value if ws.cell(idx, i + 1).value is not None else None for i in range(1, col)])
+            tmp = []
+            for col_idx in range(1, col + 1):
+                cell = ws.cell(row_idx, col_idx)
+                tmp.append(str(cell.value) if cell.value else None)
         except IndexError:
             raise AppException('导入数据错误，请使用模板导入数据')
     return data
