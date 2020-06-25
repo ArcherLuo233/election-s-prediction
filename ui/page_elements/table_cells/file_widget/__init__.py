@@ -9,11 +9,12 @@ from .pageUI import Ui_Form
 
 
 class FileWidget(QWidget):
-    def __init__(self):
+    def __init__(self, description: str = ""):
         super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.path = None
+        self.description = description
         self.ui.btn_delete.clicked.connect(self.delete)
         self.ui.btn_download.clicked.connect(self.download)
         self.ui.btn_upload.clicked.connect(self.upload)
@@ -36,7 +37,7 @@ class FileWidget(QWidget):
 
     def download(self):
         suffix = os.path.splitext(self.path)[1]
-        default_name = "download" + suffix
+        default_name = self.description + suffix
         filename = QFileDialog.getSaveFileName(self, "下载文件", default_name)[0]
         if filename == "":
             return

@@ -150,7 +150,12 @@ class DetailPage(ModalDialog):
             value_item.setText(str(value))
             table_widget.setItem(row, col + 1, value_item)
         elif item['type'] == 'file':
-            file_widget = FileWidget()
+            description = "{model}-{id}-{comment}".format(
+                model=self.model.class_name,
+                id=self.data_id,
+                comment=item['comment']
+            )
+            file_widget = FileWidget(description)
             file_widget.set_file_path(item['value'])
             table_widget.setCellWidget(row, col + 1, file_widget)
 
