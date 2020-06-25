@@ -325,7 +325,7 @@ class Page1_x(QWidget):
         try:
             if self.model is None:
                 raise AppException("Undefined Import: %s" % self.title)
-            self.model.import_(filename)
+            self.model.import_(filename, **self.default_conditions)
         except AppException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
             return
