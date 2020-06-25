@@ -26,6 +26,7 @@ class Base(base_class):
     pic = False
     ty = None
     foreign_key = ''
+    import_docx = True
     field = []
     file_field = []
 
