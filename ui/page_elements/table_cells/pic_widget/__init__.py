@@ -3,6 +3,8 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QFileDialog, QWidget
 
 from libs.service import upload_file
+from libs.g import g
+from libs.enumrations import UserPermission
 
 from .pageUI import Ui_Form
 
@@ -36,6 +38,10 @@ class PicWidget(QWidget):
         self.set_picture(path)
 
     def paintEvent(self, e):
+        if g.current_user.permission != UserPermission.Admin:
+            self.ui.btn_upload.hide()
+        else:
+            self.ui.btn_upload.show()
         pixmap = self.pixmap
         if pixmap is None:
             self.ui.label_pic.setText("")

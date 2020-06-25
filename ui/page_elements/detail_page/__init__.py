@@ -194,25 +194,27 @@ class DetailPage(ModalDialog):
         self.ui.tableWidget.setEnabled(enable)
         id_ = data['id']
         self.data_id = id_
-        if id_ == -1:
+        if self.model.export_docx:
+            self.ui.btn_export.show()
+        else:
+            self.ui.btn_export.hide()
+        if self.refresh_data(id_):
+            self.exec_()
+        else:
+            self.close()
+
+    def paintEvent(self, e):
+        if self.data_id == -1:
             self.ui.btn_append.show()
             self.ui.btn_modify.hide()
             self.ui.btn_delete.hide()
             self.ui.btn_export.hide()
         else:
             self.ui.btn_append.hide()
+            self.ui.btn_export.show()
             self.ui.btn_modify.show()
             self.ui.btn_delete.show()
-            self.ui.btn_export.show()
-        if self.model.export_docx:
-            self.ui.btn_export.show()
-        else:
-            self.ui.btn_export.hide()
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_append.hide()
             self.ui.btn_modify.hide()
             self.ui.btn_delete.hide()
-        if self.refresh_data(id_):
-            self.exec_()
-        else:
-            self.close()

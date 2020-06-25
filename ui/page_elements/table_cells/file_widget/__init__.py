@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
 
 from libs.exception import AppException
 from libs.service import download_file, upload_file
+from libs.g import g
+from libs.enumrations import UserPermission
 
 from .pageUI import Ui_Form
 
@@ -58,3 +60,6 @@ class FileWidget(QWidget):
         else:
             self.ui.btn_delete.hide()
             self.ui.btn_download.hide()
+        if g.current_user.permission != UserPermission.Admin:
+            self.ui.btn_upload.hide()
+            self.ui.btn_delete.hide()

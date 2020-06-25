@@ -307,8 +307,10 @@ class SearchPage(QWidget):
             self.ui.btn_mul_export.show()
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_mul_delete.hide()
+            self.ui.button_add.hide()
         else:
             self.ui.btn_mul_delete.show()
+            self.ui.button_add.show()
 
     def download_template(self):
         default_name = './{model}-模板'.format(model=self.model.class_name)
