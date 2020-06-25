@@ -7,3 +7,4 @@ class ListWidget(QWidget):
 
     def get_data(self):
         return []
+# 这个类暂时弃用
