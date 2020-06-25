@@ -17,6 +17,7 @@ class ModalDialog(QDialog):
 
     def showEvent(self, e):
         self.mask_.show()
+        self.mask_.raise_()
         self.raise_()
 
     def paintEvent(self, e):
