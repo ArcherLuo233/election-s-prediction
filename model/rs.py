@@ -17,7 +17,7 @@ class RS(Base):
     ]
     file_field = ['schedule']
 
-    template_start_row = 4
+    template_start_row = 3
 
     photo = Column(String(100), comment='照片')
     nickname = Column(String(100), nullable=False, comment='姓名')
