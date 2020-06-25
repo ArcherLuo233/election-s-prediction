@@ -333,7 +333,7 @@ class Page1_x(QWidget):
         self.refresh_page()
 
     def export_to_file(self):
-        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx)")[0]
         if filename == "":
             return
         try:
