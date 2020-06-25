@@ -1,5 +1,5 @@
-from ui.page_elements.search_page import SearchPage
 from model.rs import RS
+from ui.page_elements.search_page import SearchPage
 
 
 class Page4(SearchPage):

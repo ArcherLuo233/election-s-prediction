@@ -8,6 +8,7 @@ from libs.g import g
 from model.base import Base
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.table_cells.file_widget import FileWidget
+from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
 
 from .dialogUI import Ui_Dialog
@@ -29,6 +30,7 @@ class DetailPage(ModalDialog):
         self.translator = FieldsTranslater(self.model)
         # tableWidget
         self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
+        self.ui.tableWidget.cellChanged.connect(self.ui.tableWidget.resizeRowsToContents)
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
@@ -144,12 +146,9 @@ class DetailPage(ModalDialog):
         comment_item.setFlags(Qt.ItemIsEnabled)
         table_widget.setItem(row, col, comment_item)
         if item['type'] == 'normal':
-            value_item = QTableWidgetItem()
-            value = item['value']
-            if value is None:
-                value = ""
-            value_item.setText(str(value))
-            table_widget.setItem(row, col + 1, value_item)
+            widget = NormalWidget(item['value'])
+            widget.textChanged.connect(table_widget.resizeRowsToContents)
+            table_widget.setCellWidget(row, col + 1, widget)
         elif item['type'] == 'file':
             description = "{model}-{id}-{comment}".format(
                 model=self.model.class_name,
@@ -176,12 +175,8 @@ class DetailPage(ModalDialog):
                     continue
                 text = item.text()
                 field = self.translator.to_field(text)
-                item = table_widget.item(row, col + 1)
                 widget = table_widget.cellWidget(row, col + 1)
-                if item:
-                    content = item.text()
-                else:
-                    content = widget.get_data()
+                content = widget.get_data()
                 data[field] = content
         for field, val in self.default_conditions.items():
             data[field] = val

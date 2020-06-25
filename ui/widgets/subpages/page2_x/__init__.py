@@ -1,11 +1,12 @@
+from PIL import Image
 from PyQt5 import QtGui
 from PyQt5.Qt import Qt
-from PIL import Image
-from PyQt5.QtWidgets import (QHeaderView, QTableWidget, QTableWidgetItem,
-                             QWidget, QMessageBox, QFileDialog)
 from PyQt5.QtGui import QPixmap
-from model.area import Area
+from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
+                             QTableWidget, QTableWidgetItem, QWidget)
+
 from libs.service import upload_file
+from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
 
 from .pageUI import Ui_Form
