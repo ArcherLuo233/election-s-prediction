@@ -16,6 +16,8 @@ class GWTZ(Base):
     ]
     file_field = ['stroke', 'necessity_statement', 'summary']
 
+    template_start_row = 3
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     year = Column(String(100), comment='年度')
     name = Column(String(100), comment='团组名称')
