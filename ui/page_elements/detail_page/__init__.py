@@ -64,7 +64,8 @@ class DetailPage(ModalDialog):
         self.close()
 
     def export(self):
-        filename = QFileDialog.getSaveFileName(None, "导出文档", "./", "word文档(*.docx)")[0]
+        default_name = "./{model}-{id}.docx".format(model=self.model.class_name, id=self.data_id)
+        filename = QFileDialog.getSaveFileName(None, "导出文档", default_name, "word文档(*.docx)")[0]
         if filename == "":
             return
         self.model.export_document(self.data_id, filename)
