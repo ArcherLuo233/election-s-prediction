@@ -14,6 +14,8 @@ class LFTZ(Base):
         'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization'
     ]
 
+    template_start_row = 3
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     datetime = Column(String(100), comment='时间')
     name = Column(String(100), comment='团组名称')
