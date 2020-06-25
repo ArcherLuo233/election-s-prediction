@@ -21,6 +21,8 @@ class JG(Base):
 
     @property
     def director(self):
+        if self.director_ is None:
+            return []
         return self.director_.split(' ')
 
     @director.setter
@@ -29,6 +31,8 @@ class JG(Base):
 
     @property
     def supervisor(self):
+        if self.supervisor_ is None:
+            return []
         return self.supervisor_.split(' ')
 
     @supervisor.setter
@@ -37,6 +41,8 @@ class JG(Base):
 
     @property
     def representative(self):
+        if self.representative_ is None:
+            return []
         return self.representative_.split(' ')
 
     @representative.setter
