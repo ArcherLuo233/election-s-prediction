@@ -151,7 +151,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label_title.setText(_translate("Form", "%s人员信息查询/登记"))
+        self.label_title.setText(_translate("Form", "title"))
         self.btn_add_condition.setText(_translate("Form", "添加条件"))
         self.button_search.setText(_translate("Form", "查询"))
         self.btn_downloadTemplate.setText(_translate("Form", "下载模板"))

@@ -44,7 +44,7 @@
       </font>
      </property>
      <property name="text">
-      <string>%s人员信息查询/登记</string>
+      <string>title</string>
      </property>
     </widget>
    </item>

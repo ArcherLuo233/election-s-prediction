@@ -38,7 +38,7 @@ class SearchPage(QWidget):
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
             self.condition_boxes = []
         # label_title
-        self.ui.label_title.setText("%s人员信息查询/登记" % self.title)
+        self.ui.label_title.setText(self.title)
         # button_search
         icon = QIcon("./static/svg/search.svg")
         self.ui.button_search.setIcon(icon)
