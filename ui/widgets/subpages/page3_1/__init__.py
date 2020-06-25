@@ -1,10 +1,11 @@
-from PyQt5.QtCore import QEventLoop
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QMessageBox, QWidget
 
 from libs.link_manager import link_manager
-from ui.page_elements.window_mask import WindowMask
+from model.rs import RS
+from ui.page_elements.detail_page import DetailPage
+from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
-from .detailPage import DetailPage
+from .pages import ChoicePage
 from .pageUI import Ui_Form
 
 
@@ -14,68 +15,63 @@ class Page3_1(QWidget):
         self.dialog = None
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.setStaffInfo()
-        self.ui.pushButton.clicked.connect(self.back)
+        self.data_id = 0
+        self.ui.pushButton.clicked.connect(self.go_back)
+        self.ui.label_staff.linkActivated.connect(self.detail)
+
+    def set_data_id(self, id_):
+        self.data_id = id_
+        self.refresh_data()
+
+    def refresh_data(self):
+        self.set_staff_info()
 
     @staticmethod
-    def staffInfo2str(_id, name):
+    def staff_info2str(_id, name):
         return '<a href="#detail:{1}">' \
                '<span style="text-decoration: none; color:rgb(68, 126, 217);">{0}' \
                '</span></a>'.format(name, _id)
 
-    def setStaffInfo(self):
+    def set_staff_info(self):
         info = {
-            '理事': {
-                'id1': '人名1'
-            },
-            '监事': {
-                'id2': '人名2',
-                'id3': '人名3',
-            },
-            '代表': {
-                'id4': '人名4',
-                'id5': '人名5',
-                'id6': '人名6',
-            }
+            '理事': [
+                '张三'
+            ],
+            '监事': [
+                '李四',
+                '人名3',
+            ],
+            '代表': [
+                '人名4',
+                '人名5',
+                '人名6',
+            ]
         }
         s = str()
         for position, infos in info.items():
             s += position + ':'
-            for _id, name in infos.items():
+            for name in infos:
                 s += ' '
-                s += self.staffInfo2str(_id, name)
+                s += self.staff_info2str(name, name)
             s += '<br>'
         self.ui.label_staff.setText(s)
-        self.ui.label_staff.linkActivated.connect(self.detail)
 
-    def back(self):
+    def go_back(self):
         link_manager.activate("#goto:3")
 
     def detail(self, link):
-        mask = WindowMask(self)
-        self.dialog = DetailPage()
-        self.dialog.setParent(self)
-        self.locationDialog()
-        self.dialog.ui.tableWidget.setEnabled(False)
-        loop = QEventLoop()
-        mask.clicked.connect(loop.quit)
-        mask.show()
-        self.dialog.show()
-        loop.exec()
-        self.dialog.close()
-        mask.close()
-        self.dialog.deleteLater()
-        self.dialog = None
-        mask.deleteLater()
-
-    def resizeEvent(self, QResizeEvent):
-        self.locationDialog()
-
-    def locationDialog(self):
-        if self.dialog:
-            geo = self.geometry()
-            geo.setLeft(geo.left() + 50)
-            geo.setRight(geo.right() - 50)
-            geo.setTop(geo.top() + 30)
-            geo.setBottom(geo.bottom() - 50)
-            self.dialog.setGeometry(geo)
+        name = link[len("#detail:"):]
+        data = RS.search(nickname=name)
+        cnt = data['meta']['count']
+        if cnt == 0:
+            QMessageBox.critical(None, "查看详情", "查无此人")
+        elif cnt == 1:
+            dialog = DetailPage(self, RS)
+            dialog.show_(True, {'id': data['data'][0].id})
+        else:
+            widget = ChoicePage()
+            widget.set_default_conditions(nickname=name)
+            widget.set_dialog_parent(self)
+            dialog = create_dialog_like_widget(self, widget)
+            dialog.setFixedSize(1500, 800)
+            dialog.exec_()
