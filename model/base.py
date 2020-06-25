@@ -99,7 +99,7 @@ class Base(base_class):
         return data
 
     @classmethod
-    def import_(cls, filename):
+    def import_(cls, filename, **kwargs):
         res = read_excel(filename, cls.template_start_row)
         for i in res:
             field = cls.field.copy()
@@ -107,6 +107,7 @@ class Base(base_class):
             for file in cls.file_field:
                 field.remove(file)
             data = {field[idx]: i[idx] for idx in range(len(field))}
+            data.update(kwargs)
             if cls.search(**data)['meta']['count'] == 0:
                 cls.create(**data)
 
