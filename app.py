@@ -9,6 +9,7 @@ from libs.page_magager import PageManager
 from model.base import init_database
 from ui.widgets.login_page import LoginPage
 from ui.widgets.main_page import MainPage
+import pymysql
 
 
 def main():

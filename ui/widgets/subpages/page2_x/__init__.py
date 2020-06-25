@@ -69,6 +69,8 @@ class Page2_x(QWidget):
         target_area = Area.search(name=self.title)["data"][0]
         path = target_area.photo
         pix = QPixmap(path)
+        pix.scaled(self.ui.lab_img.size(), Qt.KeepAspectRatio)
+        self.ui.lab_img.setScaledContents(True)
         self.ui.lab_img.setPixmap(pix)
 
     def reload(self):
