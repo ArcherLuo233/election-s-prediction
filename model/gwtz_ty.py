@@ -17,7 +17,6 @@ class GWTZ_TY(Base):
 
     template_start_row = 3
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     gwtz_id = Column(Integer, ForeignKey('gwtz.id'))
     nickname = Column(String(100), comment='姓名')
     sex = Column(String(100), comment='性别')

@@ -18,7 +18,6 @@ class GWTZ(Base):
 
     template_start_row = 3
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     year = Column(String(100), comment='年度')
     name = Column(String(100), comment='团组名称')
     company = Column(String(100), comment='组团单位')

@@ -11,7 +11,6 @@ class AreaInfo(Base):
         'mayor', 'area_mayor', 'representative', 'community', 'peasant_association'
     ]
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     area_id = Column(Integer, ForeignKey('area.id'))
     mayor = Column(String(100), comment='镇长')
     area_mayor = Column(String(100), comment='里长')

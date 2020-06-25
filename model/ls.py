@@ -17,7 +17,6 @@ class LS(Base):
 
     template_start_row = 4
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     area = Column(String(100), comment='地区')
     level = Column(String(100), comment='届别')
     nickname = Column(String(100), comment='姓名')

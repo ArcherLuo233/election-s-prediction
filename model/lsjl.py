@@ -16,7 +16,6 @@ class LSJL(Base):
 
     template_start_row = 3
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     nickname = Column(String(100), comment='姓名')
     sex = Column(String(100), comment='性别')
     birth = Column(String(100), comment='出生日期')

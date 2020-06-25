@@ -1,4 +1,4 @@
-from sqlalchemy import asc, create_engine, desc
+from sqlalchemy import asc, create_engine, desc, Column, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -30,6 +30,8 @@ class Base(base_class):
     file_field = []
 
     template_start_row = 0
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
 
     def __getitem__(self, item):
         return getattr(self, item)

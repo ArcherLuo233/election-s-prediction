@@ -17,7 +17,6 @@ class TS(Base):
 
     template_start_row = 4
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     area = Column(String(100), comment='地区')
     nickname = Column(String(100), nullable=False, comment='姓名')
     sex = Column(String(100), comment='性别')

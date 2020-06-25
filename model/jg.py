@@ -12,7 +12,6 @@ class JG(Base):
         'id', 'name', 'introduction', 'director', 'supervisor', 'representative', 'remark'
     ]
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), comment='名称')
     introduction = Column(String(1000), comment='简介')
     director_ = Column(Text, comment='理事')

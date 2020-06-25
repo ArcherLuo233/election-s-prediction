@@ -17,7 +17,6 @@ class SWTZ(Base):
 
     template_start_row = 3
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
     company_name = Column(String(100), comment='企业名称')
     main_business = Column(String(100), comment='主营业务')
     datetime = Column(String(100), comment='时间')
