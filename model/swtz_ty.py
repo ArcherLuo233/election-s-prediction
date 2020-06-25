@@ -6,7 +6,7 @@ from model.base import Base
 class SWTZ_TY(Base):
     __tablename__ = 'swtz_ty'
 
-    class_name = '商务团组_团员'
+    class_name = '商务团组-团员'
     foreign_key = 'swtz_id'
 
     field = [
