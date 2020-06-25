@@ -242,6 +242,8 @@ class Page1_x(QWidget):
         if len(self.id_selected) == 0:
             return
         filedir = QFileDialog.getExistingDirectory(None, "请选择存放文件夹", "./")
+        if filedir == '':
+            return
         for id_ in self.id_selected:
             filename = '/{model}-{id}.docx'.format(model=self.model.class_name, id=id_)
             filename = filedir + filename
@@ -335,6 +337,8 @@ class Page1_x(QWidget):
 
     def export_to_file(self):
         default_name = './{model}'.format(model=self.model.class_name)
+        for i, j in self.default_conditions.items():
+            default_name += '-{data}'.format(data=j)
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
         if filename == "":
             return
