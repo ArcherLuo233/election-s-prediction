@@ -8,6 +8,7 @@ from libs.g import g
 from model.base import Base
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.table_cells.file_widget import FileWidget
+from ui.page_elements.table_cells.list_widget import ListWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
 
@@ -79,8 +80,9 @@ class DetailPage(ModalDialog):
         else:
             meta = self.model.get_by_id(id_)
             if meta is None:
-                print("Not found:", type(self.model), "id:", id_)
-                return
+                print("Not found:", self.model.class_name, "id:", id_)
+                QMessageBox.critical(None, "显示详情", "找不到该人员")
+                return False
         data_list = []
         filter_list = ['id', 'photo']
         filtered_data = {}
@@ -93,6 +95,8 @@ class DetailPage(ModalDialog):
             type_ = "normal"
             if idx in self.model.file_field:
                 type_ = "file"
+            if isinstance(value, list):
+                type_ = "list"
             data_list.append({
                 'comment': comment,
                 'value': value,
@@ -101,6 +105,7 @@ class DetailPage(ModalDialog):
         if meta.pic:
             filtered_data['photo'] = meta.photo
         self.refresh_table(data_list, **filtered_data)
+        return True
 
     def refresh_table(self, data_list, **kwargs):
         table_widget = self.ui.tableWidget
@@ -145,19 +150,22 @@ class DetailPage(ModalDialog):
         comment_item.setText(item['comment'])
         comment_item.setFlags(Qt.ItemIsEnabled)
         table_widget.setItem(row, col, comment_item)
+        widget = None
         if item['type'] == 'normal':
             widget = NormalWidget(item['value'])
             widget.textChanged.connect(table_widget.resizeRowsToContents)
-            table_widget.setCellWidget(row, col + 1, widget)
         elif item['type'] == 'file':
             description = "{model}-{id}-{comment}".format(
                 model=self.model.class_name,
                 id=self.data_id,
                 comment=item['comment']
             )
-            file_widget = FileWidget(description)
-            file_widget.set_file_path(item['value'])
-            table_widget.setCellWidget(row, col + 1, file_widget)
+            widget = FileWidget(description)
+            widget.set_file_path(item['value'])
+        elif item['type'] == 'list':
+            widget = ListWidget()
+        if widget:
+            table_widget.setCellWidget(row, col + 1, widget)
 
     def get_data_from_table(self) -> dict:
         table_widget = self.ui.tableWidget
@@ -204,5 +212,7 @@ class DetailPage(ModalDialog):
             self.ui.btn_append.hide()
             self.ui.btn_modify.hide()
             self.ui.btn_delete.hide()
-        self.refresh_data(id_)
-        self.exec_()
+        if self.refresh_data(id_):
+            self.exec_()
+        else:
+            self.close()
