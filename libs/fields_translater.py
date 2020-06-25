@@ -10,7 +10,13 @@ class FieldsTranslater:
         for idx in model.field:
             if idx in self.default_translations:
                 continue
-            comment = getattr(model, idx).comment
+            if hasattr(getattr(model, idx), 'comment'):
+                comment = getattr(model, idx).comment
+            elif hasattr(getattr(model, idx + '_'), 'comment'):
+                comment = getattr(model, idx + '_').comment
+            else:
+                print("找不到翻译：{model}-{id}".format(model=model, id=idx))
+                continue
             field2text[idx] = comment
             text2field[comment] = idx
         self.field2text = field2text
