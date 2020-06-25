@@ -18,7 +18,7 @@ from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 from .pageUI import Ui_Form
 
 
-class Page1_x(QWidget):
+class SearchPage(QWidget):
     model = None
     members_model = None
     summary = {}
@@ -301,6 +301,10 @@ class Page1_x(QWidget):
         self.refresh_conditions()
 
     def paintEvent(self, e):
+        if not self.model.export_docx:
+            self.ui.btn_mul_export.hide()
+        else:
+            self.ui.btn_mul_export.show()
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_mul_delete.hide()
         else:

@@ -200,6 +200,10 @@ class DetailPage(ModalDialog):
             self.ui.btn_modify.show()
             self.ui.btn_delete.show()
             self.ui.btn_export.show()
+        if self.model.export_docx:
+            self.ui.btn_export.show()
+        else:
+            self.ui.btn_export.hide()
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_append.hide()
             self.ui.btn_modify.hide()

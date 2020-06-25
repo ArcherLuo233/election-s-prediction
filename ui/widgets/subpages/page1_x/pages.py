@@ -11,10 +11,10 @@ from model.swtz_ty import SWTZ_TY
 from model.ts import TS
 from model.tstg import TSTG
 from model.zyrs import ZYRS
-from ui.widgets.subpages.page1_x import Page1_x
+from ui.page_elements.search_page import SearchPage
 
 
-class Pagelsjl(Page1_x):
+class Pagelsjl(SearchPage):
     title = "来绍交流"
     model = LSJL
     summary = {
@@ -24,7 +24,7 @@ class Pagelsjl(Page1_x):
     }
 
 
-class Pagetstg(Page1_x):
+class Pagetstg(SearchPage):
     title = "台商台干"
     model = TSTG
     summary = {
@@ -35,7 +35,7 @@ class Pagetstg(Page1_x):
     need_pic = True
 
 
-class Pagezyrs(Page1_x):
+class Pagezyrs(SearchPage):
     title = "重要人士"
     model = ZYRS
     summary = {
@@ -45,7 +45,7 @@ class Pagezyrs(Page1_x):
     }
 
 
-class Pagelp(Page1_x):
+class Pagelp(SearchPage):
     title = "陆配"
     model = LP
     summary = {
@@ -55,7 +55,7 @@ class Pagelp(Page1_x):
     }
 
 
-class Pagels(Page1_x):
+class Pagels(SearchPage):
     title = "陆生"
     model = LS
     summary = {
@@ -65,7 +65,7 @@ class Pagels(Page1_x):
     }
 
 
-class Pagets(Page1_x):
+class Pagets(SearchPage):
     title = "台属"
     model = TS
     summary = {
@@ -75,7 +75,7 @@ class Pagets(Page1_x):
     }
 
 
-class Pagegwtz(Page1_x):
+class Pagegwtz(SearchPage):
     title = "公务团组"
     model = GWTZ
     members_model = GWTZ_TY
@@ -86,7 +86,7 @@ class Pagegwtz(Page1_x):
     }
 
 
-class Pagegwtz_ty(Page1_x):
+class Pagegwtz_ty(SearchPage):
     title = "公务团组团员"
     model = GWTZ_TY
     summary = {
@@ -96,7 +96,7 @@ class Pagegwtz_ty(Page1_x):
     }
 
 
-class Pageswtz(Page1_x):
+class Pageswtz(SearchPage):
     title = "商务团组"
     model = SWTZ
     members_model = SWTZ_TY
@@ -107,7 +107,7 @@ class Pageswtz(Page1_x):
     }
 
 
-class Pageswtz_ty(Page1_x):
+class Pageswtz_ty(SearchPage):
     title = "商务团组团员"
     model = SWTZ_TY
     summary = {
@@ -117,7 +117,7 @@ class Pageswtz_ty(Page1_x):
     }
 
 
-class Pagelftz(Page1_x):
+class Pagelftz(SearchPage):
     title = "来访团组"
     model = LFTZ
     members_model = SWTZ_TY
@@ -128,7 +128,7 @@ class Pagelftz(Page1_x):
     }
 
 
-class Pagelftz_ty(Page1_x):
+class Pagelftz_ty(SearchPage):
     title = "来访团组团员"
     model = LFTZ_TY
     summary = {
@@ -138,7 +138,7 @@ class Pagelftz_ty(Page1_x):
     }
 
 
-class Pagejzz(Page1_x):
+class Pagejzz(SearchPage):
     title = "居住证人员"
     model = JZZ
     summary = {
