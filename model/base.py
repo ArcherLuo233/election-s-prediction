@@ -100,7 +100,7 @@ class Base(base_class):
 
     @classmethod
     def import_(cls, filename, **kwargs):
-        res = read_excel(filename, cls.template_start_row)
+        res = read_excel(filename, cls.template_start_row, cls.class_name)
         for i in res:
             field = cls.field.copy()
             field.remove('id')
