@@ -13,8 +13,12 @@ from libs.exception import AppException
 from libs.helper import md5
 
 
-def read_excel(filename, start_row):
+def read_excel(filename, start_row, title):
     ws = load_workbook(filename).active
+
+    ws_title = ws.cell(1, 1).value
+    if ws_title != title:
+        raise AppException('导入文件的标题错误，请使用正确的模板导入')
 
     col = ws.max_column
     row = ws.max_row
