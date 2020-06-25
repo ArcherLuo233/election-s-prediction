@@ -85,7 +85,7 @@ def download_file(from_filename, to_filename):
         f.write(raw)
 
 
-def save_word(filename, title, data, pic=False, ty_data=None):
+def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
     if ty_data is None:
         ty_data = []
     document = Document()
