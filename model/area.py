@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Text
 
 from model.base import Base
 
@@ -13,4 +13,4 @@ class Area(Base):
     mayor = Column(String(100), comment='镇长')
     population = Column(String(100), comment='人口')
     number_of_family = Column(String(100), comment='户数')
-    introduction = Column(String(10000), comment='基本情况')
+    introduction = Column(Text, comment='基本情况')
