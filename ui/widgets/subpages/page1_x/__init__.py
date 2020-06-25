@@ -243,7 +243,7 @@ class Page1_x(QWidget):
             return
         filedir = QFileDialog.getExistingDirectory(None, "请选择存放文件夹", "./")
         for id_ in self.id_selected:
-            filename = '/{modelname}-{id}.docx'.format(modelname=self.model.class_name, id=id_)
+            filename = '/{model}-{id}.docx'.format(model=self.model.class_name, id=id_)
             filename = filedir + filename
             print(filename)
             self.model.export_document(id_, filename)
@@ -305,7 +305,8 @@ class Page1_x(QWidget):
             self.ui.btn_mul_delete.show()
 
     def download_template(self):
-        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx *.xls)")[0]
+        default_name = './{model}-模板'.format(model=self.model.class_name)
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
         if filename == "":
             return
         try:
@@ -319,7 +320,7 @@ class Page1_x(QWidget):
         QMessageBox.information(None, "下载模板", "下载完毕")
 
     def import_from_file(self):
-        filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "excel文件(*.xls *.xlsx)")[0]
+        filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "excel文件(*.xlsx)")[0]
         if filename == "":
             return
         try:
@@ -333,7 +334,8 @@ class Page1_x(QWidget):
         self.refresh_page()
 
     def export_to_file(self):
-        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "./", "excel文件(*.xlsx)")[0]
+        default_name = './{model}'.format(model=self.model.class_name)
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
         if filename == "":
             return
         try:
