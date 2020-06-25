@@ -69,9 +69,6 @@ class Page2_17(Page2_x):
     title = "新庄里"
 
 
-class Page2_17(Page2_x):
-    title = "新丰里"
-
 
 class Page2_18(Page2_x):
     title = "新丰里"
