@@ -29,14 +29,6 @@ class Base(base_class):
     field = []
     file_field = []
 
-    @property
-    def template_filename(self):
-        return 'template/{}.xlsx'.format(self.__tablename__)
-
-    @property
-    def template_document_filename(self):
-        return 'template/{}.docx'.format(self.__tablename__)
-
     template_start_row = 0
 
     def __getitem__(self, item):
@@ -107,7 +99,7 @@ class Base(base_class):
         return data
 
     @classmethod
-    def import_(cls, filename):
+    def import_(cls, filename, **kwargs):
         res = read_excel(filename, cls.template_start_row)
         for i in res:
             field = cls.field.copy()
@@ -115,6 +107,7 @@ class Base(base_class):
             for file in cls.file_field:
                 field.remove(file)
             data = {field[idx]: i[idx] for idx in range(len(field))}
+            data.update(kwargs)
             if cls.search(**data)['meta']['count'] == 0:
                 cls.create(**data)
 
@@ -125,11 +118,11 @@ class Base(base_class):
         for file in cls.file_field:
             field.remove(file)
         data = [[getattr(i, key) for key in field] for i in res]
-        save_excel(cls.template_filename, cls.template_start_row, data, filename)
+        save_excel('template/{}.xlsx'.format(cls.__tablename__), cls.template_start_row, data, filename)
 
     @classmethod
     def export_template(cls, filename):
-        download_file(cls.template_filename, filename)
+        download_file('template/{}.xlsx'.format(cls.__tablename__), filename)
 
     @classmethod
     def export_document(cls, id_, filename):
