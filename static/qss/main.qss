@@ -1,16 +1,3 @@
-QPushButton{
-    background-color: rgb(64, 158, 255);
-    border: 1px solid;
-    border-color: rgba(0, 0, 0, 50);
-    border-radius: 5px;
-    padding: 8px;
-    color: white;
-}
-
-QPushButton:hover{
-    background-color: rgba(64, 158, 255, 150);
-}
-
 QTableWidget{
 	alternate-background-color: white;
 	background-color: rgb(245, 245, 245);
@@ -68,7 +55,7 @@ PageController QSpinBox::down-arrow{
     border-image: url("static/svg/down-arrow.svg");
 }
 
-DetailPage QPushButton{
+QPushButton{
     background-color: white;
     border: 1px solid;
     border-color: rgba(0, 0, 0, 50);
@@ -77,16 +64,16 @@ DetailPage QPushButton{
     color: black;
 }
 
-DetailPage QPushButton:hover{
+QPushButton:hover{
     background-color: rgba(64, 158, 255, 150);
 }
 
-DetailPage QPushButton:checked{
+QPushButton:checked{
     background-color: rgb(64, 158, 255);
     color: white;
 }
 
-DetailPage QPushButton:checked:hover{
+QPushButton:checked:hover{
     background-color: rgba(64, 158, 255, 150);
     color: white;
 }
