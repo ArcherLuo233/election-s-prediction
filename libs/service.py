@@ -142,6 +142,7 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
             pass
 
     if ty_data:
+        document.add_paragraph()
         title_paragraph = document.add_paragraph()
         title_run = title_paragraph.add_run('团员')
         title_run.font.size = Pt(16)
