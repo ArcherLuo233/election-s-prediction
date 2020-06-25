@@ -15,6 +15,8 @@ class GWTZ_TY(Base):
     ]
     file_field = ['filing_form']
 
+    template_start_row = 3
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     gwtz_id = Column(Integer, ForeignKey('gwtz.id'))
     nickname = Column(String(100), comment='姓名')

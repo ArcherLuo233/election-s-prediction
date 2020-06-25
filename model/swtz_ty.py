@@ -13,6 +13,8 @@ class SWTZ_TY(Base):
         'id', 'nickname', 'job', 'id_card', 'phone'
     ]
 
+    template_start_row = 3
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     swtz_id = Column(Integer, ForeignKey('swtz.id'))
     nickname = Column(String(100), comment='姓名')
