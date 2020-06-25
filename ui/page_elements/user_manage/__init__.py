@@ -68,7 +68,7 @@ class UserManager(ModalDialog):
         self.ui.tableWidget.horizontalHeader().setFont(self.font())
 
     def modify(self):
-        flag=0
+        flag = 0
         row = self.ui.tableWidget.rowCount()
         for i in range(row):
             username = self.ui.tableWidget.item(i, 0).text()
@@ -83,16 +83,15 @@ class UserManager(ModalDialog):
                 target_user.modify(nickname=nickname)
 
             if target_user.permission != permission:
-                if target_user.username!= g.current_user.username :
+                if target_user.username != g.current_user.username:
                     target_user.modify(permission=permission)
-                else :
+                else:
                     flag = 1
-        if  flag==0:
+        if flag == 0:
             QMessageBox.information(None, "管理用户", "保存成功!")
         else:
             QMessageBox.information(None, "管理用户", "保存成功,本人权限未修改!")
         self.refresh()
-
 
     def add_user(self):
         dialog = UserAdd(self)
@@ -105,9 +104,9 @@ class UserManager(ModalDialog):
             QMessageBox.warning(None, "删除用户失败", "未选定用户!")
         else:
             username = self.ui.tableWidget.item(select_row, 0).text()
-            if username==g.current_user.username :
+            if username == g.current_user.username:
                 QMessageBox.warning(None, "删除用户失败", "无法删除自己!")
-            else :
+            else:
                 target_user = User.search(username=username, page_size=-1)["data"][0]
                 target_user.delete()
                 QMessageBox.information(None, "管理用户", "删除成功")
