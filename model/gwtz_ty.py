@@ -8,7 +8,7 @@ class GWTZ_TY(Base):
 
     class_name = '公务团组-团员'
     foreign_key = 'gwtz_id'
-    import_docx = False
+    export_docx = False
 
     field = [
         'id', 'nickname', 'sex', 'job', 'type', 'nature', 'taiwan_position', 'entry_number', 'pass_number',

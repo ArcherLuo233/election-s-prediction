@@ -8,7 +8,7 @@ class LFTZ_TY(Base):
 
     class_name = '来访团组-团员'
     foreign_key = 'lftz_id'
-    import_docx = False
+    export_docx = False
 
     field = [
         'id', 'nickname', 'job', 'type'

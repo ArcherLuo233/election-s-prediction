@@ -8,7 +8,7 @@ class SWTZ_TY(Base):
 
     class_name = '商务团组-团员'
     foreign_key = 'swtz_id'
-    import_docx = False
+    export_docx = False
 
     field = [
         'id', 'nickname', 'job', 'id_card', 'phone'
