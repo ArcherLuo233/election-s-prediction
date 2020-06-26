@@ -27,6 +27,8 @@ class JG(Base):
 
     @director.setter
     def director(self, raw: list):
+        while '' in raw:
+            raw.remove('')
         self.director_ = " ".join(raw)
 
     @property
@@ -37,6 +39,8 @@ class JG(Base):
 
     @supervisor.setter
     def supervisor(self, raw: list):
+        while '' in raw:
+            raw.remove('')
         self.supervisor_ = " ".join(raw)
 
     @property
@@ -47,4 +51,6 @@ class JG(Base):
 
     @representative.setter
     def representative(self, raw: list):
+        while '' in raw:
+            raw.remove('')
         self.representative_ = " ".join(raw)

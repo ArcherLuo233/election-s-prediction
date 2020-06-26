@@ -200,7 +200,12 @@ class SearchPage(QWidget):
             # summarys
             for j, k in enumerate(self.summary.keys(), 2):
                 item = QTableWidgetItem()
-                item.setText(getattr(info, self.summary[k]))
+                data = getattr(info, self.summary[k])
+                if isinstance(data, list):
+                    while '' in data:
+                        data.remove('')
+                    data = ",".join(data)
+                item.setText(str(data))
                 table_widget.setItem(i, j, item)
             # detail_label
             detail_label = QLabel(self)
