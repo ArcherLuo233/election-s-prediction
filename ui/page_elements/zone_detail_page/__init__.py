@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
 
 from model.area_info import AreaInfo
 from ui.page_elements.modal_dialog import ModalDialog
-
+from libs.g import g
 from .DetailpageUI import Ui_Dialog
 
 
@@ -42,6 +42,10 @@ class DetailPage(ModalDialog):
         table_widget.setSpan(21, 0, 6, 1)
         table_widget.setItem(21, 0, item)
         # btn-bind
+        if g.current_user.permission == 0:
+            self.ui.btn_save.hide()
+        else:
+            self.ui.btn_save.show()
         self.ui.button_ok.clicked.connect(self.close)
         self.ui.btn_save.clicked.connect(self.save)
         # _init
@@ -72,6 +76,7 @@ class DetailPage(ModalDialog):
 
     def additem(self, row, col, text):
         item = QTableWidgetItem()
+        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
         item.setFont(self.font())
         item.setText(text)
         item.setTextAlignment(Qt.AlignCenter)

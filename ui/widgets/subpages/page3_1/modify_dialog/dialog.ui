@@ -34,7 +34,7 @@
                         </string>
                     </property>
                     <property name="text">
-                        <string>修改名字</string>
+                        <string>修改</string>
                     </property>
                     <property name="alignment">
                         <set>Qt::AlignCenter</set>

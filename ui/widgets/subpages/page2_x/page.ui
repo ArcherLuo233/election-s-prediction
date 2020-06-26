@@ -204,10 +204,10 @@
           <widget class="QWidget" name="scrollAreaWidgetContents">
            <property name="geometry">
             <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>294</width>
-             <height>359</height>
+                <x>0</x>
+                <y>0</y>
+                <width>292</width>
+                <height>333</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -243,23 +243,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btn_save">
-             <property name="font">
-                 <font>
-                     <family>黑体</family>
-                     <pointsize>18</pointsize>
-                 </font>
-             </property>
-             <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="text">
-                 <string>保存</string>
-             </property>
-         </widget>
-        </item>
-        <item>
-            <widget class="QPushButton" name="btn_savemap">
+            <widget class="QPushButton" name="btn_save">
                 <property name="font">
                     <font>
                         <family>黑体</family>
@@ -270,10 +254,26 @@
                     <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="text">
-                    <string>上传地图</string>
+                    <string>保存</string>
                 </property>
             </widget>
         </item>
+           <item>
+               <widget class="QPushButton" name="btn_savemap">
+                   <property name="font">
+                       <font>
+                           <family>黑体</family>
+                           <pointsize>18</pointsize>
+                       </font>
+                   </property>
+                   <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                       <string>上传地图</string>
+                   </property>
+               </widget>
+           </item>
            <item>
                <spacer name="horizontalSpacer_2">
                    <property name="orientation">
@@ -301,12 +301,12 @@
                    </property>
                    <property name="sizeHint" stdset="0">
                        <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
+                           <width>40</width>
+                           <height>20</height>
+                       </size>
+                   </property>
+               </spacer>
+           </item>
        </layout>
       </item>
      </layout>

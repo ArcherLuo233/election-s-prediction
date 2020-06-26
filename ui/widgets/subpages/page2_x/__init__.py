@@ -8,9 +8,9 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
 from libs.service import upload_file
 from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
-
+from libs.g import g
 from .pageUI import Ui_Form
-
+from libs.enumrations import UserPermission
 
 class Page2_x(QWidget):
     title: str = None
@@ -22,6 +22,7 @@ class Page2_x(QWidget):
         # label_title
         self.ui.label_title.setText("南投县%s镇" % self.title)
         # button_findzone
+
         self.ui.btn_findzone.clicked.connect(self.findzone)
         self.ui.btn_save.clicked.connect(self.saveall)
         self.ui.btn_savemap.clicked.connect(self.save_map)
@@ -30,6 +31,8 @@ class Page2_x(QWidget):
         self.message.setStandardButtons(QMessageBox.Yes)
         self.message.button(QMessageBox.Yes).setText('确认')
         # init_
+
+        # self.ui.lab_img.setGeometry()
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
@@ -46,6 +49,16 @@ class Page2_x(QWidget):
         self.ui.tableWidget.setItem(3, 0, item)
         self.reload()
         self.show_map()
+
+    def paintEvent(self, e):
+        if g.current_user.permission != UserPermission.Admin:
+            self.ui.btn_save.hide()
+            self.ui.btn_savemap.hide()
+            self.reload()
+        else:
+            self.ui.btn_save.show()
+            self.ui.btn_savemap.show()
+            self.reload()
 
     def save_map(self):
         filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "图片文件(*.jpg *.png)")[0]
@@ -77,6 +90,7 @@ class Page2_x(QWidget):
     def reload(self):
         data = Area.search(name=self.title)["data"][0]
         item = QTableWidgetItem()
+        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.introduction)
         item.setFont(self.font)
         self.ui.tableWidget.setSpan(4, 0, 1, 2)
@@ -84,14 +98,19 @@ class Page2_x(QWidget):
         self.ui.tableWidget.setRowHeight(4, 500)
         self.ui.tableWidget.setWordWrap(True)
         item = QTableWidgetItem()
+        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.mayor)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(0, 1, item)
+
         item = QTableWidgetItem()
+        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.population)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(1, 1, item)
+
         item = QTableWidgetItem()
+        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.number_of_family)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(2, 1, item)
