@@ -64,7 +64,7 @@ class Page2_x(QWidget):
         target_area = Area.search(name=self.title)["data"][0]
         target_area.modify(mayor=mayor, population=population, number_of_family=number_of_family,
                            introduction=introduction)
-        QMessageBox.information(None, "选区", "保存成功!")
+        QMessageBox.information(None, "地区概况", "保存成功!")
 
     def show_map(self):
         target_area = Area.search(name=self.title)["data"][0]
