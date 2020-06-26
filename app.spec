@@ -5,7 +5,7 @@ block_cipher = None
 path = 'D:\\code\\python\\election-s-prediction'
 
 a = Analysis(['app.py'],
-             pathex=[path],
+             pathex=[path, 'C:\\Windows\\System32\\downlevel'],
              binaries=[],
              datas=[
                 (path + '\\static','static'),
