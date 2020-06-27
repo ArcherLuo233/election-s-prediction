@@ -30,5 +30,6 @@ class AreaInfo(Base):
         from model.area import Area
         data = dict()
         for area in Area.search(page_size=-1)['data']:
+            if area.name == "地区概况": continue
             data[area.name] = AreaInfo.search(area_id=area.id, tag=tag)['data'][0]
         return data

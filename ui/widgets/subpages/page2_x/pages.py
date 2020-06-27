@@ -1,4 +1,9 @@
 from ui.widgets.subpages.page2_x import Page2_x
+from ui.widgets.subpages.page2_x.page2_0 import Page2_0
+
+
+class Page2_0(Page2_0):
+    title = "地区概况"
 
 
 class Page2_1(Page2_x):

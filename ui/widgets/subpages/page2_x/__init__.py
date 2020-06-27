@@ -25,7 +25,7 @@ class Page2_x(QWidget):
 
         self.ui.btn_findzone.clicked.connect(self.findzone)
         self.ui.btn_save.clicked.connect(self.saveall)
-        self.ui.btn_savemap.clicked.connect(self.save_map)
+      #  self.ui.btn_savemap.clicked.connect(self.save_map)
         # messagebox
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
@@ -48,7 +48,7 @@ class Page2_x(QWidget):
         self.ui.tableWidget.setSpan(3, 0, 1, 2)
         self.ui.tableWidget.setItem(3, 0, item)
         self.reload()
-        self.show_map()
+        # self.show_map()
 
     def paintEvent(self, e):
         if g.current_user.permission != UserPermission.Admin:
