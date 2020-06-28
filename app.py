@@ -1,5 +1,6 @@
 import sys
 import traceback
+from threading import Thread
 
 import pymysql
 from PyQt5 import QtWidgets
@@ -7,6 +8,7 @@ from PyQt5 import QtWidgets
 from libs.fonts import loadFonts
 from libs.g import g
 from libs.page_magager import PageManager
+from libs.service import auto_backup
 from model.base import init_database
 from ui.widgets.login_page import LoginPage
 from ui.widgets.main_page import MainPage
@@ -27,6 +29,7 @@ def main():
 
 if __name__ == '__main__':
     init_database()
+    Thread(target=auto_backup).start()
     try:
         main()
     except Exception:

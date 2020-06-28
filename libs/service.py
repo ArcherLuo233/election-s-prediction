@@ -1,4 +1,6 @@
+import datetime
 import os
+import time
 
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
@@ -8,6 +10,7 @@ from docx.shared import Inches, Pt
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
 from PIL import Image
+import sqlite3
 
 from libs.exception import AppException
 from libs.helper import md5
@@ -168,3 +171,19 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
                 idx += 1
 
     document.save(filename)
+
+
+def backup_database(filename):
+    sqlite3.connect('database.db').backup(sqlite3.connect(filename))
+    print('备份成功', filename)
+
+
+def auto_backup():
+    if not os.path.exists('backup/'):
+        os.makedirs('backup/')
+    while 1:
+        curr_time = datetime.datetime.now()
+        curr_time = curr_time.strftime('%Y-%m-%d-%H-%M-%S')
+        filename = 'backup/auto_backup-{}.db'.format(curr_time)
+        backup_database(filename)
+        time.sleep(3600)
