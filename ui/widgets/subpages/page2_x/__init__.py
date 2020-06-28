@@ -12,6 +12,7 @@ from libs.g import g
 from .pageUI import Ui_Form
 from libs.enumrations import UserPermission
 
+
 class Page2_x(QWidget):
     title: str = None
 
@@ -25,7 +26,7 @@ class Page2_x(QWidget):
 
         self.ui.btn_findzone.clicked.connect(self.findzone)
         self.ui.btn_save.clicked.connect(self.saveall)
-      #  self.ui.btn_savemap.clicked.connect(self.save_map)
+        #  self.ui.btn_savemap.clicked.connect(self.save_map)
         # messagebox
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
