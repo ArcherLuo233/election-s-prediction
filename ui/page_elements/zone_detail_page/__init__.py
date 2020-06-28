@@ -77,7 +77,8 @@ class DetailPage(ModalDialog):
 
     def additem(self, row, col, text):
         item = QTableWidgetItem()
-        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
+        if g.current_user.permission == 0:
+            item.setFlags(Qt.ItemIsEnabled)
         item.setFont(self.font())
         item.setText(text)
         item.setTextAlignment(Qt.AlignCenter)
