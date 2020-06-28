@@ -87,9 +87,6 @@
               <pointsize>18</pointsize>
              </font>
             </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
            </widget>
           </item>
           <item>
@@ -99,6 +96,9 @@
               <family>黑体</family>
               <pointsize>14</pointsize>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
              <string>修改镇长</string>
