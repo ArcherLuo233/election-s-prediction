@@ -9,8 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.page_controller import PageController
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -92,7 +90,6 @@ class Ui_Form(object):
         font.setFamily("黑体")
         font.setPointSize(14)
         self.tableWidget.setFont(font)
-        self.tableWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setAlternatingRowColors(True)
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
@@ -184,3 +181,4 @@ class Ui_Form(object):
         self.btn_select_null.setText(_translate("Form", "全不选"))
         self.btn_mul_export.setText(_translate("Form", "批量导出"))
         self.btn_mul_delete.setText(_translate("Form", "批量删除"))
+from ui.page_elements.page_controller import PageController

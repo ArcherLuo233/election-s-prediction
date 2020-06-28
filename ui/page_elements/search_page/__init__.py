@@ -35,6 +35,23 @@ class SearchPage(QWidget):
         self.dialog_parent = self
         if self.model:
             self.translator = FieldsTranslater(self.model)
+            dic = dict()
+            if isinstance(self.summary, dict):
+                for i in self.summary.keys():
+                    if self.summary[i] == '':
+                        field = self.translator.to_field(i)
+                        if field == '翻译缺失':
+                            print(self.model.class_name, '缺少字段', i)
+                            continue
+                        dic[i] = field
+            elif isinstance(self.summary, list):
+                for i in self.summary:
+                    field = self.translator.to_field(i)
+                    if field == '翻译缺失':
+                        print(self.model.class_name, '缺少字段', i)
+                        continue
+                    dic[i] = field
+            self.summary = dic
             self.condition_group = ConditionGroup(self.translator.to_text(self.model.field))
             self.condition_boxes = []
         # label_title
@@ -61,9 +78,8 @@ class SearchPage(QWidget):
         table_widget = self.ui.tableWidget
         table_widget.clear()
         table_widget.setColumnCount(cols)
-        table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        table_widget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Fixed)
-        table_widget.horizontalHeader().setSectionResizeMode(1, QHeaderView.Fixed)
+        table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        table_widget.horizontalHeader().setStretchLastSection(True)
         table_widget.horizontalHeader().setFixedHeight(30)
         table_widget.horizontalHeader().sectionClicked.connect(self.section_clicked)
         table_widget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -201,6 +217,8 @@ class SearchPage(QWidget):
             for j, k in enumerate(self.summary.keys(), 2):
                 item = QTableWidgetItem()
                 data = getattr(info, self.summary[k])
+                if data is None:
+                    data = ''
                 if isinstance(data, list):
                     while '' in data:
                         data.remove('')
@@ -217,7 +235,7 @@ class SearchPage(QWidget):
             detail_label.linkActivated.connect(self.detail)
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
-        table_widget.resizeColumnToContents(0)
+        table_widget.resizeColumnsToContents()
         table_widget.setSortingEnabled(True)
 
     def cell_changed(self, row, col):
