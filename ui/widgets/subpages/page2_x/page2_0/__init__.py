@@ -2,13 +2,14 @@ from PIL import Image
 from PyQt5 import QtGui
 from PyQt5.Qt import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import (QFileDialog, QMessageBox,
-                             QWidget)
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
+
+from libs.enumrations import UserPermission
+from libs.g import g
 from libs.service import upload_file
 from model.area import Area
-from libs.g import g
+
 from .pageUI import Ui_Form
-from libs.enumrations import UserPermission
 
 
 class Page2_0(QWidget):

@@ -1,5 +1,6 @@
-from .append_pageUI import Ui_Dialog
 from ui.page_elements.modal_dialog import ModalDialog
+
+from .append_pageUI import Ui_Dialog
 
 
 class AppendDialog(ModalDialog):

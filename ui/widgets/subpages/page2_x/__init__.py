@@ -5,12 +5,13 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
                              QTableWidget, QTableWidgetItem, QWidget)
 
+from libs.enumrations import UserPermission
+from libs.g import g
 from libs.service import upload_file
 from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
-from libs.g import g
+
 from .pageUI import Ui_Form
-from libs.enumrations import UserPermission
 
 
 class Page2_x(QWidget):

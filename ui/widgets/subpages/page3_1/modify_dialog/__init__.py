@@ -1,5 +1,6 @@
-from .dialogUI import Ui_Dialog
 from ui.page_elements.modal_dialog import ModalDialog
+
+from .dialogUI import Ui_Dialog
 
 
 class ModifyDialog(ModalDialog):

@@ -1,15 +1,15 @@
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
+from libs.enumrations import UserPermission
+from libs.g import g
 from libs.link_manager import link_manager
-from model.rs import RS
 from model.jg import JG
+from model.rs import RS
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
+
 from .append_dialog import AppendDialog
 from .modify_dialog import ModifyDialog
-from libs.g import g
-from libs.enumrations import UserPermission
-
 from .pages import ChoicePage
 from .pageUI import Ui_Form
 

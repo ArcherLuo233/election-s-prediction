@@ -2,9 +2,10 @@ from PyQt5.Qt import Qt
 from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
+from libs.g import g
 from model.area_info import AreaInfo
 from ui.page_elements.modal_dialog import ModalDialog
-from libs.g import g
+
 from .DetailpageUI import Ui_Dialog
 
 
