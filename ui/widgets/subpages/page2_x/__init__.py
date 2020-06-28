@@ -77,7 +77,9 @@ class Page2_x(QWidget):
         number_of_family = self.ui.tableWidget.item(2, 1).text()
         introduction = self.ui.tableWidget.item(4, 0).text()
         target_area = Area.search(name=self.title)["data"][0]
-        target_area.modify(mayor=mayor, population=population, number_of_family=number_of_family,
+        target_area.modify(mayor=mayor,
+                           population=population,
+                           number_of_family=number_of_family,
                            introduction=introduction)
         QMessageBox.information(None, "地区概况", "保存成功!")
 
@@ -92,7 +94,8 @@ class Page2_x(QWidget):
     def reload(self):
         data = Area.search(name=self.title)["data"][0]
         item = QTableWidgetItem()
-        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
+        if g.current_user.permission == 0:
+            item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.introduction)
         item.setFont(self.font)
         self.ui.tableWidget.setSpan(4, 0, 1, 2)
@@ -100,19 +103,22 @@ class Page2_x(QWidget):
         self.ui.tableWidget.setRowHeight(4, 500)
         self.ui.tableWidget.setWordWrap(True)
         item = QTableWidgetItem()
-        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
+        if g.current_user.permission == 0:
+            item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.mayor)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(0, 1, item)
 
         item = QTableWidgetItem()
-        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
+        if g.current_user.permission == 0:
+            item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.population)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(1, 1, item)
 
         item = QTableWidgetItem()
-        if g.current_user.permission == 0: item.setFlags(Qt.ItemIsEnabled)
+        if g.current_user.permission == 0:
+            item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.number_of_family)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(2, 1, item)
