@@ -132,10 +132,9 @@ class Pageswtz(SearchPage):
     model = SWTZ
     members_model = SWTZ_TY
     summary = [
-        '年度',
         '企业名称',
         '台方企业名称',
-        '赴台日期'
+        '时间'
     ]
 
 
@@ -154,11 +153,10 @@ class Pagelftz(SearchPage):
     model = LFTZ
     members_model = SWTZ_TY
     summary = [
-        '年度',
-        '团长姓名',
+        '时间',
+        '团组名称',
         '人数',
-        '天数',
-        '在绍时间'
+        '天数'
     ]
 
 
@@ -177,9 +175,6 @@ class Pagejzz(SearchPage):
     model = JZZ
     summary = [
         '姓名',
-        '地区',
         '联系电话',
-        '在绍单位',
-        '通讯地址',
-        '在台地区'
+        '地址'
     ]
