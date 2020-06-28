@@ -1,6 +1,5 @@
 # 配置数据库信息
-# SQLALCHEMY_URL = 'sqlite:///database.db'
-SQLALCHEMY_URL = 'mysql+pymysql://election:ele123ction@newitd-w.mysql.rds.aliyuncs.com/election'
+SQLALCHEMY_URL = 'sqlite:///database.db'
 
 # 配置密码加密的盐
 PASSWORD_SALT = '123123'
