@@ -2,7 +2,6 @@ import sys
 import traceback
 from threading import Thread
 
-import pymysql
 from PyQt5 import QtWidgets
 
 from libs.fonts import loadFonts
