@@ -9,11 +9,12 @@ class LS(Base):
     class_name = '陆生'
 
     field = [
-        'id', 'area', 'level', 'nickname', 'id_card', 'political_status', 'is_undergraduate', 'college', 'major',
+        'id', 'area', 'level', 'nickname', 'sex', 'id_card', 'political_status', 'is_undergraduate', 'college', 'major',
         'undergraduate_college', 'undergraduate_major', 'master_college', 'master_major', 'phone',
         'join_clubs_and_duties', 'address', 'community', 'activity', 'father_nickname', 'father_job', 'father_phone',
         'mather_nickname', 'mather_job', 'mather_phone', 'in_shao', 'company', 'remark',
     ]
+    read_field = ['sex']
 
     template_start_row = 4
 
@@ -43,3 +44,10 @@ class LS(Base):
     in_shao = Column(String(100), comment='是否在绍')
     company = Column(String(100), comment='工作（学习）单位与职务（专业）')
     remark = Column(Text, comment='备注')
+
+    @property
+    def sex(self):
+        try:
+            return '男' if self.id_card[-2] % 2 == 1 else '女'
+        except IndexError:
+            return None
