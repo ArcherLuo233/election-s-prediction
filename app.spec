@@ -2,7 +2,7 @@
 
 block_cipher = None
 
-path = 'D:\\code\\python\\election-s-prediction'
+path = 'E:\\python\\election-s-prediction'
 
 a = Analysis(['app.py'],
              pathex=[path, 'C:\\Windows\\System32\\downlevel'],

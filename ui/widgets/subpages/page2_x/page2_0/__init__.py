@@ -8,6 +8,7 @@ from libs.enumrations import UserPermission
 from libs.g import g
 from libs.service import upload_file
 from model.area import Area
+from ui.page_elements.zone_detail_page import DetailPage
 
 from .pageUI import Ui_Form
 
@@ -23,6 +24,7 @@ class Page2_0(QWidget):
         self.ui.label_title.setText("南投县草屯镇%s" % self.title)
         self.savename = "地区概况"
         # button_findzone
+        self.ui.btn_findzone.clicked.connect(self.findzone)
         self.ui.btn_savemap.clicked.connect(self.save_map)
         self.ui.btn_savemayor.clicked.connect(self.save_mayor)
         # messagebox
@@ -33,6 +35,10 @@ class Page2_0(QWidget):
 
         self.show_map()
         self.reload()
+
+    def findzone(self):
+        dialog = DetailPage(self)
+        dialog.exec_()
 
     def paintEvent(self, e):
         if g.current_user.permission != UserPermission.Admin:

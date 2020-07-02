@@ -23,9 +23,7 @@ class Page2_x(QWidget):
         self.ui.setupUi(self)
         # label_title
         self.ui.label_title.setText("南投县%s镇" % self.title)
-        # button_findzone
-
-        self.ui.btn_findzone.clicked.connect(self.findzone)
+        # button_
         self.ui.btn_save.clicked.connect(self.saveall)
         #  self.ui.btn_savemap.clicked.connect(self.save_map)
         # messagebox
@@ -55,21 +53,10 @@ class Page2_x(QWidget):
     def paintEvent(self, e):
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_save.hide()
-            self.ui.btn_savemap.hide()
             self.reload()
         else:
             self.ui.btn_save.show()
-            self.ui.btn_savemap.show()
             self.reload()
-
-    def save_map(self):
-        filename = QFileDialog.getOpenFileName(self, "导入文件", "./", "图片文件(*.jpg *.png)")[0]
-        if filename == "":
-            return
-        path = upload_file(filename, True)
-        target_area = Area.search(name=self.title)["data"][0]
-        target_area.modify(photo=path)
-        self.show_map()
 
     def saveall(self):
         mayor = self.ui.tableWidget.item(0, 1).text()
@@ -83,13 +70,6 @@ class Page2_x(QWidget):
                            introduction=introduction)
         QMessageBox.information(None, "地区概况", "保存成功!")
 
-    def show_map(self):
-        target_area = Area.search(name=self.title)["data"][0]
-        path = target_area.photo
-        pix = QPixmap(path)
-        pix.scaled(self.ui.lab_img.size(), Qt.KeepAspectRatio)
-        self.ui.lab_img.setScaledContents(True)
-        self.ui.lab_img.setPixmap(pix)
 
     def reload(self):
         data = Area.search(name=self.title)["data"][0]
@@ -123,6 +103,3 @@ class Page2_x(QWidget):
         item.setFont(self.font)
         self.ui.tableWidget.setItem(2, 1, item)
 
-    def findzone(self):
-        dialog = DetailPage(self)
-        dialog.exec_()
