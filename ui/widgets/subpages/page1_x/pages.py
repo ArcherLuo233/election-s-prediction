@@ -111,9 +111,9 @@ class Pagegwtz(SearchPage):
     members_model = GWTZ_TY
     summary = [
         '年度',
-        '台湾邀请单位',
         '人数',
         '联系人',
+        '台湾邀请单位',
         '团长'
     ]
 
