@@ -15,6 +15,7 @@ class GWTZ(Base):
         'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone',
     ]
     file_field = ['stroke', 'necessity_statement', 'summary']
+    read_field = ['head']
 
     template_start_row = 3
 
@@ -31,3 +32,11 @@ class GWTZ(Base):
     summary = Column(String(100), comment='总结')
     contact_person = Column(String(100), comment='联系人')
     contact_phone = Column(String(100), comment='联系电话')
+
+    @property
+    def head(self):
+        from model.gwtz_ty import GWTZ_TY
+        try:
+            return GWTZ_TY.search(gwtz_id=self.id)['data'][0].nickname
+        except IndexError:
+            return None

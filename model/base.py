@@ -29,6 +29,7 @@ class Base(base_class):
     export_docx = True
     field = []
     file_field = []
+    read_field = []
 
     template_start_row = 0
 
