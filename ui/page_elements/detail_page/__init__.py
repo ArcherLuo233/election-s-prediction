@@ -96,10 +96,12 @@ class DetailPage(ModalDialog):
                 type_ = "file"
             if isinstance(value, list):
                 type_ = "list"
+            read_only = True if idx in self.model.read_field else False
             data_list.append({
                 'comment': comment,
                 'value': value,
-                'type': type_
+                'type': type_,
+                'readonly': read_only
             })
         if meta.pic:
             filtered_data['photo'] = meta.photo
@@ -164,6 +166,8 @@ class DetailPage(ModalDialog):
         elif item['type'] == 'list':
             widget = ListWidget()
         if widget:
+            if item['readonly']:
+                widget.setEnabled(False)
             table_widget.setCellWidget(row, col + 1, widget)
 
     def get_data_from_table(self) -> dict:

@@ -1,5 +1,5 @@
 class FieldsTranslater:
-    default_translations = {'id': '编号', 'head': '团长'}
+    default_translations = {'id': '编号', 'head': '团长', 'sex': '性别'}
 
     def __init__(self, model):
         field2text = dict()
