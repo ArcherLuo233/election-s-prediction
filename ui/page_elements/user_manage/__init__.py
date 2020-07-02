@@ -12,8 +12,7 @@ from .usermanagerUI import Ui_Dialog
 
 class UserManager(ModalDialog):
     def __init__(self, parent):
-        super().__init__(parent)
-        self.setFixedSize(800, 800)
+        super().__init__(parent, size=(800, 800))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         # btn_

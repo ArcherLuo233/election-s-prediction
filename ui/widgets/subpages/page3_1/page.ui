@@ -4,10 +4,10 @@
  <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>920</width>
-    <height>746</height>
+       <x>0</x>
+       <y>0</y>
+       <width>892</width>
+       <height>725</height>
    </rect>
   </property>
   <property name="font">
@@ -20,26 +20,33 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>黑体</family>
-       <pointsize>28</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>机构详情</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
+      <item>
+          <widget class="QLabel" name="label">
+              <property name="font">
+                  <font>
+                      <family>黑体</family>
+                      <pointsize>28</pointsize>
+                  </font>
+              </property>
+              <property name="text">
+                  <string>机构详情</string>
+              </property>
+          </widget>
+      </item>
+      <item>
+          <widget class="Line" name="line">
+              <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+              </property>
+          </widget>
+      </item>
+      <item>
+          <widget class="QFrame" name="frame">
+              <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -345,13 +352,6 @@
        </spacer>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
     </widget>
    </item>
   </layout>

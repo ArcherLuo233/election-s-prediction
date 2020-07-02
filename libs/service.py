@@ -1,5 +1,6 @@
 import datetime
 import os
+import sqlite3
 import time
 
 from docx import Document
@@ -10,7 +11,6 @@ from docx.shared import Inches, Pt
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
 from PIL import Image
-import sqlite3
 
 from libs.exception import AppException
 from libs.helper import md5

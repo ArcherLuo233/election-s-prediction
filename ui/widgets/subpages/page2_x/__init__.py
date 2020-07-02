@@ -70,7 +70,6 @@ class Page2_x(QWidget):
                            introduction=introduction)
         QMessageBox.information(None, "地区概况", "保存成功!")
 
-
     def reload(self):
         data = Area.search(name=self.title)["data"][0]
         item = QTableWidgetItem()
@@ -102,4 +101,3 @@ class Page2_x(QWidget):
         item.setText(data.number_of_family)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(2, 1, item)
-

@@ -19,8 +19,7 @@ class DetailPage(ModalDialog):
     pic_item_height = 6
 
     def __init__(self, parent, model: Base):
-        super().__init__(parent)
-        self.setFixedSize(1000, 800)
+        super().__init__(parent, size=(1000, 800))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.default_conditions = {}

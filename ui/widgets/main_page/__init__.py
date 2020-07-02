@@ -1,15 +1,15 @@
 from PyQt5.QtGui import QPalette
-from PyQt5.QtWidgets import QHBoxLayout
-from PyQt5.QtWidgets import QFileDialog, QWidget, QMessageBox
+from PyQt5.QtWidgets import QFileDialog, QHBoxLayout, QMessageBox, QWidget
+
 from config.uicolor import UIColor as color
 from libs.enumrations import UserPermission
 from libs.g import g
 from libs.link_manager import link_manager
 from libs.page_magager import PageManager
+from libs.service import backup_database
 from ui.page_elements.navigate_menu import NavigateMenu
 from ui.page_elements.user_info import UserInfoPage
 from ui.page_elements.user_manage import UserManager
-from libs.service import backup_database
 
 from .MainPageUI import Ui_Form
 
@@ -48,6 +48,7 @@ class MainPage(QWidget):
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
         self.message.button(QMessageBox.Yes).setText('确认')
+
     def handle_link(self, s: str):
         if s.startswith("#goto:"):
             w = self.ui.main_widget

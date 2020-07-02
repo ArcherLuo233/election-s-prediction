@@ -11,8 +11,7 @@ from .DetailpageUI import Ui_Dialog
 
 class DetailPage(ModalDialog):
     def __init__(self, parent):
-        super().__init__(parent)
-        self.setFixedSize(1000, 800)
+        super().__init__(parent, size=(1000, 800))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         # tableWidget

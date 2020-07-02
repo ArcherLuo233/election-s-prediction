@@ -9,7 +9,7 @@ from .useraddUI import Ui_Dialog
 
 class UserAdd(ModalDialog):
     def __init__(self, parent):
-        super().__init__(parent)
+        super().__init__(parent, size=(500, 400))
         self.setFixedSize(500, 400)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.ui = Ui_Dialog()

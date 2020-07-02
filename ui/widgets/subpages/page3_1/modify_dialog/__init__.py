@@ -5,8 +5,7 @@ from .dialogUI import Ui_Dialog
 
 class ModifyDialog(ModalDialog):
     def __init__(self, parent, name=''):
-        super().__init__(parent)
-        self.setFixedSize(300, 300)
+        super().__init__(parent, size=(300, 300))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         if name is None:
