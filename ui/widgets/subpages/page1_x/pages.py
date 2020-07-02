@@ -114,6 +114,7 @@ class Pagegwtz(SearchPage):
         '台湾邀请单位',
         '人数',
         '联系人',
+        '团长'
     ]
 
 
@@ -134,7 +135,8 @@ class Pageswtz(SearchPage):
     summary = [
         '企业名称',
         '台方企业名称',
-        '时间'
+        '时间',
+        '团长'
     ]
 
 
@@ -151,12 +153,13 @@ class Pageswtz_ty(SearchPage):
 class Pagelftz(SearchPage):
     title = "来访团组"
     model = LFTZ
-    members_model = SWTZ_TY
+    members_model = LFTZ_TY
     summary = [
         '时间',
         '团组名称',
         '人数',
-        '天数'
+        '天数',
+        '团长'
     ]
 
 
@@ -176,5 +179,8 @@ class Pagejzz(SearchPage):
     summary = [
         '姓名',
         '联系电话',
-        '地址'
+        '地址',
+        '在绍单位',
+        '通讯地址',
+        '在台地区'
     ]
