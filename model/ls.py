@@ -48,6 +48,6 @@ class LS(Base):
     @property
     def sex(self):
         try:
-            return '男' if self.id_card[-2] % 2 == 1 else '女'
+            return '男' if int(self.id_card[-2]) % 2 == 1 else '女'
         except TypeError:
             return None
