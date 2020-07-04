@@ -22,7 +22,7 @@ class AreaInfo(Base):
     @staticmethod
     def create_tag(tag):
         from model.area import Area
-        for area in Area.search(page_size=-1)['data']:
+        for area in Area.search(page_size=-1, name='%里')['data']:
             AreaInfo.create(area_id=area.id, tag=tag)
 
     @staticmethod
