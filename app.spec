@@ -11,7 +11,7 @@ a = Analysis(['app.py'],
                 (path + '\\static','static'),
                 (path + '\\template','template'),
                 (path + '\\file','file'),
-                (path + '\\database.db','database.db')
+                (path + '\\database.db','.')
              ],
              hiddenimports=['pkg_resources.py2_warn','pymysql'],
              hookspath=[],
