@@ -26,7 +26,7 @@ class Area(Base):
         try:
             return json.loads(self.extra_)
         except ValueError:
-            return None
+            return dict()
 
     @extra.setter
     def extra(self, raw):
