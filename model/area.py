@@ -1,3 +1,5 @@
+import json
+
 from sqlalchemy import Column, String, Text
 
 from model.base import Base
@@ -13,3 +15,19 @@ class Area(Base):
     population = Column(String(100), comment='人口')
     number_of_family = Column(String(100), comment='户数')
     introduction = Column(Text, comment='基本情况')
+    area_mayor = Column(String(100), comment='里长')
+    representative = Column(String(100), comment='代表')
+    community = Column(String(100), comment='社区')
+    peasant_association = Column(String(100), comment='农会')
+    extra_ = Column('extra', Text, comment='额外信息')
+
+    @property
+    def extra(self):
+        try:
+            return json.loads(self.extra_)
+        except ValueError:
+            return None
+
+    @extra.setter
+    def extra(self, raw):
+        self.extra_ = json.dumps(raw)
