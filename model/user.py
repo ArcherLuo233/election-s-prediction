@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, SmallInteger, String
+from sqlalchemy import Column, SmallInteger, String
 
 from config.secure import PASSWORD_SALT
 from libs.exception import AppException

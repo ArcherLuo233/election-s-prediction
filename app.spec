@@ -2,7 +2,7 @@
 
 block_cipher = None
 
-path = 'E:\\python\\election-s-prediction'
+path = 'D:\\code\\python\\election-s-prediction'
 
 a = Analysis(['app.py'],
              pathex=[path, 'C:\\Windows\\System32\\downlevel'],
@@ -10,7 +10,8 @@ a = Analysis(['app.py'],
              datas=[
                 (path + '\\static','static'),
                 (path + '\\template','template'),
-                (path + '\\file','file')
+                (path + '\\file','file'),
+                (path + '\\database.db','.')
              ],
              hiddenimports=['pkg_resources.py2_warn','pymysql'],
              hookspath=[],

@@ -110,6 +110,8 @@ class Base(base_class):
             field.remove('id')
             for file in cls.file_field:
                 field.remove(file)
+            for file in cls.read_field:
+                field.remove(file)
             data = {field[idx]: i[idx] for idx in range(len(field))}
             data.update(kwargs)
             if cls.search(**data)['meta']['count'] == 0:
@@ -120,6 +122,8 @@ class Base(base_class):
         res = cls.search(page_size=-1, **kwargs)['data']
         field = cls.field.copy()
         for file in cls.file_field:
+            field.remove(file)
+        for file in cls.read_field:
             field.remove(file)
         data = [[getattr(i, key) for key in field] for i in res]
         save_excel('template/{}.xlsx'.format(cls.__tablename__), cls.template_start_row, data, filename)
@@ -137,6 +141,8 @@ class Base(base_class):
         if cls.pic:
             field.insert(1, "photo")
         for file in cls.file_field:
+            field.remove(file)
+        for file in cls.read_field:
             field.remove(file)
         for item in field:
             attr = getattr(cls, item)

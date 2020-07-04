@@ -1,5 +1,4 @@
 import sys
-import traceback
 from threading import Thread
 
 from PyQt5 import QtWidgets
@@ -14,6 +13,9 @@ from ui.widgets.main_page import MainPage
 
 
 def main():
+    init_database()
+    t = Thread(target=auto_backup, daemon=True)
+    t.start()
     app = QtWidgets.QApplication(sys.argv)
     g.app = app
     g.debug = True
@@ -23,13 +25,8 @@ def main():
     main_widget = MainPage()
     PageManager.pages['Main'] = main_widget
     login_widget.show()
-    sys.exit(app.exec_())
+    app.exec_()
 
 
 if __name__ == '__main__':
-    init_database()
-    Thread(target=auto_backup).start()
-    try:
-        main()
-    except Exception:
-        traceback.print_exc()
+    main()

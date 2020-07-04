@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, String, Text
 
 from model.base import Base
 
@@ -48,6 +48,6 @@ class LS(Base):
     @property
     def sex(self):
         try:
-            return '男' if self.id_card[-2] % 2 == 1 else '女'
-        except IndexError:
+            return '男' if int(self.id_card[-2]) % 2 == 1 else '女'
+        except TypeError:
             return None
