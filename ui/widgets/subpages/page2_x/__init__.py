@@ -1,6 +1,6 @@
 from PIL import Image
 from PyQt5 import QtGui
-from PyQt5.Qt import Qt
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
                              QTableWidget, QTableWidgetItem, QWidget)
@@ -25,6 +25,7 @@ class Page2_x(QWidget):
         self.ui.label_title.setText("南投县%s镇" % self.title)
         # button_
         self.ui.btn_save.clicked.connect(self.saveall)
+        self.ui.btn_refresh.clicked.connect(self.reload)
         #  self.ui.btn_savemap.clicked.connect(self.save_map)
         # messagebox
         self.message = QMessageBox()
@@ -35,28 +36,28 @@ class Page2_x(QWidget):
         # self.ui.lab_img.setGeometry()
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
-        self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
+        # self.ui.tableWidget.setSelectionMode(QTableWidget.NoSelection)
 
-        item = QTableWidgetItem()
-        item.setFlags(Qt.ItemIsEnabled)
-        item.setText("基本情况")
+        item1 = QTableWidgetItem()
+        item1.setFlags(Qt.ItemIsEnabled)
+        item1.setText("基本情况")
         self.font = QtGui.QFont()
         self.font.setFamily("黑体")
         self.font.setPointSize(14)
-        item.setFont(self.font)
-        item.setTextAlignment(Qt.AlignCenter)
+        item1.setFont(self.font)
+        item1.setTextAlignment(Qt.AlignCenter)
         self.ui.tableWidget.setSpan(3, 0, 1, 2)
-        self.ui.tableWidget.setItem(3, 0, item)
+        self.ui.tableWidget.setItem(3, 0, item1)
         self.reload()
         # self.show_map()
 
     def paintEvent(self, e):
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_save.hide()
-            self.reload()
+
         else:
             self.ui.btn_save.show()
-            self.reload()
+
 
     def saveall(self):
         mayor = self.ui.tableWidget.item(0, 1).text()
@@ -75,29 +76,34 @@ class Page2_x(QWidget):
         item = QTableWidgetItem()
         if g.current_user.permission == 0:
             item.setFlags(Qt.ItemIsEnabled)
+
         item.setText(data.introduction)
         item.setFont(self.font)
         self.ui.tableWidget.setSpan(4, 0, 1, 2)
         self.ui.tableWidget.setItem(4, 0, item)
         self.ui.tableWidget.setRowHeight(4, 500)
         self.ui.tableWidget.setWordWrap(True)
+
         item = QTableWidgetItem()
         if g.current_user.permission == 0:
             item.setFlags(Qt.ItemIsEnabled)
+
         item.setText(data.mayor)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(0, 1, item)
 
         item = QTableWidgetItem()
-        if g.current_user.permission == 0:
-            item.setFlags(Qt.ItemIsEnabled)
         item.setText(data.population)
         item.setFont(self.font)
+        if g.current_user.permission == 0:
+            item.setFlags(Qt.ItemIsEnabled)
+
         self.ui.tableWidget.setItem(1, 1, item)
 
         item = QTableWidgetItem()
         if g.current_user.permission == 0:
             item.setFlags(Qt.ItemIsEnabled)
+
         item.setText(data.number_of_family)
         item.setFont(self.font)
         self.ui.tableWidget.setItem(2, 1, item)
