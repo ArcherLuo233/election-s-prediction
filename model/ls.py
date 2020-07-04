@@ -49,5 +49,5 @@ class LS(Base):
     def sex(self):
         try:
             return '男' if self.id_card[-2] % 2 == 1 else '女'
-        except IndexError:
+        except TypeError:
             return None
