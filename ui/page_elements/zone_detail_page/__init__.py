@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
 from libs.g import g
-from model.area_info import AreaInfo
+from model.area import Area
 from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailpageUI import Ui_Dialog
