@@ -30,4 +30,4 @@ class Area(Base):
 
     @extra.setter
     def extra(self, raw):
-        self.extra_ = json.dumps(raw)
+        self.extra_ = json.dumps(raw, sort_keys=True)
