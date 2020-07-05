@@ -200,22 +200,35 @@
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QPushButton" name="btn_save">
-          <property name="font">
-           <font>
-            <family>黑体</family>
-            <pointsize>18</pointsize>
-           </font>
-          </property>
-             <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="text">
-                 <string>保存</string>
-             </property>
-         </widget>
-        </item>
+           <item>
+               <widget class="QPushButton" name="btn_election_detail">
+                   <property name="font">
+                       <font>
+                           <family>黑体</family>
+                           <pointsize>18</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>选举情况</string>
+                   </property>
+               </widget>
+           </item>
+           <item>
+               <widget class="QPushButton" name="btn_save">
+                   <property name="font">
+                       <font>
+                           <family>黑体</family>
+                           <pointsize>18</pointsize>
+                       </font>
+                   </property>
+                   <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                       <string>保存</string>
+                   </property>
+               </widget>
+           </item>
            <item>
                <widget class="QPushButton" name="btn_refresh">
                    <property name="font">
@@ -242,16 +255,16 @@
                    </property>
                </spacer>
            </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>ps.修改后需要保存</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
+           <item>
+               <widget class="QLabel" name="label">
+                   <property name="text">
+                       <string>ps.修改后需要保存</string>
+                   </property>
+               </widget>
+           </item>
+           <item>
+               <spacer name="horizontalSpacer">
+                   <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">

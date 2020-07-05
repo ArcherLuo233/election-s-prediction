@@ -22,21 +22,25 @@ class DetailPage(ModalDialog):
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         # tableWidget-span
         item = QTableWidgetItem()
+        item.setFlags(Qt.ItemIsEnabled)
         item.setText("第一选区")
         item.setTextAlignment(Qt.AlignCenter)
         table_widget.setSpan(0, 0, 7, 1)
         table_widget.setItem(0, 0, item)
         item = QTableWidgetItem()
+        item.setFlags(Qt.ItemIsEnabled)
         item.setText("第二选区")
         item.setTextAlignment(Qt.AlignCenter)
         table_widget.setSpan(7, 0, 7, 1)
         table_widget.setItem(7, 0, item)
         item = QTableWidgetItem()
+        item.setFlags(Qt.ItemIsEnabled)
         item.setText("第三选区")
         item.setTextAlignment(Qt.AlignCenter)
         table_widget.setSpan(14, 0, 7, 1)
         table_widget.setItem(14, 0, item)
         item = QTableWidgetItem()
+        item.setFlags(Qt.ItemIsEnabled)
         item.setText("第四选区")
         item.setTextAlignment(Qt.AlignCenter)
         table_widget.setSpan(21, 0, 6, 1)
@@ -50,8 +54,8 @@ class DetailPage(ModalDialog):
         self.ui.btn_save.clicked.connect(self.save)
         # _init
         header = ['选区', '子选区']
-        for i in AreaInfo.field:
-            header.append(getattr(AreaInfo, i).comparator.comment)
+        for i in Area.field:
+            header.append(getattr(Area, i).comparator.comment)
         self.ui.tableWidget.setHorizontalHeaderLabels(header)
         # messagebox
         self.message = QMessageBox()
@@ -68,7 +72,7 @@ class DetailPage(ModalDialog):
             representative = self.ui.tableWidget.item(i, 4).text()
             community = self.ui.tableWidget.item(i, 5).text()
             peasant_association = self.ui.tableWidget.item(i, 6).text()
-            target_area = AreaInfo.search(area_id=i + 1, tag=tag)["data"][0]
+            target_area = Area.search(area_id=i + 1, tag=tag)["data"][0]
             target_area.modify(mayor=mayor, area_mayor=area_mayor, representative=representative, community=community,
                                peasant_association=peasant_association)
         QMessageBox.information(None, "选区", "保存成功!")
@@ -84,10 +88,10 @@ class DetailPage(ModalDialog):
         self.ui.tableWidget.setItem(row, col, item)
 
     def reload(self):
-        data = AreaInfo.search_area_info_by_tag(tag=2020)
+        data = Area.search(page_size=-1)["data"]
         for index, i in enumerate(data):
-            self.additem(index, 2, data[i].mayor)
-            self.additem(index, 3, data[i].area_mayor)
-            self.additem(index, 4, data[i].representative)
-            self.additem(index, 5, data[i].community)
-            self.additem(index, 6, data[i].peasant_association)
+            self.additem(index, 2, i.mayor)
+            self.additem(index, 3, i.area_mayor)
+            self.additem(index, 4, i.representative)
+            self.additem(index, 5, i.community)
+            self.additem(index, 6, i.peasant_association)

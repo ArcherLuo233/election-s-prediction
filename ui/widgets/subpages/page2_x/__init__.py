@@ -9,7 +9,7 @@ from libs.enumrations import UserPermission
 from libs.g import g
 from libs.service import upload_file
 from model.area import Area
-from ui.page_elements.zone_detail_page import DetailPage
+from ui.page_elements.election_detail_page import DetailPage
 
 from .pageUI import Ui_Form
 
@@ -26,6 +26,7 @@ class Page2_x(QWidget):
         # button_
         self.ui.btn_save.clicked.connect(self.saveall)
         self.ui.btn_refresh.clicked.connect(self.reload)
+        self.ui.btn_election_detail.clicked.connect(self.show_elecction)
         #  self.ui.btn_savemap.clicked.connect(self.save_map)
         # messagebox
         self.message = QMessageBox()
@@ -58,6 +59,9 @@ class Page2_x(QWidget):
         else:
             self.ui.btn_save.show()
 
+    def show_elecction(self):
+        dialog = DetailPage(self, self.title)
+        dialog.exec_()
 
     def saveall(self):
         mayor = self.ui.tableWidget.item(0, 1).text()
