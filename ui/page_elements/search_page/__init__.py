@@ -30,7 +30,7 @@ class SearchPage(QWidget):
         self.ui.setupUi(self)
         self.id_selected = set()
         self.sort_field = 'id'
-        self.sort_order = 'asc'
+        self.sort_order = 'desc'
         self.default_conditions = {}
         self.dialog_parent = self
         if self.model:
