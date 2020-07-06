@@ -136,7 +136,6 @@ class Pageswtz(SearchPage):
         '企业名称',
         '台方企业名称',
         '时间',
-        '团长'
     ]
 
 
@@ -159,7 +158,6 @@ class Pagelftz(SearchPage):
         '团组名称',
         '人数',
         '天数',
-        '团长'
     ]
 
 
