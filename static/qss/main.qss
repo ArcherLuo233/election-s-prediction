@@ -21,6 +21,11 @@ QPushButton:checked:hover{
     color: white;
 }
 
+QPushButton:disabled{
+    background-color: rgba(122, 122, 122, 50) ;
+    color: rgb(122, 122, 122);
+}
+
 QTableWidget{
 	alternate-background-color: white;
 	background-color: rgb(245, 245, 245);
