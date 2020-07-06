@@ -1,14 +1,15 @@
-from PyQt5.QtCore import Qt
 from PyQt5 import QtCore
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
 from libs.g import g
 from model.area import Area
-from ui.page_elements.modal_dialog import ModalDialog
-from ui.page_elements.election_addyear import YearAdd
-from ui.page_elements.election_addproject import ProjectAdd
 from ui.page_elements.election_addpeople import PeopleAdd
+from ui.page_elements.election_addproject import ProjectAdd
+from ui.page_elements.election_addyear import YearAdd
+from ui.page_elements.modal_dialog import ModalDialog
+
 from .DetailPageUI import Ui_Dialog
 
 

@@ -1,9 +1,10 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 
+from model.area import Area
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
-from model.area import Area
+
 from .AddprojectUI import Ui_Dialog
 
 
