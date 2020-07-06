@@ -6,6 +6,8 @@ from libs.enumrations import UserPermission
 from libs.fields_translater import FieldsTranslater
 from libs.g import g
 from model.base import Base
+from model.rs import RS
+from model.zyrs import ZYRS
 from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.table_cells.file_widget import FileWidget
 from ui.page_elements.table_cells.list_widget import ListWidget
@@ -48,6 +50,23 @@ class DetailPage(ModalDialog):
 
     def append(self):
         data = self.get_data_from_table()
+        zyrs = ZYRS.search(nickname=data['nickname'])['data']
+        rs = RS.search(nickname=data['nickname'])['data']
+        if zyrs or rs:
+            box = QMessageBox(QMessageBox.Question, "添加人物信息", "已存在该人")
+            box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            box.setDefaultButton(QMessageBox.Yes)
+            box.button(QMessageBox.Yes).setText("显示详情")
+            box.button(QMessageBox.No).setText("直接添加")
+            res = box.exec_()
+            if res == QMessageBox.Yes:
+                if zyrs:
+                    dialog = DetailPage(self.parent(), ZYRS)
+                    dialog.show_(False, {'id': zyrs[0].id})
+                else:
+                    dialog = DetailPage(self.parent(), RS)
+                    dialog.show_(False, {'id': rs[0].id})
+                return
         self.model.create(**data)
         self.close()
 
