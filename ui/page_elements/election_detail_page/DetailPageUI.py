@@ -25,9 +25,10 @@ class Ui_Dialog(object):
         self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.tableWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.tableWidget.setAutoScroll(True)
+        self.tableWidget.setTabKeyNavigation(True)
         self.tableWidget.setDragEnabled(False)
         self.tableWidget.setDragDropOverwriteMode(True)
-        self.tableWidget.setAlternatingRowColors(True)
+        self.tableWidget.setAlternatingRowColors(False)
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.ContiguousSelection)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(10)
@@ -220,7 +221,8 @@ class Ui_Dialog(object):
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-                                 "padding: 10px")
+                                 "                            padding: 10px\n"
+                                 "                        ")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
