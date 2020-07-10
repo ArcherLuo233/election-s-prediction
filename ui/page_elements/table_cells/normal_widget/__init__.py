@@ -6,7 +6,7 @@ class NormalWidget(QPlainTextEdit):
     def __init__(self, text):
         super().__init__(text)
         self.setFrameShape(self.NoFrame)
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textChanged.connect(self.refresh)
         self.refresh()
@@ -16,7 +16,7 @@ class NormalWidget(QPlainTextEdit):
         self.verticalScrollBar().setValue(self.verticalScrollBar().minimum())
 
     def sizeHint(self):
-        return QSize(self.width(), self.document().size().height() * 20)
+        return QSize(self.width(), self.document().size().height() * 20 + 20)
 
     def get_data(self):
         if 'test' in self.toPlainText():
