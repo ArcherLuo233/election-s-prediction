@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Text
 
 from model.base import Base
 
@@ -11,7 +11,7 @@ class LFTZ_TY(Base):
     export_docx = False
 
     field = [
-        'id', 'nickname', 'job', 'type'
+        'id', 'nickname', 'job', 'type', 'remark'
     ]
 
     template_start_row = 3
@@ -20,3 +20,4 @@ class LFTZ_TY(Base):
     nickname = Column(String(100), comment='姓名')
     job = Column(String(100), comment='单位职务')
     type = Column(String(100), comment='人物类型')
+    remark = Column(Text, comment='备注')

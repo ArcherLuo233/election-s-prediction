@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Text
 
 from model.base import Base
 
@@ -11,7 +11,7 @@ class SWTZ_TY(Base):
     export_docx = False
 
     field = [
-        'id', 'nickname', 'job', 'id_card', 'phone'
+        'id', 'nickname', 'job', 'id_card', 'phone', 'remark'
     ]
 
     template_start_row = 3
@@ -21,3 +21,4 @@ class SWTZ_TY(Base):
     job = Column(String(100), comment='单位职务')
     id_card = Column(String(100), comment='身份证号')
     phone = Column(String(100), comment='联系电话')
+    remark = Column(Text, comment='备注')

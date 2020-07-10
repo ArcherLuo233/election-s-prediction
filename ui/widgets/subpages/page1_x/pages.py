@@ -145,7 +145,8 @@ class Pageswtz_ty(SearchPage):
     summary = [
         '姓名',
         '单位职务',
-        '身份证号'
+        '身份证号',
+        '备注'
     ]
 
 
@@ -167,7 +168,8 @@ class Pagelftz_ty(SearchPage):
     summary = [
         '姓名',
         '单位职务',
-        '人物类型'
+        '人物类型',
+        '备注'
     ]
 
 
