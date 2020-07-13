@@ -12,7 +12,6 @@ class ZYRSChoicePage(SearchPage):
         '出生日期',
         '党派',
         '倾向',
-        '竞争对手',
         '手机号',
         '单位职务',
         '来访次数'
