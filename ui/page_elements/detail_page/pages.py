@@ -1,6 +1,6 @@
-from ui.page_elements.search_page import SearchPage
-from model.zyrs import ZYRS
 from model.rs import RS
+from model.zyrs import ZYRS
+from ui.page_elements.search_page import SearchPage
 
 
 class ZYRSChoicePage(SearchPage):

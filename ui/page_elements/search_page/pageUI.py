@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui.page_elements.page_controller import PageController
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -191,6 +193,3 @@ class Ui_Form(object):
         self.btn_mul_export.setText(_translate("Form", "批量导出"))
         self.btn_mul_delete.setText(_translate("Form", "批量删除"))
         self.btn_close.setText(_translate("Form", "关闭"))
-
-
-from ui.page_elements.page_controller import PageController
