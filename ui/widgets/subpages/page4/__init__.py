@@ -8,5 +8,4 @@ class Page4(SearchPage):
     summary = [
         '姓名',
         '性别',
-        '出生日期'
     ]
