@@ -6,6 +6,10 @@ from ui.page_elements.modal_dialog import ModalDialog
 class DialogLikeWidgetWrapper(ModalDialog):
     def __init__(self, parent, w):
         super().__init__(parent)
+        try:
+            w.set_wrapper(self)
+        except:
+            pass
         self.wrapped_widget = w
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
