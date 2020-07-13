@@ -33,6 +33,7 @@ class SearchPage(QWidget):
         self.sort_order = 'desc'
         self.default_conditions = {}
         self.dialog_parent = self
+        self.show_close_btn = False
         if self.model:
             self.translator = FieldsTranslater(self.model)
             dic = dict()
@@ -153,6 +154,10 @@ class SearchPage(QWidget):
 
     def set_dialog_parent(self, parent):
         self.dialog_parent = parent
+
+    def set_wrapper(self, wrapper):
+        self.show_close_btn = True
+        self.ui.btn_close.clicked.connect(wrapper.close)
 
     def section_clicked(self, id_):
         table_widget = self.ui.tableWidget
@@ -329,6 +334,10 @@ class SearchPage(QWidget):
             self.ui.btn_mul_export.hide()
         else:
             self.ui.btn_mul_export.show()
+        if self.show_close_btn:
+            self.ui.btn_close.show()
+        else:
+            self.ui.btn_close.hide()
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_mul_delete.hide()
             self.ui.button_add.hide()
