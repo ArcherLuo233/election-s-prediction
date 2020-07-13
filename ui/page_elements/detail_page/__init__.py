@@ -13,6 +13,7 @@ from ui.page_elements.table_cells.file_widget import FileWidget
 from ui.page_elements.table_cells.list_widget import ListWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
+from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .dialogUI import Ui_Dialog
 
@@ -61,11 +62,25 @@ class DetailPage(ModalDialog):
             res = box.exec_()
             if res == QMessageBox.Yes:
                 if zyrs:
-                    dialog = DetailPage(self.parent(), ZYRS)
-                    dialog.show_(False, {'id': zyrs[0].id})
+                    if len(zyrs) == 1:
+                        dialog = DetailPage(self.parent(), ZYRS)
+                        dialog.show_(True, {'id': zyrs[0].id})
+                    else:
+                        from .pages import ZYRSChoicePage
+                        dialog = create_dialog_like_widget(self.parent(), ZYRSChoicePage())
+                        dialog.setFixedSize(1500, 800)
+                        dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
+                        dialog.exec_()
                 else:
-                    dialog = DetailPage(self.parent(), RS)
-                    dialog.show_(False, {'id': rs[0].id})
+                    if len(rs) == 1:
+                        dialog = DetailPage(self.parent(), RS)
+                        dialog.show_(True, {'id': rs[0].id})
+                    else:
+                        from .pages import RSChoicePage
+                        dialog = create_dialog_like_widget(self.parent(), RSChoicePage())
+                        dialog.setFixedSize(1500, 800)
+                        dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
+                        dialog.exec_()
                 return
         self.model.create(**data)
         self.close()
