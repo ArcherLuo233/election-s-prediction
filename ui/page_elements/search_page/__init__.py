@@ -310,6 +310,7 @@ class SearchPage(QWidget):
         dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
         dialog.wrapped_widget.set_dialog_parent(self)
         dialog.exec_()
+        self.refresh_page(self.ui.page_controller.page)
 
     def open_detail(self, enable: bool, data):
         if self.model is None:
