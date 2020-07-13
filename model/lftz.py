@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Text
 
 from model.base import Base
 from model.lftz_ty import LFTZ_TY
@@ -11,7 +11,7 @@ class LFTZ(Base):
     ty = LFTZ_TY
 
     field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization'
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'remark'
     ]
 
     template_start_row = 3
@@ -22,3 +22,4 @@ class LFTZ(Base):
     number_of_day = Column(String(100), comment='天数')
     stroke = Column(String(100), comment='行程')
     group_organization = Column(String(100), comment='组团单位')
+    remark = Column(Text, comment='备注')
