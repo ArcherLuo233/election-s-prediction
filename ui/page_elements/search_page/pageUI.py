@@ -9,13 +9,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.page_controller import PageController
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(701, 460)
+        Form.resize(683, 474)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(14)
@@ -24,14 +22,20 @@ class Ui_Form(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label_title = QtWidgets.QLabel(Form)
+        self.frame_2 = QtWidgets.QFrame(Form)
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setObjectName("frame_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame_2)
+        self.verticalLayout_2.setContentsMargins(40, -1, 40, -1)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label_title = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(28)
         self.label_title.setFont(font)
         self.label_title.setObjectName("label_title")
-        self.verticalLayout.addWidget(self.label_title)
-        self.frame_search = QtWidgets.QFrame(Form)
+        self.verticalLayout_2.addWidget(self.label_title)
+        self.frame_search = QtWidgets.QFrame(self.frame_2)
         self.frame_search.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_search.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_search.setObjectName("frame_search")
@@ -42,7 +46,7 @@ class Ui_Form(object):
         self.layout_conditions = QtWidgets.QGridLayout()
         self.layout_conditions.setObjectName("layout_conditions")
         self.horizontalLayout_3.addLayout(self.layout_conditions)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 0, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem)
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -58,13 +62,7 @@ class Ui_Form(object):
         self.button_search.setObjectName("button_search")
         self.horizontalLayout_2.addWidget(self.button_search)
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-        self.verticalLayout.addWidget(self.frame_search)
-        self.frame_2 = QtWidgets.QFrame(Form)
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setObjectName("frame_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame_2)
-        self.verticalLayout_2.setContentsMargins(40, -1, 40, -1)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_2.addWidget(self.frame_search)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -139,9 +137,18 @@ class Ui_Form(object):
         self.btn_mul_delete.setObjectName("btn_mul_delete")
         self.horizontalLayout_8.addWidget(self.btn_mul_delete)
         self.verticalLayout_2.addLayout(self.horizontalLayout_8)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.page_controller = PageController(self.frame_2)
         self.page_controller.setObjectName("page_controller")
-        self.verticalLayout_2.addWidget(self.page_controller)
+        self.horizontalLayout_4.addWidget(self.page_controller)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
+        self.btn_close = QtWidgets.QPushButton(self.frame_2)
+        self.btn_close.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_close.setObjectName("btn_close")
+        self.horizontalLayout_4.addWidget(self.btn_close)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_4)
         self.verticalLayout.addWidget(self.frame_2)
 
         self.retranslateUi(Form)
@@ -183,3 +190,7 @@ class Ui_Form(object):
         self.btn_select_null.setText(_translate("Form", "全不选"))
         self.btn_mul_export.setText(_translate("Form", "批量导出"))
         self.btn_mul_delete.setText(_translate("Form", "批量删除"))
+        self.btn_close.setText(_translate("Form", "关闭"))
+
+
+from ui.page_elements.page_controller import PageController
