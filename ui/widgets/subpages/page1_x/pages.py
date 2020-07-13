@@ -159,6 +159,7 @@ class Pagelftz(SearchPage):
         '团组名称',
         '人数',
         '天数',
+        '团长'
     ]
 
 
