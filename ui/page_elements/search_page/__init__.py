@@ -241,6 +241,9 @@ class SearchPage(QWidget):
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
         table_widget.resizeColumnsToContents()
+        for i in range(2, table_widget.horizontalHeader().count()):
+            if table_widget.columnWidth(i) < 120:
+                table_widget.setColumnWidth(i, 120)
         table_widget.setSortingEnabled(True)
 
     def cell_changed(self, row, col):
