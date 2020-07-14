@@ -95,7 +95,7 @@ class Ui_Form(object):
         self.widget.setFont(font)
         self.widget.setAutoFillBackground(False)
         self.widget.setStyleSheet("border-radius: 10px;\n"
-"background-color: rgb(237, 239, 251);")
+                                  "background-color: rgb(237, 239, 251);")
         self.widget.setObjectName("widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout.setContentsMargins(30, 30, 30, 30)
@@ -133,7 +133,7 @@ class Ui_Form(object):
         self.widget_2.setPalette(palette)
         self.widget_2.setAutoFillBackground(False)
         self.widget_2.setStyleSheet("border-radius: 10px;\n"
-"background-color: white;")
+                                    "background-color: white;")
         self.widget_2.setObjectName("widget_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_2)
         self.verticalLayout_3.setContentsMargins(20, 20, 20, 20)
@@ -141,7 +141,7 @@ class Ui_Form(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.widget_3 = QtWidgets.QWidget(self.widget_2)
         self.widget_3.setStyleSheet("border-bottom: 1px dashed;\n"
-"border-radius: 0px;")
+                                    "border-radius: 0px;")
         self.widget_3.setObjectName("widget_3")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_3)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -222,17 +222,17 @@ class Ui_Form(object):
         self.pushButton.setFont(font)
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(64, 158, 255);\n"
-"    border: 1px solid;\n"
-"    border-color: rgba(0, 0, 0, 50);\n"
-"    border-radius: 5px;\n"
-"    padding: 8px;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background-color: rgba(64, 158, 255, 150);\n"
-"}")
+                                      "    background-color: rgb(64, 158, 255);\n"
+                                      "    border: 1px solid;\n"
+                                      "    border-color: rgba(0, 0, 0, 50);\n"
+                                      "    border-radius: 5px;\n"
+                                      "    padding: 8px;\n"
+                                      "    color: white;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QPushButton:hover{\n"
+                                      "    background-color: rgba(64, 158, 255, 150);\n"
+                                      "}")
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
         self.verticalLayout_2.addWidget(self.widget)
@@ -259,7 +259,7 @@ class Ui_Form(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_3.addWidget(self.label_2)
         spacerItem4 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)

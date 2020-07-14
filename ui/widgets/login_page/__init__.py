@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QPixmap, QPalette, QBrush
+from PyQt5.QtGui import QBrush, QPalette, QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
 from libs.exception import AppException
