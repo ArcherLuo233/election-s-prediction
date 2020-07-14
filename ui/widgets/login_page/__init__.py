@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QPalette, QBrush
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
 from libs.exception import AppException
@@ -29,6 +29,12 @@ class LoginPage(QWidget):
                 self.ui.lineEdit_psd.setText("admin")
         except AttributeError:
             pass
+
+    def paintEvent(self, e):
+        pal = self.palette()
+        pixmap = QPixmap("./static/assets/login.jpeg").scaled(self.size())
+        pal.setBrush(QPalette.Background, QBrush(pixmap))
+        self.setPalette(pal)
 
     def login(self):
         un = self.ui.lineEdit_un.text()

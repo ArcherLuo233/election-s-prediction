@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'page.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -21,26 +21,6 @@ class Ui_Form(object):
         Form.setSizePolicy(sizePolicy)
         Form.setMinimumSize(QtCore.QSize(1000, 500))
         Form.setMaximumSize(QtCore.QSize(1000, 500))
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(76, 80, 209))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(76, 80, 209))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(76, 80, 209))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(76, 80, 209))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        Form.setPalette(palette)
         font = QtGui.QFont()
         font.setFamily("黑体")
         font.setPointSize(18)
@@ -54,34 +34,11 @@ class Ui_Form(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem)
-        self.label_2 = QtWidgets.QLabel(Form)
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
-        self.label_2.setPalette(palette)
-        font = QtGui.QFont()
-        font.setFamily("Microsoft YaHei UI")
-        font.setPointSize(28)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout_3.addWidget(self.label_2)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem1)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setSpacing(20)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem2)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem1)
         self.label = QtWidgets.QLabel(Form)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
@@ -138,7 +95,7 @@ class Ui_Form(object):
         self.widget.setFont(font)
         self.widget.setAutoFillBackground(False)
         self.widget.setStyleSheet("border-radius: 10px;\n"
-                                  "background-color: rgb(237, 239, 251);")
+"background-color: rgb(237, 239, 251);")
         self.widget.setObjectName("widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout.setContentsMargins(30, 30, 30, 30)
@@ -176,7 +133,7 @@ class Ui_Form(object):
         self.widget_2.setPalette(palette)
         self.widget_2.setAutoFillBackground(False)
         self.widget_2.setStyleSheet("border-radius: 10px;\n"
-                                    "background-color: white;")
+"background-color: white;")
         self.widget_2.setObjectName("widget_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_2)
         self.verticalLayout_3.setContentsMargins(20, 20, 20, 20)
@@ -184,7 +141,7 @@ class Ui_Form(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.widget_3 = QtWidgets.QWidget(self.widget_2)
         self.widget_3.setStyleSheet("border-bottom: 1px dashed;\n"
-                                    "border-radius: 0px;")
+"border-radius: 0px;")
         self.widget_3.setObjectName("widget_3")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_3)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -265,23 +222,46 @@ class Ui_Form(object):
         self.pushButton.setFont(font)
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton.setStyleSheet("QPushButton{\n"
-                                      "    background-color: rgb(64, 158, 255);\n"
-                                      "    border: 1px solid;\n"
-                                      "    border-color: rgba(0, 0, 0, 50);\n"
-                                      "    border-radius: 5px;\n"
-                                      "    padding: 8px;\n"
-                                      "    color: white;\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPushButton:hover{\n"
-                                      "    background-color: rgba(64, 158, 255, 150);\n"
-                                      "}")
+"    background-color: rgb(64, 158, 255);\n"
+"    border: 1px solid;\n"
+"    border-color: rgba(0, 0, 0, 50);\n"
+"    border-radius: 5px;\n"
+"    padding: 8px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    background-color: rgba(64, 158, 255, 150);\n"
+"}")
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
         self.verticalLayout_2.addWidget(self.widget)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem3)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem2)
         self.horizontalLayout_3.addLayout(self.verticalLayout_2)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.label_2 = QtWidgets.QLabel(Form)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        self.label_2.setPalette(palette)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(28)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_3.addWidget(self.label_2)
         spacerItem4 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem4)
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
@@ -294,8 +274,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "登录"))
-        self.label_2.setText(_translate("Form", "信息管理系统"))
         self.label.setText(_translate("Form", "用户登录"))
         self.lineEdit_un.setPlaceholderText(_translate("Form", "用户名"))
         self.lineEdit_psd.setPlaceholderText(_translate("Form", "密码"))
         self.pushButton.setText(_translate("Form", "登录"))
+        self.label_2.setText(_translate("Form", "信息管理系统"))
