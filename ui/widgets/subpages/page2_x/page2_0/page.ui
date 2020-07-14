@@ -137,6 +137,9 @@
         </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QLabel" name="lab_img">
             <property name="text">
@@ -148,38 +151,38 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
-             <item>
-                 <widget class="QPushButton" name="btn_findzone">
-                     <property name="font">
-                         <font>
-                             <family>黑体</family>
-                             <pointsize>18</pointsize>
-                         </font>
-                     </property>
-                     <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                         <string>选区</string>
-                     </property>
-                 </widget>
-             </item>
-             <item>
-                 <widget class="QPushButton" name="btn_savemap">
-                     <property name="font">
-                         <font>
-                             <family>黑体</family>
-                             <pointsize>18</pointsize>
-                         </font>
-                     </property>
-                     <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                         <string>上传地图</string>
-                     </property>
-                 </widget>
-             </item>
+          <item>
+           <widget class="QPushButton" name="btn_findzone">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>18</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>选区</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_savemap">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>18</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>上传地图</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <spacer name="horizontalSpacer_2">
             <property name="orientation">

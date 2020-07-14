@@ -125,7 +125,7 @@ class MainPage(QWidget):
             self.ui.btn_backup.show()
 
     def back_up(self):
-        filename = QFileDialog.getSaveFileName(None, "文件保存", "database_back.db")[0]
+        filename = QFileDialog.getSaveFileName(None, "文件保存", "database_backup.db")[0]
         if filename == "":
             return
         if backup_database(filename):

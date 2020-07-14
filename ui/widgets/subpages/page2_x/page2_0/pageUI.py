@@ -78,6 +78,7 @@ class Ui_Form(object):
         self.verticalLayout_2.setContentsMargins(40, -1, 40, -1)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.lab_img = QtWidgets.QLabel(self.frame_2)
         self.lab_img.setObjectName("lab_img")

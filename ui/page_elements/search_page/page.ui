@@ -180,7 +180,7 @@
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="text">
-           <string>添加人物信息</string>
+           <string>添加条目</string>
           </property>
          </widget>
         </item>

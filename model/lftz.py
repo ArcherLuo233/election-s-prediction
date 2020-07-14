@@ -10,6 +10,8 @@ class LFTZ(Base):
     class_name = '来访团组'
     ty = LFTZ_TY
 
+    read_field = ['head']
+
     field = [
         'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'remark', 'head'
     ]

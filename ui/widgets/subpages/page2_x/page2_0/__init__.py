@@ -1,6 +1,6 @@
 from PIL import Image
 from PyQt5 import QtGui
-from PyQt5.Qt import Qt
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
 
@@ -33,7 +33,6 @@ class Page2_0(QWidget):
         self.message.button(QMessageBox.Yes).setText('确认')
         # init_
 
-        self.show_map()
         self.reload()
 
     def findzone(self):
@@ -41,6 +40,7 @@ class Page2_0(QWidget):
         dialog.exec_()
 
     def paintEvent(self, e):
+        self.show_map()
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_savemap.hide()
             self.ui.btn_savemayor.hide()
@@ -77,6 +77,8 @@ class Page2_0(QWidget):
         target_area = Area.search(name=self.savename)["data"][0]
         path = target_area.photo
         pix = QPixmap(path)
-        pix.scaled(self.ui.lab_img.size(), Qt.KeepAspectRatio)
         self.ui.lab_img.setScaledContents(True)
+
+        pix = pix.scaled(self.ui.lab_img.size())
+
         self.ui.lab_img.setPixmap(pix)

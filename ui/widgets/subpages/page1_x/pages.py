@@ -109,7 +109,6 @@ class Pagegwtz(SearchPage):
     model = GWTZ
     members_model = GWTZ_TY
     summary = [
-        '编号',
         '年度',
         '团长',
         '人数',
