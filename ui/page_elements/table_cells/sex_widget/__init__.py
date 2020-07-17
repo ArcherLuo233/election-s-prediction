@@ -16,4 +16,7 @@ class SexWidget(QWidget):
             self.ui.btn_female.setChecked(True)
 
     def get_data(self):
-        return self.ui.buttonGroup.checkedButton().text()
+        btn = self.ui.buttonGroup.checkedButton()
+        if btn is None:
+            return ''
+        return btn.text()
