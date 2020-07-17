@@ -128,8 +128,6 @@ class DetailPage(ModalDialog):
             type_ = "normal"
             if idx in self.model.file_field:
                 type_ = "file"
-            if isinstance(value, list):
-                type_ = "list"
             read_only = True if idx in self.model.read_field else False
             data_list.append({
                 'comment': comment,
@@ -198,6 +196,7 @@ class DetailPage(ModalDialog):
             widget = FileWidget(description)
             widget.set_file_path(item['value'])
         elif item['type'] == 'list':
+            # 没写
             widget = ListWidget()
         if widget:
             if item['readonly']:
