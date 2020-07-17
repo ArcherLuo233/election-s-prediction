@@ -13,6 +13,7 @@ from ui.page_elements.table_cells.file_widget import FileWidget
 from ui.page_elements.table_cells.list_widget import ListWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
+from ui.page_elements.table_cells.sex_widget import SexWidget
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .dialogUI import Ui_Dialog
@@ -128,6 +129,8 @@ class DetailPage(ModalDialog):
             type_ = "normal"
             if idx in self.model.file_field:
                 type_ = "file"
+            if idx == 'sex':
+                type_ = "sex"
             read_only = True if idx in self.model.read_field else False
             data_list.append({
                 'comment': comment,
@@ -195,6 +198,9 @@ class DetailPage(ModalDialog):
             )
             widget = FileWidget(description)
             widget.set_file_path(item['value'])
+        elif item['type'] == 'sex':
+            widget = SexWidget()
+            widget.set_sex(item['value'])
         elif item['type'] == 'list':
             # 没写
             widget = ListWidget()
