@@ -38,13 +38,10 @@ class SearchPage(QWidget):
             self.translator = FieldsTranslater(self.model)
             dic = dict()
             if isinstance(self.summary, dict):
-                for i in self.summary.keys():
-                    if self.summary[i] == '':
-                        field = self.translator.to_field(i)
-                        if field == '翻译缺失':
-                            print(self.model.class_name, '缺少字段', i)
-                            continue
-                        dic[i] = field
+                for i, j in self.summary.items():
+                    if not hasattr(self.model, j):
+                        print(self.model.class_name, '找不到 {} 的对应字段 {}'.format(i, j))
+                    dic[i] = j
             elif isinstance(self.summary, list):
                 for i in self.summary:
                     field = self.translator.to_field(i)
