@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>785</height>
+    <width>1159</width>
+    <height>801</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
@@ -24,17 +24,67 @@
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(68, 126, 217);
-padding: 10px</string>
+       padding: 10px
+      </string>
      </property>
      <property name="text">
-      <string>选区页面</string>
+      <string>总选举数据统计</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btn_reflash">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>刷新</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_close">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string>关闭</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
     <widget class="QTableWidget" name="tableWidget">
      <property name="font">
       <font>
@@ -48,8 +98,23 @@ padding: 10px</string>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
-     <property name="alternatingRowColors">
+     <property name="autoScroll">
       <bool>true</bool>
+     </property>
+     <property name="tabKeyNavigation">
+      <bool>true</bool>
+     </property>
+     <property name="dragEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>true</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ContiguousSelection</enum>
      </property>
      <attribute name="horizontalHeaderVisible">
       <bool>true</bool>
@@ -194,42 +259,62 @@ padding: 10px</string>
      </row>
      <column>
       <property name="text">
-       <string>选区</string>
+       <string>年度</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>子选区</string>
+       <string>总选举人数</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>镇长/议员</string>
+       <string>总投票数</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>里长</string>
+       <string>总投票率</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>代表</string>
+       <string>总有效票数</string>
       </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>社区</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>农会</string>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </column>
      <item row="0" column="1">
       <property name="text">
-       <string>中山里</string>
+       <string/>
       </property>
      </item>
      <item row="0" column="2">
@@ -239,7 +324,7 @@ padding: 10px</string>
      </item>
      <item row="1" column="1">
       <property name="text">
-       <string>玉峰里</string>
+       <string/>
       </property>
      </item>
      <item row="1" column="2">
@@ -257,7 +342,7 @@ padding: 10px</string>
      </item>
      <item row="2" column="1">
       <property name="text">
-       <string>明正里</string>
+       <string/>
       </property>
      </item>
      <item row="2" column="2">
@@ -283,7 +368,7 @@ padding: 10px</string>
      </item>
      <item row="3" column="1">
       <property name="text">
-       <string>炎峰里</string>
+       <string/>
       </property>
      </item>
      <item row="3" column="2">
@@ -304,7 +389,7 @@ padding: 10px</string>
      </item>
      <item row="4" column="1">
       <property name="text">
-       <string>和平里</string>
+       <string/>
       </property>
      </item>
      <item row="4" column="2">
@@ -325,7 +410,7 @@ padding: 10px</string>
      </item>
      <item row="5" column="1">
       <property name="text">
-       <string>敦和里</string>
+       <string/>
       </property>
      </item>
      <item row="5" column="2">
@@ -346,7 +431,7 @@ padding: 10px</string>
      </item>
      <item row="6" column="1">
       <property name="text">
-       <string>富寮里</string>
+       <string/>
       </property>
      </item>
      <item row="6" column="2">
@@ -367,7 +452,7 @@ padding: 10px</string>
      </item>
      <item row="7" column="1">
       <property name="text">
-       <string>中正里</string>
+       <string/>
       </property>
      </item>
      <item row="7" column="2">
@@ -388,7 +473,7 @@ padding: 10px</string>
      </item>
      <item row="8" column="1">
       <property name="text">
-       <string>新厝里</string>
+       <string/>
       </property>
      </item>
      <item row="8" column="2">
@@ -409,144 +494,95 @@ padding: 10px</string>
      </item>
      <item row="9" column="1">
       <property name="text">
-       <string>山腳里</string>
+       <string/>
       </property>
      </item>
      <item row="10" column="1">
       <property name="text">
-       <string>碧洲里</string>
+       <string/>
       </property>
      </item>
      <item row="11" column="1">
       <property name="text">
-       <string>碧峰里</string>
+       <string/>
       </property>
      </item>
      <item row="12" column="1">
       <property name="text">
-       <string>御史里</string>
+       <string/>
       </property>
      </item>
      <item row="13" column="1">
       <property name="text">
-       <string>复兴里</string>
+       <string/>
       </property>
      </item>
      <item row="14" column="1">
       <property name="text">
-       <string>中原里</string>
+       <string/>
       </property>
      </item>
      <item row="15" column="1">
       <property name="text">
-       <string>茄荖里</string>
+       <string/>
       </property>
      </item>
      <item row="16" column="1">
       <property name="text">
-       <string>北投里</string>
+       <string/>
       </property>
      </item>
      <item row="17" column="1">
       <property name="text">
-       <string>石川里</string>
+       <string/>
       </property>
      </item>
      <item row="18" column="1">
       <property name="text">
-       <string>南埔里</string>
+       <string/>
       </property>
      </item>
      <item row="19" column="1">
       <property name="text">
-       <string>新庄里</string>
+       <string/>
       </property>
      </item>
      <item row="20" column="1">
       <property name="text">
-       <string>新丰里</string>
+       <string/>
       </property>
      </item>
      <item row="21" column="1">
       <property name="text">
-       <string>上林里</string>
+       <string/>
       </property>
      </item>
      <item row="22" column="1">
       <property name="text">
-       <string>土城里</string>
+       <string/>
       </property>
      </item>
      <item row="23" column="1">
       <property name="text">
-       <string>北势里</string>
+       <string/>
       </property>
      </item>
      <item row="24" column="1">
       <property name="text">
-       <string>平林里</string>
+       <string/>
       </property>
      </item>
      <item row="25" column="1">
       <property name="text">
-       <string>坪顶里</string>
+       <string/>
       </property>
      </item>
      <item row="26" column="1">
       <property name="text">
-       <string>双冬里</string>
+       <string/>
       </property>
      </item>
     </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_save">
-       <property name="font">
-        <font>
-         <family>黑体</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>保存</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_ok">
-       <property name="font">
-        <font>
-         <family>黑体</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>关闭</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </item>
   </layout>
  </widget>

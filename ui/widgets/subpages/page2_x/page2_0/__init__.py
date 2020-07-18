@@ -9,7 +9,7 @@ from libs.g import g
 from libs.service import upload_file
 from model.area import Area
 from ui.page_elements.zone_detail_page import DetailPage
-
+from ui.page_elements.election_detail_page_all import DetailPage as edpa
 from .pageUI import Ui_Form
 
 
@@ -27,6 +27,7 @@ class Page2_0(QWidget):
         self.ui.btn_findzone.clicked.connect(self.findzone)
         self.ui.btn_savemap.clicked.connect(self.save_map)
         self.ui.btn_savemayor.clicked.connect(self.save_mayor)
+        self.ui.btn_election_all.clicked.connect(self.election_all)
         # messagebox
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
@@ -34,6 +35,10 @@ class Page2_0(QWidget):
         # init_
 
         self.reload()
+
+    def election_all(self):
+        dialog = edpa(self)
+        dialog.exec_()
 
     def findzone(self):
         dialog = DetailPage(self)

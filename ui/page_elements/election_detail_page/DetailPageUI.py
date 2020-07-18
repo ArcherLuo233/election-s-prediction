@@ -31,7 +31,7 @@ class Ui_Dialog(object):
         self.tableWidget.setAlternatingRowColors(False)
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.ContiguousSelection)
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(10)
+        self.tableWidget.setColumnCount(11)
         self.tableWidget.setRowCount(27)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
@@ -107,6 +107,8 @@ class Ui_Dialog(object):
         self.tableWidget.setHorizontalHeaderItem(8, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(10, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setItem(0, 1, item)
         item = QtWidgets.QTableWidgetItem()
@@ -221,8 +223,8 @@ class Ui_Dialog(object):
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-                                 "                            padding: 10px\n"
-                                 "                        ")
+                                 "       padding: 10px\n"
+                                 "      ")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
@@ -359,6 +361,8 @@ class Ui_Dialog(object):
         item = self.tableWidget.horizontalHeaderItem(8)
         item.setText(_translate("Dialog", "得票率"))
         item = self.tableWidget.horizontalHeaderItem(9)
+        item.setText(_translate("Dialog", "与上期相比"))
+        item = self.tableWidget.horizontalHeaderItem(10)
         item.setText(_translate("Dialog", "预估票数"))
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)

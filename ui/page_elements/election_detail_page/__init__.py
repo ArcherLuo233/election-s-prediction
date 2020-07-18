@@ -74,7 +74,7 @@ class DetailPage(ModalDialog):
         for i in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.removeRow(i)
         self.ui.tableWidget.setHorizontalHeaderLabels(
-            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '预估票数'])
+            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '与上期相比', '预估票数'])
         self.ui.tableWidget.setRowCount(27)
 
     def save(self):
@@ -210,7 +210,7 @@ class DetailPage(ModalDialog):
             election_number = str(i["election_number"])
             vote_number = str(i["vote_number"])
             valid_number = str(i["valid_number"])
-            vailidvote_rate = str(round(i["valid_number"] / i["vote_number"], 3))
+            vailidvote_rate = str(round(i["vote_number"] / i["election_number"], 3))
             height_year = 0
             pro = {}
             for j in i["projects"]:
@@ -231,6 +231,7 @@ class DetailPage(ModalDialog):
                 for k in j["people"]:
                     nickname = str(k["nickname"])
                     pvote_number = str(k["vote_number"])
+                    cpwl = str(k["cpwl"])
                     if (nickname == ''):
                         pvote_rate = ''
                     else:
@@ -239,7 +240,8 @@ class DetailPage(ModalDialog):
                     self.additem(beg + sublen, 6, nickname, -1)
                     self.additem(beg + sublen, 7, pvote_number, -1)
                     self.additem(beg + sublen, 8, pvote_rate, -1)
-                    # self.additem(beg + sublen, 9, YoY, -1)
+                    self.additem(beg + sublen, 9, cpwl, -1)
+                    self.additem(beg + sublen, 10, YoY, -1)
                     sublen += 1
             beg += height_year
             self.year = []

@@ -302,7 +302,7 @@ class Ui_Dialog(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Dialog", "子选区"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("Dialog", "镇长"))
+        item.setText(_translate("Dialog", "镇长/议员"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("Dialog", "里长"))
         item = self.tableWidget.horizontalHeaderItem(4)

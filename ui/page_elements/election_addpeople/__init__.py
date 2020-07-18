@@ -66,12 +66,13 @@ class PeopleAdd(ModalDialog):
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.LineEdit.text()
         pvote_number = self.ui.LineEdit_2.text()
+        cmwl = self.ui.cpwl_text.text()
         if peoplename == "":
             QMessageBox.warning(None, "添加候选人失败", "请输入正确人名!")
         elif pvote_number == "":
             QMessageBox.warning(None, "添加候选人失败", "请输入正确选票数!")
         elif int(pvote_number) > self.allvotenumber:
-            QMessageBox.warning(None, "添加候选人失败", "选票数大于总票数!")
+            QMessageBox.warning(None, "添加候选人失败", "选票数大于有效票数!")
         else:
             fg = 0
             source = Area.search(name=self.title)['data'][0]
@@ -87,7 +88,8 @@ class PeopleAdd(ModalDialog):
                                     "nickname": peoplename,
                                     "vote_number": int(pvote_number),
                                     "vote_rate": round(int(pvote_number) / self.allvotenumber, 3),
-                                    "YoY": 0.5
+                                    "cpwl": float(cmwl),
+                                    "YoY": -1
                                 }
                                 if len(j["people"]) == 1 and j["people"][0]["nickname"] == "":
                                     j["people"] = []
