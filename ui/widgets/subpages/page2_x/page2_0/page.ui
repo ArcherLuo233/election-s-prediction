@@ -320,6 +320,22 @@
            <item>
                <layout class="QHBoxLayout" name="horizontalLayout_8">
                    <item>
+                       <widget class="QPushButton" name="btn_reflash">
+                           <property name="font">
+                               <font>
+                                   <family>黑体</family>
+                                   <pointsize>18</pointsize>
+                               </font>
+                           </property>
+                           <property name="cursor">
+                               <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                           <property name="text">
+                               <string>刷新</string>
+                           </property>
+                       </widget>
+                   </item>
+                   <item>
                        <widget class="QPushButton" name="btn_findzone">
                            <property name="font">
                                <font>

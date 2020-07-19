@@ -29,6 +29,7 @@ class Page2_0(QWidget):
         self.ui.btn_savemayor.clicked.connect(self.save_mayor)
         self.ui.btn_election_all.clicked.connect(self.election_all)
         self.ui.btn_save.clicked.connect(self.save)
+        self.ui.btn_reflash.clicked.connect(self.reload)
         # messagebox
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
