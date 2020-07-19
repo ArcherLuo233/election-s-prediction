@@ -60,6 +60,7 @@ class DetailPage(ModalDialog):
         }
         self.empty_peo = {
             "nickname": "",
+            "cpwl": "",
             "vote_number": "",
             "vote_rate": "",
             "YoY": ""
@@ -216,6 +217,7 @@ class DetailPage(ModalDialog):
             for j in i["projects"]:
                 height_year += len(j["people"])
                 pro.update({str(j["name"]): len(j["people"])})
+
             self.additem(beg, 0, year, height_year)
             self.additem(beg, 1, election_number, height_year)
             self.additem(beg, 2, vote_number, height_year)

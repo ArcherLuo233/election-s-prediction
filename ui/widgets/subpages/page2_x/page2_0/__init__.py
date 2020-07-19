@@ -2,7 +2,7 @@ from PIL import Image
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget, QHeaderView
 
 from libs.enumrations import UserPermission
 from libs.g import g
@@ -28,11 +28,15 @@ class Page2_0(QWidget):
         self.ui.btn_savemap.clicked.connect(self.save_map)
         self.ui.btn_savemayor.clicked.connect(self.save_mayor)
         self.ui.btn_election_all.clicked.connect(self.election_all)
+        self.ui.btn_save.clicked.connect(self.save)
         # messagebox
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
         self.message.button(QMessageBox.Yes).setText('确认')
         # init_
+        self.all_area = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里",
+                         "北投里",
+                         "石川里", "加老里", "新庄里", "新丰里", "御史里", "北势里", "中原里", "富寮里", "南埔里", "坪顶里", "土城里", "平林里", "双冬里"]
 
         self.reload()
 
@@ -49,15 +53,36 @@ class Page2_0(QWidget):
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_savemap.hide()
             self.ui.btn_savemayor.hide()
+            self.ui.btn_save.hide()
             self.ui.mayor_name.setEnabled(False)
+            self.reload()
         else:
             self.ui.btn_savemap.show()
             self.ui.btn_savemayor.show()
+            self.ui.btn_save.show()
             self.ui.mayor_name.setEnabled(True)
+
+    def save(self):
+        introduction = self.ui.textedit_remark.toPlainText()
+        target_data = Area.search(name=self.savename)["data"][0]
+        target_data.modify(introduction=introduction)
+        QMessageBox.information(None, "地区概况", "保存成功!")
 
     def reload(self):
         target_data = Area.search(name=self.savename)["data"][0]
         self.ui.mayor_name.setText(target_data.mayor)
+        self.ui.Mayor_text.setText("   " + target_data.mayor)
+        self.ui.textedit_remark.setPlainText(target_data.introduction)
+        population = 0
+        num_of_fam = 0
+        for i in self.all_area:
+            target_data = Area.search(name=i)["data"][0]
+            if target_data.population:
+                population += int(target_data.population)
+            if target_data.number_of_family:
+                num_of_fam += int(target_data.number_of_family)
+        self.ui.population.setText("   " + str(population))
+        self.ui.numofhouse_text.setText("   " + str(num_of_fam))
 
     def save_mayor(self):
         mayorname = self.ui.mayor_name.text()

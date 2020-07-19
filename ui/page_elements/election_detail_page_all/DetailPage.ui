@@ -28,7 +28,7 @@
       </string>
      </property>
      <property name="text">
-      <string>总选举数据统计</string>
+      <string>选举详情页面</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -252,74 +252,64 @@
        <string>New Row</string>
       </property>
      </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
-     <column>
-      <property name="text">
-       <string>年度</string>
-      </property>
-      <property name="font">
-       <font>
-        <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>总选举人数</string>
-      </property>
-      <property name="font">
-       <font>
-        <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>总投票数</string>
-      </property>
-      <property name="font">
-       <font>
-        <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>总投票率</string>
-      </property>
-      <property name="font">
-       <font>
-        <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>总有效票数</string>
-      </property>
-      <property name="font">
-       <font>
-        <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <item row="0" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="0" column="2">
-      <property name="text">
-       <string/>
+        <row>
+            <property name="text">
+                <string>New Row</string>
+            </property>
+        </row>
+        <column>
+            <property name="text">
+                <string>年度</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>选举人数</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>投票数</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>投票率</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>有效票数</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>项目</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>姓名</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>票数</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>得票率</string>
+            </property>
+        </column>
+        <item row="0" column="1">
+            <property name="text">
+                <string/>
+            </property>
+        </item>
+        <item row="0" column="2">
+            <property name="text">
+                <string/>
       </property>
      </item>
      <item row="1" column="1">
