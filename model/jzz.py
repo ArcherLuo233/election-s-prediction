@@ -16,7 +16,7 @@ class JZZ(Base):
 
     nickname = Column(String(100), nullable=False, comment='姓名')
     sex = Column(String(100), comment='性别')
-    id_card = Column(String(100), comment='身份证号码')
+    id_card = Column(String(100), comment='居住证号码')
     pass_card = Column(String(100), comment='通行证号码')
     address = Column(String(100), comment='地址')
     phone = Column(String(100), comment='联系电话')
