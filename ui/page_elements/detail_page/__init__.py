@@ -1,5 +1,5 @@
 from PyQt5.Qt import Qt
-from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
+from PyQt5.QtWidgets import (QDialog, QFileDialog, QHeaderView, QMessageBox,
                              QTableWidget, QTableWidgetItem)
 
 from libs.enumrations import UserPermission
@@ -8,7 +8,6 @@ from libs.g import g
 from model.base import Base
 from model.rs import RS
 from model.zyrs import ZYRS
-from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.table_cells.file_widget import FileWidget
 from ui.page_elements.table_cells.list_widget import ListWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
@@ -19,11 +18,11 @@ from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 from .dialogUI import Ui_Dialog
 
 
-class DetailPage(ModalDialog):
-    pic_item_height = 6
+class DetailPage(QDialog):
+    pic_item_height = 4
 
     def __init__(self, parent, model: Base):
-        super().__init__(parent, size=(1000, 800))
+        super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.default_conditions = {}
