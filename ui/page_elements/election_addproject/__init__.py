@@ -64,9 +64,11 @@ class ProjectAdd(ModalDialog):
                             "people": [
                                 {
                                     "nickname": "",
-                                    "vote_number": "",
                                     "cpwl": "",
+                                    "vote_number": "",
                                     "vote_rate": "",
+                                    "reference_assignment": "",
+                                    "votes_reported": "",
                                     "YoY": ""
                                 }
                             ]

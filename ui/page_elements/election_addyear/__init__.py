@@ -66,6 +66,8 @@ class YearAdd(ModalDialog):
                                     "cpwl": "",
                                     "vote_number": "",
                                     "vote_rate": "",
+                                    "reference_assignment": "",
+                                    "votes_reported": "",
                                     "YoY": ""
                                 }
                             ]
