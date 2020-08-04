@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
+    <width>1083</width>
     <height>785</height>
    </rect>
   </property>
@@ -209,32 +209,37 @@ padding: 10px</string>
      </column>
      <column>
       <property name="text">
-       <string>里长</string>
+          <string>代表</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>代表</string>
+          <string>里长</string>
       </property>
      </column>
-     <column>
-      <property name="text">
-       <string>社区</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>农会</string>
-      </property>
-     </column>
-     <item row="0" column="1">
-      <property name="text">
-       <string>中山里</string>
-      </property>
-     </item>
-     <item row="0" column="2">
-      <property name="text">
-       <string/>
+        <column>
+            <property name="text">
+                <string>社区</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>农会</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>民间组织</string>
+            </property>
+        </column>
+        <item row="0" column="1">
+            <property name="text">
+                <string>中山里</string>
+            </property>
+        </item>
+        <item row="0" column="2">
+            <property name="text">
+                <string/>
       </property>
      </item>
      <item row="1" column="1">

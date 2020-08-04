@@ -72,9 +72,10 @@ class DetailPage(ModalDialog):
             representative = self.ui.tableWidget.item(i, 4).text()
             community = self.ui.tableWidget.item(i, 5).text()
             peasant_association = self.ui.tableWidget.item(i, 6).text()
-            target_area = Area.search(area_id=i + 1, tag=tag)["data"][0]
+            civil_organization = self.ui.tableWidget.item(i, 7).text()
+            target_area = Area.search(id=i + 1)["data"][0]
             target_area.modify(mayor=mayor, area_mayor=area_mayor, representative=representative, community=community,
-                               peasant_association=peasant_association)
+                               peasant_association=peasant_association, civil_organization=civil_organization)
         QMessageBox.information(None, "选区", "保存成功!")
         self.reload()
 
@@ -91,7 +92,8 @@ class DetailPage(ModalDialog):
         data = Area.search(page_size=-1)["data"]
         for index, i in enumerate(data):
             self.additem(index, 2, i.mayor)
-            self.additem(index, 3, i.area_mayor)
-            self.additem(index, 4, i.representative)
+            self.additem(index, 3, i.representative)
+            self.additem(index, 4, i.area_mayor)
             self.additem(index, 5, i.community)
             self.additem(index, 6, i.peasant_association)
+            self.additem(index, 7, i.civil_organization)

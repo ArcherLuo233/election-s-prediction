@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1159</width>
+    <width>1395</width>
     <height>801</height>
    </rect>
   </property>
@@ -242,16 +242,16 @@
        <string>New Row</string>
       </property>
      </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
+        <row>
+            <property name="text">
+                <string>New Row</string>
+            </property>
+        </row>
+        <row>
+            <property name="text">
+                <string>New Row</string>
+            </property>
+        </row>
         <row>
             <property name="text">
                 <string>New Row</string>
@@ -302,6 +302,26 @@
                 <string>得票率</string>
             </property>
         </column>
+        <column>
+            <property name="text">
+                <string>上报票数</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>参考赋值</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>与上期相比</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>预估票数</string>
+            </property>
+        </column>
         <item row="0" column="1">
             <property name="text">
                 <string/>
@@ -310,16 +330,16 @@
         <item row="0" column="2">
             <property name="text">
                 <string/>
-      </property>
-     </item>
-     <item row="1" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="1" column="2">
-      <property name="text">
-       <string/>
+            </property>
+        </item>
+        <item row="1" column="1">
+            <property name="text">
+                <string/>
+            </property>
+        </item>
+        <item row="1" column="2">
+            <property name="text">
+                <string/>
       </property>
       <property name="flags">
        <set>ItemIsEnabled</set>

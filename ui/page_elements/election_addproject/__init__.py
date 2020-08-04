@@ -27,6 +27,7 @@ class ProjectAdd(ModalDialog):
         # init
         try:
             data = Area.search(name=self.title)['data'][0].extra
+            data.sort(key=lambda x: x["year"])
         except Exception:
             data = []
             QMessageBox.warning(None, "添加项目失败", "请先添加年份!")

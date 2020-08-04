@@ -16,7 +16,7 @@ from .DetailPageUI import Ui_Dialog
 class DetailPage(ModalDialog):
     def __init__(self, parent, title):
         self.title = title
-        super().__init__(parent, size=(1000, 800))
+        super().__init__(parent, size=(1300, 800))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.year = []
@@ -52,8 +52,11 @@ class DetailPage(ModalDialog):
             "people": [
                 {
                     "nickname": "",
+                    "cpwl": "",
                     "vote_number": "",
                     "vote_rate": "",
+                    "reference_assignment": "",
+                    "votes_reported": "",
                     "YoY": ""
                 }
             ]
@@ -63,6 +66,8 @@ class DetailPage(ModalDialog):
             "cpwl": "",
             "vote_number": "",
             "vote_rate": "",
+            "reference_assignment": "",
+            "votes_reported": "",
             "YoY": ""
         }
         # messagebox
@@ -75,7 +80,7 @@ class DetailPage(ModalDialog):
         for i in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.removeRow(i)
         self.ui.tableWidget.setHorizontalHeaderLabels(
-            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '与上期相比', '预估票数'])
+            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '上报票数', '参考赋值', '与上期相比', '预估票数'])
         self.ui.tableWidget.setRowCount(27)
 
     def save(self):
@@ -205,6 +210,7 @@ class DetailPage(ModalDialog):
             data = Area.search(name=self.title)['data'][0].extra
         except Exception:
             return
+        data.sort(key=lambda x: x["year"])
         beg = 0
         for index, i in enumerate(data):
             year = str(i["year"])
@@ -233,17 +239,25 @@ class DetailPage(ModalDialog):
                 for k in j["people"]:
                     nickname = str(k["nickname"])
                     pvote_number = str(k["vote_number"])
-                    cpwl = str(k["cpwl"])
+                    reference_assignment = str(k["reference_assignment"])
+                    votes_reported = str(k['votes_reported'])
                     if (nickname == ''):
+                        cpwl = ""
                         pvote_rate = ''
                     else:
+                        if k["cpwl"] == -1:
+                            cpwl = "缺失"
+                        else:
+                            cpwl = str(round(k["vote_number"] / k["cpwl"], 2))
                         pvote_rate = str(round(k["vote_number"] / i["valid_number"], 3))
                     YoY = str(k["YoY"])
                     self.additem(beg + sublen, 6, nickname, -1)
                     self.additem(beg + sublen, 7, pvote_number, -1)
                     self.additem(beg + sublen, 8, pvote_rate, -1)
-                    self.additem(beg + sublen, 9, cpwl, -1)
-                    self.additem(beg + sublen, 10, YoY, -1)
+                    self.additem(beg + sublen, 9, votes_reported, -1)
+                    self.additem(beg + sublen, 10, reference_assignment, -1)
+                    self.additem(beg + sublen, 11, cpwl, -1)
+                    self.additem(beg + sublen, 12, YoY, -1)
                     sublen += 1
             beg += height_year
             self.year = []

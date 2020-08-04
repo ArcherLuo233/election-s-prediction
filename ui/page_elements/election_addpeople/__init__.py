@@ -43,6 +43,7 @@ class PeopleAdd(ModalDialog):
             data = Area.search(name=self.title)['data'][0].extra
         except Exception:
             return
+        data.sort(key=lambda x: x["year"])
         year = self.ui.ComboBox.currentText()
         prolist = []
         for i in data:
@@ -52,6 +53,26 @@ class PeopleAdd(ModalDialog):
                     prolist.append(j["name"])
         self.ui.ComboBox_2.clear()
         self.ui.ComboBox_2.addItems(prolist)
+
+    def getnxtvote(self, data, year, proname, peoplename, pvote_number):
+        for index, i in enumerate(data):
+            if i['year'] == year:
+                for j in i['projects']:
+                    if j["name"] == proname:
+                        for k in j["people"]:
+                            if k["nickname"] == peoplename:
+                                k["cpwl"] = int(pvote_number)
+                                return
+
+    def getlastvote(self, data, year, proname, peoplename):
+        for index, i in enumerate(data):
+            if i['year'] == year:
+                for j in i['projects']:
+                    if j["name"] == proname:
+                        for k in j["people"]:
+                            if k["nickname"] == peoplename:
+                                return (k["vote_number"])
+        return -1
 
     def addpeople(self):
 
@@ -66,7 +87,9 @@ class PeopleAdd(ModalDialog):
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.LineEdit.text()
         pvote_number = self.ui.LineEdit_2.text()
-        cmwl = self.ui.cpwl_text.text()
+        reference_assignment = self.ui.reference_assignment.text()
+        votes_reported = self.ui.votes_reported.text()
+
         if peoplename == "":
             QMessageBox.warning(None, "添加候选人失败", "请输入正确人名!")
         elif pvote_number == "":
@@ -77,6 +100,9 @@ class PeopleAdd(ModalDialog):
             fg = 0
             source = Area.search(name=self.title)['data'][0]
             data = Area.search(name=self.title)['data'][0].extra
+            numyear = int(year)
+            self.getnxtvote(data, numyear + 1, proname, peoplename, pvote_number)  # 修改后一年的
+            cpwl = self.getlastvote(data, numyear - 1, proname, peoplename)  # 增加本年的
             if fg == 0:
                 ffg = 0
                 for i in data:
@@ -88,7 +114,9 @@ class PeopleAdd(ModalDialog):
                                     "nickname": peoplename,
                                     "vote_number": int(pvote_number),
                                     "vote_rate": round(int(pvote_number) / self.allvotenumber, 3),
-                                    "cpwl": float(cmwl),
+                                    "reference_assignment": int(reference_assignment),
+                                    "votes_reported": int(votes_reported),
+                                    "cpwl": int(cpwl),
                                     "YoY": -1
                                 }
                                 if len(j["people"]) == 1 and j["people"][0]["nickname"] == "":

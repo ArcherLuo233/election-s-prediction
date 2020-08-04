@@ -19,15 +19,16 @@ class Area(Base):
     representative = Column(String(100), comment='代表')
     community = Column(String(100), comment='社区')
     peasant_association = Column(String(100), comment='农会')
+    civil_organization = Column(String(100), comment='民间组织')
     extra_ = Column('extra', Text, comment='额外信息')
 
     @property
     def extra(self):
         try:
             return json.loads(self.extra_)
-        except ValueError:
+        except BaseException:
             return list()
 
     @extra.setter
     def extra(self, raw):
-        self.extra_ = json.dumps(raw, sort_keys=True, indent=2)
+        self.extra_ = json.dumps(raw, sort_keys=False, indent=2)

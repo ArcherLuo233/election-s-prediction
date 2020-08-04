@@ -17,7 +17,7 @@ class DetailPage(ModalDialog):
     def __init__(self, parent):
         self.title = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里", "北投里",
                       "石川里", "加老里", "新庄里", "新丰里", "御史里", "北势里", "中原里", "富寮里", "南埔里", "坪顶里", "土城里", "平林里", "双冬里"]
-        super().__init__(parent, size=(1000, 800))
+        super().__init__(parent, size=(1300, 800))
         self.sx = []
         self.data_all = []
         self.ui = Ui_Dialog()
@@ -47,16 +47,22 @@ class DetailPage(ModalDialog):
             "people": [
                 {
                     "nickname": "",
+                    "cpwl": "",
                     "vote_number": "",
                     "vote_rate": "",
+                    "reference_assignment": "",
+                    "votes_reported": "",
                     "YoY": ""
                 }
             ]
         }
         self.empty_peo = {
             "nickname": "",
+            "cpwl": "",
             "vote_number": "",
             "vote_rate": "",
+            "reference_assignment": "",
+            "votes_reported": "",
             "YoY": ""
         }
 
@@ -66,7 +72,7 @@ class DetailPage(ModalDialog):
         for i in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.removeRow(i)
         self.ui.tableWidget.setHorizontalHeaderLabels(
-            ['年度', '总选举人数', '总投票数', '总投票率', '有效票数', '项目', '姓名', '总票数', '得票率'])
+            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '上报票数', '参考赋值', '与上期相比', '预估票数'])
         self.ui.tableWidget.setRowCount(27)
 
     def additem(self, row, col, text, l):
@@ -86,6 +92,7 @@ class DetailPage(ModalDialog):
                 data = Area.search(name=title)['data'][0].extra
             except Exception:
                 continue
+            data.sort(key=lambda x: x["year"])
             for index, i in enumerate(data):
                 year = i["year"]
                 election_number = i["election_number"]
@@ -111,6 +118,13 @@ class DetailPage(ModalDialog):
                                             if data_pe['nickname'] == data_all_pe['nickname']:
                                                 fffl = 1
                                                 data_all_pe['vote_number'] += data_pe['vote_number']
+                                                data_all_pe['votes_reported'] += data_pe['votes_reported']
+                                                data_all_pe['reference_assignment'] += data_pe['reference_assignment']
+                                                if data_pe['cpwl'] != -1:
+                                                    if data_all_pe['cpwl'] == -1:
+                                                        data_all_pe['cpwl'] = data_pe['cpwl']
+                                                    else:
+                                                        data_all_pe['cpwl'] += data_pe['cpwl']
                                             if fffl == 1: break
                                         if fffl == 0:
                                             tmp = data_pe
@@ -133,6 +147,7 @@ class DetailPage(ModalDialog):
         self.getall()
         self.init()
         data = self.data_all
+        data.sort(key=lambda x: x["year"])
         beg = 0
         for index, i in enumerate(data):
             year = str(i["year"])
@@ -161,15 +176,25 @@ class DetailPage(ModalDialog):
                 for k in j["people"]:
                     nickname = str(k["nickname"])
                     pvote_number = str(k["vote_number"])
-                    cpwl = str(k["cpwl"])
+                    reference_assignment = str(k["reference_assignment"])
+                    votes_reported = str(k['votes_reported'])
                     if (nickname == ''):
+                        cpwl = ""
                         pvote_rate = ''
                     else:
+                        if k["cpwl"] == -1:
+                            cpwl = "缺失"
+                        else:
+                            cpwl = str(round(k["vote_number"] / k["cpwl"], 2))
+
                         pvote_rate = str(round(k["vote_number"] / i["valid_number"], 3))
                     YoY = str(k["YoY"])
                     self.additem(beg + sublen, 6, nickname, -1)
                     self.additem(beg + sublen, 7, pvote_number, -1)
                     self.additem(beg + sublen, 8, pvote_rate, -1)
-                    # self.additem(beg + sublen, 9, YoY, -1)
+                    self.additem(beg + sublen, 9, votes_reported, -1)
+                    self.additem(beg + sublen, 10, reference_assignment, -1)
+                    self.additem(beg + sublen, 11, cpwl, -1)
+                    self.additem(beg + sublen, 12, YoY, -1)
                     sublen += 1
             beg += height_year

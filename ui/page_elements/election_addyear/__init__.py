@@ -63,6 +63,7 @@ class YearAdd(ModalDialog):
                             "people": [
                                 {
                                     "nickname": "",
+                                    "cpwl": "",
                                     "vote_number": "",
                                     "vote_rate": "",
                                     "YoY": ""
