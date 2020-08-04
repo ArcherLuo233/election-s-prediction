@@ -1,10 +1,14 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
-                             QTableWidgetItem)
+                             QTableWidgetItem, QFileDialog)
 
 from libs.g import g
 from model.area import Area
 from ui.page_elements.modal_dialog import ModalDialog
+from openpyxl import Workbook
+from openpyxl import load_workbook
+from openpyxl.styles import Font
+from openpyxl.styles import Border, Side
 
 from .DetailpageUI import Ui_Dialog
 
@@ -52,6 +56,7 @@ class DetailPage(ModalDialog):
             self.ui.btn_save.show()
         self.ui.button_ok.clicked.connect(self.close)
         self.ui.btn_save.clicked.connect(self.save)
+        self.ui.btn_export.clicked.connect(self.export)
         # _init
         header = ['选区', '子选区']
         for i in Area.field:
@@ -62,6 +67,34 @@ class DetailPage(ModalDialog):
         self.message.setStandardButtons(QMessageBox.Yes)
         self.message.button(QMessageBox.Yes).setText('确认')
         self.reload()
+
+    def export(self):
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区", "excel文件(*.xlsx)")[0]
+        wb = load_workbook(r"E:\python\election-s-prediction\import_test\xq_test.xlsx")
+        ws = wb.active
+        fontObj1 = Font(name=u'等线', size=11)
+        thin_border = Border(left=Side(style='thin'),
+                             right=Side(style='thin'),
+                             top=Side(style='thin'),
+                             bottom=Side(style='thin'))
+
+        data = Area.search(page_size=-1)["data"]
+        beg = 3
+        for index, i in enumerate(data):
+            ws.cell(beg, 3, value=i.mayor)
+            ws.cell(beg, 4, value=i.representative)
+            ws.cell(beg, 5, value=i.area_mayor)
+            ws.cell(beg, 6, value=i.community)
+            ws.cell(beg, 7, value=i.peasant_association)
+            ws.cell(beg, 8, value=i.civil_organization)
+            ws.cell(beg, 3).font = fontObj1
+            ws.cell(beg, 4).font = fontObj1
+            ws.cell(beg, 5).font = fontObj1
+            ws.cell(beg, 6).font = fontObj1
+            ws.cell(beg, 7).font = fontObj1
+            ws.cell(beg, 8).font = fontObj1
+            beg += 1
+        wb.save(filename)
 
     def save(self):
         tag = 2020
