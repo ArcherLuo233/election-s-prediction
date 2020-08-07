@@ -19,6 +19,7 @@ def main():
     app = QtWidgets.QApplication(sys.argv)
     g.app = app
     g.debug = True
+    g.current_user = None
     loadFonts()
     login_widget = LoginPage()
     PageManager.pages['Login'] = login_widget

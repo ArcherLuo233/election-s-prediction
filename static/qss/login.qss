@@ -1,0 +1,32 @@
+QLineEdit{
+    border: 0px;
+}
+
+.QFrame{
+    border-radius: 10px;
+    background-color: rgb(237, 239, 251);
+}
+
+#widget_un{
+    border-bottom: 1px dashed;
+    border-radius: 0px;
+}
+
+#widget_login_form{
+    border-radius: 10px;
+    background-color: white;
+}
+
+QPushButton{
+    background-color: rgb(64, 158, 255);
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 50);
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    font: 20px;
+    font-weight: bold;
+}
+QPushButton:hover{
+    background-color: rgba(64, 158, 255, 150);
+}

@@ -143,5 +143,6 @@ class MainPage(QWidget):
         self.refresh_user()
 
     def logout(self):
+        g.current_user = None
         PageManager.get_page("Login").show()
         self.close()
