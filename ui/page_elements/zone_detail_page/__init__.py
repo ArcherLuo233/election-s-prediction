@@ -70,6 +70,8 @@ class DetailPage(ModalDialog):
 
     def export(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区", "excel文件(*.xlsx)")[0]
+        if filename == "":
+            return
         wb = load_workbook(r"E:\python\election-s-prediction\import_test\xq_test.xlsx")
         ws = wb.active
         fontObj1 = Font(name=u'等线', size=11)
@@ -81,6 +83,7 @@ class DetailPage(ModalDialog):
         data = Area.search(page_size=-1)["data"]
         beg = 3
         for index, i in enumerate(data):
+            if i['name'] == '地区概况': continue
             ws.cell(beg, 3, value=i.mayor)
             ws.cell(beg, 4, value=i.representative)
             ws.cell(beg, 5, value=i.area_mayor)
@@ -94,8 +97,13 @@ class DetailPage(ModalDialog):
             ws.cell(beg, 7).font = fontObj1
             ws.cell(beg, 8).font = fontObj1
             beg += 1
-        wb.save(filename)
+        try:
+            wb.save(filename)
+        except PermissionError as e:
+            QMessageBox.warning(None, "导出数据", "拒绝访问,请先关闭目标文件")
+            return
 
+        QMessageBox.information(None, "导出数据", "导出完毕")
     def save(self):
         tag = 2020
         row = self.ui.tableWidget.rowCount()
