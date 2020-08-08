@@ -225,16 +225,16 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_logout">
-        <property name="font">
-         <font>
-          <family>黑体</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;a href=&quot;#logout&quot;&gt;登出&lt;/a&gt;</string>
-        </property>
+       <widget class="QLabel" name="label_go_back">
+           <property name="font">
+               <font>
+                   <family>黑体</family>
+                   <pointsize>14</pointsize>
+               </font>
+           </property>
+           <property name="text">
+               <string>&lt;a href=&quot;#goback&quot;&gt;返回&lt;/a&gt;</string>
+           </property>
        </widget>
       </item>
       <item>

@@ -15,6 +15,8 @@ class SWTZ(Base):
         'taiwan_company_address', 'taiwan_company_legal_people'
     ]
 
+    file_field = ['reason']
+
     template_start_row = 3
 
     company_name = Column(String(100), comment='企业名称')

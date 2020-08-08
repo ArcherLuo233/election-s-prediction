@@ -13,7 +13,8 @@ class LFTZ(Base):
     read_field = ['head']
 
     field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'remark', 'head'
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'remark', 'head',
+        'type'
     ]
 
     template_start_row = 3
@@ -25,6 +26,7 @@ class LFTZ(Base):
     stroke = Column(String(100), comment='行程')
     group_organization = Column(String(100), comment='组团单位')
     remark = Column(Text, comment='备注')
+    type = Column(String(100), comment='类型')
 
     @property
     def head(self):

@@ -46,7 +46,7 @@ class ZYRS(Base):
     education = Column(String(100), comment='学历')
     main_remarks = Column(String(100), comment='主要言论')
     main_experience = Column(String(100), comment='主要经历')
-    number_of_visits = Column(String(100), comment='来访次数')
+    number_of_visits = Column(String(100), comment='来访时间')
     schedule = Column(String(100), comment='行程安排')
     contact_person = Column(String(100), comment='联系人')
     contact_person_phone = Column(String(100), comment='联系人联系电话')

@@ -25,7 +25,7 @@ class Pagelsjl(SearchPage):
         '大陆手机号',
         '接待单位',
         '停留事由',
-        '来访次数'
+        '来访时间'
     ]
 
 
@@ -52,7 +52,7 @@ class Pagezyrs(SearchPage):
         '倾向',
         '手机号',
         '单位职务',
-        '来访次数'
+        '来访时间'
     ]
 
 
@@ -161,6 +161,51 @@ class Pagelftz(SearchPage):
         '团长',
         '备注'
     ]
+
+
+class Pagelftz_jc(SearchPage):
+    title = "来访团组-基层"
+    model = LFTZ
+    members_model = LFTZ_TY
+    summary = [
+        '时间',
+        '团组名称',
+        '人数',
+        '天数',
+        '团长',
+        '备注'
+    ]
+    default_conditions = {'type': '基层'}
+
+
+class Pagelftz_qn(SearchPage):
+    title = "来访团组-青年"
+    model = LFTZ
+    members_model = LFTZ_TY
+    summary = [
+        '时间',
+        '团组名称',
+        '人数',
+        '天数',
+        '团长',
+        '备注'
+    ]
+    default_conditions = {'type': '青年'}
+
+
+class Pagelftz_sw(SearchPage):
+    title = "来访团组-商务"
+    model = LFTZ
+    members_model = LFTZ_TY
+    summary = [
+        '时间',
+        '团组名称',
+        '人数',
+        '天数',
+        '团长',
+        '备注'
+    ]
+    default_conditions = {'type': '商务'}
 
 
 class Pagelftz_ty(SearchPage):

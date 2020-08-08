@@ -18,15 +18,21 @@ class NavigateMenu(QWidget):
         self.fields: [NavigateField] = []
         self.checked_label: Union[None, NavigateLabel] = None
 
-    def addField(self, title: str, alias: str, menu: [tuple]):
+    def add_field(self, title: str, alias: str, menu: [tuple]):
         field = NavigateField(title, alias)
         field.ui.label_title.linkActivated.connect(link_manager.activate)
         field.ui.label_title.linkActivated.connect(self.labelClicked)
         for text, alias in menu:
-            label = field.appendMenu(text, alias)
+            label = field.append_menu(text, alias)
             label.linkActivated.connect(self.labelClicked)
         self.fields.append(field)
         self.layout().addWidget(field)
+
+    def clear_fields(self):
+        self.checked_label = None
+        for i in self.fields:
+            i.deleteLater()
+        self.fields = []
 
     def labelClicked(self):
         if self.checked_label:

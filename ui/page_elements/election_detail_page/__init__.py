@@ -1,7 +1,7 @@
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
-                             QTableWidgetItem, QFileDialog)
+from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
+                             QTableWidget, QTableWidgetItem)
 
 from libs.g import g
 from model.area import Area

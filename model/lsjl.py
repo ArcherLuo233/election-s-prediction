@@ -30,6 +30,6 @@ class LSJL(Base):
     reception_company = Column(String(100), comment='接待单位')
     cause_of_stay = Column(String(100), comment='停留事由')
     main_experience = Column(String(100), comment='主要经历')
-    number_of_visits = Column(String(100), comment='来访次数')
+    number_of_visits = Column(String(100), comment='来访时间')
     schedule = Column(String(100), comment='行程安排')
     remark = Column(Text, comment='备注')

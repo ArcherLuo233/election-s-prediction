@@ -6,9 +6,9 @@ from model.lftz_ty import LFTZ_TY
 from model.lp import LP
 from model.ls import LS
 from model.lsjl import LSJL
+from model.rs import RS
 from model.swtz import SWTZ
 from model.swtz_ty import SWTZ_TY
-from model.rs import RS
 from model.ts import TS
 from model.tstg import TSTG
 from model.zyrs import ZYRS

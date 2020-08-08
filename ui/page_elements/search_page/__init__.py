@@ -23,6 +23,7 @@ class SearchPage(QWidget):
     members_model = None
     summary = {}
     title: str = None
+    default_conditions = {}
 
     def __init__(self):
         QWidget.__init__(self)
@@ -31,7 +32,6 @@ class SearchPage(QWidget):
         self.id_selected = set()
         self.sort_field = 'id'
         self.sort_order = 'desc'
-        self.default_conditions = {}
         self.dialog_parent = self
         self.show_close_btn = False
         if self.model:

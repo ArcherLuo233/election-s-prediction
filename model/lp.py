@@ -12,16 +12,15 @@ class LP(Base):
         'id', 'nickname', 'sex', 'birth', 'area', 'education', 'job', 'marriage_status', 'marriage_registration_date',
         'type_of_certificate', 'number_of_certificate', 'social_identity', 'activity', 'domicile', 'community',
         'mainland_company', 'mainland_company_address', 'mainland_residential_address', 'mainland_phone',
-        'taiwan_company', 'taiwan_company_address', 'taiwan_residential_address', 'taiwan_phone', 'spouse_nickname',
-        'spouse_sex', 'spouse_hometown', 'spouse_birth', 'spouse_nation', 'spouse_education', 'spouse_partisan',
-        'spouse_type_of_certificate', 'spouse_number_of_certificate', 'spouse_graduated_school',
+        'taiwan_company', 'taiwan_company_address', 'taiwan_residential_address', 'taiwan_phone', 'remark',
+        'spouse_nickname', 'spouse_sex', 'spouse_hometown', 'spouse_birth', 'spouse_nation', 'spouse_education',
+        'spouse_partisan', 'spouse_type_of_certificate', 'spouse_number_of_certificate', 'spouse_graduated_school',
         'spouse_mainland_company', 'spouse_mainland_company_address', 'spouse_mainland_residential_address',
         'spouse_mainland_phone', 'spouse_taiwan_company', 'spouse_taiwan_company_address',
         'spouse_taiwan_residential_address', 'spouse_taiwan_phone', 'child_nickname', 'child_sex', 'child_hometown',
         'child_nation', 'child_place_of_birth', 'child_birth', 'child_education', 'child_political_status',
         'child_join_date', 'child_type_of_certificate', 'child_number_of_certificate', 'child_domicile', 'child_phone',
         'child_company_name', 'child_company_major', 'child_company_address', 'child_company_phone', 'child_specialty',
-        'remark'
     ]
 
     template_start_row = 5

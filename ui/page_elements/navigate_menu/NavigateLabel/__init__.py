@@ -26,15 +26,15 @@ class NavigateLabel(QLabel):
         if self.checked == check:
             return
         self.checked = check
-        self.updateText()
+        self.update_text()
         self.checkChanged.emit(check)
 
-    def setTitle(self, title: str, alias: str = ""):
+    def set_title(self, title: str, alias: str = ""):
         self.text = title
         self.alias = alias if alias != "" else title
-        self.updateText()
+        self.update_text()
 
-    def updateText(self):
+    def update_text(self):
         s = self.text
         self.setText(s)
         textcolor = color.NavigateTextHighlight if self.checked else color.NavigateText
@@ -44,8 +44,11 @@ class NavigateLabel(QLabel):
         palette.setColor(QPalette.Background, bgcolor)
         self.setPalette(palette)
 
+    def emit_link(self):
+        link = "#goto:{}".format(self.alias)
+        self.linkActivated.emit(link)
+
     def mouseReleaseEvent(self, event: QMouseEvent):
         if event.button() != Qt.LeftButton:
             return
-        link = "#goto:{}".format(self.alias)
-        self.linkActivated.emit(link)
+        self.emit_link()

@@ -25,6 +25,7 @@ class DetailPage(QDialog):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.setMinimumSize(800, 400)
         self.default_conditions = {}
         # model
         self.model = model

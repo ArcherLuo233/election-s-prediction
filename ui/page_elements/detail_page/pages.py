@@ -14,7 +14,7 @@ class ZYRSChoicePage(SearchPage):
         '倾向',
         '手机号',
         '单位职务',
-        '来访次数'
+        '来访时间'
     ]
 
 

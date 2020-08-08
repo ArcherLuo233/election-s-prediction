@@ -17,8 +17,8 @@ class NavigateField(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        self.ui.label_title.setTitle(title, alias)
-        self.ui.label_title.checkChanged.connect(self.refreshUI)
+        self.ui.label_title.set_title(title, alias)
+        self.ui.label_title.checkChanged.connect(self.refresh_ui)
 
         self.ui.label_icon.setPixmap(QPixmap("./static/svg/list.svg").scaled(30, 30))
         self.ui.label_icon.setAutoFillBackground(True)
@@ -27,8 +27,7 @@ class NavigateField(QWidget):
         self.ui.label_switch.linkActivated.connect(self.switch)
         self.ui.label_switch.close()
 
-        self.refreshUI(False)
-
+        self.refresh_ui(False)
         self.adjustSize()
 
     def switch(self):
@@ -51,9 +50,9 @@ class NavigateField(QWidget):
             'color: {color};">{0}</a>'.format("展开" if self.is_hide else "隐藏", color=text_color.name())
         self.ui.label_switch.setText(s)
 
-    def appendMenu(self, text: str, alias=""):
+    def append_menu(self, text: str, alias=""):
         label = NavigateLabel(self)
-        label.setTitle(text, alias)
+        label.set_title(text, alias)
         label.setParent(self)
         label.setStyleSheet("QLabel{margin-left: 10px;}")
         if self.is_hide:
@@ -65,7 +64,7 @@ class NavigateField(QWidget):
         self.ui.label_switch.show()
         return label
 
-    def refreshUI(self, checked):
+    def refresh_ui(self, checked):
         bgcolor = color.NavigateBackgroundHighlight if checked else color.NavigateBackground
         pal = self.ui.label_switch.palette()
         pal.setColor(QPalette.Background, bgcolor)

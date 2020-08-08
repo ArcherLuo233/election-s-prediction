@@ -14,7 +14,7 @@ class GWTZ(Base):
         'id', 'year', 'name', 'company', 'head', 'taiwan_invite_company', 'number_of_people', 'number_of_day',
         'approval_time', 'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone'
     ]
-    file_field = ['stroke', 'necessity_statement', 'summary']
+    file_field = ['necessity_statement', 'summary']
     read_field = ['head']
 
     template_start_row = 3
