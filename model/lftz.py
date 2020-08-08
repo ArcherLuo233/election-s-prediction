@@ -14,7 +14,7 @@ class LFTZ(Base):
 
     field = [
         'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'remark', 'head',
-        'type', 'area'
+        'type', 'area', 'content'
     ]
 
     template_start_row = 3
@@ -28,6 +28,7 @@ class LFTZ(Base):
     remark = Column(Text, comment='备注')
     type = Column(String(100), comment='类型')
     area = Column(String(100), comment='地区')
+    content = Column(Text, comment='考察内容')
 
     @property
     def head(self):

@@ -159,6 +159,7 @@ class Pagelftz(SearchPage):
         '人数',
         '天数',
         '团长',
+        '考察内容',
         '备注'
     ]
 
@@ -173,6 +174,7 @@ class Pagelftz_jc(SearchPage):
         '人数',
         '天数',
         '团长',
+        '考察内容',
         '备注'
     ]
     default_conditions = {'type': '基层'}
@@ -188,6 +190,7 @@ class Pagelftz_qn(SearchPage):
         '人数',
         '天数',
         '团长',
+        '考察内容',
         '备注'
     ]
     default_conditions = {'type': '青年'}
@@ -203,6 +206,7 @@ class Pagelftz_sw(SearchPage):
         '人数',
         '天数',
         '团长',
+        '考察内容',
         '备注'
     ]
     default_conditions = {'type': '商务'}
