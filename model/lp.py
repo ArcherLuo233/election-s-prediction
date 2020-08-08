@@ -22,7 +22,8 @@ class LP(Base):
         'child_join_date', 'child_type_of_certificate', 'child_number_of_certificate', 'child_domicile', 'child_phone',
         'child_company_name', 'child_company_major', 'child_company_address', 'child_company_phone', 'child_specialty',
         'join_party',
-        'tendency'
+        'father_name', 'father_birth', 'father_job', 'father_political_status',
+        'mother_name', 'mother_birth', 'mother_job', 'mother_political_status', 'mainland_contact', 'tendency'
     ]
 
     template_start_row = 5
@@ -87,4 +88,15 @@ class LP(Base):
     child_specialty = Column(String(100), comment='子女特长')
     remark = Column(Text, comment='备注')
     join_party = Column(String(100), comment='参加社团')
+
     tendency = Column(String(100), comment='倾向')
+
+    father_name = Column(String(100), comment='父亲姓名')
+    mother_name = Column(String(100), comment='母亲姓名')
+    father_birth = Column(String(100), comment='父亲生日')
+    mother_birth = Column(String(100), comment='母亲生日')
+    father_job = Column(String(100), comment='父亲工作单位职务')
+    mother_job = Column(String(100), comment='母亲工作单位职务')
+    father_political_status = Column(String(100), comment='父亲政治倾向')
+    mother_political_status = Column(String(100), comment='母亲政治倾向')
+    mainland_contact = Column(String(100), comment='大陆联系人')
