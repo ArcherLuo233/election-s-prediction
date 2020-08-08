@@ -44,9 +44,9 @@ def return_area_data(areaname):
     data_TSTG = TSTG.search(resident_address=areaname)['data']
     data_ZYRS = ZYRS.search(schedule=areaname)['data']
     data_all.update({"公务团组": data_GWTZ})
-    data_all.update({"上午团组": data_SWTZ})
+    data_all.update({"商务团组": data_SWTZ})
     data_all.update({"来访团组": data_LFTZ})
     data_all.update({"来绍交流": data_LSJL})
-    data_all.updata({"台商台干": data_TSTG})
-    data_all.updata({"重要人士": data_ZYRS})
+    data_all.update({"台商台干": data_TSTG})
+    data_all.update({"重要人士": data_ZYRS})
     return data_all
