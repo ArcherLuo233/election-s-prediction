@@ -11,7 +11,7 @@ class LFTZ_TY(Base):
     export_docx = False
 
     field = [
-        'id', 'nickname', 'job', 'type', 'remark'
+        'id', 'nickname', 'job', 'type', 'remark', 'identity'
     ]
 
     template_start_row = 3
@@ -21,3 +21,4 @@ class LFTZ_TY(Base):
     job = Column(String(100), comment='单位职务')
     type = Column(String(100), comment='人物类型')
     remark = Column(Text, comment='备注')
+    identity = Column(String(100), comment='身份')

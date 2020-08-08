@@ -11,7 +11,7 @@ class SWTZ_TY(Base):
     export_docx = False
 
     field = [
-        'id', 'nickname', 'job', 'id_card', 'phone', 'remark'
+        'id', 'nickname', 'job', 'id_card', 'phone', 'remark', 'identity'
     ]
 
     template_start_row = 3
@@ -22,3 +22,4 @@ class SWTZ_TY(Base):
     id_card = Column(String(100), comment='身份证号')
     phone = Column(String(100), comment='联系电话')
     remark = Column(Text, comment='备注')
+    identity = Column(String(100), comment='身份')

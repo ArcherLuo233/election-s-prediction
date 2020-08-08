@@ -14,7 +14,7 @@ class TSTG(Base):
         'domicile', 'nation', 'marital_status', 'partisan', 'religious_belief', 'community_identity',
         'resident_address', 'taiwan_phone', 'mainland_phone', 'company', 'job', 'rank_title', 'main_experience',
         'political_views', 'participate_in_social_activities', 'representative_work', 'receive_honor', 'media_reports',
-        'reporting_company', 'reporting_date', 'remark'
+        'reporting_company', 'reporting_date', 'tendency', 'remark'
     ]
 
     template_start_row = 4
@@ -47,4 +47,5 @@ class TSTG(Base):
     media_reports = Column(String(100), comment='媒体报道')
     reporting_company = Column(String(100), comment='填报单位')
     reporting_date = Column(String(100), comment='填报日期')
+    tendency = Column(String(100), comment='倾向')
     remark = Column(Text, comment='其他需要说明事项')

@@ -81,7 +81,7 @@ class LoginPage(QWidget):
             ("台属", "ts", {}),
             ("居住证人员", "jzz", {}),
             (
-                "来访团组", "lftz", {
+                "来访台胞", "lftz", {
                     "基层": "lftz_jc",
                     "青年": "lftz_qn",
                     "商务": "lftz_sw"

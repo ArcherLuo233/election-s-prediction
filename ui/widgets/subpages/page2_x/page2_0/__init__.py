@@ -10,7 +10,7 @@ from libs.service import upload_file
 from model.area import Area
 from ui.page_elements.election_detail_page_all import DetailPage as edpa
 from ui.page_elements.zone_detail_page import DetailPage
-
+import model.search_all as  findall
 from .pageUI import Ui_Form
 
 

@@ -12,7 +12,7 @@ class GWTZ_TY(Base):
 
     field = [
         'id', 'nickname', 'sex', 'job', 'type', 'nature', 'taiwan_position', 'entry_number', 'pass_number',
-        'filing_form'
+        'filing_form', 'identity'
     ]
     file_field = ['filing_form']
 
@@ -28,3 +28,4 @@ class GWTZ_TY(Base):
     entry_number = Column(String(100), comment='入台证号')
     pass_number = Column(String(100), comment='通行证号')
     filing_form = Column(String(100), comment='备案表')
+    identity = Column(String(100), comment='身份')

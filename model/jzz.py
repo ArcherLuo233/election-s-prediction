@@ -9,7 +9,7 @@ class JZZ(Base):
     class_name = '居住证'
 
     field = [
-        'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date'
+        'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date', 'tendency'
     ]
 
     template_start_row = 3
@@ -21,3 +21,4 @@ class JZZ(Base):
     address = Column(String(100), comment='地址')
     phone = Column(String(100), comment='联系电话')
     process_date = Column(String(100), comment='处理日期')
+    tendency = Column(String(100), comment='倾向')

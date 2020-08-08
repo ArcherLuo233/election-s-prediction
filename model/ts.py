@@ -12,7 +12,7 @@ class TS(Base):
         'id', 'area', 'nickname', 'sex', 'birth', 'hometown', 'mailing_address', 'job', 'social_identity', 'phone',
         'family_member_nickname', 'family_member_birth', 'family_member_job', 'relatives_relation',
         'relatives_nickname', 'relatives_sex', 'relatives_birth', 'relatives_address', 'relatives_job',
-        'relatives_degree_of_contact', 'remark'
+        'relatives_degree_of_contact', 'remark', 'tendency'
     ]
 
     template_start_row = 4
@@ -36,4 +36,5 @@ class TS(Base):
     relatives_address = Column(String(100), comment='在台亲属地址')
     relatives_job = Column(String(100), comment='在台亲属单位职位')
     relatives_degree_of_contact = Column(String(100), comment='在台亲属联系程度')
+    tendency = Column(String(100), comment='倾向')
     remark = Column(Text, comment='备注')

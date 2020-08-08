@@ -14,7 +14,7 @@ from model.tstg import TSTG
 from model.zyrs import ZYRS
 
 
-def return_name_data(name):
+def return_name_data_mh(name):
     data_all = {}
     data_LSJL = LSJL.search(nickname=name)['data']
     data_TSTG = TSTG.search(nickname=name)['data']
@@ -35,18 +35,37 @@ def return_name_data(name):
     return data_all
 
 
-def return_area_data(areaname):
+def return_area_data_mh(areaname):
     data_all = {}
-    data_GWTZ = GWTZ.search(stroke=areaname)['data']
-    data_SWTZ = SWTZ.search(reason=areaname)['data']
-    data_LFTZ = LFTZ.search(stroke=areaname)['data']
-    data_LSJL = LSJL.search(address=areaname)['data']
-    data_TSTG = TSTG.search(resident_address=areaname)['data']
-    data_ZYRS = ZYRS.search(schedule=areaname)['data']
+    data_GWTZ = GWTZ.search(area=areaname)['data']
+    data_SWTZ = SWTZ.search(area=areaname)['data']
+    data_LFTZ = LFTZ.search(area=areaname)['data']
+
     data_all.update({"公务团组": data_GWTZ})
     data_all.update({"商务团组": data_SWTZ})
     data_all.update({"来访团组": data_LFTZ})
-    data_all.update({"来绍交流": data_LSJL})
-    data_all.update({"台商台干": data_TSTG})
-    data_all.update({"重要人士": data_ZYRS})
+    return data_all
+
+
+def return_detail_people(time, area, identify):
+    data_all = []
+    data_GWTZ = GWTZ.search(area=area)['data']
+    data_SWTZ = SWTZ.search(area=area)['data']
+    data_LFTZ = LFTZ.search(area=area)['data']
+    for i in data_GWTZ:
+        id = i['id']
+        tmp = GWTZ_TY.search(gwtz_id=id, identity=identify)['data']
+        for j in tmp:
+            data_all.append(j)
+    for i in data_SWTZ:
+        id = i['id']
+        tmp = SWTZ_TY.search(gwtz_id=id, identity=identify)['data']
+        for j in tmp:
+            data_all.append(j)
+
+    for i in data_LFTZ:
+        id = i['id']
+        tmp = LFTZ_TY.search(gwtz_id=id, identity=identify)['data']
+        for j in tmp:
+            data_all.append(j)
     return data_all

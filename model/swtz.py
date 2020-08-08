@@ -12,7 +12,7 @@ class SWTZ(Base):
 
     field = [
         'id', 'company_name', 'main_business', 'datetime', 'reason', 'taiwan_company_name', 'taiwan_main_business',
-        'taiwan_company_address', 'taiwan_company_legal_people'
+        'taiwan_company_address', 'taiwan_company_legal_people', 'topic', 'summary', 'area'
     ]
 
     file_field = ['reason']
@@ -27,3 +27,6 @@ class SWTZ(Base):
     taiwan_main_business = Column(String(100), comment='台方主营业务')
     taiwan_company_address = Column(String(100), comment='台方企业地址')
     taiwan_company_legal_people = Column(String(100), comment='台方企业法人代表')
+    topic = Column(String(100), comment='主题词')
+    summary = Column(String(100), comment='总结')
+    area = Column(String(100), comment='地区')

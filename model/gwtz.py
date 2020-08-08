@@ -11,8 +11,9 @@ class GWTZ(Base):
     ty = GWTZ_TY
 
     field = [
-        'id', 'year', 'name', 'company', 'head', 'taiwan_invite_company', 'number_of_people', 'number_of_day',
-        'approval_time', 'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone'
+        'id', 'year', 'name', 'company', 'head', 'taiwan_invite_company', 'number_of_people', 'number_of_day', 'area',
+        'approval_time', 'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone',
+        'topic', 'approval_form'
     ]
     file_field = ['necessity_statement', 'summary']
     read_field = ['head']
@@ -32,6 +33,9 @@ class GWTZ(Base):
     summary = Column(String(100), comment='总结')
     contact_person = Column(String(100), comment='联系人')
     contact_phone = Column(String(100), comment='联系电话')
+    topic = Column(String(100), comment='主题词')
+    approval_form = Column(String(100), comment='审批表')
+    area = Column(String(100), comment='地区')
 
     @property
     def head(self):
