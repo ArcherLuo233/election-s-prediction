@@ -11,7 +11,8 @@ class TSTG(Base):
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'id_card', 'taiwanese_id', 'residence_id', 'in_taiwan_area',
-        'domicile', 'nation', 'marital_status', 'partisan', 'religious_belief', 'community_identity',
+        'domicile', 'nation', 'resume', 'industry', 'times', 'concept', 'people_network', 'marital_status', 'partisan',
+        'religious_belief', 'community_identity',
         'resident_address', 'taiwan_phone', 'mainland_phone', 'company', 'job', 'rank_title', 'main_experience',
         'political_views', 'participate_in_social_activities', 'representative_work', 'receive_honor', 'media_reports',
         'reporting_company', 'reporting_date', 'tendency', 'remark'
@@ -49,3 +50,8 @@ class TSTG(Base):
     reporting_date = Column(String(100), comment='填报日期')
     tendency = Column(String(100), comment='倾向')
     remark = Column(Text, comment='其他需要说明事项')
+    resume = Column(String(100), comment='简历')
+    industry = Column(String(100), comment='所属行业')
+    times = Column(String(100), comment='来绍时间')
+    concept = Column(String(100), comment='两岸观')
+    people_network = Column(Text, comment='行业资源人脉')

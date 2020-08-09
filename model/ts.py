@@ -23,7 +23,7 @@ class TS(Base):
     birth = Column(String(100), comment='出生年月')
     hometown = Column(String(100), comment='籍贯')
     mailing_address = Column(String(100), comment='通讯地址')
-    job = Column(String(100), comment='单位职位')
+    job = Column(String(100), comment='单位职务')
     social_identity = Column(String(100), comment='社会身份')
     phone = Column(String(100), comment='联系电话')
     family_member_nickname = Column(String(100), comment='家庭重要成员姓名')
