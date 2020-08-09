@@ -386,7 +386,7 @@ class SearchPage(QWidget):
                 raise AppException("Undefined Export: %s" % self.title)
             conditions = self.get_conditions()
             self.model.export(filename, **conditions)
-        except AppException as e:
-            QMessageBox.warning(None, "导入数据", e.msg)
+        except Exception as e:
+            QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
             return
         QMessageBox.information(None, "导出数据", "导出完毕")

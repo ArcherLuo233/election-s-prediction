@@ -13,8 +13,8 @@ class LFTZ(Base):
     read_field = ['head']
 
     field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'remark', 'head',
-        'type', 'area', 'content'
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'head',
+        'type', 'area', 'content', 'remark'
     ]
 
     template_start_row = 3

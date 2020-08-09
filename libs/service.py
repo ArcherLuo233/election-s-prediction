@@ -96,12 +96,12 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
     if ty_data is None:
         ty_data = []
     document = Document()
-    document.styles['Normal'].font.name = u'宋体'
-    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'宋体')
+    document.styles['Normal'].font.name = u'楷体'
+    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'楷体')
 
     title_paragraph = document.add_paragraph()
     title_run = title_paragraph.add_run(title)
-    title_run.font.size = Pt(20)
+    title_run.font.size = Pt(25)
     title_paragraph.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
     pic_row = 5
@@ -110,6 +110,7 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
     else:
         row = (len(data) + 1) // 2
     table = document.add_table(rows=row, cols=4, style='Table Grid')
+    table.style.font.size = Pt(16)
     if pic:
         table.cell(0, 2).merge(table.cell(pic_row - 1, 2))
         table.cell(0, 3).merge(table.cell(pic_row - 1, 3))
@@ -148,7 +149,7 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
         document.add_paragraph()
         title_paragraph = document.add_paragraph()
         title_run = title_paragraph.add_run('团员')
-        title_run.font.size = Pt(16)
+        title_run.font.size = Pt(20)
         title_paragraph.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
         row = len(ty_data) + 1

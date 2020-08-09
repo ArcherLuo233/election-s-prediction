@@ -9,7 +9,7 @@ class JZZ(Base):
     class_name = '居住证'
 
     field = [
-        'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'phone', 'process_date', 'tendency'
+        'id', 'nickname', 'sex', 'id_card', 'pass_card', 'address', 'tendency', 'phone', 'process_date'
     ]
 
     template_start_row = 3

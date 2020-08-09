@@ -150,7 +150,7 @@ class Pageswtz_ty(SearchPage):
 
 
 class Pagelftz(SearchPage):
-    title = "来访团组"
+    title = "来访台胞"
     model = LFTZ
     members_model = LFTZ_TY
     summary = [
@@ -165,7 +165,7 @@ class Pagelftz(SearchPage):
 
 
 class Pagelftz_jc(SearchPage):
-    title = "来访团组-基层"
+    title = "来访台胞-基层"
     model = LFTZ
     members_model = LFTZ_TY
     summary = [
@@ -181,7 +181,7 @@ class Pagelftz_jc(SearchPage):
 
 
 class Pagelftz_qn(SearchPage):
-    title = "来访团组-青年"
+    title = "来访台胞-青年"
     model = LFTZ
     members_model = LFTZ_TY
     summary = [
@@ -197,7 +197,7 @@ class Pagelftz_qn(SearchPage):
 
 
 class Pagelftz_sw(SearchPage):
-    title = "来访团组-商务"
+    title = "来访台胞-商务"
     model = LFTZ
     members_model = LFTZ_TY
     summary = [
@@ -213,7 +213,7 @@ class Pagelftz_sw(SearchPage):
 
 
 class Pagelftz_ty(SearchPage):
-    title = "来访团组团员"
+    title = "来访台胞团员"
     model = LFTZ_TY
     summary = [
         '姓名',

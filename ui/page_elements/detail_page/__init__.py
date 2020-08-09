@@ -88,7 +88,10 @@ class DetailPage(QDialog):
 
     def modify(self):
         data = self.get_data_from_table()
+
         item = self.model.get_by_id(self.data_id)
+        for file in item.read_field:
+            data.pop(file)
         item.modify(**data)
         self.close()
 
@@ -105,7 +108,12 @@ class DetailPage(QDialog):
         filename = QFileDialog.getSaveFileName(None, "导出文档", default_name, "word文档(*.docx)")[0]
         if filename == "":
             return
-        self.model.export_document(self.data_id, filename)
+        try:
+            self.model.export_document(self.data_id, filename)
+        except Exception as e:
+            QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
+            return
+
         QMessageBox.information(None, "导出文档", "导出完成")
 
     def refresh_data(self, id_: int):

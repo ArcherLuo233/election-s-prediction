@@ -12,7 +12,8 @@ class LP(Base):
         'id', 'nickname', 'sex', 'birth', 'area', 'education', 'job', 'marriage_status', 'marriage_registration_date',
         'type_of_certificate', 'number_of_certificate', 'social_identity', 'activity', 'domicile', 'community',
         'mainland_company', 'mainland_company_address', 'mainland_residential_address', 'mainland_phone',
-        'taiwan_company', 'taiwan_company_address', 'taiwan_residential_address', 'taiwan_phone', 'remark',
+        'taiwan_company', 'taiwan_company_address', 'taiwan_residential_address', 'taiwan_phone', 'tendency',
+        'join_party', 'remark',
         'spouse_nickname', 'spouse_sex', 'spouse_hometown', 'spouse_birth', 'spouse_nation', 'spouse_education',
         'spouse_partisan', 'spouse_type_of_certificate', 'spouse_number_of_certificate', 'spouse_graduated_school',
         'spouse_mainland_company', 'spouse_mainland_company_address', 'spouse_mainland_residential_address',
@@ -21,9 +22,9 @@ class LP(Base):
         'child_nation', 'child_place_of_birth', 'child_birth', 'child_education', 'child_political_status',
         'child_join_date', 'child_type_of_certificate', 'child_number_of_certificate', 'child_domicile', 'child_phone',
         'child_company_name', 'child_company_major', 'child_company_address', 'child_company_phone', 'child_specialty',
-        'join_party',
+
         'father_name', 'father_birth', 'father_job', 'father_political_status',
-        'mother_name', 'mother_birth', 'mother_job', 'mother_political_status', 'mainland_contact', 'tendency'
+        'mother_name', 'mother_birth', 'mother_job', 'mother_political_status', 'mainland_contact'
     ]
 
     template_start_row = 5
@@ -87,6 +88,7 @@ class LP(Base):
     child_company_phone = Column(String(100), comment='子女工作单位/就读学校联系电话')
     child_specialty = Column(String(100), comment='子女特长')
     remark = Column(Text, comment='备注')
+
     join_party = Column(String(100), comment='参加社团')
 
     tendency = Column(String(100), comment='倾向')
