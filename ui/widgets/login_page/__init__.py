@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QBrush, QPalette, QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
+from PyQt5.QtCore import Qt
 
 from libs.exception import AppException
 from libs.g import g
@@ -28,6 +29,11 @@ class LoginPage(QWidget):
         self.setFixedWidth(1100)
         self.ui.cb_target.currentTextChanged.connect(self.search_method_changed)
         self.search_method_changed(self.ui.cb_target.currentText())
+        self.ui.xiangxi_sf.set_items([
+            '基层', '青年', '商界', '学界', '政界'
+        ])
+        self.ui.xiangxi_sf.ui.pushButton.setCursor(Qt.PointingHandCursor)
+        self.ui.xiangxi_sf.setFont(self.font())
         with open("./static/qss/login.qss") as f:
             s = f.read()
             self.setStyleSheet(s)
