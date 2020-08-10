@@ -164,52 +164,29 @@ class Pagelftz(SearchPage):
     ]
 
 
-class Pagelftz_jc(SearchPage):
+class Pagelftz_jc(Pagelftz):
     title = "来访台胞-基层"
-    model = LFTZ
-    members_model = LFTZ_TY
-    summary = [
-        '时间',
-        '团组名称',
-        '人数',
-        '天数',
-        '团长',
-        '考察内容',
-        '备注'
-    ]
     default_conditions = {'type': '基层'}
 
 
-class Pagelftz_qn(SearchPage):
+class Pagelftz_qn(Pagelftz):
     title = "来访台胞-青年"
-    model = LFTZ
-    members_model = LFTZ_TY
-    summary = [
-        '时间',
-        '团组名称',
-        '人数',
-        '天数',
-        '团长',
-        '考察内容',
-        '备注'
-    ]
     default_conditions = {'type': '青年'}
 
 
-class Pagelftz_sw(SearchPage):
-    title = "来访台胞-商务"
-    model = LFTZ
-    members_model = LFTZ_TY
-    summary = [
-        '时间',
-        '团组名称',
-        '人数',
-        '天数',
-        '团长',
-        '考察内容',
-        '备注'
-    ]
-    default_conditions = {'type': '商务'}
+class Pagelftz_sj(Pagelftz):
+    title = "来访台胞-商界"
+    default_conditions = {'type': '商界'}
+
+
+class Pagelftz_xj(Pagelftz):
+    title = "来访台胞-学界"
+    default_conditions = {'type': '学界'}
+
+
+class Pagelftz_zj(Pagelftz):
+    title = "来访台胞-政界"
+    default_conditions = {'type': '政界'}
 
 
 class Pagelftz_ty(SearchPage):

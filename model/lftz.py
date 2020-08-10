@@ -26,7 +26,7 @@ class LFTZ(Base):
     stroke = Column(String(100), comment='行程')
     group_organization = Column(String(100), comment='组团单位')
     remark = Column(Text, comment='备注')
-    type = Column(String(100), comment='类型')
+    type = Column(String(100), comment='身份')
     area = Column(String(100), comment='地区')
     content = Column(Text, comment='考察内容')
 

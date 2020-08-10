@@ -84,7 +84,9 @@ class LoginPage(QWidget):
                 "来访台胞", "lftz", {
                     "基层": "lftz_jc",
                     "青年": "lftz_qn",
-                    "商务": "lftz_sw"
+                    "商界": "lftz_sj",
+                    "学界": "lftz_xj",
+                    "政界": "lftz_zj"
                 }
             ),
             ("公务团组", "gwtz", {}),
