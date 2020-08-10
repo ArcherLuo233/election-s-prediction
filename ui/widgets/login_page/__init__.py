@@ -1,12 +1,12 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QPalette, QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
-from PyQt5.QtCore import Qt
 
+from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.g import g
 from libs.page_magager import PageManager
 from model.user import User
-from libs.enumrations import UserPermission
 
 from .pageUI import Ui_Form
 

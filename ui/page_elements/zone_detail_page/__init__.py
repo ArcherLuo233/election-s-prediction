@@ -1,14 +1,12 @@
+from openpyxl import Workbook, load_workbook
+from openpyxl.styles import Border, Font, Side
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
-                             QTableWidgetItem, QFileDialog)
+from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
+                             QTableWidget, QTableWidgetItem)
 
 from libs.g import g
 from model.area import Area
 from ui.page_elements.modal_dialog import ModalDialog
-from openpyxl import Workbook
-from openpyxl import load_workbook
-from openpyxl.styles import Font
-from openpyxl.styles import Border, Side
 
 from .DetailpageUI import Ui_Dialog
 
