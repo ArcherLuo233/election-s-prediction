@@ -16,7 +16,6 @@ class ZYRS(Base):
         'social_relationship', 'job', 'education', 'main_remarks', 'main_experience', 'number_of_visits', 'schedule',
         'contact_person', 'contact_person_phone', 'remark',
     ]
-    file_field = ['schedule']
 
     template_start_row = 3
 

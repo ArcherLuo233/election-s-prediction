@@ -15,7 +15,7 @@ class GWTZ(Base):
         'approval_time', 'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone',
         'topic', 'approval_form'
     ]
-    file_field = ['necessity_statement', 'summary']
+    file_field = ['necessity_statement', 'summary', 'approval_form']
     read_field = ['head']
 
     template_start_row = 3
