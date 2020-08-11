@@ -12,6 +12,7 @@ from model.swtz_ty import SWTZ_TY
 from model.ts import TS
 from model.tstg import TSTG
 from model.zyrs import ZYRS
+import datetime
 
 
 def return_name_data_mh(name):
@@ -47,25 +48,58 @@ def return_area_data_mh(areaname):
     return data_all
 
 
-def return_detail_people(time, area, identify):
+def date_range(start_date, end_date):
+    for n in range(int((end_date - start_date).days)):
+        yield start_date + datetime.timedelta(n)
+
+
+def return_detail_people(tb_year, tb_mouth, tb_day, te_year, te_mouth, te_day, area, identify):
+    idlist = identify.split()
+    sy = int(tb_year)
+    sm = int(tb_mouth)
+    sd = int(tb_day)
+    ey = int(te_year)
+    em = int(te_mouth)
+    ed = int(te_day)
+
     data_all = []
-    data_GWTZ = GWTZ.search(area=area)['data']
-    data_SWTZ = SWTZ.search(area=area)['data']
-    data_LFTZ = LFTZ.search(area=area)['data']
+    data_GWTZ = []
+    for i in range(sy, ey + 1):
+        tmp = GWTZ.search(area=area, year=str(i))['data']
+        for j in tmp:
+            data_GWTZ.append(j)
+
+    start = datetime.datetime(sy, sm, sd, 0, 0, 0)
+    end = datetime.datetime(ey, em, ed, 0, 0, 0)
+
+    data_SWTZ = []
+    data_LFTZ = []
+    for i in date_range(start, end):
+        timee = i.strftime('%Y/%m/%d')
+        tmp1 = SWTZ.search(area=area, datetime=timee)['data']
+        tmp2 = LFTZ.search(area=area, datetime=timee)['data']
+        for j in tmp1:
+            data_SWTZ.append(j)
+        for j in tmp2:
+            data_LFTZ.append(j)
+
     for i in data_GWTZ:
         id = i['id']
-        tmp = GWTZ_TY.search(gwtz_id=id, identity=identify)['data']
-        for j in tmp:
-            data_all.append(j)
+        for j in idlist:
+            tmp = GWTZ_TY.search(gwtz_id=id, identity=j)['data']
+            for j in tmp:
+                data_all.append(j)
     for i in data_SWTZ:
         id = i['id']
-        tmp = SWTZ_TY.search(gwtz_id=id, identity=identify)['data']
-        for j in tmp:
-            data_all.append(j)
+        for j in idlist:
+            tmp = SWTZ_TY.search(gwtz_id=id, identity=j)['data']
+            for j in tmp:
+                data_all.append(j)
 
     for i in data_LFTZ:
         id = i['id']
-        tmp = LFTZ_TY.search(gwtz_id=id, identity=identify)['data']
-        for j in tmp:
-            data_all.append(j)
+        for j in idlist:
+            tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
+            for j in tmp:
+                data_all.append(j)
     return data_all

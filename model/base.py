@@ -72,7 +72,7 @@ class Base(base_class):
             if value is not None:
                 if hasattr(cls, key):
                     if isinstance(value, str):
-                        res = res.filter(getattr(cls, key).like(value))
+                        res = res.filter(getattr(cls, key).like("%" + value + "%"))
                     else:
                         res = res.filter(getattr(cls, key) == value)
 
