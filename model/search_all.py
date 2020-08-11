@@ -53,14 +53,14 @@ def date_range(start_date, end_date):
         yield start_date + datetime.timedelta(n)
 
 
-def return_detail_people(tb_year, tb_mouth, tb_day, te_year, te_mouth, te_day, area, identify):
+def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify.split()
-    sy = int(tb_year)
-    sm = int(tb_mouth)
-    sd = int(tb_day)
-    ey = int(te_year)
-    em = int(te_mouth)
-    ed = int(te_day)
+    sy = int(begin_time[0:4])
+    sm = int(begin_time[5:7])
+    sd = int(begin_time[8:10])
+    ey = int(end_time[0:4])
+    em = int(end_time[5:7])
+    ed = int(end_time[8:10])
 
     data_all = []
     data_GWTZ = []

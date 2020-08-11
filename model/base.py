@@ -104,7 +104,9 @@ class Base(base_class):
     @classmethod
     def import_(cls, filename, **kwargs):
         res = read_excel(filename, cls.template_start_row, cls.class_name)
-        for i in res:
+        for kk, i in enumerate(res):
+            if kk > 55:
+                ppp = 1
             field = cls.field.copy()
             field.remove('id')
             for file in cls.file_field:
@@ -112,7 +114,49 @@ class Base(base_class):
             for file in cls.read_field:
                 field.remove(file)
             data = {field[idx]: i[idx] for idx in range(len(field))}
-            data.update(kwargs)
+            if cls.__tablename__ == 'swtz' or cls.__tablename__ == 'lftz':
+                time = data['datetime']
+                flag = 1
+                answer = ""
+                1  # 全数字 8位
+                2  # 有符号 无0
+                3  # 有符号 有0
+                4  # 无法判断
+                fh = []
+                for j in time:
+                    if j > '9' or j < '0':
+                        flag = 2
+                        fh.append(j)
+                if flag == 1:
+                    if len(time) < 8:
+                        flag = 4
+                    else:
+                        answer = time[0:4] + "/" + time[4:6] + "/" + time[6:8]
+                else:
+                    if len(fh) < 2:
+                        flag = 4
+                    else:
+                        ele = []
+                        ind = 1
+                        for indx, j in enumerate(time):
+                            if j <= '9' and j >= '0':
+                                if len(ele) < ind:
+                                    ele.append(j)
+                                else:
+                                    ele[ind - 1] += j
+                            else:
+                                if indx == 0: continue
+                                if time[indx - 1] <= '9' and time[indx - 1] >= '0':
+                                    ind += 1
+                        if len(ele) < 3:
+                            flag = 4
+                        else:
+                            answer = ele[0].rjust(4, '0') + "/" + ele[1].rjust(2, '0') + '/' + ele[2].rjust(2, '0')
+                if flag == 4:
+                    answer = time
+                data['datetime'] = answer
+                data.update(kwargs)
+
             if cls.search(**data)['meta']['count'] == 0:
                 cls.create(**data)
 
