@@ -35,7 +35,7 @@ class GWTZ_TY(Base):
     entry_number = Column(String(100), comment='入台证号')
     pass_number = Column(String(100), comment='通行证号')
     filing_form = Column(String(100), comment='备案表')
-    identity_ = Column(String(100), comment='身份')
+    identity_ = Column('identity', String(100), comment='身份')
 
     @property
     def identity(self):
