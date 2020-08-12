@@ -18,14 +18,14 @@ from model.zyrs import ZYRS
 
 def return_name_data_mh(name):
     data_all = {}
-    data_LSJL = LSJL.search(nickname=name)['data']
-    data_TSTG = TSTG.search(nickname=name)['data']
-    data_ZYRS = ZYRS.search(nickname=name)['data']
-    data_LP = LP.search(nickname=name)['data']
-    data_LS = LS.search(nickname=name)['data']
-    data_TS = TS.search(nickname=name)['data']
-    data_JZZ = JZZ.search(nickname=name)['data']
-    data_RS = RS.search(nickname=name)['data']
+    data_LSJL = LSJL.search_mh(nickname=name)['data']
+    data_TSTG = TSTG.search_mh(nickname=name)['data']
+    data_ZYRS = ZYRS.search_mh(nickname=name)['data']
+    data_LP = LP.search_mh(nickname=name)['data']
+    data_LS = LS.search_mh(nickname=name)['data']
+    data_TS = TS.search_mh(nickname=name)['data']
+    data_JZZ = JZZ.search_mh(nickname=name)['data']
+    data_RS = RS.search_mh(nickname=name)['data']
     data_all.update({"来绍交流": data_LSJL})
     data_all.update({"台商台干": data_TSTG})
     data_all.update({"重要人士": data_ZYRS})
@@ -39,9 +39,9 @@ def return_name_data_mh(name):
 
 def return_area_data_mh(areaname):
     data_all = {}
-    data_GWTZ = GWTZ.search(area=areaname)['data']
-    data_SWTZ = SWTZ.search(area=areaname)['data']
-    data_LFTZ = LFTZ.search(area=areaname)['data']
+    data_GWTZ = GWTZ.search_mh(area=areaname)['data']
+    data_SWTZ = SWTZ.search_mh(area=areaname)['data']
+    data_LFTZ = LFTZ.search_mh(area=areaname)['data']
 
     data_all.update({"公务团组": data_GWTZ})
     data_all.update({"商务团组": data_SWTZ})
@@ -66,7 +66,7 @@ def return_detail_people(begin_time, end_time, area, identify):
     data_all = []
     data_GWTZ = []
     for i in range(sy, ey + 1):
-        tmp = GWTZ.search(area=area, year=str(i))['data']
+        tmp = GWTZ.search_mh(area=area, year=str(i))['data']
         for j in tmp:
             data_GWTZ.append(j)
 
@@ -77,8 +77,8 @@ def return_detail_people(begin_time, end_time, area, identify):
     data_LFTZ = []
     for i in date_range(start, end):
         timee = i.strftime('%Y/%m/%d')
-        tmp1 = SWTZ.search(area=area, datetime=timee)['data']
-        tmp2 = LFTZ.search(area=area, datetime=timee)['data']
+        tmp1 = SWTZ.search_mh(area=area, datetime=timee)['data']
+        tmp2 = LFTZ.search_mh(area=area, datetime=timee)['data']
         for j in tmp1:
             data_SWTZ.append(j)
         for j in tmp2:
@@ -87,20 +87,20 @@ def return_detail_people(begin_time, end_time, area, identify):
     for i in data_GWTZ:
         id = i['id']
         for j in idlist:
-            tmp = GWTZ_TY.search(gwtz_id=id, identity=j)['data']
+            tmp = GWTZ_TY.search_mh(gwtz_id=id, identity=j)['data']
             for j in tmp:
                 data_all.append(j)
     for i in data_SWTZ:
         id = i['id']
         for j in idlist:
-            tmp = SWTZ_TY.search(gwtz_id=id, identity=j)['data']
+            tmp = SWTZ_TY.search_mh(gwtz_id=id, identity=j)['data']
             for j in tmp:
                 data_all.append(j)
 
     for i in data_LFTZ:
         id = i['id']
         for j in idlist:
-            tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
+            tmp = LFTZ_TY.search_mh(gwtz_id=id, identity=j)['data']
             for j in tmp:
                 data_all.append(j)
     return data_all
