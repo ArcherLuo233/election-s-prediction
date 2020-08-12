@@ -8,6 +8,7 @@ from libs.g import g
 from model.base import Base
 from model.zyrs import ZYRS
 from ui.page_elements.table_cells.check_combo_widget import CheckComboWidget
+from ui.page_elements.table_cells.date_widget import DateWidget
 from ui.page_elements.table_cells.file_widget import FileWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
@@ -122,11 +123,13 @@ class DetailPage(QDialog):
                 continue
             comment = self.translator.to_text(idx)
             value = getattr(meta, idx)
-            type_ = "normal"
+            type_ = 'normal'
             if idx in self.model.file_field:
-                type_ = "file"
+                type_ = 'file'
             if idx in self.model.combo_field:
-                type_ = "combo"
+                type_ = 'combo'
+            if idx in self.model.date_field:
+                type_ = 'date'
             if idx == 'sex':
                 type_ = "sex"
             read_only = True if idx in self.model.read_field else False
@@ -206,6 +209,9 @@ class DetailPage(QDialog):
             widget.set_items(self.model.combo_field[item['idx']]['items'])
             widget.selected_items = item['value']
             widget.setFont(self.font())
+        elif item['type'] == 'date':
+            widget = DateWidget()
+            widget.set_date(item['value'])
         if widget:
             if item['readonly']:
                 widget.setEnabled(False)
