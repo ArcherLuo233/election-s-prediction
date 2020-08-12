@@ -55,7 +55,7 @@ def date_range(start_date, end_date):
 
 
 def return_detail_people(begin_time, end_time, area, identify):
-    idlist = identify.split()
+    idlist = identify
     sy = int(begin_time[0:4])
     sm = int(begin_time[5:7])
     sd = int(begin_time[8:10])
@@ -75,6 +75,7 @@ def return_detail_people(begin_time, end_time, area, identify):
 
     data_SWTZ = []
     data_LFTZ = []
+
     for i in date_range(start, end):
         timee = i.strftime('%Y/%m/%d')
         tmp1 = SWTZ.search(area=area, datetime=timee)['data']
@@ -83,24 +84,32 @@ def return_detail_people(begin_time, end_time, area, identify):
             data_SWTZ.append(j)
         for j in tmp2:
             data_LFTZ.append(j)
-
+    inq1 = []
+    inq2 = []
+    inq3 = []
     for i in data_GWTZ:
         id = i['id']
         for j in idlist:
             tmp = GWTZ_TY.search(gwtz_id=id, identity=j)['data']
             for j in tmp:
-                data_all.append(j)
+                if j['id'] not in inq1:
+                    data_all.append(j)
+                    inq1.append(j['id'])
     for i in data_SWTZ:
         id = i['id']
         for j in idlist:
             tmp = SWTZ_TY.search(gwtz_id=id, identity=j)['data']
             for j in tmp:
-                data_all.append(j)
+                if j['id'] not in inq2:
+                    data_all.append(j)
+                    inq2.append(j['id'])
 
     for i in data_LFTZ:
         id = i['id']
         for j in idlist:
             tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
             for j in tmp:
-                data_all.append(j)
+                if j['id'] not in inq3:
+                    data_all.append(j)
+                    inq3.append(j['id'])
     return data_all
