@@ -10,6 +10,10 @@ class LFTZ(Base):
     class_name = '来访团组'
     ty = LFTZ_TY
 
+    field = [
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'head',
+        'type', 'area', 'content', 'remark'
+    ]
     read_field = ['head']
     combo_field = {
         'identity': {
@@ -17,10 +21,6 @@ class LFTZ(Base):
             'items': ['基层', '青年', '商界', '学界', '政界']
         }
     }
-    field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'head',
-        'type', 'area', 'content', 'remark'
-    ]
 
     template_start_row = 3
 

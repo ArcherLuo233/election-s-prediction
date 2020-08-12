@@ -9,12 +9,7 @@ class GWTZ_TY(Base):
     class_name = '公务团组-团员'
     foreign_key = 'gwtz_id'
     export_docx = False
-    combo_field = {
-        'identity': {
-            'exculde': False,
-            'items': ['基层', '青年', '商界', '学界', '政界']
-        }
-    }
+
     field = [
         'id', 'nickname', 'sex', 'job', 'type', 'nature', 'taiwan_position', 'entry_number', 'pass_number',
         'filing_form', 'identity'

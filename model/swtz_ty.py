@@ -9,16 +9,10 @@ class SWTZ_TY(Base):
     class_name = '商务团组-团员'
     foreign_key = 'swtz_id'
     export_docx = False
-    combo_field = {
-        'identity': {
-            'exculde': False,
-            'items': ['基层', '青年', '商界', '学界', '政界']
-        }
-    }
+
     field = [
         'id', 'nickname', 'job', 'id_card', 'phone', 'remark', 'identity'
     ]
-
     combo_field = {
         'identity': {
             'exclude': False,

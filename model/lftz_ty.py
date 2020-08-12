@@ -9,16 +9,10 @@ class LFTZ_TY(Base):
     class_name = '来访团组-团员'
     foreign_key = 'lftz_id'
     export_docx = False
-    combo_field = {
-        'identity': {
-            'exculde': False,
-            'items': ['基层', '青年', '商界', '学界', '政界']
-        }
-    }
+
     field = [
         'id', 'nickname', 'job', 'type', 'remark', 'identity'
     ]
-
     combo_field = {
         'identity': {
             'exclude': False,
