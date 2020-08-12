@@ -84,15 +84,25 @@ def return_detail_people(begin_time, end_time, area, identify):
 
     data_SWTZ = []
     data_LFTZ = []
-
-    for i in date_range(start, end):
-        timee = i.strftime('%Y/%m/%d')
-        tmp1 = SWTZ.search(area=area, datetime=timee)['data']
-        tmp2 = LFTZ.search(area=area, datetime=timee)['data']
-        for j in tmp1:
+    tmp1 = SWTZ.search(area=area)['data']
+    tmp2 = LFTZ.search(area=area)['data']
+    for i in tmp1:
+        if i['datetime'] >= begin_time and i['datetime'] <= end_time:
             data_SWTZ.append(j)
-        for j in tmp2:
+
+    for i in tmp2:
+        if i['datetime'] >= begin_time and i['datetime'] <= end_time:
             data_LFTZ.append(j)
+
+    # for i in date_range(start, end):
+    #     timee = i.strftime('%Y/%m/%d')
+    #     tmp1 = SWTZ.search(area=area, datetime=timee)['data']
+    #     tmp2 = LFTZ.search(area=area, datetime=timee)['data']
+    #
+    #     for j in tmp1:
+    #         data_SWTZ.append(j)
+    #     for j in tmp2:
+    #         data_LFTZ.append(j)
     inq1 = []
     inq2 = []
     inq3 = []
