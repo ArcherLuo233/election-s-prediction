@@ -48,7 +48,7 @@ class Base(base_class):
     def create(cls, **kwargs):
         base = cls()
         for key, value in kwargs.items():
-            if hasattr(cls, key):
+            if hasattr(cls, key) and key not in cls.read_field:
                 setattr(base, key, value)
         session.add(base)
         session.commit()

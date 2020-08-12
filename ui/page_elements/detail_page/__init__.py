@@ -52,37 +52,38 @@ class DetailPage(QDialog):
 
     def append(self):
         data = self.get_data_from_table()
-        zyrs = ZYRS.search(nickname=data['nickname'])['data']
-        rs = RS.search(nickname=data['nickname'])['data']
-        if zyrs or rs:
-            box = QMessageBox(QMessageBox.Question, "添加人物信息", "已存在该人")
-            box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            box.setDefaultButton(QMessageBox.Yes)
-            box.button(QMessageBox.Yes).setText("显示详情")
-            box.button(QMessageBox.No).setText("直接添加")
-            res = box.exec_()
-            if res == QMessageBox.Yes:
-                if zyrs:
-                    if len(zyrs) == 1:
-                        dialog = DetailPage(self.parent(), ZYRS)
-                        dialog.show_(True, {'id': zyrs[0].id})
+        if 'nickname' in data:
+            zyrs = ZYRS.search(nickname=data['nickname'])['data']
+            rs = RS.search(nickname=data['nickname'])['data']
+            if zyrs or rs:
+                box = QMessageBox(QMessageBox.Question, "添加人物信息", "已存在该人")
+                box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                box.setDefaultButton(QMessageBox.Yes)
+                box.button(QMessageBox.Yes).setText("显示详情")
+                box.button(QMessageBox.No).setText("直接添加")
+                res = box.exec_()
+                if res == QMessageBox.Yes:
+                    if zyrs:
+                        if len(zyrs) == 1:
+                            dialog = DetailPage(self.parent(), ZYRS)
+                            dialog.show_(True, {'id': zyrs[0].id})
+                        else:
+                            from .pages import ZYRSChoicePage
+                            dialog = create_dialog_like_widget(self.parent(), ZYRSChoicePage())
+                            dialog.setFixedSize(1500, 800)
+                            dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
+                            dialog.exec_()
                     else:
-                        from .pages import ZYRSChoicePage
-                        dialog = create_dialog_like_widget(self.parent(), ZYRSChoicePage())
-                        dialog.setFixedSize(1500, 800)
-                        dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
-                        dialog.exec_()
-                else:
-                    if len(rs) == 1:
-                        dialog = DetailPage(self.parent(), RS)
-                        dialog.show_(True, {'id': rs[0].id})
-                    else:
-                        from .pages import RSChoicePage
-                        dialog = create_dialog_like_widget(self.parent(), RSChoicePage())
-                        dialog.setFixedSize(1500, 800)
-                        dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
-                        dialog.exec_()
-                return
+                        if len(rs) == 1:
+                            dialog = DetailPage(self.parent(), RS)
+                            dialog.show_(True, {'id': rs[0].id})
+                        else:
+                            from .pages import RSChoicePage
+                            dialog = create_dialog_like_widget(self.parent(), RSChoicePage())
+                            dialog.setFixedSize(1500, 800)
+                            dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
+                            dialog.exec_()
+                    return
         self.model.create(**data)
         self.close()
 
