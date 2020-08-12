@@ -62,6 +62,7 @@ def date_range(start_date, end_date):
 
 def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify
+    if len(idlist) == 0: idlist = ['']
     sy = int(begin_time[0:4])
     sm = int(begin_time[5:7])
     sd = int(begin_time[8:10])
@@ -79,9 +80,6 @@ def return_detail_people(begin_time, end_time, area, identify):
         for j in tmp:
             data_GWTZ.append(j)
 
-    start = datetime.datetime(sy, sm, sd, 0, 0, 0)
-    end = datetime.datetime(ey, em, ed, 0, 0, 0)
-
     data_SWTZ = []
     data_LFTZ = []
     tmp1 = SWTZ.search(area=area)['data']
@@ -94,15 +92,6 @@ def return_detail_people(begin_time, end_time, area, identify):
         if i['datetime'] >= begin_time and i['datetime'] <= end_time:
             data_LFTZ.append(j)
 
-    # for i in date_range(start, end):
-    #     timee = i.strftime('%Y/%m/%d')
-    #     tmp1 = SWTZ.search(area=area, datetime=timee)['data']
-    #     tmp2 = LFTZ.search(area=area, datetime=timee)['data']
-    #
-    #     for j in tmp1:
-    #         data_SWTZ.append(j)
-    #     for j in tmp2:
-    #         data_LFTZ.append(j)
     inq1 = []
     inq2 = []
     inq3 = []
