@@ -107,7 +107,6 @@ class Pagets(SearchPage):
 class Pagegwtz(SearchPage):
     title = "公务团组"
     model = GWTZ
-    members_model = GWTZ_TY
     summary = [
         '年度',
         '团长',
@@ -130,7 +129,6 @@ class Pagegwtz_ty(SearchPage):
 class Pageswtz(SearchPage):
     title = "商务团组"
     model = SWTZ
-    members_model = SWTZ_TY
     summary = [
         '企业名称',
         '台方企业名称',
@@ -152,7 +150,6 @@ class Pageswtz_ty(SearchPage):
 class Pagelftz(SearchPage):
     title = "来访台胞"
     model = LFTZ
-    members_model = LFTZ_TY
     summary = [
         '时间',
         '团组名称',

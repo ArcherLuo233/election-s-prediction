@@ -20,7 +20,6 @@ from .pageUI import Ui_Form
 
 class SearchPage(QWidget):
     model = None
-    members_model = None
     summary = {}
     title: str = None
     default_conditions = {}
@@ -35,6 +34,7 @@ class SearchPage(QWidget):
         self.dialog_parent = self
         self.show_close_btn = False
         if self.model:
+            self.members_model = self.model.ty
             self.translator = FieldsTranslater(self.model)
             dic = dict()
             if isinstance(self.summary, dict):
@@ -230,7 +230,7 @@ class SearchPage(QWidget):
             # detail_label
             detail_label = QLabel(self)
             detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
-            if self.members_model:
+            if self.model and self.members_model:
                 detail_text += '   <a href="#members:{}">团员信息</a>'.format(info.id)
             detail_label.setText(detail_text)
             detail_label.setFont(self.font())
