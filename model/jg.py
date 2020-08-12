@@ -20,15 +20,15 @@ class JG(Base):
 
     name = Column(String(100), comment='名称')
     introduction = Column(String(1000), comment='简介')
-    director_ = Column(Text, comment='理事')
-    supervisor_ = Column(Text, comment='监事')
-    representative_ = Column(Text, comment='成员')
+    director_ = Column('director', Text, comment='理事')
+    supervisor_ = Column('supervisor', Text, comment='监事')
+    representative_ = Column('representative', Text, comment='成员')
 
-    president_ = Column(Text, comment='会长')
-    vice_president_ = Column(Text, comment='副会长')
-    chairman_ = Column(Text, comment='理事长')
-    secretary_general_ = Column(Text, comment='总干事(秘书长)')
-    historical_staff_ = Column(Text, comment='历史人员')
+    president_ = Column('president', Text, comment='会长')
+    vice_president_ = Column('vice_president', Text, comment='副会长')
+    chairman_ = Column('chairman', Text, comment='理事长')
+    secretary_general_ = Column('secretary_general', Text, comment='总干事(秘书长)')
+    historical_staff_ = Column('historical_staff', Text, comment='历史人员')
     remark = Column(Text, comment='备注')
 
     @property
