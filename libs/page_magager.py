@@ -1,9 +1,9 @@
 # subpage import
 from ui.widgets.subpages.page1_x.pages import *  # noqa: F403
 from ui.widgets.subpages.page2_x.pages import *  # noqa: F403
+from ui.widgets.subpages.page4 import Page4
 from ui.widgets.subpages.pagejg import *  # noqa: F403
 from ui.widgets.subpages.pagejgxq import Pagejgxq
-from ui.widgets.subpages.page4 import Page4
 
 
 class PageManager:
