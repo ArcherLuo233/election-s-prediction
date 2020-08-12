@@ -11,7 +11,12 @@ class LFTZ(Base):
     ty = LFTZ_TY
 
     read_field = ['head']
-
+    combo_field = {
+        'identity': {
+            'exculde': False,
+            'items': ['基层', '青年', '商界', '学界', '政界']
+        }
+    }
     field = [
         'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'head',
         'type', 'area', 'content', 'remark'

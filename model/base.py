@@ -106,8 +106,6 @@ class Base(base_class):
     def import_(cls, filename, **kwargs):
         res = read_excel(filename, cls.template_start_row, cls.class_name)
         for kk, i in enumerate(res):
-            if kk > 55:
-                ppp = 1
             field = cls.field.copy()
             field.remove('id')
             for file in cls.file_field:
@@ -157,8 +155,16 @@ class Base(base_class):
                     answer = time
                 data['datetime'] = answer
                 data.update(kwargs)
-
-            if cls.search(**data)['meta']['count'] == 0:
+            if cls.__tablename__ != 'jg':
+                if cls.search(**data)['meta']['count'] == 0:
+                    cls.create(**data)
+            else:
+                for k in cls.import_handle_file:
+                    if not data[k]:
+                        peo = []
+                    else:
+                        peo = data[k].split(',')
+                    data[k] = peo
                 cls.create(**data)
 
     @classmethod
