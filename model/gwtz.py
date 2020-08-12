@@ -17,6 +17,7 @@ class GWTZ(Base):
     ]
     file_field = ['necessity_statement', 'summary', 'approval_form']
     read_field = ['head']
+
     combo_field = {
         'identity': {
             'exculde': False,

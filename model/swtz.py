@@ -16,7 +16,7 @@ class SWTZ(Base):
     ]
 
     file_field = ['reason', 'summary']
-
+    time_field = ['datetime']
     template_start_row = 3
 
     company_name = Column(String(100), comment='企业名称')

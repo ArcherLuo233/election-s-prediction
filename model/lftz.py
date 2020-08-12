@@ -15,6 +15,8 @@ class LFTZ(Base):
         'type', 'area', 'content', 'remark'
     ]
     read_field = ['head']
+    time_field = ['datetime']
+
     combo_field = {
         'type': {
             'exclude': False,

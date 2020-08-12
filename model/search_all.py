@@ -108,7 +108,7 @@ def return_detail_people(begin_time, end_time, area, identify):
 
     for i in data_LFTZ:
         id = i['id']
-        tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
+        tmp = LFTZ_TY.search(gwtz_id=id)['data']
         for j in idlist:
             for k in tmp:
                 if j in k['identity'] and k['id'] not in inq3:
