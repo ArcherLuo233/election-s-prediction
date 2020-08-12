@@ -90,7 +90,8 @@ class Page2_0(QWidget):
     def save_mayor(self):
         mayorname = self.ui.mayor_name.text()
 
-        ddd = findall.return_detail_people("2018/02/10", "2018/08/26", '南投', ['青年'])
+        ddd = findall.return_detail_people("1800/02/10", "2018/08/26", '南投', ['商界'])
+        dddd = findall.return_name_data_mh("张三")
 
         if mayorname == "":
             QMessageBox.warning(None, "修改镇长", "请输入镇长名!")
