@@ -15,8 +15,15 @@ class TSTG(Base):
         'religious_belief', 'community_identity',
         'resident_address', 'taiwan_phone', 'mainland_phone', 'company', 'job', 'rank_title', 'main_experience',
         'political_views', 'participate_in_social_activities', 'representative_work', 'receive_honor', 'media_reports',
-        'reporting_company', 'reporting_date', 'tendency', 'remark'
+        'reporting_company', 'reporting_date', 'tendency', 'remark', 'type'
     ]
+
+    combo_field = {
+        'type': {
+            'exclude': True,
+            'items': ['台商台干', '就业创业', '其他']
+        }
+    }
 
     template_start_row = 4
 
@@ -55,3 +62,12 @@ class TSTG(Base):
     times = Column(String(100), comment='来绍时间')
     concept = Column(String(100), comment='两岸观')
     people_network = Column(Text, comment='行业资源人脉')
+    type_ = Column('type', Text, comment='类型')
+
+    @property
+    def type(self):
+        return self.type_
+
+    @type.setter
+    def type(self, val):
+        self.type_ = val

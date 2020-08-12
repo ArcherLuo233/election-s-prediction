@@ -8,7 +8,6 @@ from model.lftz_ty import LFTZ_TY
 from model.lp import LP
 from model.ls import LS
 from model.lsjl import LSJL
-from model.rs import RS
 from model.swtz import SWTZ
 from model.swtz_ty import SWTZ_TY
 from model.ts import TS
@@ -25,7 +24,6 @@ def return_name_data_mh(name):
     data_LS = LS.search(nickname=name)['data']
     data_TS = TS.search(nickname=name)['data']
     data_JZZ = JZZ.search(nickname=name)['data']
-    data_RS = RS.search(nickname=name)['data']
     data_gwtz_ty = GWTZ_TY.search(nickname=name)['data']
     data_lftz_ty = LFTZ_TY.search(nickname=name)['data']
     data_swtz_ty = SWTZ_TY.search(nickname=name)['data']
@@ -36,7 +34,6 @@ def return_name_data_mh(name):
     data_all.update({"陆生": data_LS})
     data_all.update({"台属": data_TS})
     data_all.update({"居住证人员": data_JZZ})
-    data_all.update({"人士": data_RS})
     data_all.update({"公务团组": data_gwtz_ty})
     data_all.update({"商务团组": data_swtz_ty})
     data_all.update({"来访台胞": data_lftz_ty})

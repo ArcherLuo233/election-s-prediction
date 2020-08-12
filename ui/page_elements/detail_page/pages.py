@@ -1,4 +1,3 @@
-from model.rs import RS
 from model.zyrs import ZYRS
 from ui.page_elements.search_page import SearchPage
 
@@ -15,13 +14,4 @@ class ZYRSChoicePage(SearchPage):
         '手机号',
         '单位职务',
         '来访时间'
-    ]
-
-
-class RSChoicePage(SearchPage):
-    model = RS
-    title = "人士"
-    summary = [
-        '姓名',
-        '性别',
     ]

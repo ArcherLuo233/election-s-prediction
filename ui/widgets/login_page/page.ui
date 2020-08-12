@@ -376,22 +376,22 @@
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>30</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
+                      <property name="maximumSize">
+                          <size>
+                              <width>30</width>
+                              <height>30</height>
+                          </size>
+                      </property>
+                      <property name="text">
+                          <string/>
+                      </property>
                       <property name="pixmap">
                           <pixmap>../../../../../../../static/svg/un.svg
                           </pixmap>
                       </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
+                      <property name="scaledContents">
+                          <bool>true</bool>
+                      </property>
                   </widget>
                  </item>
                  <item>
@@ -431,23 +431,23 @@
                   <widget class="QLabel" name="icon_psd">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>30</width>
-                     <height>30</height>
-                    </size>
-                   </property>
+                      <property name="maximumSize">
+                          <size>
+                              <width>30</width>
+                              <height>30</height>
+                          </size>
+                      </property>
                       <property name="pixmap">
                           <pixmap>../../../../../../../static/svg/psd.svg
                           </pixmap>
                       </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
+                      <property name="scaledContents">
+                          <bool>true</bool>
+                      </property>
                   </widget>
                  </item>
                  <item>
@@ -517,17 +517,17 @@
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-             <property name="sizeHint" stdset="0">
-                 <size>
-                     <width>20</width>
-                     <height>40</height>
-                 </size>
-             </property>
-         </spacer>
+            <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                    <size>
+                        <width>20</width>
+                        <height>40</height>
+                    </size>
+                </property>
+            </spacer>
         </item>
        </layout>
       </widget>
@@ -554,16 +554,16 @@
                     </sizepolicy>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <property name="leftMargin">
-         <number>50</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
+                    <property name="spacing">
+                        <number>10</number>
+                    </property>
+                    <property name="leftMargin">
+                        <number>50</number>
+                    </property>
+                    <property name="topMargin">
+                        <number>0</number>
+                    </property>
+                    <property name="rightMargin">
          <number>50</number>
         </property>
         <property name="bottomMargin">
@@ -647,40 +647,40 @@
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="widget" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-                 <property name="spacing">
-                     <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                     <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                     <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                     <number>0</number>
-                 </property>
-                 <item>
-                     <widget class="QFrame" name="frame_3">
-                         <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_7">
-                             <property name="topMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_5">
-                <property name="font">
-                 <font>
-                  <family>Microsoft YaHei</family>
-                  <pointsize>20</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+            <widget class="QWidget" name="widget" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                    <property name="spacing">
+                        <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                        <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                        <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                        <number>0</number>
+                    </property>
+                    <item>
+                        <widget class="QFrame" name="frame_3">
+                            <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_7">
+                                <property name="topMargin">
+                                    <number>0</number>
+                                </property>
+                                <item>
+                                    <widget class="QLabel" name="label_5">
+                                        <property name="font">
+                                            <font>
+                                                <family>Microsoft YaHei</family>
+                                                <pointsize>20</pointsize>
+                                                <weight>75</weight>
+                                                <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
@@ -752,137 +752,137 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QComboBox" name="comboBox">
-                       <item>
-                        <property name="text">
-                         <string>按人名搜索</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>按地名搜索</string>
-                        </property>
-                       </item>
+                         <widget class="QComboBox" name="mh_method">
+                             <item>
+                                 <property name="text">
+                                     <string>按人名搜索</string>
+                                 </property>
+                             </item>
+                             <item>
+                                 <property name="text">
+                                     <string>按地名搜索</string>
+                                 </property>
+                             </item>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="lineEdit">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="placeholderText">
-                        <string>请输入条件</string>
-                       </property>
-                      </widget>
+                         <widget class="QLineEdit" name="mh_kw">
+                             <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                 </sizepolicy>
+                             </property>
+                             <property name="placeholderText">
+                                 <string>请输入条件</string>
+                             </property>
+                         </widget>
                      </item>
                     </layout>
                    </widget>
                   </item>
-                  <item>
-                      <widget class="QFrame" name="frame_xiangxi">
-                          <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_10">
-                              <property name="topMargin">
-                                  <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
-                                  <number>0</number>
-                              </property>
-                              <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_12">
-                                      <item>
-                                          <widget class="QLabel" name="label_6">
-                                              <property name="text">
-                                                  <string>时间</string>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                      <item>
-                                          <widget class="QDateEdit" name="xiangxi_sj1">
-                                              <property name="displayFormat">
-                                                  <string>yyyy/MM/dd</string>
-                                              </property>
-                                              <property name="calendarPopup">
-                                                  <bool>true</bool>
-                                              </property>
-                                              <property name="date">
-                                                  <date>
-                                                      <year>2020</year>
-                                                      <month>1</month>
-                                                      <day>1</day>
-                                                  </date>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                      <item>
-                                          <widget class="QLabel" name="label_3">
-                                              <property name="text">
-                                                  <string>至</string>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                      <item>
-                                          <widget class="QDateEdit" name="xiangxi_sj2">
-                                              <property name="displayFormat">
-                                                  <string>yyyy/MM/dd</string>
-                                              </property>
-                                              <property name="calendarPopup">
-                                                  <bool>true</bool>
-                                              </property>
-                                              <property name="date">
-                                                  <date>
-                                                      <year>2020</year>
-                                                      <month>1</month>
-                                                      <day>1</day>
-                                                  </date>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                  </layout>
-                              </item>
-                              <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_13">
-                                      <item>
-                                          <widget class="QLabel" name="label_7">
-                                              <property name="text">
-                                                  <string>地区</string>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                      <item>
-                                          <widget class="QLineEdit" name="xiangxi_dq">
-                                              <property name="placeholderText">
-                                                  <string>请输入</string>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                  </layout>
-                              </item>
-                              <item>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_14">
-                                      <item>
-                                          <widget class="QLabel" name="label_8">
-                                              <property name="text">
-                                                  <string>身份</string>
-                                              </property>
-                                          </widget>
-                                      </item>
-                                      <item>
-                                          <widget class="CheckComboBox" name="xiangxi_sf" native="true"/>
-                                      </item>
-                                  </layout>
-                              </item>
-                          </layout>
-                      </widget>
-                  </item>
+                     <item>
+                         <widget class="QFrame" name="frame_xiangxi">
+                             <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_10">
+                                 <property name="topMargin">
+                                     <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                     <number>0</number>
+                                 </property>
+                                 <item>
+                                     <layout class="QHBoxLayout" name="horizontalLayout_12">
+                                         <item>
+                                             <widget class="QLabel" name="label_6">
+                                                 <property name="text">
+                                                     <string>时间</string>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                         <item>
+                                             <widget class="QDateEdit" name="xx_sj1">
+                                                 <property name="displayFormat">
+                                                     <string>yyyy/MM/dd</string>
+                                                 </property>
+                                                 <property name="calendarPopup">
+                                                     <bool>true</bool>
+                                                 </property>
+                                                 <property name="date">
+                                                     <date>
+                                                         <year>2020</year>
+                                                         <month>1</month>
+                                                         <day>1</day>
+                                                     </date>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                         <item>
+                                             <widget class="QLabel" name="label_3">
+                                                 <property name="text">
+                                                     <string>至</string>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                         <item>
+                                             <widget class="QDateEdit" name="xx_sj2">
+                                                 <property name="displayFormat">
+                                                     <string>yyyy/MM/dd</string>
+                                                 </property>
+                                                 <property name="calendarPopup">
+                                                     <bool>true</bool>
+                                                 </property>
+                                                 <property name="date">
+                                                     <date>
+                                                         <year>2020</year>
+                                                         <month>1</month>
+                                                         <day>1</day>
+                                                     </date>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                     </layout>
+                                 </item>
+                                 <item>
+                                     <layout class="QHBoxLayout" name="horizontalLayout_13">
+                                         <item>
+                                             <widget class="QLabel" name="label_7">
+                                                 <property name="text">
+                                                     <string>地区</string>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                         <item>
+                                             <widget class="QLineEdit" name="xx_dq">
+                                                 <property name="placeholderText">
+                                                     <string>请输入</string>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                     </layout>
+                                 </item>
+                                 <item>
+                                     <layout class="QHBoxLayout" name="horizontalLayout_14">
+                                         <item>
+                                             <widget class="QLabel" name="label_8">
+                                                 <property name="text">
+                                                     <string>身份</string>
+                                                 </property>
+                                             </widget>
+                                         </item>
+                                         <item>
+                                             <widget class="CheckComboBox" name="xx_sf" native="true"/>
+                                         </item>
+                                     </layout>
+                                 </item>
+                             </layout>
+                         </widget>
+                     </item>
                      <item>
                          <layout class="QHBoxLayout" name="horizontalLayout_8">
                              <property name="leftMargin">
@@ -915,14 +915,14 @@
                 </item>
                </layout>
               </item>
-              <item>
-               <layout class="QGridLayout" name="gridLayout"/>
-              </item>
-             </layout>
+                                <item>
+                                    <layout class="QGridLayout" name="gridLayout"/>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+                </layout>
             </widget>
-           </item>
-          </layout>
-         </widget>
         </item>
                     <item>
                         <widget class="QPushButton" name="btn_logout">
@@ -948,16 +948,16 @@
                             </property>
                         </widget>
                     </item>
-        <item>
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
+                    <item>
+                        <spacer name="verticalSpacer_4">
+                            <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                                <size>
+                                    <width>20</width>
+                                    <height>40</height>
+                                </size>
           </property>
          </spacer>
         </item>
@@ -977,28 +977,28 @@
        </property>
       </spacer>
      </item>
-     <item>
-         <widget class="QLabel" name="label_title">
-             <property name="palette">
-                 <palette>
-                     <active>
-                         <colorrole role="WindowText">
-                             <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                     <red>255</red>
-                                     <green>255</green>
-                                     <blue>255</blue>
-                                 </color>
-           </brush>
-          </colorrole>
-         </active>
-         <inactive>
-          <colorrole role="WindowText">
-           <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>255</red>
-             <green>255</green>
-             <blue>255</blue>
+        <item>
+            <widget class="QLabel" name="label_title">
+                <property name="palette">
+                    <palette>
+                        <active>
+                            <colorrole role="WindowText">
+                                <brush brushstyle="SolidPattern">
+                                    <color alpha="255">
+                                        <red>255</red>
+                                        <green>255</green>
+                                        <blue>255</blue>
+                                    </color>
+                                </brush>
+                            </colorrole>
+                        </active>
+                        <inactive>
+                            <colorrole role="WindowText">
+                                <brush brushstyle="SolidPattern">
+                                    <color alpha="255">
+                                        <red>255</red>
+                                        <green>255</green>
+                                        <blue>255</blue>
             </color>
            </brush>
           </colorrole>
@@ -1040,12 +1040,12 @@
        <property name="sizeType">
         <enum>QSizePolicy::Fixed</enum>
        </property>
-       <property name="sizeHint" stdset="0">
-           <size>
-               <width>100</width>
-               <height>20</height>
-           </size>
-       </property>
+          <property name="sizeHint" stdset="0">
+              <size>
+                  <width>100</width>
+                  <height>20</height>
+              </size>
+          </property>
       </spacer>
      </item>
     </layout>

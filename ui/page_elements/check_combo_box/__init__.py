@@ -50,11 +50,19 @@ class CheckComboBox(QWidget):
         self.dialog.button_group.setExclusive(self.exclude)
         self.dialog.setFont(self.font())
         self._selected = self.dialog.get_choices(self._items, self._selected)
-        self.ui.lineEdit.setText('|'.join(self._selected))
+        if self.exclude:
+            if self._selected:
+                self._selected = self._selected[0]
+            self.ui.lineEdit.setText(self._selected)
+        else:
+            self.ui.lineEdit.setText('|'.join(self._selected))
 
     def set_items(self, items):
         self._items = items
-        self._selected = []
+        if self.exclude:
+            self._selected = ''
+        else:
+            self._selected = []
 
     @property
     def selected_items(self):
@@ -63,6 +71,12 @@ class CheckComboBox(QWidget):
     @selected_items.setter
     def selected_items(self, val):
         if val is None:
-            val = []
+            if self.exclude:
+                val = ''
+            else:
+                val = []
         self._selected = val
-        self.ui.lineEdit.setText('|'.join(val))
+        if self.exclude:
+            self.ui.lineEdit.setText(val)
+        else:
+            self.ui.lineEdit.setText('|'.join(val))

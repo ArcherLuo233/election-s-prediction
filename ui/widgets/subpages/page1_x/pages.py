@@ -29,8 +29,8 @@ class Pagelsjl(SearchPage):
     ]
 
 
-class Pagetstg(SearchPage):
-    title = "台商台干"
+class Pagezstb(SearchPage):
+    title = "在绍台胞"
     model = TSTG
     summary = [
         '姓名',
@@ -39,6 +39,21 @@ class Pagetstg(SearchPage):
         '所在单位',
         '大陆手机号'
     ]
+
+
+class Pagezstb_tstg(Pagezstb):
+    title = "在绍台胞-台商台干"
+    default_conditions = {'type': '台商台干'}
+
+
+class Pagezstb_jycy(Pagezstb):
+    title = "在绍台胞-就业创业"
+    default_conditions = {'type': '就业创业'}
+
+
+class Pagezstb_qt(Pagezstb):
+    title = "在绍台胞-其他"
+    default_conditions = {'type': '其他'}
 
 
 class Pagezyrs(SearchPage):

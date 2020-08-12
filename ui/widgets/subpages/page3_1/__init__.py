@@ -4,7 +4,7 @@ from libs.enumrations import UserPermission
 from libs.g import g
 from libs.link_manager import link_manager
 from model.jg import JG
-from model.rs import RS
+from model.zyrs import ZYRS
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
@@ -169,12 +169,12 @@ class Page3_1(QWidget):
             self.delete(type_, name)
 
     def detail(self, name):
-        data = RS.search(nickname=name)
+        data = ZYRS.search(nickname=name)
         cnt = data['meta']['count']
         if cnt == 0:
             QMessageBox.critical(None, "查看详情", "查无此人")
         elif cnt == 1:
-            dialog = DetailPage(self, RS)
+            dialog = DetailPage(self, ZYRS)
             dialog.show_(True, {'id': data['data'][0].id})
         else:
             widget = ChoicePage()

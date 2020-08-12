@@ -2,11 +2,12 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QPalette, QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
-from libs.enumrations import UserPermission
+from ui.page_elements.search_all_page import SearchAllPage
 from libs.exception import AppException
 from libs.g import g
 from libs.page_magager import PageManager
 from model.user import User
+from model.search_all import return_name_data_mh, return_area_data_mh, return_detail_people
 
 from .pageUI import Ui_Form
 
@@ -25,15 +26,16 @@ class LoginPage(QWidget):
         self.ui.btn_ry.clicked.connect(self.open_ry)
         self.ui.btn_dq.clicked.connect(self.open_dq)
         self.ui.btn_logout.clicked.connect(self.logout)
+        self.ui.btn_search.clicked.connect(self.search)
         self.ui.widget_main.hide()
         self.setFixedWidth(1100)
         self.ui.cb_target.currentTextChanged.connect(self.search_method_changed)
         self.search_method_changed(self.ui.cb_target.currentText())
-        self.ui.xiangxi_sf.set_items([
+        self.ui.xx_sf.set_items([
             '基层', '青年', '商界', '学界', '政界'
         ])
-        self.ui.xiangxi_sf.ui.pushButton.setCursor(Qt.PointingHandCursor)
-        self.ui.xiangxi_sf.setFont(self.font())
+        self.ui.xx_sf.ui.pushButton.setCursor(Qt.PointingHandCursor)
+        self.ui.xx_sf.setFont(self.font())
         with open("./static/qss/login.qss") as f:
             s = f.read()
             self.setStyleSheet(s)
@@ -77,10 +79,10 @@ class LoginPage(QWidget):
     def open_ry(self):
         menu = [
             (
-                "在绍台胞", "tstg", {
-                    "台商台干": "tstg",
-                    "就业创业": "jycy",
-                    "其他": "qt"
+                "在绍台胞", "zstb", {
+                    "台商台干": "zstb_tstg",
+                    "就业创业": "zstb_jycy",
+                    "其他": "zstb_qt"
                 }
             ),
             ("重要人士", "zyrs", {}),
@@ -154,3 +156,23 @@ class LoginPage(QWidget):
         else:
             self.ui.frame_mohu.hide()
             self.ui.frame_xiangxi.show()
+
+    def search(self):
+        s = self.ui.cb_target.currentText()
+        if s == '模糊搜索':
+            method = self.ui.mh_method.currentText()
+            name = self.ui.mh_kw.text()
+            if method == '按人名搜索':
+                data = return_name_data_mh(name)
+            else:
+                data = return_area_data_mh(name)
+        else:
+            bt = self.ui.xx_sj1.text()
+            et = self.ui.xx_sj2.text()
+            dq = self.ui.xx_dq.text()
+            sf = self.ui.xx_sf.selected_items
+            data = return_detail_people(bt, et, dq, ' '.join(sf))
+        print(data)
+        dialog = SearchAllPage()
+        dialog.refresh_data(data)
+        dialog.exec()
