@@ -51,7 +51,14 @@ def save_excel(template_filename, start_row, data, filename):
     for row_idx in range(start_row, len(data) + start_row):
         for col_idx in range(1, len(data[0]) + 1):
             cell = ws.cell(row_idx, col_idx)
-            cell.value = data[row_idx - start_row][col_idx - 1]
+            if isinstance(data[row_idx - start_row][col_idx - 1], list):
+                s = ""
+                for i in data[row_idx - start_row][col_idx - 1]:
+                    s = s + i + ","
+                s = s[:-1]
+                cell.value = s
+            else:
+                cell.value = data[row_idx - start_row][col_idx - 1]
             cell.border = thin_border
 
     wb.save(filename)

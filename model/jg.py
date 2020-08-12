@@ -9,9 +9,11 @@ class JG(Base):
     class_name = '机构'
 
     field = [
-        'id', 'name', 'introduction', 'president', 'vice_president', 'chairman', 'secretary_general', 'historical_staff'
-        , 'director', 'supervisor', 'representative', 'remark'
+        'id', 'name', 'introduction', 'president', 'vice_president', 'chairman', 'secretary_general',
+        'director', 'supervisor', 'representative', 'historical_staff', 'remark'
     ]
+
+    template_start_row = 3
 
     name = Column(String(100), comment='名称')
     introduction = Column(String(1000), comment='简介')
