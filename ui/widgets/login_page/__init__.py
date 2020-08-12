@@ -2,12 +2,13 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QPalette, QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
-from ui.page_elements.search_all_page import SearchAllPage
 from libs.exception import AppException
 from libs.g import g
 from libs.page_magager import PageManager
+from model.search_all import (return_area_data_mh, return_detail_people,
+                              return_name_data_mh)
 from model.user import User
-from model.search_all import return_name_data_mh, return_area_data_mh, return_detail_people
+from ui.page_elements.search_all_page import SearchAllPage
 
 from .pageUI import Ui_Form
 

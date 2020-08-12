@@ -39,6 +39,7 @@ def return_name_data_mh(name):
     data_all.update({"来访台胞": data_lftz_ty})
     return data_all
 
+
 def return_area_data_mh(areaname):
     data_all = {}
 
@@ -59,7 +60,8 @@ def date_range(start_date, end_date):
 
 def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify
-    if len(idlist) == 0: idlist = ['基层', '青年', '商界', '学界', '政界']
+    if len(idlist) == 0:
+        idlist = ['基层', '青年', '商界', '学界', '政界']
     sy = int(begin_time[0:4])
     ey = int(end_time[0:4])
 

@@ -1,6 +1,8 @@
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QLabel
-from .pageUI import Ui_Dialog
+from PyQt5.QtWidgets import QDialog, QLabel, QTableWidgetItem
+
 from ui.page_elements.detail_page import DetailPage
+
+from .pageUI import Ui_Dialog
 
 
 class SearchAllPage(QDialog):
