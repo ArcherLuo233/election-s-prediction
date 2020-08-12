@@ -26,6 +26,9 @@ def return_name_data_mh(name):
     data_TS = TS.search(nickname=name)['data']
     data_JZZ = JZZ.search(nickname=name)['data']
     data_RS = RS.search(nickname=name)['data']
+    data_gwtz_ty = GWTZ_TY.search(nickname=name)['data']
+    data_lftz_ty = LFTZ_TY.search(nickname=name)['data']
+    data_swtz_ty = SWTZ_TY.search(nickname=name)['data']
     data_all.update({"来绍交流": data_LSJL})
     data_all.update({"台商台干": data_TSTG})
     data_all.update({"重要人士": data_ZYRS})
@@ -34,6 +37,9 @@ def return_name_data_mh(name):
     data_all.update({"台属": data_TS})
     data_all.update({"居住证人员": data_JZZ})
     data_all.update({"人士": data_RS})
+    data_all.update({"公务团组": data_gwtz_ty})
+    data_all.update({"商务团组": data_swtz_ty})
+    data_all.update({"来访台胞": data_lftz_ty})
     return data_all
 
 
@@ -45,7 +51,7 @@ def return_area_data_mh(areaname):
 
     data_all.update({"公务团组": data_GWTZ})
     data_all.update({"商务团组": data_SWTZ})
-    data_all.update({"来访团组": data_LFTZ})
+    data_all.update({"来访台胞": data_LFTZ})
     return data_all
 
 
@@ -63,7 +69,10 @@ def return_detail_people(begin_time, end_time, area, identify):
     em = int(end_time[5:7])
     ed = int(end_time[8:10])
 
-    data_all = []
+    data_all = {}
+    data_all.update({'公务团组': []})
+    data_all.update({'商务团组': []})
+    data_all.update({'来访台胞': []})
     data_GWTZ = []
     for i in range(sy, ey + 1):
         tmp = GWTZ.search(area=area, year=str(i))['data']
@@ -93,7 +102,7 @@ def return_detail_people(begin_time, end_time, area, identify):
             tmp = GWTZ_TY.search(gwtz_id=id, identity=j)['data']
             for j in tmp:
                 if j['id'] not in inq1:
-                    data_all.append(j)
+                    data_all['公务团组'].append(j)
                     inq1.append(j['id'])
     for i in data_SWTZ:
         id = i['id']
@@ -101,7 +110,7 @@ def return_detail_people(begin_time, end_time, area, identify):
             tmp = SWTZ_TY.search(gwtz_id=id, identity=j)['data']
             for j in tmp:
                 if j['id'] not in inq2:
-                    data_all.append(j)
+                    data_all['商务团组'].append(j)
                     inq2.append(j['id'])
 
     for i in data_LFTZ:
@@ -110,6 +119,6 @@ def return_detail_people(begin_time, end_time, area, identify):
             tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
             for j in tmp:
                 if j['id'] not in inq3:
-                    data_all.append(j)
+                    data_all['来访台胞'].append(j)
                     inq3.append(j['id'])
     return data_all
