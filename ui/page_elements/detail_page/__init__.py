@@ -8,11 +8,11 @@ from libs.g import g
 from model.base import Base
 from model.rs import RS
 from model.zyrs import ZYRS
+from ui.page_elements.table_cells.check_combo_widget import CheckComboWidget
 from ui.page_elements.table_cells.file_widget import FileWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
 from ui.page_elements.table_cells.sex_widget import SexWidget
-from ui.page_elements.table_cells.check_combo_widget import CheckComboWidget
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .dialogUI import Ui_Dialog

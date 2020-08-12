@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QCheckBox, QDialog, QWidget, QButtonGroup
+from PyQt5.QtWidgets import QButtonGroup, QCheckBox, QDialog, QWidget
 
 from .dialogUI import Ui_Dialog
 from .pageUI import Ui_Form

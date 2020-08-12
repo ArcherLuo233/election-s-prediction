@@ -1,3 +1,5 @@
+import datetime
+
 from model.gwtz import GWTZ
 from model.gwtz_ty import GWTZ_TY
 from model.jzz import JZZ
@@ -12,7 +14,6 @@ from model.swtz_ty import SWTZ_TY
 from model.ts import TS
 from model.tstg import TSTG
 from model.zyrs import ZYRS
-import datetime
 
 
 def return_name_data_mh(name):

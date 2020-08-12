@@ -1,7 +1,8 @@
-from ui.page_elements.check_combo_box import CheckComboBox
-from libs.g import g
-from libs.enumrations import UserPermission
 from PyQt5.QtCore import Qt
+
+from libs.enumrations import UserPermission
+from libs.g import g
+from ui.page_elements.check_combo_box import CheckComboBox
 
 
 class CheckComboWidget(CheckComboBox):
