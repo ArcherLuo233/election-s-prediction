@@ -62,62 +62,59 @@ def date_range(start_date, end_date):
 
 def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify
-    if len(idlist) == 0: idlist = ['']
+    if len(idlist) == 0: idlist = ['基层', '青年', '商界', '学界', '政界']
     sy = int(begin_time[0:4])
-    sm = int(begin_time[5:7])
-    sd = int(begin_time[8:10])
     ey = int(end_time[0:4])
-    em = int(end_time[5:7])
-    ed = int(end_time[8:10])
 
     data_all = {}
     data_all.update({'公务团组': []})
     data_all.update({'商务团组': []})
     data_all.update({'来访台胞': []})
     data_GWTZ = []
-    for i in range(sy, ey + 1):
-        tmp = GWTZ.search(area=area, year=str(i))['data']
-        for j in tmp:
-            data_GWTZ.append(j)
+    tmp = GWTZ.search(area=area)['data']
+    for i in tmp:
+        ye = "".join(i['year'].split())[0:3]
+        if str(sy) <= ye <= str(ey):
+            data_GWTZ.append(i)
 
     data_SWTZ = []
     data_LFTZ = []
     tmp1 = SWTZ.search(area=area)['data']
     tmp2 = LFTZ.search(area=area)['data']
     for i in tmp1:
-        if i['datetime'] >= begin_time and i['datetime'] <= end_time:
-            data_SWTZ.append(j)
+        if begin_time <= i['datetime'] <= end_time:
+            data_SWTZ.append(i)
 
     for i in tmp2:
-        if i['datetime'] >= begin_time and i['datetime'] <= end_time:
-            data_LFTZ.append(j)
+        if begin_time <= i['datetime'] <= end_time:
+            data_LFTZ.append(i)
 
     inq1 = []
     inq2 = []
     inq3 = []
     for i in data_GWTZ:
         id = i['id']
+        tmp = GWTZ_TY.search(gwtz_id=id)['data']
         for j in idlist:
-            tmp = GWTZ_TY.search(gwtz_id=id, identity=j)['data']
-            for j in tmp:
-                if j['id'] not in inq1:
-                    data_all['公务团组'].append(j)
-                    inq1.append(j['id'])
+            for k in tmp:
+                if j in k['identity'] and k['id'] not in inq1:
+                    data_all['公务团组'].append(k)
+                    inq1.append(k['id'])
     for i in data_SWTZ:
         id = i['id']
+        tmp = SWTZ_TY.search(gwtz_id=id)['data']
         for j in idlist:
-            tmp = SWTZ_TY.search(gwtz_id=id, identity=j)['data']
-            for j in tmp:
-                if j['id'] not in inq2:
-                    data_all['商务团组'].append(j)
-                    inq2.append(j['id'])
+            for k in tmp:
+                if j in k['identity'] and k['id'] not in inq2:
+                    data_all['商务团组'].append(k)
+                    inq2.append(k['id'])
 
     for i in data_LFTZ:
         id = i['id']
+        tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
         for j in idlist:
-            tmp = LFTZ_TY.search(gwtz_id=id, identity=j)['data']
-            for j in tmp:
-                if j['id'] not in inq3:
-                    data_all['来访台胞'].append(j)
-                    inq3.append(j['id'])
+            for k in tmp:
+                if j in k['identity'] and k['id'] not in inq3:
+                    data_all['来访台胞'].append(k)
+                    inq3.append(k['id'])
     return data_all
