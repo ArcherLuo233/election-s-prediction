@@ -8,9 +8,8 @@ class Pagejg(SearchPage):
     title = "机构"
     summary = [
         '名称',
-        '理事',
-        '监事',
-        '代表'
+        *[i for i in JG.staff_names.keys()],
+        '机构类型'
     ]
     page_name = 'jg'
 

@@ -117,6 +117,15 @@ class Ui_Form(object):
         self.textedit_remark = QtWidgets.QPlainTextEdit(self.frame)
         self.textedit_remark.setObjectName("textedit_remark")
         self.verticalLayout.addWidget(self.textedit_remark)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label_3 = QtWidgets.QLabel(self.frame)
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_5.addWidget(self.label_3)
+        self.widget = CheckComboBox(self.frame)
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_5.addWidget(self.widget)
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -154,5 +163,9 @@ class Ui_Form(object):
         self.btn_append.setText(_translate("Form", "添加人员"))
         self.btn_del_mode.setText(_translate("Form", "删除模式"))
         self.label_5.setText(_translate("Form", "备注"))
+        self.label_3.setText(_translate("Form", "机构类型"))
         self.btn_save.setText(_translate("Form", "保存"))
         self.pushButton.setText(_translate("Form", "返回"))
+
+
+from ui.page_elements.check_combo_box import CheckComboBox

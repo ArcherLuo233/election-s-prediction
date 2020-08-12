@@ -25,11 +25,9 @@ class Pagejgxq(QWidget):
         self.name = ''
         self.summary = "测试文本" * 20
         self.back_page = 'jg'
-        self.staff_info = {
-            '理事': [],
-            '监事': [],
-            '代表': []
-        }
+        self.staff_names = JG.staff_names
+        self.staff_info = {i: [] for i in self.staff_names.keys()}
+        self.type = None
         self.ui.pushButton.clicked.connect(self.go_back)
         self.ui.label_staff.linkActivated.connect(self.handle_link)
         self.ui.btn_modify_name.clicked.connect(self.modify_name)
@@ -37,6 +35,8 @@ class Pagejgxq(QWidget):
         self.ui.btn_append.clicked.connect(self.append)
         self.ui.btn_save.clicked.connect(self.save)
         self.ui.btn_del_mode.clicked.connect(self.switch_del_mode)
+        self.ui.widget.exclude = JG.combo_field['type']['exclude']
+        self.ui.widget.set_items(JG.combo_field['type']['items'])
 
     @property
     def remark(self):
@@ -83,11 +83,11 @@ class Pagejgxq(QWidget):
         self.name = data.name
         self.summary = data.introduction
         self.staff_info = {
-            '理事': data.director,
-            '监事': data.supervisor,
-            '代表': data.representative
+            i: getattr(data, j)
+            for i, j in self.staff_names.items()
         }
         self.remark = data.remark
+        self.type = data.type
         self.refresh()
 
     def modify_name(self):
@@ -118,10 +118,12 @@ class Pagejgxq(QWidget):
         data = {
             'name': self.name,
             'introduction': self.summary,
-            'director': self.staff_info['理事'],
-            'supervisor': self.staff_info['监事'],
-            'representative': self.staff_info['代表'],
-            'remark': self.remark
+            **{
+                j: self.staff_info[i]
+                for i, j in self.staff_names.items()
+            },
+            'remark': self.remark,
+            'type': self.ui.widget.selected_items
         }
         if self.data_id == -1:
             JG.create(**data)

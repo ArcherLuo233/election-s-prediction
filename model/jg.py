@@ -13,14 +13,25 @@ class JG(Base):
                           ]
     field = [
         'id', 'name', 'introduction', 'president', 'vice_president', 'chairman', 'secretary_general',
-        'director', 'supervisor', 'representative', 'historical_staff', 'remark'
+        'director', 'supervisor', 'representative', 'historical_staff', 'remark', 'type'
     ]
 
     combo_field = {
         'type': {
             'exclude': True,
-            'items': ['台商台干', '就业创业', '其他']
+            'items': ['在台机构', '在绍台企', '在绍机构', '其他']
         }
+    }
+
+    staff_names = {
+        '理事': 'director',
+        '监事': 'supervisor',
+        '成员': 'representative',
+        '会长': 'president',
+        '副会长': 'vice_president',
+        '理事长': 'chairman',
+        '总干事(秘书长)': 'secretary_general',
+        '历史人员': 'historical_staff'
     }
 
     template_start_row = 3
@@ -36,7 +47,7 @@ class JG(Base):
     secretary_general_ = Column('secretary_general', Text, comment='总干事(秘书长)')
     historical_staff_ = Column('historical_staff', Text, comment='历史人员')
     remark = Column(Text, comment='备注')
-    type_ = Column('type', Text, comment='类型')
+    type_ = Column('type', Text, comment='机构类型')
 
     @property
     def president(self):

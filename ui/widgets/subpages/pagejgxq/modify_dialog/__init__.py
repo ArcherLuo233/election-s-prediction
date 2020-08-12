@@ -5,18 +5,18 @@ from .dialogUI import Ui_Dialog
 
 class ModifyDialog(ModalDialog):
     def __init__(self, parent, name=''):
-        super().__init__(parent, size=(300, 300))
+        super().__init__(parent, size=(500, 500))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         if name is None:
             name = ''
         self.data = name
-        self.ui.lineEdit.setText(name)
+        self.ui.textEdit.setText(name)
         self.ui.btn_close.clicked.connect(self.close)
         self.ui.btn_modify.clicked.connect(self.handle_modify)
 
     def handle_modify(self):
-        self.data = self.ui.lineEdit.text()
+        self.data = self.ui.textEdit.toPlainText()
         self.close()
 
     def show_(self):
