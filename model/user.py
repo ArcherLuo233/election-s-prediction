@@ -9,6 +9,8 @@ from model.base import Base
 class User(Base):
     __tablename__ = 'user'
 
+    disable_mh = True
+
     username = Column(String(20), nullable=False, unique=True, comment='用户名')
     nickname = Column(String(20), nullable=False, comment='姓名')
     password_ = Column('password', String(32), nullable=False, comment='密码')

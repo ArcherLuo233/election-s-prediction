@@ -181,10 +181,10 @@ class SearchPage(QWidget):
         if self.model is None:
             return
         conditions = self.get_conditions()
-        data = self.model.search_mh(page=page,
-                                    page_size=page_size,
-                                    order={self.sort_field: self.sort_order},
-                                    **conditions)
+        data = self.model.search(page=page,
+                                 page_size=page_size,
+                                 order={self.sort_field: self.sort_order},
+                                 **conditions)
         self.refresh_table(data['data'], page_size)
 
     def get_conditions(self):

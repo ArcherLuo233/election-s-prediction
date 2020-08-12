@@ -21,6 +21,7 @@ class Base(base_class):
     __abstract__ = True
     __tablename__ = ''
     __table_args__ = {"extend_existing": True}
+    disable_mh = False
 
     class_name = ''
     pic = False
@@ -68,57 +69,24 @@ class Base(base_class):
         session.commit()
 
     @classmethod
-    def search_mh(cls, **kwargs):
-        res = session.query(cls)
-        for key, value in kwargs.items():
-            if value is not None:
-                if hasattr(cls, key):
-                    if isinstance(value, str):
-                        try:
-                            res = res.filter(getattr(cls, key).like("%" + value + "%"))
-                        except Exception:
-                            key = key + "_"
-                            res = res.filter(getattr(cls, key).like("%" + value + "%"))
-                    else:
-                        res = res.filter(getattr(cls, key) == value)
-
-        if kwargs.get('order'):
-            for key, value in kwargs['order'].items():
-                if hasattr(cls, key):
-                    if value == 'asc':
-                        res = res.order_by(asc(getattr(cls, key)))
-                    if value == 'desc':
-                        res = res.order_by(desc(getattr(cls, key)))
-
-        page = kwargs.get('page') if kwargs.get('page') else 1
-        page_size = kwargs.get('page_size') if kwargs.get('page_size') else DEFAULT_PAGE_SIZE
-        if page_size == -1:
-            page_size = 100000000
-        data = {
-            'meta': {
-                'count': res.count(),
-                'page': page,
-                'page_size': page_size
-            }
-        }
-
-        res = res.offset((page - 1) * page_size).limit(page_size)
-        res = res.all()
-        data['data'] = res
-        return data
-
-    @classmethod
     def search(cls, **kwargs):  # noqa: C901
         res = session.query(cls)
         for key, value in kwargs.items():
             if value is not None:
                 if hasattr(cls, key):
                     if isinstance(value, str):
-                        try:
-                            res = res.filter(getattr(cls, key).like(value))
-                        except Exception:
-                            key = key + "_"
-                            res = res.filter(getattr(cls, key).like(value))
+                        if cls.disable_mh:
+                            try:
+                                res = res.filter(getattr(cls, key).like(value))
+                            except Exception:
+                                key = key + "_"
+                                res = res.filter(getattr(cls, key).like(value))
+                        else:
+                            try:
+                                res = res.filter(getattr(cls, key).like("%" + value + "%"))
+                            except Exception:
+                                key = key + "_"
+                                res = res.filter(getattr(cls, key).like("%" + value + "%"))
                     else:
                         res = res.filter(getattr(cls, key) == value)
 
