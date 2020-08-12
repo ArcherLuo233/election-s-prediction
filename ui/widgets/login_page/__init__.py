@@ -172,8 +172,7 @@ class LoginPage(QWidget):
             et = self.ui.xx_sj2.text()
             dq = self.ui.xx_dq.text()
             sf = self.ui.xx_sf.selected_items
-            data = return_detail_people(bt, et, dq, ' '.join(sf))
-        print(data)
+            data = return_detail_people(bt, et, dq, sf)
         dialog = SearchAllPage()
         dialog.refresh_data(data)
         dialog.exec()

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QLabel, QTableWidgetItem
 
 from ui.page_elements.detail_page import DetailPage
+from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .pageUI import Ui_Dialog
 
@@ -15,7 +16,7 @@ class SearchAllPage(QDialog):
         with open("./static/qss/main.qss") as f:
             s = f.read()
             self.setStyleSheet(s)
-        self.setFixedSize(800, 600)
+        self.showMaximized()
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setStretchLastSection(True)
         hor_header.setMinimumSectionSize(100)
@@ -48,13 +49,30 @@ class SearchAllPage(QDialog):
                     detail_text += '   <a href="#members:{}">团员信息</a>'.format(row)
                 detail_label.setText(detail_text)
                 detail_label.setFont(self.font())
-                detail_label.linkActivated.connect(self.link_manager)
+                detail_label.linkActivated.connect(self.handle_link)
                 detail_label.show()
                 widget.setCellWidget(row, 3, detail_label)
                 row += 1
                 self.data.append(obj)
         widget.resizeColumnsToContents()
 
-    def link_manager(self, link):
-        print(link)
-        return
+    def handle_link(self, link):
+        if link.startswith("#detail:"):
+            self.open_detail(True, int(link[len("#detail:"):]))
+        else:
+            self.open_members(int(link[len("#members:"):]))
+
+    def open_members(self, id_):
+        data = self.data[id_]
+        page_name = data.__class__.__name__
+        dialog = create_dialog_like_widget(self, page_name.lower())
+        dialog.setFixedSize(1500, 800)
+        field = data.__class__.__name__.lower() + '_id'
+        dialog.wrapped_widget.set_default_conditions(**{field: data.id})
+        dialog.wrapped_widget.set_dialog_parent(self)
+        dialog.exec_()
+
+    def open_detail(self, enable: bool, id_):
+        data = self.data[id_]
+        dialog = DetailPage(self, data.__class__)
+        dialog.show_(enable, {'id': data.id})
