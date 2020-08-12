@@ -42,9 +42,9 @@ def return_name_data_mh(name):
     data_all.update({"来访台胞": data_lftz_ty})
     return data_all
 
-
 def return_area_data_mh(areaname):
     data_all = {}
+
     data_GWTZ = GWTZ.search(area=areaname)['data']
     data_SWTZ = SWTZ.search(area=areaname)['data']
     data_LFTZ = LFTZ.search(area=areaname)['data']
