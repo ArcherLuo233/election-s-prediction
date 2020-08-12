@@ -243,6 +243,8 @@ class DetailPage(QDialog):
                 content = widget.get_data()
                 data[field] = content
         for field, val in self.default_conditions.items():
+            if field in data:
+                continue
             data[field] = val
         return data
 
