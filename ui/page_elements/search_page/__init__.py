@@ -275,7 +275,6 @@ class SearchPage(QWidget):
         for id_ in self.id_selected:
             filename = '/{model}-{id}.docx'.format(model=self.model.class_name, id=id_)
             filename = filedir + filename
-            print(filename)
             self.model.export_document(id_, filename)
         QMessageBox.information(None, "批量导出", "批量导出完成")
 
@@ -319,7 +318,7 @@ class SearchPage(QWidget):
 
     def open_detail(self, enable: bool, data):
         if self.model is None:
-            print("jiubei: 没有设置Model: ", self.title)
+            print("页面没有设置Model: ", self.title)
             return
         dialog = DetailPage(self.dialog_parent, self.model)
         dialog.set_default_conditions(**self.default_conditions)

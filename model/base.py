@@ -30,6 +30,7 @@ class Base(base_class):
     field = []
     file_field = []
     read_field = []
+    combo_field = {}
 
     template_start_row = 0
 

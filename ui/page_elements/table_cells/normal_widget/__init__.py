@@ -19,6 +19,4 @@ class NormalWidget(QPlainTextEdit):
         return QSize(self.width(), self.document().size().height() * 20 + 20)
 
     def get_data(self):
-        if 'test' in self.toPlainText():
-            print(self.toPlainText())
         return self.toPlainText()

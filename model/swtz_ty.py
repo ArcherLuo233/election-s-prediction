@@ -14,6 +14,13 @@ class SWTZ_TY(Base):
         'id', 'nickname', 'job', 'id_card', 'phone', 'remark', 'identity'
     ]
 
+    combo_field = {
+        'identity': {
+            'exclude': False,
+            'items': ['基层', '青年', '商界', '学界', '政界']
+        }
+    }
+
     template_start_row = 3
 
     swtz_id = Column(Integer, ForeignKey('swtz.id'))
@@ -22,4 +29,16 @@ class SWTZ_TY(Base):
     id_card = Column(String(100), comment='身份证号')
     phone = Column(String(100), comment='联系电话')
     remark = Column(Text, comment='备注')
-    identity = Column(String(100), comment='身份')
+    identity_ = Column('identity', String(100), comment='身份')
+
+    @property
+    def identity(self):
+        if self.identity_ is None:
+            return []
+        return self.identity_.split(' ')
+
+    @identity.setter
+    def identity(self, val: list):
+        while '' in val:
+            val.remove('')
+        self.identity_ = ' '.join(val)

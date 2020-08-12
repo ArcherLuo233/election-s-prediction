@@ -9,10 +9,10 @@ from model.base import Base
 from model.rs import RS
 from model.zyrs import ZYRS
 from ui.page_elements.table_cells.file_widget import FileWidget
-from ui.page_elements.table_cells.list_widget import ListWidget
 from ui.page_elements.table_cells.normal_widget import NormalWidget
 from ui.page_elements.table_cells.pic_widget import PicWidget
 from ui.page_elements.table_cells.sex_widget import SexWidget
+from ui.page_elements.table_cells.check_combo_widget import CheckComboWidget
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .dialogUI import Ui_Dialog
@@ -137,10 +137,13 @@ class DetailPage(QDialog):
             type_ = "normal"
             if idx in self.model.file_field:
                 type_ = "file"
+            if idx in self.model.combo_field:
+                type_ = "combo"
             if idx == 'sex':
                 type_ = "sex"
             read_only = True if idx in self.model.read_field else False
             data_list.append({
+                'idx': idx,
                 'comment': comment,
                 'value': value,
                 'type': type_,
@@ -209,9 +212,12 @@ class DetailPage(QDialog):
         elif item['type'] == 'sex':
             widget = SexWidget()
             widget.set_sex(item['value'])
-        elif item['type'] == 'list':
-            # 没写
-            widget = ListWidget()
+        elif item['type'] == 'combo':
+            widget = CheckComboWidget()
+            widget.exclude = self.model.combo_field[item['idx']]['exclude']
+            widget.set_items(self.model.combo_field[item['idx']]['items'])
+            widget.selected_items = item['value']
+            widget.setFont(self.font())
         if widget:
             if item['readonly']:
                 widget.setEnabled(False)

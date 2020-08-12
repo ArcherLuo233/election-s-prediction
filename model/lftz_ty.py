@@ -14,6 +14,13 @@ class LFTZ_TY(Base):
         'id', 'nickname', 'job', 'type', 'remark', 'identity'
     ]
 
+    combo_field = {
+        'identity': {
+            'exclude': False,
+            'items': ['基层', '青年', '商界', '学界', '政界']
+        }
+    }
+
     template_start_row = 3
 
     lftz_id = Column(Integer, ForeignKey('lftz.id'))

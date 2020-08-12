@@ -50,7 +50,7 @@ class LoginPage(QWidget):
         pixmap = QPixmap("./static/assets/login.jpeg").scaled(self.size())
         pal.setBrush(QPalette.Background, QBrush(pixmap))
         self.setPalette(pal)
-        if not g.current_user or g.current_user.permission != UserPermission.Admin:
+        if not g.current_user:
             self.ui.widget_main.hide()
             self.ui.loginWidget.show()
         else:

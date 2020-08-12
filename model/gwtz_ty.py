@@ -16,6 +16,13 @@ class GWTZ_TY(Base):
     ]
     file_field = ['filing_form']
 
+    combo_field = {
+        'identity': {
+            'exclude': False,
+            'items': ['基层', '青年', '商界', '学界', '政界']
+        }
+    }
+
     template_start_row = 3
 
     gwtz_id = Column(Integer, ForeignKey('gwtz.id'))

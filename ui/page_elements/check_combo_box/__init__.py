@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QCheckBox, QDialog, QWidget
+from PyQt5.QtWidgets import QCheckBox, QDialog, QWidget, QButtonGroup
 
 from .dialogUI import Ui_Dialog
 from .pageUI import Ui_Form
@@ -10,16 +10,19 @@ class ChoiceDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.done)
+        self.button_group = QButtonGroup()
 
     def get_choices(self, items, selected):
         layout = self.ui.layout
         while layout.count():
             w = layout.takeAt(0).widget()
+            self.button_group.removeButton(w)
             w.close()
             w.deleteLater()
         checkboxes = []
         for item in items:
             checkbox = QCheckBox(item)
+            self.button_group.addButton(checkbox)
             checkbox.setFont(self.font())
             checkbox.setChecked(item in selected)
             checkboxes.append(checkbox)
@@ -40,9 +43,11 @@ class CheckComboBox(QWidget):
         self.ui.pushButton.clicked.connect(self.open_dialog)
         self._selected = []
         self._items = []
+        self.exclude = False
         self.dialog = ChoiceDialog()
 
     def open_dialog(self):
+        self.dialog.button_group.setExclusive(self.exclude)
         self.dialog.setFont(self.font())
         self._selected = self.dialog.get_choices(self._items, self._selected)
         self.ui.lineEdit.setText('|'.join(self._selected))
@@ -57,4 +62,7 @@ class CheckComboBox(QWidget):
 
     @selected_items.setter
     def selected_items(self, val):
+        if val is None:
+            val = []
         self._selected = val
+        self.ui.lineEdit.setText('|'.join(val))
