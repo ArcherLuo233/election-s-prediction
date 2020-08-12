@@ -8,7 +8,7 @@ QPushButton{
 }
 
 QPushButton:hover{
-    background-color: rgba(64, 158, 255, 150);
+    background-color: rgb(120, 192, 255);
 }
 
 QPushButton:checked{
@@ -17,12 +17,12 @@ QPushButton:checked{
 }
 
 QPushButton:checked:hover{
-    background-color: rgba(64, 158, 255, 150);
+    background-color: rgb(120, 192, 255);
     color: white;
 }
 
 QPushButton:disabled{
-    background-color: rgba(122, 122, 122, 50) ;
+    background-color: rgb(120, 192, 255);
     color: rgb(122, 122, 122);
 }
 
@@ -45,7 +45,7 @@ PageController QPushButton{
 }
 
 PageController QPushButton:hover{
-    background-color: rgba(64, 158, 255, 100);
+    background-color: rgb(120, 192, 255);
     color: black;
     border-color: rgb(64, 158, 255);
 }
@@ -56,7 +56,7 @@ PageController QPushButton:checked{
 }
 
 PageController QPushButton:checked:hover{
-    background-color: rgba(64, 158, 255, 150);
+    background-color: rgb(120, 192, 255);
     color: white;
 }
 
@@ -76,7 +76,7 @@ PageController QSpinBox::up-button, QSpinBox::down-button{
 }
 
 PageController QSpinBox::up-button:hover, QSpinBox::down-button:hover{
-    background-color: rgba(64, 158, 255, 150);
+    background-color: rgb(120, 192, 255);
 }
 
 PageController QSpinBox::up-arrow{

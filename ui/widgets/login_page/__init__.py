@@ -53,9 +53,11 @@ class LoginPage(QWidget):
         if not g.current_user:
             self.ui.widget_main.hide()
             self.ui.loginWidget.show()
+            self.ui.label_title.show()
         else:
             self.ui.loginWidget.hide()
             self.ui.widget_main.show()
+            self.ui.label_title.hide()
 
     def login(self):
         un = self.ui.lineEdit_un.text()
