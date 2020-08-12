@@ -105,8 +105,6 @@ class Base(base_class):
     def import_(cls, filename, **kwargs):
         res = read_excel(filename, cls.template_start_row, cls.class_name)
         for kk, i in enumerate(res):
-            if kk > 55:
-                ppp = 1
             field = cls.field.copy()
             field.remove('id')
             for file in cls.file_field:

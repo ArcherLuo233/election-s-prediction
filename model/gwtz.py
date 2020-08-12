@@ -9,7 +9,12 @@ class GWTZ(Base):
 
     class_name = '公务团组'
     ty = GWTZ_TY
-
+    combo_field = {
+        'identity': {
+            'exculde': False,
+            'items': ['基层', '青年', '商界', '学界', '政界']
+        }
+    }
     field = [
         'id', 'year', 'name', 'company', 'head', 'taiwan_invite_company', 'number_of_people', 'number_of_day', 'area',
         'approval_time', 'actual_time', 'stroke', 'necessity_statement', 'summary', 'contact_person', 'contact_phone',

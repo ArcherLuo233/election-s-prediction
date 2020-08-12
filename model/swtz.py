@@ -9,7 +9,12 @@ class SWTZ(Base):
 
     class_name = '商务团组'
     ty = SWTZ_TY
-
+    combo_field = {
+        'identity': {
+            'exculde': False,
+            'items': ['基层', '青年', '商界', '学界', '政界']
+        }
+    }
     field = [
         'id', 'company_name', 'main_business', 'datetime', 'reason', 'taiwan_company_name', 'taiwan_main_business',
         'taiwan_company_address', 'taiwan_company_legal_people', 'topic', 'area', 'summary'
