@@ -16,6 +16,13 @@ class JG(Base):
         'director', 'supervisor', 'representative', 'historical_staff', 'remark'
     ]
 
+    combo_field = {
+        'type': {
+            'exclude': True,
+            'items': ['台商台干', '就业创业', '其他']
+        }
+    }
+
     template_start_row = 3
 
     name = Column(String(100), comment='名称')
@@ -23,13 +30,13 @@ class JG(Base):
     director_ = Column('director', Text, comment='理事')
     supervisor_ = Column('supervisor', Text, comment='监事')
     representative_ = Column('representative', Text, comment='成员')
-
     president_ = Column('president', Text, comment='会长')
     vice_president_ = Column('vice_president', Text, comment='副会长')
     chairman_ = Column('chairman', Text, comment='理事长')
     secretary_general_ = Column('secretary_general', Text, comment='总干事(秘书长)')
     historical_staff_ = Column('historical_staff', Text, comment='历史人员')
     remark = Column(Text, comment='备注')
+    type_ = Column('type', Text, comment='类型')
 
     @property
     def president(self):
@@ -126,3 +133,11 @@ class JG(Base):
         while '' in raw:
             raw.remove('')
         self.representative_ = " ".join(raw)
+
+    @property
+    def type(self):
+        return self.type_
+
+    @type.setter
+    def type(self, val):
+        self.type_ = val

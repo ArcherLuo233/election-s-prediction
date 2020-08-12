@@ -14,7 +14,7 @@ from .pages import ChoicePage
 from .pageUI import Ui_Form
 
 
-class Page3_1(QWidget):
+class Pagejgxq(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         self.dialog = None
@@ -24,6 +24,7 @@ class Page3_1(QWidget):
         self.del_mode = False
         self.name = ''
         self.summary = "测试文本" * 20
+        self.back_page = 'jg'
         self.staff_info = {
             '理事': [],
             '监事': [],
@@ -70,6 +71,9 @@ class Page3_1(QWidget):
     def set_data_id(self, id_):
         self.data_id = id_
         self.refresh_data()
+
+    def set_back_page(self, pagename):
+        self.back_page = pagename
 
     def refresh_data(self):
         if self.data_id == -1:
@@ -159,7 +163,7 @@ class Page3_1(QWidget):
         self.ui.label_staff.setText(s)
 
     def go_back(self):
-        link_manager.activate("#goto:3")
+        link_manager.activate("#goto:" + self.back_page)
 
     def handle_link(self, link: str):
         if link.startswith("#detail:"):

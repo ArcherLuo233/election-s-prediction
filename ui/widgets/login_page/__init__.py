@@ -74,7 +74,12 @@ class LoginPage(QWidget):
         self.update()
 
     def open_jg(self):
-        menu = [("机构信息", "3", {})]
+        menu = [("机构信息", "jg", {
+            '在台机构': 'jg_ztjg',
+            '在绍台企': 'jg_zstq',
+            '在绍机构': 'jg_zsjg',
+            '其他': 'jg_qt'
+        })]
         self.open_main(menu)
 
     def open_ry(self):
