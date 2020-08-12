@@ -8,6 +8,9 @@ class JG(Base):
 
     class_name = '机构'
 
+    import_handle_file = ['president', 'vice_president', 'chairman', 'secretary_general',
+                          'director', 'supervisor', 'representative', 'historical_staff'
+                          ]
     field = [
         'id', 'name', 'introduction', 'president', 'vice_president', 'chairman', 'secretary_general',
         'director', 'supervisor', 'representative', 'historical_staff', 'remark'

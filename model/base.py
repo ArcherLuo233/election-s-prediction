@@ -154,8 +154,16 @@ class Base(base_class):
                     answer = time
                 data['datetime'] = answer
                 data.update(kwargs)
-
-            if cls.search(**data)['meta']['count'] == 0:
+            if cls.__tablename__ != 'jg':
+                if cls.search(**data)['meta']['count'] == 0:
+                    cls.create(**data)
+            else:
+                for k in cls.import_handle_file:
+                    if not data[k]:
+                        peo = []
+                    else:
+                        peo = data[k].split(',')
+                    data[k] = peo
                 cls.create(**data)
 
     @classmethod
