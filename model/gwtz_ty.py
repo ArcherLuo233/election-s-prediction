@@ -35,4 +35,16 @@ class GWTZ_TY(Base):
     entry_number = Column(String(100), comment='入台证号')
     pass_number = Column(String(100), comment='通行证号')
     filing_form = Column(String(100), comment='备案表')
-    identity = Column(String(100), comment='身份')
+    identity_ = Column(String(100), comment='身份')
+
+    @property
+    def identity(self):
+        if self.identity_ is None:
+            return []
+        return self.identity_.split(' ')
+
+    @identity.setter
+    def identity(self, val: list):
+        while '' in val:
+            val.remove('')
+        self.identity_ = ' '.join(val)

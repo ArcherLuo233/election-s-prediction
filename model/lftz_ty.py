@@ -27,4 +27,16 @@ class LFTZ_TY(Base):
     job = Column(String(100), comment='单位职务')
     type = Column(String(100), comment='人物类型')
     remark = Column(Text, comment='备注')
-    identity = Column(String(100), comment='身份')
+    identity_ = Column('identity', String(100), comment='身份')
+
+    @property
+    def identity(self):
+        if self.identity_ is None:
+            return []
+        return self.identity_.split(' ')
+
+    @identity.setter
+    def identity(self, val: list):
+        while '' in val:
+            val.remove('')
+        self.identity_ = ' '.join(val)

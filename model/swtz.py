@@ -14,13 +14,8 @@ class SWTZ(Base):
         'id', 'company_name', 'main_business', 'datetime', 'reason', 'taiwan_company_name', 'taiwan_main_business',
         'taiwan_company_address', 'taiwan_company_legal_people', 'topic', 'area', 'summary'
     ]
+
     file_field = ['reason', 'summary']
-    combo_field = {
-        'identity': {
-            'exculde': False,
-            'items': ['基层', '青年', '商界', '学界', '政界']
-        }
-    }
 
     template_start_row = 3
 

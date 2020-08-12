@@ -102,6 +102,7 @@ class DetailPage(ModalDialog):
             return
 
         QMessageBox.information(None, "导出数据", "导出完毕")
+
     def save(self):
         tag = 2020
         row = self.ui.tableWidget.rowCount()

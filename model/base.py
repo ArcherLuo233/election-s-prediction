@@ -66,6 +66,7 @@ class Base(base_class):
 
         session.delete(self)
         session.commit()
+
     @classmethod
     def search(cls, **kwargs):  # noqa: C901
         res = session.query(cls)
