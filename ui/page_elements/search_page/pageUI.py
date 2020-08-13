@@ -10,15 +10,13 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from ui.page_elements.page_controller import PageController
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(683, 474)
         font = QtGui.QFont()
-        font.setFamily("黑体")
+        font.setFamily("微软雅黑")
         font.setPointSize(14)
         Form.setFont(font)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
@@ -33,7 +31,7 @@ class Ui_Form(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.label_title = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
-        font.setFamily("黑体")
+        font.setFamily("微软雅黑")
         font.setPointSize(28)
         self.label_title.setFont(font)
         self.label_title.setObjectName("label_title")
@@ -91,7 +89,9 @@ class Ui_Form(object):
         self.tableWidget.setMinimumSize(QtCore.QSize(601, 0))
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(14)
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setWeight(50)
         self.tableWidget.setFont(font)
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setAlternatingRowColors(True)
@@ -194,3 +194,6 @@ class Ui_Form(object):
         self.btn_mul_export.setText(_translate("Form", "批量导出"))
         self.btn_mul_delete.setText(_translate("Form", "批量删除"))
         self.btn_close.setText(_translate("Form", "关闭"))
+
+
+from ui.page_elements.page_controller import PageController

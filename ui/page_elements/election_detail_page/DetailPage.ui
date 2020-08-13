@@ -18,7 +18,7 @@
              <widget class="QLabel" name="label">
                  <property name="font">
                      <font>
-                         <family>黑体</family>
+                         <family>微软雅黑</family>
                          <pointsize>20</pointsize>
                      </font>
                  </property>
@@ -41,7 +41,7 @@
                      <widget class="QPushButton" name="btn_reflash">
                          <property name="font">
                              <font>
-                                 <family>黑体</family>
+                                 <family>微软雅黑</family>
                                  <pointsize>18</pointsize>
                              </font>
                          </property>
@@ -70,7 +70,7 @@
                      <widget class="QPushButton" name="btn_addyear">
                          <property name="font">
                              <font>
-                                 <family>黑体</family>
+                                 <family>微软雅黑</family>
                                  <pointsize>18</pointsize>
                              </font>
                          </property>
@@ -86,7 +86,7 @@
                      <widget class="QPushButton" name="btn_addpro">
                          <property name="font">
                              <font>
-                                 <family>黑体</family>
+                                 <family>微软雅黑</family>
                                  <pointsize>18</pointsize>
                              </font>
                          </property>
@@ -102,7 +102,7 @@
                      <widget class="QPushButton" name="btn_addpeople">
                          <property name="font">
                              <font>
-                                 <family>黑体</family>
+                                 <family>微软雅黑</family>
                                  <pointsize>18</pointsize>
                              </font>
                          </property>
@@ -118,7 +118,7 @@
                      <widget class="QPushButton" name="btn_delete">
                          <property name="font">
                              <font>
-                                 <family>黑体</family>
+                                 <family>微软雅黑</family>
                                  <pointsize>18</pointsize>
                              </font>
                          </property>
@@ -134,7 +134,7 @@
                      <widget class="QPushButton" name="btn_close">
                          <property name="font">
                              <font>
-                                 <family>黑体</family>
+                                 <family>微软雅黑</family>
                                  <pointsize>18</pointsize>
                              </font>
                          </property>
@@ -152,7 +152,7 @@
              <widget class="QTableWidget" name="tableWidget">
                  <property name="font">
                      <font>
-                         <family>黑体</family>
+                         <family>微软雅黑</family>
                          <pointsize>12</pointsize>
                      </font>
                  </property>

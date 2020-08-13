@@ -43,7 +43,7 @@ class Page2_x(QWidget):
         item1.setFlags(Qt.ItemIsEnabled)
         item1.setText("基本情况")
         self.font = QtGui.QFont()
-        self.font.setFamily("黑体")
+        self.font.setFamily("微软雅黑")
         self.font.setPointSize(14)
         item1.setFont(self.font)
         item1.setTextAlignment(Qt.AlignCenter)

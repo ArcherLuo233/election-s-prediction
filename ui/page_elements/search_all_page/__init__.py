@@ -50,7 +50,7 @@ class SearchAllPage(QDialog):
                 if obj.ty:
                     detail_text += '   <a href="#members:{}">团员信息</a>'.format(row)
                 detail_label.setText(detail_text)
-                detail_label.setFont(self.font())
+                detail_label.setFont(widget.font())
                 detail_label.linkActivated.connect(self.handle_link)
                 detail_label.show()
                 widget.setCellWidget(row, 3, detail_label)

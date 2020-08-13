@@ -226,13 +226,13 @@ class SearchPage(QWidget):
                     while '' in data:
                         data.remove('')
                     data = ','.join(data)
-                if k == '姓名':
+                if self.model != ZYRS and k == '姓名':
                     res = ZYRS.get_by_name(data)
                     if res:
                         label = QLabel(self)
                         text = '<a href="#zyrs:{}">{}</a>'.format(res.id, data)
                         label.setText(text)
-                        label.setFont(self.font())
+                        label.setFont(table_widget.font())
                         label.linkActivated.connect(self.detail)
                         label.show()
                         table_widget.setCellWidget(i, j, label)
@@ -245,7 +245,7 @@ class SearchPage(QWidget):
             if self.model and self.members_model:
                 detail_text += '   <a href="#members:{}">团员信息</a>'.format(info.id)
             detail_label.setText(detail_text)
-            detail_label.setFont(self.font())
+            detail_label.setFont(table_widget.font())
             detail_label.linkActivated.connect(self.detail)
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)

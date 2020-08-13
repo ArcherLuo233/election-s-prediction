@@ -12,7 +12,7 @@
      </property>
      <property name="font">
          <font>
-             <family>黑体</family>
+             <family>微软雅黑</family>
              <pointsize>14</pointsize>
          </font>
      </property>
@@ -24,7 +24,7 @@
              <widget class="QLabel" name="label">
                  <property name="font">
                      <font>
-                         <family>黑体</family>
+                         <family>微软雅黑</family>
                          <pointsize>20</pointsize>
       </font>
      </property>
@@ -72,7 +72,7 @@
          <widget class="QLabel" name="username">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -85,7 +85,7 @@
          <widget class="QLineEdit" name="LineEdit">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -101,7 +101,7 @@
          <widget class="QLabel" name="oldpassword">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -114,7 +114,7 @@
          <widget class="QLineEdit" name="LineEdit_2">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -130,7 +130,7 @@
          <widget class="QLabel" name="newpassword1">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -143,7 +143,7 @@
          <widget class="QLineEdit" name="LineEdit_3">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -159,7 +159,7 @@
          <widget class="QLabel" name="Label">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -172,7 +172,7 @@
          <widget class="QLineEdit" name="LineEdit_4">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -218,7 +218,7 @@
          <widget class="QPushButton" name="btn_adduser_2">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>
@@ -234,7 +234,7 @@
          <widget class="QPushButton" name="btn_close_2">
              <property name="font">
                  <font>
-                     <family>黑体</family>
+                     <family>微软雅黑</family>
                      <pointsize>14</pointsize>
                  </font>
              </property>

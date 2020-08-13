@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>黑体</family>
+    <family>微软雅黑</family>
     <pointsize>14</pointsize>
    </font>
   </property>
@@ -31,7 +31,7 @@
         <widget class="QLabel" name="label_title">
          <property name="font">
           <font>
-           <family>黑体</family>
+              <family>微软雅黑</family>
            <pointsize>28</pointsize>
           </font>
          </property>
@@ -67,7 +67,7 @@
            <widget class="QLabel" name="label">
             <property name="font">
              <font>
-              <family>黑体</family>
+                 <family>微软雅黑</family>
               <pointsize>18</pointsize>
              </font>
             </property>
@@ -83,7 +83,7 @@
             </property>
             <property name="font">
              <font>
-              <family>黑体</family>
+                 <family>微软雅黑</family>
               <pointsize>18</pointsize>
              </font>
             </property>
@@ -93,7 +93,7 @@
            <widget class="QPushButton" name="btn_savemayor">
             <property name="font">
              <font>
-              <family>黑体</family>
+                 <family>微软雅黑</family>
               <pointsize>14</pointsize>
              </font>
             </property>
@@ -164,7 +164,7 @@
                                <widget class="QLabel" name="name">
                                    <property name="font">
                                        <font>
-                                           <family>黑体</family>
+                                           <family>微软雅黑</family>
                                            <pointsize>20</pointsize>
                                        </font>
                                    </property>
@@ -177,7 +177,7 @@
                                <widget class="QLabel" name="vote_number">
                                    <property name="font">
                                        <font>
-                                           <family>黑体</family>
+                                           <family>微软雅黑</family>
                                            <pointsize>20</pointsize>
                                        </font>
                                    </property>
@@ -190,7 +190,7 @@
                                <widget class="QLabel" name="cpwl">
                                    <property name="font">
                                        <font>
-                                           <family>黑体</family>
+                                           <family>微软雅黑</family>
                                            <pointsize>20</pointsize>
                                        </font>
                                    </property>
@@ -203,7 +203,7 @@
                                <widget class="QLabel" name="Mayor_text">
                                    <property name="font">
                                        <font>
-                                           <family>黑体</family>
+                                           <family>微软雅黑</family>
                                            <pointsize>20</pointsize>
                                        </font>
                                    </property>
@@ -216,7 +216,7 @@
                                <widget class="QLabel" name="population">
                                    <property name="font">
                                        <font>
-                                           <family>黑体</family>
+                                           <family>微软雅黑</family>
                                            <pointsize>20</pointsize>
                                        </font>
                                    </property>
@@ -229,7 +229,7 @@
                                <widget class="QLabel" name="numofhouse_text">
                                    <property name="font">
                                        <font>
-                                           <family>黑体</family>
+                                           <family>微软雅黑</family>
                                            <pointsize>20</pointsize>
                                        </font>
                                    </property>
@@ -305,7 +305,7 @@
                <widget class="QLabel" name="label_5">
                    <property name="font">
                        <font>
-                           <family>黑体</family>
+                           <family>微软雅黑</family>
                            <pointsize>18</pointsize>
                        </font>
                    </property>
@@ -323,7 +323,7 @@
                        <widget class="QPushButton" name="btn_reflash">
                            <property name="font">
                                <font>
-                                   <family>黑体</family>
+                                   <family>微软雅黑</family>
                                    <pointsize>18</pointsize>
                                </font>
                            </property>
@@ -339,7 +339,7 @@
                        <widget class="QPushButton" name="btn_findzone">
                            <property name="font">
                                <font>
-                                   <family>黑体</family>
+                                   <family>微软雅黑</family>
                                    <pointsize>18</pointsize>
                                </font>
                            </property>
@@ -355,7 +355,7 @@
                        <widget class="QPushButton" name="btn_election_all">
                            <property name="font">
                                <font>
-                                   <family>黑体</family>
+                                   <family>微软雅黑</family>
                                    <pointsize>18</pointsize>
                                </font>
                            </property>
@@ -371,7 +371,7 @@
                        <widget class="QPushButton" name="btn_save">
                            <property name="font">
                                <font>
-                                   <family>黑体</family>
+                                   <family>微软雅黑</family>
                                    <pointsize>18</pointsize>
                                </font>
                            </property>
@@ -387,7 +387,7 @@
                        <widget class="QPushButton" name="btn_savemap">
                            <property name="font">
                                <font>
-                                   <family>黑体</family>
+                                   <family>微软雅黑</family>
                                    <pointsize>18</pointsize>
                                </font>
                            </property>

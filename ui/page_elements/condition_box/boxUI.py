@@ -15,7 +15,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(276, 186)
         font = QtGui.QFont()
-        font.setFamily("黑体")
+        font.setFamily("微软雅黑")
         font.setPointSize(12)
         Form.setFont(font)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Form)

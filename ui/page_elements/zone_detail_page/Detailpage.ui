@@ -18,7 +18,7 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>黑体</family>
+       <family>微软雅黑</family>
        <pointsize>20</pointsize>
       </font>
      </property>
@@ -38,7 +38,7 @@ padding: 10px</string>
     <widget class="QTableWidget" name="tableWidget">
      <property name="font">
       <font>
-       <family>黑体</family>
+          <family>微软雅黑</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -510,7 +510,7 @@ padding: 10px</string>
                <widget class="QPushButton" name="btn_export">
                    <property name="font">
                        <font>
-                           <family>黑体</family>
+                           <family>微软雅黑</family>
                            <pointsize>14</pointsize>
                        </font>
                    </property>
@@ -539,7 +539,7 @@ padding: 10px</string>
       <widget class="QPushButton" name="btn_save">
        <property name="font">
         <font>
-         <family>黑体</family>
+            <family>微软雅黑</family>
          <pointsize>14</pointsize>
         </font>
        </property>
@@ -555,7 +555,7 @@ padding: 10px</string>
       <widget class="QPushButton" name="button_ok">
        <property name="font">
         <font>
-         <family>黑体</family>
+            <family>微软雅黑</family>
          <pointsize>14</pointsize>
         </font>
        </property>

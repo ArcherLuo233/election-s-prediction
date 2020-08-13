@@ -103,8 +103,8 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
     if ty_data is None:
         ty_data = []
     document = Document()
-    document.styles['Normal'].font.name = u'楷体'
-    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'楷体')
+    document.styles['Normal'].font.name = u'微软雅黑'
+    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'微软雅黑')
 
     title_paragraph = document.add_paragraph()
     title_run = title_paragraph.add_run(title)

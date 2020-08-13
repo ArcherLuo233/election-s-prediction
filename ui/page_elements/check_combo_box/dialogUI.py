@@ -15,7 +15,7 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(141, 143)
         font = QtGui.QFont()
-        font.setFamily("Microsoft YaHei UI")
+        font.setFamily("微软雅黑")
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
