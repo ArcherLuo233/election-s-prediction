@@ -57,9 +57,30 @@ def date_range(start_date, end_date):
     for n in range(int((end_date - start_date).days)):
         yield start_date + datetime.timedelta(n)
 
+def return_all_area():
+    all_area = []
+    tmp1 = GWTZ.search(page=-1)['data']
+    tmp2 = SWTZ.search(page=-1)['data']
+    tmp3 = LFTZ.search(page=-1)['data']
+    for i in tmp1:
+        if i['area'] not in all_area:
+            all_area.append(i['area'])
+    for i in tmp2:
+        if i['area'] not in all_area:
+            all_area.append(i['area'])
+    for i in tmp3:
+        if i['area'] not in all_area:
+            all_area.append(i['area'])
+    while '' in all_area:
+        all_area.remove('')
+    while None in all_area:
+        all_area.remove(None)
+    return all_area
 
 def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify
+    s = " ".join(area)
+    a_area = s.split(" ")
     if len(idlist) == 0:
         idlist = ['基层', '青年', '商界', '学界', '政界']
     sy = int(begin_time[0:4])
@@ -69,17 +90,39 @@ def return_detail_people(begin_time, end_time, area, identify):
     data_all.update({'公务团组': []})
     data_all.update({'商务团组': []})
     data_all.update({'来访台胞': []})
+
+    iq1 = []
+    iq2 = []
+    iq3 = []
+    tmp1 = []
+    tmp2 = []
+    tmp = []
     data_GWTZ = []
-    tmp = GWTZ.search(area=area)['data']
+    data_SWTZ = []
+    data_LFTZ = []
+
+    for i in a_area:
+        tp1 = GWTZ.search(area=i)['data']
+        tp2 = SWTZ.search(area=i)['data']
+        tp3 = LFTZ.search(area=i)['data']
+        for j in tp1:
+            if j['id'] not in iq1:
+                tmp.append(j)
+                iq1.append(j['id'])
+        for j in tp2:
+            if j['id'] not in iq2:
+                tmp1.append(j)
+                iq1.append(j['id'])
+        for j in tp3:
+            if j['id'] not in iq3:
+                tmp2.append(j)
+                iq3.append(j['id'])
+
     for i in tmp:
         ye = "".join(i['year'].split())[0:3]
         if str(sy) <= ye <= str(ey):
             data_GWTZ.append(i)
 
-    data_SWTZ = []
-    data_LFTZ = []
-    tmp1 = SWTZ.search(area=area)['data']
-    tmp2 = LFTZ.search(area=area)['data']
     for i in tmp1:
         if begin_time <= i['datetime'] <= end_time:
             data_SWTZ.append(i)
@@ -101,7 +144,7 @@ def return_detail_people(begin_time, end_time, area, identify):
                     inq1.append(k['id'])
     for i in data_SWTZ:
         id = i['id']
-        tmp = SWTZ_TY.search(gwtz_id=id)['data']
+        tmp = SWTZ_TY.search(swtz_id=id)['data']
         for j in idlist:
             for k in tmp:
                 if j in k['identity'] and k['id'] not in inq2:
@@ -110,7 +153,7 @@ def return_detail_people(begin_time, end_time, area, identify):
 
     for i in data_LFTZ:
         id = i['id']
-        tmp = LFTZ_TY.search(gwtz_id=id)['data']
+        tmp = LFTZ_TY.search(lftz_id=id)['data']
         for j in idlist:
             for k in tmp:
                 if j in k['identity'] and k['id'] not in inq3:
