@@ -10,11 +10,11 @@ from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
 from libs.g import g
+from model.zyrs import ZYRS
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
-from model.zyrs import ZYRS
 
 from .pageUI import Ui_Form
 
