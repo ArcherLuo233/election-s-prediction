@@ -40,6 +40,8 @@ class SearchAllPage(QDialog):
                 item = QTableWidgetItem()
                 if 'name' in obj.field:
                     item.setText(obj.name)
+                elif 'company_name' in obj.field:
+                    item.setText(obj.company_name)
                 elif 'nickname' in obj.field:
                     item.setText(obj.nickname)
                 widget.setItem(row, 2, item)
@@ -64,7 +66,7 @@ class SearchAllPage(QDialog):
 
     def open_members(self, id_):
         data = self.data[id_]
-        page_name = data.__class__.__name__
+        page_name = data.__class__.__name__ + "_ty"
         dialog = create_dialog_like_widget(self, page_name.lower())
         dialog.setFixedSize(1500, 800)
         field = data.__class__.__name__.lower() + '_id'
