@@ -50,3 +50,9 @@ class ZYRS(Base):
     contact_person = Column(String(100), comment='联系人')
     contact_person_phone = Column(String(100), comment='联系人联系电话')
     remark = Column(Text, comment='备注')
+
+    @classmethod
+    def get_by_name(cls, name):
+        res = cls.search(nickname=name)['data']
+        if res:
+            return res[0]

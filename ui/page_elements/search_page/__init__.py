@@ -14,6 +14,7 @@ from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
 from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
+from model.zyrs import ZYRS
 
 from .pageUI import Ui_Form
 
@@ -224,7 +225,18 @@ class SearchPage(QWidget):
                 if isinstance(data, list):
                     while '' in data:
                         data.remove('')
-                    data = ",".join(data)
+                    data = ','.join(data)
+                if k == '姓名':
+                    res = ZYRS.get_by_name(data)
+                    if res:
+                        label = QLabel(self)
+                        text = '<a href="#zyrs:{}">{}</a>'.format(res.id, data)
+                        label.setText(text)
+                        label.setFont(self.font())
+                        label.linkActivated.connect(self.detail)
+                        label.show()
+                        table_widget.setCellWidget(i, j, label)
+                        continue
                 item.setText(str(data))
                 table_widget.setItem(i, j, item)
             # detail_label
@@ -297,10 +309,12 @@ class SearchPage(QWidget):
             item.setCheckState(Qt.Unchecked)
 
     def detail(self, link: str):
-        if link.startswith("#detail:"):
+        if link.startswith('#detail:'):
             self.open_detail(True, data={'id': int(link[len("#detail:"):])})
-        else:
+        elif link.startswith('#members:'):
             self.open_members({'id': int(link[len("#members:"):])})
+        elif link.startswith('#zyrs:'):
+            self.open_zyrs(True, data={'id': int(link[len("#zyrs:"):])})
 
     def action_add(self):
         self.open_detail(True, data={'id': -1})
@@ -314,6 +328,12 @@ class SearchPage(QWidget):
         dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
         dialog.wrapped_widget.set_dialog_parent(self)
         dialog.exec_()
+        self.refresh_page(self.ui.page_controller.page)
+
+    def open_zyrs(self, enable: bool, data):
+        dialog = DetailPage(self.dialog_parent, ZYRS)
+        dialog.set_default_conditions(**self.default_conditions)
+        dialog.show_(enable, data)
         self.refresh_page(self.ui.page_controller.page)
 
     def open_detail(self, enable: bool, data):
