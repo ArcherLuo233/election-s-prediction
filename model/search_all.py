@@ -82,14 +82,16 @@ def return_all_area():
 def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify
     a_area = area
+    if len(a_area) == 0:
+        a_area = return_all_area()
     if len(idlist) == 0:
         idlist = ['基层', '青年', '商界', '学界', '政界']
     sy = int(begin_time[0:4])
     ey = int(end_time[0:4])
 
     data_all = {}
-    data_all.update({'公务团组': []})
-    data_all.update({'商务团组': []})
+    data_all.update({'公务团组团员': []})
+    data_all.update({'商务团组团员': []})
     data_all.update({'来访台胞': []})
 
     iq1 = []
@@ -120,7 +122,7 @@ def return_detail_people(begin_time, end_time, area, identify):
                 iq3.append(j['id'])
 
     for i in tmp:
-        ye = "".join(i['year'].split())[0:3]
+        ye = "".join(i['year'].split())[0:4]
         if str(sy) <= ye <= str(ey):
             data_GWTZ.append(i)
 
@@ -141,7 +143,7 @@ def return_detail_people(begin_time, end_time, area, identify):
         for j in idlist:
             for k in tmp:
                 if j in k['identity'] and k['id'] not in inq1:
-                    data_all['公务团组'].append(k)
+                    data_all['公务团组团员'].append(k)
                     inq1.append(k['id'])
     for i in data_SWTZ:
         id = i['id']
@@ -149,7 +151,7 @@ def return_detail_people(begin_time, end_time, area, identify):
         for j in idlist:
             for k in tmp:
                 if j in k['identity'] and k['id'] not in inq2:
-                    data_all['商务团组'].append(k)
+                    data_all['商务团组团员'].append(k)
                     inq2.append(k['id'])
 
     for i in data_LFTZ:
