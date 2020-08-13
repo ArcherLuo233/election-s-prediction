@@ -5,8 +5,8 @@ from PyQt5.QtWidgets import QMessageBox, QWidget
 from libs.exception import AppException
 from libs.g import g
 from libs.page_magager import PageManager
-from model.search_all import (return_area_data_mh, return_detail_people,
-                              return_name_data_mh)
+from model.search_all import (return_all_area, return_area_data_mh,
+                              return_detail_people, return_name_data_mh)
 from model.user import User
 from ui.page_elements.search_all_page import SearchAllPage
 
@@ -32,6 +32,9 @@ class LoginPage(QWidget):
         self.setFixedWidth(1100)
         self.ui.cb_target.currentTextChanged.connect(self.search_method_changed)
         self.search_method_changed(self.ui.cb_target.currentText())
+        self.ui.xx_dq.set_items(return_all_area())
+        self.ui.xx_dq.ui.pushButton.setCursor(Qt.PointingHandCursor)
+        self.ui.xx_dq.setFont(self.font())
         self.ui.xx_sf.set_items([
             '基层', '青年', '商界', '学界', '政界'
         ])
@@ -175,7 +178,7 @@ class LoginPage(QWidget):
         else:
             bt = self.ui.xx_sj1.text()
             et = self.ui.xx_sj2.text()
-            dq = self.ui.xx_dq.text()
+            dq = self.ui.xx_dq.selected_items
             sf = self.ui.xx_sf.selected_items
             data = return_detail_people(bt, et, dq, sf)
         dialog = SearchAllPage()

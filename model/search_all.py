@@ -57,6 +57,7 @@ def date_range(start_date, end_date):
     for n in range(int((end_date - start_date).days)):
         yield start_date + datetime.timedelta(n)
 
+
 def return_all_area():
     all_area = []
     tmp1 = GWTZ.search(page=-1)['data']
@@ -77,10 +78,10 @@ def return_all_area():
         all_area.remove(None)
     return all_area
 
+
 def return_detail_people(begin_time, end_time, area, identify):
     idlist = identify
-    s = " ".join(area)
-    a_area = s.split(" ")
+    a_area = area
     if len(idlist) == 0:
         idlist = ['基层', '青年', '商界', '学界', '政界']
     sy = int(begin_time[0:4])
