@@ -12,14 +12,14 @@
         </property>
         <property name="font">
             <font>
-                <family>微软雅黑</family>
+                <family>华文新魏</family>
                 <pointsize>11</pointsize>
                 <weight>75</weight>
                 <bold>true</bold>
             </font>
         </property>
         <property name="windowTitle">
-            <string>请选择</string>
+            <string></string>
         </property>
         <property name="modal">
             <bool>true</bool>

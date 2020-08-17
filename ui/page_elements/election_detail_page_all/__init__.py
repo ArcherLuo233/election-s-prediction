@@ -1,5 +1,6 @@
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
+from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
@@ -31,7 +32,7 @@ class DetailPage(ModalDialog):
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
         # tableWidget-span
-
+        self.font = QtGui.QFont()
         # btn-bind
         self.ui.btn_close.clicked.connect(self.close)
         self.ui.btn_reflash.clicked.connect(self.reload)
@@ -71,8 +72,13 @@ class DetailPage(ModalDialog):
     def init(self):
         for i in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.removeRow(i)
+        self.font.setFamily("黑体")
+        self.font.setPointSize(16)
+
+        self.ui.tableWidget.setFont(self.font)
         self.ui.tableWidget.setHorizontalHeaderLabels(
             ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '上报票数', '参考赋值', '与上期相比', '预估票数'])
+        self.ui.tableWidget.horizontalHeader().setStyleSheet("QHeaderView::section{font:12pt '黑体' ;color: black;};")
         self.ui.tableWidget.setRowCount(27)
 
     def additem(self, row, col, text, l):

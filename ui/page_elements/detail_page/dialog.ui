@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>微软雅黑</family>
+    <family>华文新魏</family>
     <pointsize>14</pointsize>
    </font>
   </property>
@@ -33,12 +33,12 @@
      </property>
      <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>668</width>
-        <height>528</height>
-       </rect>
+          <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>672</width>
+              <height>532</height>
+          </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="leftMargin">
@@ -56,27 +56,35 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="font">
-          <font>
-              <family>微软雅黑</family>
-           <pointsize>20</pointsize>
-          </font>
+             <font>
+                 <family>楷体</family>
+                 <pointsize>22</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+             </font>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(68, 126, 217);
-padding: 10px</string>
-         </property>
-         <property name="text">
-          <string>详细信息</string>
-         </property>
+            <property name="styleSheet">
+                <string notr="true">background-color: rgb(68, 126, 217);
+                    padding: 10px
+                </string>
+            </property>
+            <property name="text">
+                <string>详细信息</string>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignCenter</set>
+            </property>
         </widget>
        </item>
        <item>
         <widget class="QTableWidget" name="tableWidget">
          <property name="font">
-          <font>
-              <family>微软雅黑</family>
-           <pointsize>12</pointsize>
-          </font>
+             <font>
+                 <family>黑体</family>
+                 <pointsize>14</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+             </font>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -321,10 +329,10 @@ padding: 10px</string>
          <item>
           <widget class="QPushButton" name="btn_export">
            <property name="font">
-            <font>
-                <family>微软雅黑</family>
-             <pointsize>14</pointsize>
-            </font>
+               <font>
+                   <family>华文新魏</family>
+                   <pointsize>18</pointsize>
+               </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -337,10 +345,10 @@ padding: 10px</string>
          <item>
           <widget class="QPushButton" name="btn_append">
            <property name="font">
-            <font>
-                <family>微软雅黑</family>
-             <pointsize>14</pointsize>
-            </font>
+               <font>
+                   <family>华文新魏</family>
+                   <pointsize>18</pointsize>
+               </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -353,10 +361,10 @@ padding: 10px</string>
          <item>
           <widget class="QPushButton" name="btn_modify">
            <property name="font">
-            <font>
-                <family>微软雅黑</family>
-             <pointsize>14</pointsize>
-            </font>
+               <font>
+                   <family>华文新魏</family>
+                   <pointsize>18</pointsize>
+               </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -369,10 +377,10 @@ padding: 10px</string>
          <item>
           <widget class="QPushButton" name="btn_delete">
            <property name="font">
-            <font>
-                <family>微软雅黑</family>
-             <pointsize>14</pointsize>
-            </font>
+               <font>
+                   <family>华文新魏</family>
+                   <pointsize>18</pointsize>
+               </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -385,10 +393,10 @@ padding: 10px</string>
          <item>
           <widget class="QPushButton" name="btn_close">
            <property name="font">
-            <font>
-                <family>微软雅黑</family>
-             <pointsize>14</pointsize>
-            </font>
+               <font>
+                   <family>华文新魏</family>
+                   <pointsize>18</pointsize>
+               </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>

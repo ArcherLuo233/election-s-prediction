@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>微软雅黑</family>
+    <family>华文新魏</family>
     <pointsize>16</pointsize>
    </font>
   </property>
@@ -23,10 +23,12 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
+         <font>
+             <family>楷体</family>
+             <pointsize>24</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+         </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(68, 126, 217);
@@ -71,10 +73,10 @@
      <item row="0" column="0">
       <widget class="QLabel" name="username">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="text">
         <string>用户名：</string>
@@ -84,10 +86,10 @@
      <item row="0" column="1">
       <widget class="QLineEdit" name="LineEdit">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="inputMask">
         <string/>
@@ -100,10 +102,10 @@
      <item row="1" column="0">
       <widget class="QLabel" name="oldpassword">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="text">
         <string>旧密码：</string>
@@ -113,10 +115,10 @@
      <item row="1" column="1">
       <widget class="QLineEdit" name="LineEdit_2">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
@@ -129,10 +131,10 @@
      <item row="2" column="0">
       <widget class="QLabel" name="newpassword1">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="text">
         <string>新密码：</string>
@@ -142,10 +144,10 @@
      <item row="2" column="1">
       <widget class="QLineEdit" name="LineEdit_3">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
@@ -158,10 +160,10 @@
      <item row="3" column="0">
       <widget class="QLabel" name="newpassword2">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="text">
         <string>确认新密码：</string>
@@ -171,10 +173,10 @@
      <item row="3" column="1">
       <widget class="QLineEdit" name="LineEdit_4">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>20</pointsize>
+           </font>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
@@ -202,10 +204,10 @@
    <item>
     <widget class="QLabel" name="label_2">
      <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>12</pointsize>
-      </font>
+         <font>
+             <family>华文新魏</family>
+             <pointsize>14</pointsize>
+         </font>
      </property>
      <property name="text">
       <string>注:仅修改用户名时可不填写密码。</string>
@@ -233,10 +235,10 @@
      <item>
       <widget class="QPushButton" name="btn_modifyuserinfo">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>18</pointsize>
+           </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
@@ -249,10 +251,10 @@
      <item>
       <widget class="QPushButton" name="btn_close">
        <property name="font">
-        <font>
-         <family>微软雅黑</family>
-         <pointsize>16</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>18</pointsize>
+           </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>

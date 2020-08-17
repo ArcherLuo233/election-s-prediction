@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>微软雅黑</family>
+    <family>华文新魏</family>
     <pointsize>12</pointsize>
    </font>
   </property>
@@ -60,7 +60,7 @@
     <widget class="QLabel" name="label_leftdot">
      <property name="font">
       <font>
-          <family>微软雅黑</family>
+          <family>华文新魏</family>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>

@@ -18,7 +18,7 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>微软雅黑</family>
+       <family>华文新魏</family>
        <pointsize>20</pointsize>
       </font>
      </property>
@@ -41,7 +41,7 @@
       <widget class="QPushButton" name="btn_reflash">
        <property name="font">
         <font>
-            <family>微软雅黑</family>
+            <family>华文新魏</family>
          <pointsize>18</pointsize>
         </font>
        </property>
@@ -70,7 +70,7 @@
       <widget class="QPushButton" name="btn_close">
        <property name="font">
         <font>
-            <family>微软雅黑</family>
+            <family>华文新魏</family>
          <pointsize>18</pointsize>
         </font>
        </property>
@@ -88,7 +88,7 @@
     <widget class="QTableWidget" name="tableWidget">
      <property name="font">
       <font>
-          <family>微软雅黑</family>
+          <family>黑体</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -232,16 +232,16 @@
        <string>New Row</string>
       </property>
      </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
+        <row>
+            <property name="text">
+                <string>New Row</string>
+            </property>
+        </row>
+        <row>
+            <property name="text">
+                <string>New Row</string>
+            </property>
+        </row>
         <row>
             <property name="text">
                 <string>New Row</string>
@@ -340,16 +340,16 @@
         <item row="1" column="2">
             <property name="text">
                 <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="1" column="4">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
+            </property>
+            <property name="flags">
+                <set>ItemIsEnabled</set>
+            </property>
+        </item>
+        <item row="1" column="4">
+            <property name="text">
+                <string/>
+            </property>
+        </item>
      <item row="2" column="1">
       <property name="text">
        <string/>

@@ -24,8 +24,8 @@
                 <widget class="QLabel" name="label">
                     <property name="font">
                         <font>
-                            <family>微软雅黑</family>
-                            <pointsize>20</pointsize>
+                            <family>华文新魏</family>
+                            <pointsize>22</pointsize>
                         </font>
                     </property>
                     <property name="styleSheet">
@@ -45,6 +45,7 @@
                 <widget class="QTextEdit" name="textEdit">
                     <property name="font">
                         <font>
+                            <family>黑体</family>
                             <pointsize>14</pointsize>
                         </font>
                     </property>
@@ -75,8 +76,8 @@
                         <widget class="QPushButton" name="btn_modify">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>14</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="cursor">
@@ -91,8 +92,8 @@
                         <widget class="QPushButton" name="btn_close">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>14</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="cursor">

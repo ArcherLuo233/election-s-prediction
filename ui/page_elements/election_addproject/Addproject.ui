@@ -18,8 +18,8 @@
                 <widget class="QLabel" name="label">
                     <property name="font">
                         <font>
-                            <family>微软雅黑</family>
-                            <pointsize>20</pointsize>
+                            <family>华文新魏</family>
+                            <pointsize>30</pointsize>
                         </font>
                     </property>
                     <property name="styleSheet">
@@ -53,8 +53,8 @@
                         <widget class="QLabel" name="tgyear">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>16</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="text">
@@ -66,8 +66,8 @@
                         <widget class="QComboBox" name="ComboBox">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>16</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                         </widget>
@@ -76,8 +76,8 @@
                         <widget class="QLabel" name="projectname">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>16</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="text">
@@ -89,8 +89,8 @@
                         <widget class="QLineEdit" name="LineEdit">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>16</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="placeholderText">
@@ -119,8 +119,8 @@
                         <widget class="QPushButton" name="btn_addproject">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>14</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="cursor">
@@ -135,8 +135,8 @@
                         <widget class="QPushButton" name="btn_close">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
-                                    <pointsize>14</pointsize>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
                                 </font>
                             </property>
                             <property name="cursor">

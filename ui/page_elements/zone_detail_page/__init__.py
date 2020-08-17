@@ -1,5 +1,6 @@
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Border, Font, Side
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
                              QTableWidget, QTableWidgetItem)
@@ -22,6 +23,8 @@ class DetailPage(ModalDialog):
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
+        self.ui.tableWidget.horizontalHeader().setStyleSheet("QHeaderView::section{font:13pt '黑体' ;color: black;};")
+
         # tableWidget-span
         item = QTableWidgetItem()
         item.setFlags(Qt.ItemIsEnabled)

@@ -8,7 +8,7 @@ from .UserinfoUI import Ui_Dialog
 
 class UserInfoPage(ModalDialog):
     def __init__(self, parent):
-        super().__init__(parent, size=(800, 500))
+        super().__init__(parent, size=(650, 500))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.LineEdit.setText(g.current_user.nickname)

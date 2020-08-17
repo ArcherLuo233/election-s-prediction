@@ -12,7 +12,7 @@
         </property>
         <property name="font">
             <font>
-                <family>微软雅黑</family>
+                <family>华文新魏</family>
                 <pointsize>12</pointsize>
                 <weight>50</weight>
                 <bold>false</bold>
@@ -28,7 +28,7 @@
                         <widget class="QLabel" name="label">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
+                                    <family>华文新魏</family>
                                     <pointsize>20</pointsize>
                                     <weight>50</weight>
                                     <bold>false</bold>
@@ -109,7 +109,7 @@
                         <widget class="QPushButton" name="pushButton">
                             <property name="font">
                                 <font>
-                                    <family>微软雅黑</family>
+                                    <family>华文新魏</family>
                                     <pointsize>14</pointsize>
                                     <weight>50</weight>
                                     <bold>false</bold>

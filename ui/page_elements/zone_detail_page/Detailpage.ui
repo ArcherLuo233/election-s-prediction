@@ -18,7 +18,7 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>微软雅黑</family>
+       <family>华文新魏</family>
        <pointsize>20</pointsize>
       </font>
      </property>
@@ -38,7 +38,7 @@ padding: 10px</string>
     <widget class="QTableWidget" name="tableWidget">
      <property name="font">
       <font>
-          <family>微软雅黑</family>
+          <family>黑体</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -192,44 +192,108 @@ padding: 10px</string>
        <string>New Row</string>
       </property>
      </row>
-     <column>
-      <property name="text">
-       <string>选区</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>子选区</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>镇长/议员</string>
-      </property>
-     </column>
+        <column>
+            <property name="text">
+                <string>选区</string>
+            </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>子选区</string>
+            </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>镇长/议员</string>
+            </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
+            </property>
+        </column>
         <column>
             <property name="text">
                 <string>代表</string>
+            </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
             </property>
         </column>
         <column>
             <property name="text">
                 <string>里长</string>
             </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
+            </property>
         </column>
         <column>
             <property name="text">
                 <string>社区</string>
+            </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
             </property>
         </column>
         <column>
             <property name="text">
                 <string>农会</string>
             </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
+            </property>
         </column>
         <column>
             <property name="text">
                 <string>民间组织</string>
+            </property>
+            <property name="font">
+                <font>
+                    <family>黑体</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                </font>
             </property>
         </column>
         <item row="0" column="1">
@@ -250,16 +314,16 @@ padding: 10px</string>
         <item row="1" column="2">
             <property name="text">
                 <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="1" column="4">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
+            </property>
+            <property name="flags">
+                <set>ItemIsEnabled</set>
+            </property>
+        </item>
+        <item row="1" column="4">
+            <property name="text">
+                <string/>
+            </property>
+        </item>
      <item row="2" column="1">
       <property name="text">
        <string>明正里</string>
@@ -504,47 +568,47 @@ padding: 10px</string>
      </item>
     </widget>
    </item>
-   <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-               <widget class="QPushButton" name="btn_export">
-                   <property name="font">
-                       <font>
-                           <family>微软雅黑</family>
-                           <pointsize>14</pointsize>
-                       </font>
-                   </property>
-                   <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="text">
-                       <string>导出</string>
-                   </property>
-               </widget>
-           </item>
-           <item>
-               <spacer name="horizontalSpacer">
-                   <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                       <size>
-                           <width>40</width>
-                           <height>20</height>
-                       </size>
-                   </property>
-               </spacer>
-           </item>
-     <item>
-      <widget class="QPushButton" name="btn_save">
-       <property name="font">
-        <font>
-            <family>微软雅黑</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
+      <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+                  <widget class="QPushButton" name="btn_export">
+                      <property name="font">
+                          <font>
+                              <family>华文新魏</family>
+                              <pointsize>18</pointsize>
+                          </font>
+                      </property>
+                      <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                          <string>导出</string>
+                      </property>
+                  </widget>
+              </item>
+              <item>
+                  <spacer name="horizontalSpacer">
+                      <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                          <size>
+                              <width>40</width>
+                              <height>20</height>
+                          </size>
+                      </property>
+                  </spacer>
+              </item>
+              <item>
+                  <widget class="QPushButton" name="btn_save">
+                      <property name="font">
+                          <font>
+                              <family>华文新魏</family>
+                              <pointsize>18</pointsize>
+                          </font>
+                      </property>
+                      <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>保存</string>
@@ -554,10 +618,10 @@ padding: 10px</string>
      <item>
       <widget class="QPushButton" name="button_ok">
        <property name="font">
-        <font>
-            <family>微软雅黑</family>
-         <pointsize>14</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>18</pointsize>
+           </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>

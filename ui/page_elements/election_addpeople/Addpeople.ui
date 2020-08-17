@@ -17,10 +17,10 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>20</pointsize>
-      </font>
+         <font>
+             <family>华文新魏</family>
+             <pointsize>30</pointsize>
+         </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(68, 126, 217);
@@ -36,170 +36,170 @@
     </widget>
    </item>
    <item>
-    <layout class="QFormLayout" name="formLayout_2">
-     <property name="leftMargin">
-      <number>30</number>
-     </property>
-        <property name="topMargin">
-            <number>20</number>
-        </property>
-        <property name="rightMargin">
-            <number>30</number>
-        </property>
-        <property name="bottomMargin">
-            <number>20</number>
-        </property>
-        <item row="0" column="0">
-            <widget class="QLabel" name="Label">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-                <property name="text">
-                    <string>年度:</string>
-                </property>
-            </widget>
-        </item>
-        <item row="0" column="1">
-            <widget class="QComboBox" name="ComboBox">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-            </widget>
-        </item>
-        <item row="1" column="0">
-            <widget class="QLabel" name="Label_2">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-                <property name="text">
-                    <string>项目名:</string>
-                </property>
-            </widget>
-        </item>
-        <item row="1" column="1">
-            <widget class="QComboBox" name="ComboBox_2">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-            </widget>
-        </item>
-        <item row="2" column="0">
-            <widget class="QLabel" name="name">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-                <property name="text">
-                    <string>姓名:</string>
-                </property>
-            </widget>
-        </item>
-        <item row="2" column="1">
-            <widget class="QLineEdit" name="LineEdit">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>14</pointsize>
-                    </font>
-                </property>
-                <property name="placeholderText">
-                    <string>请输入姓名</string>
-                </property>
-            </widget>
-        </item>
-        <item row="3" column="0">
-            <widget class="QLabel" name="vote_number">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-                <property name="text">
-                    <string>票数:</string>
-                </property>
-            </widget>
-        </item>
-        <item row="3" column="1">
-            <widget class="QLineEdit" name="LineEdit_2">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>14</pointsize>
-                    </font>
-                </property>
-                <property name="placeholderText">
-                    <string>请输入得票数</string>
-                </property>
-            </widget>
-        </item>
-        <item row="4" column="0">
-            <widget class="QLabel" name="Label_3">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-                <property name="text">
-                    <string>上报票数:</string>
-                </property>
-            </widget>
-        </item>
-        <item row="4" column="1">
-            <widget class="QLineEdit" name="votes_reported">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>14</pointsize>
-                    </font>
-                </property>
-                <property name="placeholderText">
-                    <string>请输入上报票数</string>
-                </property>
-            </widget>
-        </item>
-        <item row="5" column="0">
-            <widget class="QLabel" name="Label_4">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>16</pointsize>
-                    </font>
-                </property>
-                <property name="text">
-                    <string>参考赋值:</string>
-                </property>
-            </widget>
-        </item>
-        <item row="5" column="1">
-            <widget class="QLineEdit" name="reference_assignment">
-                <property name="font">
-                    <font>
-                        <family>微软雅黑</family>
-                        <pointsize>14</pointsize>
-                    </font>
-                </property>
-                <property name="placeholderText">
-                    <string>请输入参考赋值</string>
-                </property>
-            </widget>
-        </item>
-    </layout>
+       <layout class="QFormLayout" name="formLayout_2">
+           <property name="leftMargin">
+               <number>30</number>
+           </property>
+           <property name="topMargin">
+               <number>20</number>
+           </property>
+           <property name="rightMargin">
+               <number>30</number>
+           </property>
+           <property name="bottomMargin">
+               <number>20</number>
+           </property>
+           <item row="0" column="0">
+               <widget class="QLabel" name="Label">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>年度:</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="0" column="1">
+               <widget class="QComboBox" name="ComboBox">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+               </widget>
+           </item>
+           <item row="1" column="0">
+               <widget class="QLabel" name="Label_2">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>项目名:</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="1" column="1">
+               <widget class="QComboBox" name="ComboBox_2">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+               </widget>
+           </item>
+           <item row="2" column="0">
+               <widget class="QLabel" name="name">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>姓名:</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="2" column="1">
+               <widget class="QLineEdit" name="LineEdit">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>14</pointsize>
+                       </font>
+                   </property>
+                   <property name="placeholderText">
+                       <string>请输入姓名</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="3" column="0">
+               <widget class="QLabel" name="vote_number">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>票数:</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="3" column="1">
+               <widget class="QLineEdit" name="LineEdit_2">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>14</pointsize>
+                       </font>
+                   </property>
+                   <property name="placeholderText">
+                       <string>请输入得票数</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="4" column="0">
+               <widget class="QLabel" name="Label_3">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>上报票数:</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="4" column="1">
+               <widget class="QLineEdit" name="votes_reported">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>14</pointsize>
+                       </font>
+                   </property>
+                   <property name="placeholderText">
+                       <string>请输入上报票数</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="5" column="0">
+               <widget class="QLabel" name="Label_4">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>16</pointsize>
+                       </font>
+                   </property>
+                   <property name="text">
+                       <string>参考赋值:</string>
+                   </property>
+               </widget>
+           </item>
+           <item row="5" column="1">
+               <widget class="QLineEdit" name="reference_assignment">
+                   <property name="font">
+                       <font>
+                           <family>华文新魏</family>
+                           <pointsize>14</pointsize>
+                       </font>
+                   </property>
+                   <property name="placeholderText">
+                       <string>请输入参考赋值</string>
+                   </property>
+               </widget>
+           </item>
+       </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -219,10 +219,10 @@
      <item>
       <widget class="QPushButton" name="btn_addpeople">
        <property name="font">
-        <font>
-            <family>微软雅黑</family>
-         <pointsize>14</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>18</pointsize>
+           </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
@@ -235,10 +235,10 @@
      <item>
       <widget class="QPushButton" name="btn_close">
        <property name="font">
-        <font>
-            <family>微软雅黑</family>
-         <pointsize>14</pointsize>
-        </font>
+           <font>
+               <family>华文新魏</family>
+               <pointsize>18</pointsize>
+           </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>

@@ -9,14 +9,13 @@ class LS(Base):
     class_name = '陆生'
 
     field = [
-        'id', 'area', 'level', 'nickname', 'sex', 'id_card', 'political_status', 'tendency', 'is_undergraduate',
+        'id', 'area', 'level', 'nickname', 'id_card', 'political_status', 'tendency', 'is_undergraduate',
         'high_sc_graduate', 'college', 'major',
         'undergraduate_college', 'undergraduate_major', 'master_college', 'master_major', 'phone',
         'join_clubs_and_duties', 'address', 'community', 'activity', 'father_nickname', 'father_job', 'father_phone',
         'mather_nickname', 'mather_job', 'mather_phone', 'in_shao', 'company', 'remark'
 
     ]
-    read_field = ['sex']
 
     template_start_row = 4
 
