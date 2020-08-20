@@ -56,10 +56,7 @@ class CheckComboBox(QWidget):
 
     def set_items(self, items):
         self._items = items
-        if self.exclude:
-            self._selected = ''
-        else:
-            self._selected = []
+        self._selected = []
 
     @property
     def selected_items(self):
@@ -76,8 +73,7 @@ class CheckComboBox(QWidget):
                 val = ''
             else:
                 val = []
+        if isinstance(val, str):
+            val = [val]
         self._selected = val
-        if self.exclude:
-            self.ui.lineEdit.setText(val)
-        else:
-            self.ui.lineEdit.setText('|'.join(val))
+        self.ui.lineEdit.setText('|'.join(val))
