@@ -400,16 +400,16 @@ class SearchPage(QWidget):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
         if filename == "":
             return
-        # try:
-        #     if self.model is None:
-        #         raise AppException("Undefined Export: %s" % self.title)
-        #     conditions = self.get_conditions()
-        #     self.model.export(filename, **conditions)
-        # except Exception as e:
-        #     QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
-        #     return
-        if self.model is None:
-            raise AppException("Undefined Export: %s" % self.title)
-        conditions = self.get_conditions()
-        self.model.export(filename, **conditions)
+        try:
+            if self.model is None:
+                raise AppException("Undefined Export: %s" % self.title)
+            conditions = self.get_conditions()
+            self.model.export(filename, **conditions)
+        except Exception as e:
+            QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
+            return
+        # if self.model is None:
+        #     raise AppException("Undefined Export: %s" % self.title)
+        # conditions = self.get_conditions()
+        # self.model.export(filename, **conditions)
         QMessageBox.information(None, "导出数据", "导出完毕")

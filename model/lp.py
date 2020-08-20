@@ -10,21 +10,23 @@ class LP(Base):
 
     field = [
         'id', 'nickname', 'sex', 'birth', 'area', 'education', 'job', 'marriage_status', 'marriage_registration_date',
-        'type_of_certificate', 'number_of_certificate', 'social_identity', 'activity', 'domicile', 'community',
+        'type_of_certificate', 'number_of_certificate', 'social_identity', 'activity', 'community', 'domicile',
         'mainland_company', 'mainland_company_address', 'mainland_residential_address', 'mainland_phone',
-        'taiwan_company', 'taiwan_company_address', 'taiwan_residential_address', 'taiwan_phone', 'tendency',
-        'join_party', 'remark',
+        'taiwan_company', 'taiwan_company_address', 'taiwan_residential_address', 'taiwan_phone', 'join_party',
+        'tendency', 'remark',
         'spouse_nickname', 'spouse_sex', 'spouse_hometown', 'spouse_birth', 'spouse_nation', 'spouse_education',
         'spouse_partisan', 'spouse_type_of_certificate', 'spouse_number_of_certificate', 'spouse_graduated_school',
-        'spouse_mainland_company', 'spouse_mainland_company_address', 'spouse_mainland_residential_address',
-        'spouse_mainland_phone', 'spouse_taiwan_company', 'spouse_taiwan_company_address',
-        'spouse_taiwan_residential_address', 'spouse_taiwan_phone', 'child_nickname', 'child_sex', 'child_hometown',
+        'spouse_mainland_residential_address', 'spouse_mainland_phone', 'spouse_taiwan_residential_address',
+        'spouse_taiwan_phone', 'spouse_mainland_company', 'spouse_mainland_company_address', 'spouse_taiwan_company',
+        'spouse_taiwan_company_address', 'child_nickname', 'child_sex', 'child_hometown',
         'child_nation', 'child_place_of_birth', 'child_birth', 'child_education', 'child_political_status',
         'child_join_date', 'child_type_of_certificate', 'child_number_of_certificate', 'child_domicile', 'child_phone',
-        'child_company_name', 'child_company_major', 'child_company_address', 'child_company_phone', 'child_specialty',
+        'child_company_major', 'child_company_name', 'child_company_address', 'child_company_phone', 'child_specialty',
 
         'father_name', 'father_birth', 'father_job', 'father_political_status',
-        'mother_name', 'mother_birth', 'mother_job', 'mother_political_status', 'mainland_contact'
+        'mother_name', 'mother_birth', 'mother_job', 'mother_political_status',
+        'other_number_name', 'relation_of', 'number_birth', 'number_job', 'number_phone', 'number_political_status',
+        'mainland_contact_name', 'mainland_contact_phone', 'mainland_contact_relation_of'
     ]
 
     template_start_row = 5
@@ -53,7 +55,7 @@ class LP(Base):
     taiwan_phone = Column(String(100), comment='台湾联系电话')
     spouse_nickname = Column(String(100), comment='配偶姓名')
     spouse_sex = Column(String(100), comment='配偶性别')
-    spouse_hometown = Column(String(100), comment='配偶籍贯')
+    spouse_hometown = Column(String(100), comment='配偶户籍地址')
     spouse_birth = Column(String(100), comment='配偶出生年月')
     spouse_nation = Column(String(100), comment='配偶民族')
     spouse_education = Column(String(100), comment='配偶学历')
@@ -95,10 +97,19 @@ class LP(Base):
 
     father_name = Column(String(100), comment='父亲姓名')
     mother_name = Column(String(100), comment='母亲姓名')
-    father_birth = Column(String(100), comment='父亲生日')
-    mother_birth = Column(String(100), comment='母亲生日')
-    father_job = Column(String(100), comment='父亲工作单位职务')
-    mother_job = Column(String(100), comment='母亲工作单位职务')
-    father_political_status = Column(String(100), comment='父亲政治倾向')
-    mother_political_status = Column(String(100), comment='母亲政治倾向')
-    mainland_contact = Column(String(100), comment='大陆联系人')
+    father_birth = Column(String(100), comment='父亲出生年月')
+    mother_birth = Column(String(100), comment='母亲出生年月')
+    father_job = Column(String(100), comment='父亲单位职务')
+    mother_job = Column(String(100), comment='母亲单位职务')
+    father_political_status = Column(String(100), comment='父亲政治面貌')
+    mother_political_status = Column(String(100), comment='母亲政治面貌')
+
+    other_number_name = Column(String(100), comment='其他成员姓名')
+    relation_of = Column(String(100), comment='与陆配关系')
+    number_birth = Column(String(100), comment='成员出生年月')
+    number_job = Column(String(100), comment='成员单位职务')
+    number_phone = Column(String(100), comment='成员联系电话')
+    number_political_status = Column(String(100), comment='成员政治面貌')
+    mainland_contact_name = Column(String(100), comment='大陆联系人姓名')
+    mainland_contact_phone = Column(String(100), comment='大陆联系人电话')
+    mainland_contact_relation_of = Column(String(100), comment='大陆联系人与陆配关系')

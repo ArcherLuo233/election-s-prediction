@@ -8,6 +8,7 @@ from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
+from docx.shared import Pt, Cm, Inches
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
 from PIL import Image
@@ -99,12 +100,73 @@ def download_file(from_filename, to_filename):
         f.write(raw)
 
 
+def save_jg_detial(filename, title, data):
+    document = Document()
+    document.styles['Normal'].font.name = u'华文楷体'
+    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'华文楷体')
+
+    p = document.add_paragraph()
+    p.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+    run = p.add_run(data['名称'])
+    run.font.size = Pt(25)
+
+    p = document.add_paragraph()
+    p.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+    run = p.add_run("机构简介:")
+    run.font.bold = True
+    run.font.size = Pt(18)
+
+    p = document.add_paragraph()
+    p.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+    p.paragraph_format.first_line_indent = Cm(0.75)
+    run = p.add_run(data['简介'])
+    run.font.size = Pt(14)
+
+    table = document.add_table(rows=6, cols=4, style="Table Grid")
+    table.style.font.size = Pt(14)
+    content = ['会长', '副会长', '理事长', '总干事(秘书长)', '理事', '监事', '成员', '历史人员', '机构类型']
+    index = 0
+    for i in range(6):
+        if i <= 2:
+            for j in range(2):
+                cell_v = table.cell(i, j * 2)
+                cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                cell_v.text = content[index]
+                index += 1
+                cell_v = table.cell(i, j * 2 + 1)
+                cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                cell_v.text = data[content[index - 1]]
+        else:
+            table.cell(i, 1).merge(table.cell(i, 3))
+            cell_v = table.cell(i, 0)
+            cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            cell_v.text = content[index]
+            index += 1
+            cell_v = table.cell(i, 1)
+            cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            cell_v.text = data[content[index - 1]]
+
+    p = document.add_paragraph()
+    p.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+    run = p.add_run("备注:")
+    run.font.bold = True
+    run.font.size = Pt(18)
+
+    p = document.add_paragraph()
+    p.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+    p.paragraph_format.first_line_indent = Cm(0.75)
+    run = p.add_run(data['备注'])
+    run.font.size = Pt(14)
+
+    document.save(filename)
+
+
 def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
     if ty_data is None:
         ty_data = []
     document = Document()
-    document.styles['Normal'].font.name = u'微软雅黑'
-    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'微软雅黑')
+    document.styles['Normal'].font.name = u'华文楷体'
+    document.styles['Normal']._element.rPr.rFonts.set(qn('w:eastAsia'), u'华文楷体')
 
     title_paragraph = document.add_paragraph()
     title_run = title_paragraph.add_run(title)
@@ -116,8 +178,10 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
         row = (len(data) + pic_row) // 2
     else:
         row = (len(data) + 1) // 2
+    if title == '陆配':
+        row += 1
     table = document.add_table(rows=row, cols=4, style='Table Grid')
-    table.style.font.size = Pt(16)
+    table.style.font.size = Pt(14)
     if pic:
         table.cell(0, 2).merge(table.cell(pic_row - 1, 2))
         table.cell(0, 3).merge(table.cell(pic_row - 1, 3))
@@ -127,6 +191,19 @@ def save_word(filename, title, data, pic=False, ty_data=None):  # noqa: C901
     for k, v in data.items():
         if k == '照片':
             continue
+        if title == '陆配':
+            if k == '备注' or k == '配偶毕业院校':
+                table.cell(row_idx, 1).merge(table.cell(row_idx, 3))
+                cell_k = table.cell(row_idx, 0)
+                cell_k.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                cell_v = table.cell(row_idx, 1)
+                cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                cell_k.text = k
+                cell_v.text = v
+                row_idx += 1
+                col_idx = 0
+                continue
+
         cell_k = table.cell(row_idx, col_idx)
         cell_k.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
         cell_v = table.cell(row_idx, col_idx + 1)

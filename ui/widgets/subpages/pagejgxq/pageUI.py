@@ -132,6 +132,14 @@ class Ui_Form(object):
         self.btn_save.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_save.setObjectName("btn_save")
         self.horizontalLayout.addWidget(self.btn_save)
+        self.btn_export = QtWidgets.QPushButton(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("华文新魏")
+        font.setPointSize(18)
+        self.btn_export.setFont(font)
+        self.btn_export.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_export.setObjectName("btn_export")
+        self.horizontalLayout.addWidget(self.btn_export)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem5)
         self.btn_modify_name = QtWidgets.QPushButton(self.frame)
@@ -196,11 +204,10 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "备注:"))
         self.label_3.setText(_translate("Form", "机构类型:"))
         self.btn_save.setText(_translate("Form", "保存"))
+        self.btn_export.setText(_translate("Form", "导出"))
         self.btn_modify_name.setText(_translate("Form", "修改机构名"))
         self.btn_modify_summary.setText(_translate("Form", "修改简介"))
         self.btn_append.setText(_translate("Form", "添加人员"))
         self.btn_del_mode.setText(_translate("Form", "删除人员"))
         self.pushButton.setText(_translate("Form", "返回"))
-
-
 from ui.page_elements.check_combo_box import CheckComboBox

@@ -86,7 +86,7 @@ class DetailPage(ModalDialog):
 
         self.ui.tableWidget.setFont(self.font)
         self.ui.tableWidget.setHorizontalHeaderLabels(
-            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '上报票数', '参考赋值', '与上期相比', '预估票数'])
+            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '与上期相比', '预估票数', '参考赋值', '上报票数'])
         self.ui.tableWidget.horizontalHeader().setStyleSheet("QHeaderView::section{font:12pt '黑体' ;color: black;};")
         self.ui.tableWidget.setRowCount(27)
 
@@ -261,10 +261,10 @@ class DetailPage(ModalDialog):
                     self.additem(beg + sublen, 6, nickname, -1)
                     self.additem(beg + sublen, 7, pvote_number, -1)
                     self.additem(beg + sublen, 8, pvote_rate, -1)
-                    self.additem(beg + sublen, 9, votes_reported, -1)
-                    self.additem(beg + sublen, 10, reference_assignment, -1)
-                    self.additem(beg + sublen, 11, cpwl, -1)
-                    self.additem(beg + sublen, 12, YoY, -1)
+                    self.additem(beg + sublen, 9, cpwl, -1)
+                    self.additem(beg + sublen, 10, YoY, -1)
+                    self.additem(beg + sublen, 11, votes_reported, -1)
+                    self.additem(beg + sublen, 12, reference_assignment, -1)
                     sublen += 1
             beg += height_year
             self.year = []

@@ -15,7 +15,9 @@ class GWTZ_TY(Base):
         'filing_form', 'identity'
     ]
     file_field = ['filing_form']
-
+    export_handle_file = [
+        'identity'
+    ]
     combo_field = {
         'identity': {
             'exclude': False,

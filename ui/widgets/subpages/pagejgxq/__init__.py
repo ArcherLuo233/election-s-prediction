@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMessageBox, QWidget
+from PyQt5.QtWidgets import QMessageBox, QWidget, QFileDialog
 
 from libs.enumrations import UserPermission
 from libs.g import g
@@ -34,6 +34,7 @@ class Pagejgxq(QWidget):
         self.ui.btn_modify_summary.clicked.connect(self.modify_summary)
         self.ui.btn_append.clicked.connect(self.append)
         self.ui.btn_save.clicked.connect(self.save)
+        self.ui.btn_export.clicked.connect(self.export_word)
         self.ui.btn_del_mode.clicked.connect(self.switch_del_mode)
         self.ui.widget.exclude = JG.combo_field['type']['exclude']
         self.ui.widget.set_items(JG.combo_field['type']['items'])
@@ -189,3 +190,16 @@ class Pagejgxq(QWidget):
             dialog = create_dialog_like_widget(self, widget)
             dialog.setFixedSize(1500, 800)
             dialog.exec_()
+
+    def export_word(self):
+        default_name = "./机构-{id}.docx".format(model=JG, id=self.data_id)
+        filename = QFileDialog.getSaveFileName(None, "导出文档", default_name, "word文档(*.docx)")[0]
+        if filename == "":
+            return
+
+        try:
+            JG.export_document(self.data_id, filename)
+        except Exception as e:
+            QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
+            return
+        QMessageBox.information(None, "导出文档", "导出完成")

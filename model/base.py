@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from config.secure import SQLALCHEMY_URL
 from config.settings import DEFAULT_PAGE_SIZE
-from libs.service import download_file, read_excel, save_excel, save_word
+from libs.service import download_file, read_excel, save_excel, save_word, save_jg_detial
 
 engine = create_engine(SQLALCHEMY_URL)
 DBSession = sessionmaker(bind=engine)
@@ -32,6 +32,7 @@ class Base(base_class):
     file_field = []
     read_field = []
     date_field = []
+    export_handle_file = []
     combo_field = {}
 
     template_start_row = 0
@@ -208,6 +209,10 @@ class Base(base_class):
             field.remove(file)
         for file in cls.read_field:
             field.remove(file)
+        for ind, file in enumerate(field):
+            if file in cls.export_handle_file:
+                field[ind] = file + '_'
+
         for item in field:
             attr = getattr(cls, item)
             data[attr.comparator.comment] = getattr(base, item) if getattr(base, item) else ''
@@ -224,5 +229,7 @@ class Base(base_class):
                     attr = getattr(cls.ty, item)
                     tmp[attr.comparator.comment] = getattr(ty, item) if getattr(ty, item) else ''
                 ty_data.append(tmp)
-
-        save_word(filename, cls.class_name, data, cls.pic, ty_data)
+        if cls.class_name == '机构':
+            save_jg_detial(filename, cls.class_name, data)
+        else:
+            save_word(filename, cls.class_name, data, cls.pic, ty_data)

@@ -11,6 +11,9 @@ class JG(Base):
     import_handle_file = ['president', 'vice_president', 'chairman', 'secretary_general',
                           'director', 'supervisor', 'representative', 'historical_staff'
                           ]
+    export_handle_file = ['president', 'vice_president', 'chairman', 'secretary_general',
+                          'director', 'supervisor', 'representative', 'historical_staff', 'type'
+                          ]
     field = [
         'id', 'name', 'introduction', 'president', 'vice_president', 'chairman', 'secretary_general',
         'director', 'supervisor', 'representative', 'historical_staff', 'remark', 'type'
