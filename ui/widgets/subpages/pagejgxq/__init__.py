@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMessageBox, QWidget, QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
 
 from libs.enumrations import UserPermission
 from libs.g import g

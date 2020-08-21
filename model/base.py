@@ -4,7 +4,8 @@ from sqlalchemy.orm import sessionmaker
 
 from config.secure import SQLALCHEMY_URL
 from config.settings import DEFAULT_PAGE_SIZE
-from libs.service import download_file, read_excel, save_excel, save_word, save_jg_detial
+from libs.service import (download_file, read_excel, save_excel,
+                          save_jg_detial, save_word)
 
 engine = create_engine(SQLALCHEMY_URL)
 DBSession = sessionmaker(bind=engine)

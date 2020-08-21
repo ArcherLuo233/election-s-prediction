@@ -1,6 +1,5 @@
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import Qt
-from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
