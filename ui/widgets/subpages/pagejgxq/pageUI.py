@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui.page_elements.check_combo_box import CheckComboBox
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -210,4 +212,3 @@ class Ui_Form(object):
         self.btn_append.setText(_translate("Form", "添加人员"))
         self.btn_del_mode.setText(_translate("Form", "删除人员"))
         self.pushButton.setText(_translate("Form", "返回"))
-from ui.page_elements.check_combo_box import CheckComboBox

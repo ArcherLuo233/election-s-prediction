@@ -7,8 +7,7 @@ from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
-from docx.shared import Inches, Pt
-from docx.shared import Pt, Cm, Inches
+from docx.shared import Cm, Inches, Pt
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side
 from PIL import Image

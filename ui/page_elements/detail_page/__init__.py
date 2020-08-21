@@ -110,6 +110,8 @@ class DetailPage(QDialog):
     def refresh_data(self, id_: int):
         if id_ == -1:
             meta = self.model()
+            for i, j in self.default_conditions.items():
+                setattr(meta, i, j)
         else:
             meta = self.model.get_by_id(id_)
             if meta is None:
@@ -210,7 +212,7 @@ class DetailPage(QDialog):
             widget.exclude = self.model.combo_field[item['idx']]['exclude']
             widget.set_items(self.model.combo_field[item['idx']]['items'])
             widget.selected_items = item['value']
-            widget.setFont(self.font())
+            widget.setFont(widget.font())
         elif item['type'] == 'date':
             widget = DateWidget()
             widget.set_date(item['value'])
