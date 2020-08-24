@@ -47,6 +47,14 @@ class Pagejgxq(QWidget):
     def remark(self, text):
         self.ui.textedit_remark.setPlainText(text)
 
+    @property
+    def type(self):
+        return self.ui.widget.selected_items
+
+    @type.setter
+    def type(self, val):
+        self.ui.widget.selected_items = val
+
     def paintEvent(self, e):
         if g.current_user.permission != UserPermission.Admin:
             self.ui.btn_save.hide()
@@ -124,7 +132,7 @@ class Pagejgxq(QWidget):
                 for i, j in self.staff_names.items()
             },
             'remark': self.remark,
-            'type': self.ui.widget.selected_items
+            'type': self.type
         }
         if self.data_id == -1:
             JG.create(**data)
@@ -137,7 +145,6 @@ class Pagejgxq(QWidget):
         self.ui.label_name.setText(self.name)
         self.ui.label_summary.setText(self.summary)
         self.set_staff_info(self.staff_info)
-        self.ui.textedit_remark.setPlainText(self.remark)
 
     def staff_info2str(self, type_, name):
         s = '<a href="#detail:{0}">' \
