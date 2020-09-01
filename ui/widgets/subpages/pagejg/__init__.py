@@ -31,6 +31,11 @@ class Pagejg_ztjg(Pagejg):
 
 class Pagejg_zstq(SearchPage):
     title = '机构-在绍台企'
+    summary = [
+        '名称',
+        '联系电话',
+        '法定代表人姓名'
+    ]
     model = ZSTQ
 
 

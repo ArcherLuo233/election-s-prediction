@@ -38,7 +38,7 @@ class ZSTQ(Base):
     tg_number = Column(String(100), comment='台干数')
     total_investment = Column(String(100), comment='总投资(万美元)')
     registered_investment = Column(String(100), comment='注册资金(万美元)')
-    Taiwanese_capital_actually = Column(String(100), comment='注册资金(万美元)')
+    Taiwanese_capital_actually = Column(String(100), comment='实际到位台资(万美元)')
     Shareholder_name = Column(String(100), comment='股东名称及股份构成')
     change_situtation = Column(String(100), comment='主要基本信息变更情况')
     investment_in_major_industries = Column(String(100), comment='投资重大战略产业、重大基建、“三农”建设等情况')
