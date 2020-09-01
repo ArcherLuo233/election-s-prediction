@@ -28,7 +28,7 @@
                         </string>
                     </property>
                     <property name="text">
-                        <string>添加年度</string>
+                        <string>添加年度数据</string>
                     </property>
                     <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -49,23 +49,7 @@
                     <property name="bottomMargin">
                         <number>20</number>
                     </property>
-                    <item row="0" column="1">
-                        <widget class="QLineEdit" name="LineEdit">
-                            <property name="font">
-                                <font>
-                                    <family>华文新魏</family>
-                                    <pointsize>16</pointsize>
-                                </font>
-                            </property>
-                            <property name="inputMask">
-                                <string/>
-                            </property>
-                            <property name="placeholderText">
-                                <string>输入年度</string>
-                            </property>
-                        </widget>
-                    </item>
-                    <item row="0" column="0">
+                    <item row="1" column="0">
                         <widget class="QLabel" name="username">
                             <property name="font">
                                 <font>
@@ -75,6 +59,103 @@
                             </property>
                             <property name="text">
                                 <string>年度:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="0">
+                        <widget class="QLabel" name="oldpassword">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="text">
+                                <string>选举人数:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="1">
+                        <widget class="QLineEdit" name="LineEdit_2">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="echoMode">
+                                <enum>QLineEdit::Normal</enum>
+                            </property>
+                            <property name="placeholderText">
+                                <string>输入选举人数</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="3" column="0">
+                        <widget class="QLabel" name="newpassword1">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="text">
+                                <string>投票数:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="3" column="1">
+                        <widget class="QLineEdit" name="LineEdit_3">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="echoMode">
+                                <enum>QLineEdit::Normal</enum>
+                            </property>
+                            <property name="placeholderText">
+                                <string>输入投票数</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="4" column="0">
+                        <widget class="QLabel" name="Label">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="text">
+                                <string>有效票数:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="4" column="1">
+                        <widget class="QLineEdit" name="LineEdit_4">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="echoMode">
+                                <enum>QLineEdit::Normal</enum>
+                            </property>
+                            <property name="placeholderText">
+                                <string>输入有效票数</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="1" column="1">
+                        <widget class="QComboBox" name="ComboBox">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
+                                </font>
                             </property>
                         </widget>
                     </item>

@@ -5,9 +5,8 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
 
 from libs.g import g
 from model.area import Area
-from ui.page_elements.election_addpeople import PeopleAdd
-from ui.page_elements.election_addproject import ProjectAdd
-from ui.page_elements.election_addyear import YearAdd
+from ui.page_elements.election_modifypeople import PeopleModify
+from ui.page_elements.election_modifyyear import YearModify
 from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailPageUI import Ui_Dialog
@@ -31,20 +30,14 @@ class DetailPage(ModalDialog):
         self.font = QtGui.QFont()
         # btn-bind
         if g.current_user.permission == 0:
-            self.ui.btn_delete.hide()
             self.ui.btn_addyear.hide()
-            self.ui.btn_addpro.hide()
             self.ui.btn_addpeople.hide()
         else:
-            self.ui.btn_delete.show()
             self.ui.btn_addyear.show()
-            self.ui.btn_addpro.show()
             self.ui.btn_addpeople.show()
         self.ui.btn_close.clicked.connect(self.close)
-        self.ui.btn_delete.clicked.connect(self.delete)
         self.ui.btn_reflash.clicked.connect(self.reload)
         self.ui.btn_addyear.clicked.connect(self.addyear)
-        self.ui.btn_addpro.clicked.connect(self.addpro)
         self.ui.btn_addpeople.clicked.connect(self.addpeople)
         # _init
         self.empty_pro = {
@@ -105,17 +98,12 @@ class DetailPage(ModalDialog):
         self.reload()
 
     def addyear(self):
-        dialog = YearAdd(self, self.title)
-        dialog.exec_()
-        self.reload()
-
-    def addpro(self):
-        dialog = ProjectAdd(self, self.title)
+        dialog = YearModify(self, self.title)
         dialog.exec_()
         self.reload()
 
     def addpeople(self):
-        dialog = PeopleAdd(self, self.title)
+        dialog = PeopleModify(self, self.title)
         dialog.exec_()
         self.reload()
 
@@ -220,10 +208,23 @@ class DetailPage(ModalDialog):
         beg = 0
         for index, i in enumerate(data):
             year = str(i["year"])
-            election_number = str(i["election_number"])
-            vote_number = str(i["vote_number"])
-            valid_number = str(i["valid_number"])
-            vailidvote_rate = str(round(i["vote_number"] / i["election_number"], 3))
+            if (i["election_number"] == 0):
+                election_number = ''
+            else:
+                election_number = str(i["election_number"])
+            if (i['vote_number'] == 0):
+                vote_number = ''
+            else:
+                vote_number = str(i["vote_number"])
+            if (i['valid_number'] == 0):
+                valid_number = ''
+            else:
+                valid_number = str(i["valid_number"])
+
+            if (i["election_number"] == 0):
+                vailidvote_rate = ''
+            else:
+                vailidvote_rate = str(round(i["vote_number"] / i["election_number"], 3))
             height_year = 0
             pro = {}
             for j in i["projects"]:
@@ -244,10 +245,20 @@ class DetailPage(ModalDialog):
             for j in i["projects"]:
                 for k in j["people"]:
                     nickname = str(k["nickname"])
-                    pvote_number = str(k["vote_number"])
-                    reference_assignment = str(k["reference_assignment"])
-                    votes_reported = str(k['votes_reported'])
-                    if (nickname == ''):
+                    if (k["vote_number"] == 0):
+                        pvote_number = ''
+                    else:
+                        pvote_number = str(k["vote_number"])
+
+                    if (k["reference_assignment"] == 0):
+                        reference_assignment = ''
+                    else:
+                        reference_assignment = str(k["reference_assignment"])
+                    if (k["votes_reported"] == 0):
+                        votes_reported = ''
+                    else:
+                        votes_reported = str(k['votes_reported'])
+                    if (k['cpwl'] == 0):
                         cpwl = ""
                         pvote_rate = ''
                     else:

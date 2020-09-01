@@ -9,8 +9,11 @@ from .AddprojectUI import Ui_Dialog
 
 
 class ProjectAdd(ModalDialog):
-    def __init__(self, parent, title):
-        self.title = title
+    def __init__(self, parent):
+        self.alltitle = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里",
+                         "北投里",
+                         "石川里", "加老里", "新庄里", "新丰里", "御史里", "北势里", "中原里", "富寮里", "南埔里", "坪顶里", "土城里", "平林里", "双冬里"]
+        self.title = '炎峰里'
         super().__init__(parent, size=(500, 400))
         self.setFixedSize(500, 400)
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -19,7 +22,7 @@ class ProjectAdd(ModalDialog):
 
         # btn_
         self.ui.btn_close.clicked.connect(self.close)
-        self.ui.btn_addproject.clicked.connect(self.addproject)
+        self.ui.btn_addproject.clicked.connect(self.addallproject)
         # widget-init
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
@@ -37,6 +40,12 @@ class ProjectAdd(ModalDialog):
         for i in data:
             yearlist.append(str(i["year"]))
         self.ui.ComboBox.addItems(yearlist)
+
+    def addallproject(self):
+        for i in self.alltitle:
+            self.title = i
+            self.addproject()
+        QMessageBox.information(None, "添加项目", "添加项目成功!")
 
     def addproject(self):
         year = self.ui.ComboBox.currentText()
@@ -64,12 +73,12 @@ class ProjectAdd(ModalDialog):
                             "people": [
                                 {
                                     "nickname": "",
-                                    "cpwl": "",
-                                    "vote_number": "",
-                                    "vote_rate": "",
-                                    "reference_assignment": "",
-                                    "votes_reported": "",
-                                    "YoY": ""
+                                    "cpwl": 0,
+                                    "vote_number": 0,
+                                    "vote_rate": 0,
+                                    "reference_assignment": 0,
+                                    "votes_reported": 0,
+                                    "YoY": 0
                                 }
                             ]
                         }
@@ -81,5 +90,5 @@ class ProjectAdd(ModalDialog):
                         break
                 # source.extra=data #待修改
                 source.modify(extra=data)
-                QMessageBox.information(None, "添加项目", "添加项目成功!")
+
                 self.close()

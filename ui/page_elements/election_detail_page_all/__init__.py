@@ -35,6 +35,10 @@ class DetailPage(ModalDialog):
         # btn-bind
         self.ui.btn_close.clicked.connect(self.close)
         self.ui.btn_reflash.clicked.connect(self.reload)
+        self.ui.btn_addyear.clicked.connect(self.addyear)
+        self.ui.btn_addpro.clicked.connect(self.addpro)
+        self.ui.btn_addpeo.clicked.connect(self.addpeople)
+        self.ui.btn_delete.clicked.connect(self.deleteall)
         # _init
 
         # messagebox
@@ -47,22 +51,22 @@ class DetailPage(ModalDialog):
             "people": [
                 {
                     "nickname": "",
-                    "cpwl": "",
-                    "vote_number": "",
-                    "vote_rate": "",
-                    "reference_assignment": "",
-                    "votes_reported": "",
+                    "cpwl": 0,
+                    "vote_number": 0,
+                    "vote_rate": 0,
+                    "reference_assignment": 0,
+                    "votes_reported": 0,
                     "YoY": ""
                 }
             ]
         }
         self.empty_peo = {
             "nickname": "",
-            "cpwl": "",
-            "vote_number": "",
-            "vote_rate": "",
-            "reference_assignment": "",
-            "votes_reported": "",
+            "cpwl": 0,
+            "vote_number": 0,
+            "vote_rate": 0,
+            "reference_assignment": 0,
+            "votes_reported": 0,
             "YoY": ""
         }
 
@@ -88,6 +92,118 @@ class DetailPage(ModalDialog):
         if l != -1:
             self.ui.tableWidget.setSpan(row, col, l, 1)
         self.ui.tableWidget.setItem(row, col, item)
+
+    def addyear(self):
+        dialog = YearAdd(self)
+        dialog.exec_()
+
+        self.reload()
+
+    def addpro(self):
+        dialog = ProjectAdd(self)
+        dialog.exec_()
+
+        self.reload()
+
+    def addpeople(self):
+        dialog = PeopleAdd(self)
+        dialog.exec_()
+
+        self.reload()
+
+    def deleteall(self):
+        select_Column = self.ui.tableWidget.currentColumn()
+        if select_Column == -1:
+            QMessageBox.warning(None, "删除失败", "未选定对象!")
+            return
+        select_row = self.ui.tableWidget.currentRow()
+        select_item = self.ui.tableWidget.currentItem()
+        for i in self.title:
+            self.delete(i, select_Column, select_row, select_item)
+
+        if select_Column < 5:
+            QMessageBox.information(None, "删除", "删除年度成功!")
+        elif select_Column == 5:
+            QMessageBox.information(None, "删除", "删除项目成功!")
+        elif select_Column > 5:
+            QMessageBox.information(None, "删除", "删除候选者成功!")
+
+        self.reload()
+
+    def delete(self, title, select_Column, select_row, select_item):
+        source = Area.search(name=title)['data'][0]
+        data = Area.search(name=title)['data'][0].extra
+
+        if select_Column < 5:
+            year = self.ui.tableWidget.item(select_row, 0).text()
+            for i in data:
+                if (str(i["year"]) == year):
+                    data.remove(i)
+                    break
+
+        elif select_Column == 5:
+            tgyear = self.year[0]
+            for index, i in enumerate(self.year):
+                irow = i.row()
+                if (irow > select_row):
+                    tgyear = self.year[index - 1]
+                    break
+                if index == len(self.year) - 1:
+                    tgyear = i
+                    break
+            year = tgyear.text()
+            pro = select_item.text()
+            for i in data:
+                fg = 1
+                if str(i["year"]) == year:
+                    for j in i["projects"]:
+                        if (str(j["name"]) == pro):
+                            fg = 0
+                            i["projects"].remove(j)
+
+                            if len(i["projects"]) == 0:
+                                i["projects"].append(self.empty_pro)
+                            break
+                if fg == 0: break
+        elif select_Column > 5:
+            tgyear = self.year[0]
+            for index, i in enumerate(self.year):
+                irow = i.row()
+                if (irow > select_row):
+                    tgyear = self.year[index - 1]
+                    break
+                if index == len(self.year) - 1:
+                    tgyear = i
+                    break
+            tgpro = self.projects[0]
+            for index, i in enumerate(self.projects):
+                irow = i.row()
+                if (irow > select_row):
+                    tgpro = self.projects[index - 1]
+                    break
+                if index == len(self.projects) - 1:
+                    tgpro = i
+                    break
+            year = tgyear.text()
+            pro = tgpro.text()
+            name = self.ui.tableWidget.item(select_row, 6).text()
+            for i in data:
+                fg = 1
+                if str(i["year"]) == year:
+                    for j in i["projects"]:
+                        if str(j["name"]) == pro:
+                            for k in j["people"]:
+                                if str(k["nickname"]) == name:
+                                    fg = 0
+                                    j["people"].remove(k)
+
+                                    if len(j["people"]) == 0:
+                                        j["people"].append(self.empty_peo)
+                                    break
+                        if fg == 0: break
+                if fg == 0: break
+        # source.extra=data #待修改
+        source.modify(extra=data)
 
     def getall(self):
         self.data_all = []
@@ -118,17 +234,35 @@ class DetailPage(ModalDialog):
                                 if data_pro['name'] == data_all_pro['name']:
                                     ffl = 1
                                     for data_pe in data_pro['people']:
+                                        if (data_pe['nickname'] == ''): break
                                         fffl = 0
                                         for data_all_pe in data_all_pro['people']:
                                             if data_pe['nickname'] == data_all_pe['nickname']:
                                                 fffl = 1
-                                                data_all_pe['vote_number'] += data_pe['vote_number']
-                                                data_all_pe['votes_reported'] += data_pe['votes_reported']
-                                                data_all_pe['reference_assignment'] += data_pe['reference_assignment']
-                                                if data_pe['cpwl'] != -1:
-                                                    if data_all_pe['cpwl'] == -1:
+                                                if data_pe['vote_number'] == '':
+                                                    data_all_pe['vote_number'] += 0
+                                                else:
+                                                    data_all_pe['vote_number'] += data_pe['vote_number']
+
+                                                if data_pe['votes_reported'] == '':
+                                                    data_all_pe['votes_reported'] += 0
+                                                else:
+                                                    data_all_pe['votes_reported'] += data_pe['votes_reported']
+
+                                                if data_pe['reference_assignment'] == '':
+                                                    data_all_pe['reference_assignment'] += 0
+                                                else:
+                                                    data_all_pe['reference_assignment'] += data_pe[
+                                                        'reference_assignment']
+
+                                                if data_all_pe['cpwl'] == 0:
+                                                    if data_pe['cpwl'] != 0:
                                                         data_all_pe['cpwl'] = data_pe['cpwl']
-                                                    else:
+                                                elif data_all_pe['cpwl'] == -1:
+                                                    if data_pe['cpwl'] != 0 or data_pe['cpwl'] != -1:
+                                                        data_all_pe['cpwl'] = data_pe['cpwl']
+                                                else:
+                                                    if data_pe['cpwl'] != -1 and data_pe['cpwl'] != 0:
                                                         data_all_pe['cpwl'] += data_pe['cpwl']
                                             if fffl == 1: break
                                         if fffl == 0:
@@ -156,10 +290,22 @@ class DetailPage(ModalDialog):
         beg = 0
         for index, i in enumerate(data):
             year = str(i["year"])
-            election_number = str(i["election_number"])
-            vote_number = str(i["vote_number"])
-            valid_number = str(i["valid_number"])
-            vailidvote_rate = str(round(i["vote_number"] / i["election_number"], 3))
+            if (i["election_number"] == 0):
+                election_number = ''
+            else:
+                election_number = str(i["election_number"])
+            if (i['vote_number'] == 0):
+                vote_number = ''
+            else:
+                vote_number = str(i["vote_number"])
+            if (i['valid_number'] == 0):
+                valid_number = ''
+            else:
+                valid_number = str(i["valid_number"])
+            if (i['election_number'] == 0):
+                vailidvote_rate = ''
+            else:
+                vailidvote_rate = str(round(i["vote_number"] / i["election_number"], 3))
             height_year = 0
             pro = {}
             for j in i["projects"]:
@@ -180,14 +326,24 @@ class DetailPage(ModalDialog):
             for j in i["projects"]:
                 for k in j["people"]:
                     nickname = str(k["nickname"])
-                    pvote_number = str(k["vote_number"])
-                    reference_assignment = str(k["reference_assignment"])
-                    votes_reported = str(k['votes_reported'])
-                    if (nickname == ''):
+                    if (k["vote_number"] == 0):
+                        pvote_number = ''
+                    else:
+                        pvote_number = str(k["vote_number"])
+
+                    if (k["reference_assignment"] == 0):
+                        reference_assignment = ''
+                    else:
+                        reference_assignment = str(k["reference_assignment"])
+                    if (k["votes_reported"] == 0):
+                        votes_reported = ''
+                    else:
+                        votes_reported = str(k['votes_reported'])
+                    if (k['cpwl'] == 0):
                         cpwl = ""
                         pvote_rate = ''
                     else:
-                        if k["cpwl"] == -1:
+                        if k["cpwl"] == -1 or k['cpwl'] == 0:
                             cpwl = "缺失"
                         else:
                             cpwl = str(round(k["vote_number"] / k["cpwl"], 2))
@@ -203,3 +359,13 @@ class DetailPage(ModalDialog):
                     self.additem(beg + sublen, 12, reference_assignment, -1)
                     sublen += 1
             beg += height_year
+            self.year = []
+            l = self.ui.tableWidget.rowCount()
+            for j in range(l):
+                if self.ui.tableWidget.item(j, 0):
+                    self.year.append(self.ui.tableWidget.item(j, 0))
+            self.projects = []
+            l = self.ui.tableWidget.rowCount()
+            for j in range(l):
+                if self.ui.tableWidget.item(j, 5):
+                    self.projects.append(self.ui.tableWidget.item(j, 5))

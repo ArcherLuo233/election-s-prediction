@@ -78,23 +78,7 @@
                              <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="text">
-                             <string>添加年度</string>
-                         </property>
-                     </widget>
-                 </item>
-                 <item>
-                     <widget class="QPushButton" name="btn_addpro">
-                         <property name="font">
-                             <font>
-                                 <family>华文新魏</family>
-                                 <pointsize>18</pointsize>
-                             </font>
-                         </property>
-                         <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="text">
-                             <string>添加项目</string>
+                             <string>修改年度数据</string>
                          </property>
                      </widget>
                  </item>
@@ -110,23 +94,7 @@
                              <cursorShape>PointingHandCursor</cursorShape>
                          </property>
                          <property name="text">
-                             <string>添加候选者</string>
-                         </property>
-                     </widget>
-                 </item>
-                 <item>
-                     <widget class="QPushButton" name="btn_delete">
-                         <property name="font">
-                             <font>
-                                 <family>华文新魏</family>
-                                 <pointsize>18</pointsize>
-                             </font>
-                         </property>
-                         <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="text">
-                             <string>删除项目</string>
+                             <string>修改候选者数据</string>
                          </property>
                      </widget>
                  </item>
@@ -178,16 +146,16 @@
                      <bool>false</bool>
                  </property>
                  <property name="selectionMode">
-      <enum>QAbstractItemView::ContiguousSelection</enum>
-     </property>
-     <attribute name="horizontalHeaderVisible">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <row>
-      <property name="text">
+                     <enum>QAbstractItemView::ContiguousSelection</enum>
+                 </property>
+                 <attribute name="horizontalHeaderVisible">
+                     <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                 </attribute>
+                 <row>
+                     <property name="text">
        <string>New Row</string>
       </property>
      </row>
@@ -311,16 +279,16 @@
        <string>New Row</string>
       </property>
      </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>New Row</string>
-      </property>
-     </row>
+                 <row>
+                     <property name="text">
+                         <string>New Row</string>
+                     </property>
+                 </row>
+                 <row>
+                     <property name="text">
+                         <string>New Row</string>
+                     </property>
+                 </row>
                  <column>
                      <property name="text">
                          <string>年度</string>
@@ -331,11 +299,11 @@
                          </font>
                      </property>
                  </column>
-     <column>
-      <property name="text">
-       <string>选举人数</string>
-      </property>
-     </column>
+                 <column>
+                     <property name="text">
+                         <string>选举人数</string>
+                     </property>
+                 </column>
                  <column>
                      <property name="text">
                          <string>投票数</string>
@@ -428,16 +396,16 @@
                      <property name="text">
                          <string/>
                      </property>
-      <property name="flags">
-       <set>ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="2" column="3">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="2" column="4">
+                     <property name="flags">
+                         <set>ItemIsEnabled</set>
+                     </property>
+                 </item>
+                 <item row="2" column="3">
+                     <property name="text">
+                         <string/>
+                     </property>
+                 </item>
+                 <item row="2" column="4">
       <property name="text">
        <string/>
       </property>

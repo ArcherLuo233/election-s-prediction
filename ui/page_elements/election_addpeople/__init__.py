@@ -9,8 +9,11 @@ from .AddpeopleUI import Ui_Dialog
 
 
 class PeopleAdd(ModalDialog):
-    def __init__(self, parent, title):
-        self.title = title
+    def __init__(self, parent):
+        self.alltitle = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里",
+                         "北投里",
+                         "石川里", "加老里", "新庄里", "新丰里", "御史里", "北势里", "中原里", "富寮里", "南埔里", "坪顶里", "土城里", "平林里", "双冬里"]
+        self.title = '炎峰里'
         super().__init__(parent, size=(500, 400))
         self.setFixedSize(500, 400)
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -19,7 +22,7 @@ class PeopleAdd(ModalDialog):
         self.allvotenumber = 0
         # btn_
         self.ui.btn_close.clicked.connect(self.close)
-        self.ui.btn_addpeople.clicked.connect(self.addpeople)
+        self.ui.btn_addpeople.clicked.connect(self.addallpeople)
         self.ui.ComboBox.currentIndexChanged.connect(self.changeanother)
         # widget-init
         self.message = QMessageBox()
@@ -54,25 +57,11 @@ class PeopleAdd(ModalDialog):
         self.ui.ComboBox_2.clear()
         self.ui.ComboBox_2.addItems(prolist)
 
-    def getnxtvote(self, data, year, proname, peoplename, pvote_number):
-        for index, i in enumerate(data):
-            if i['year'] == year:
-                for j in i['projects']:
-                    if j["name"] == proname:
-                        for k in j["people"]:
-                            if k["nickname"] == peoplename:
-                                k["cpwl"] = int(pvote_number)
-                                return
-
-    def getlastvote(self, data, year, proname, peoplename):
-        for index, i in enumerate(data):
-            if i['year'] == year:
-                for j in i['projects']:
-                    if j["name"] == proname:
-                        for k in j["people"]:
-                            if k["nickname"] == peoplename:
-                                return (k["vote_number"])
-        return -1
+    def addallpeople(self):
+        for i in self.alltitle:
+            self.title = i
+            self.addpeople()
+        QMessageBox.information(None, "添加候选人", "添加候选人成功!")
 
     def addpeople(self):
 
@@ -86,23 +75,15 @@ class PeopleAdd(ModalDialog):
 
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.LineEdit.text()
-        pvote_number = self.ui.LineEdit_2.text()
-        reference_assignment = self.ui.reference_assignment.text()
-        votes_reported = self.ui.votes_reported.text()
+
 
         if peoplename == "":
             QMessageBox.warning(None, "添加候选人失败", "请输入正确人名!")
-        elif pvote_number == "":
-            QMessageBox.warning(None, "添加候选人失败", "请输入正确选票数!")
-        elif int(pvote_number) > self.allvotenumber:
-            QMessageBox.warning(None, "添加候选人失败", "选票数大于有效票数!")
         else:
             fg = 0
             source = Area.search(name=self.title)['data'][0]
             data = Area.search(name=self.title)['data'][0].extra
             numyear = int(year)
-            self.getnxtvote(data, numyear + 1, proname, peoplename, pvote_number)  # 修改后一年的
-            cpwl = self.getlastvote(data, numyear - 1, proname, peoplename)  # 增加本年的
             if fg == 0:
                 ffg = 0
                 for i in data:
@@ -112,11 +93,11 @@ class PeopleAdd(ModalDialog):
                                 ffg = 1
                                 tmp = {
                                     "nickname": peoplename,
-                                    "vote_number": int(pvote_number),
-                                    "vote_rate": round(int(pvote_number) / self.allvotenumber, 3),
-                                    "reference_assignment": int(reference_assignment),
-                                    "votes_reported": int(votes_reported),
-                                    "cpwl": int(cpwl),
+                                    "vote_number": 0,
+                                    "vote_rate": 0,
+                                    "reference_assignment": 0,
+                                    "votes_reported": 0,
+                                    "cpwl": 0,
                                     "YoY": -1
                                 }
                                 if len(j["people"]) == 1 and j["people"][0]["nickname"] == "":
@@ -128,5 +109,5 @@ class PeopleAdd(ModalDialog):
                     if ffg: break
                 # source.extra=data #待修改
                 source.modify(extra=data)
-                QMessageBox.information(None, "添加候选人", "添加候选人成功!")
+
                 self.close()
