@@ -82,7 +82,7 @@ class PeopleAdd(ModalDialog):
         else:
             fg = 0
             source = Area.search(name=self.title)['data'][0]
-            data = Area.search(name=self.title)['data'][0].extra
+            data = source.extra
             numyear = int(year)
             if fg == 0:
                 ffg = 0

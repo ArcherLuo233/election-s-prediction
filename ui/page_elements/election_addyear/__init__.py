@@ -42,7 +42,7 @@ class YearAdd(ModalDialog):
         else:
             source = Area.search(name=self.title)['data'][0]
             try:
-                data = Area.search(name=self.title)['data'][0].extra
+                data = source.extra
             except Exception:
                 data = []
             fg = 0

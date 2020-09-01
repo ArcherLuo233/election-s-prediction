@@ -56,7 +56,7 @@ class ProjectAdd(ModalDialog):
         else:
             fg = 0
             source = Area.search(name=self.title)['data'][0]
-            data = Area.search(name=self.title)['data'][0].extra
+            data = source.extra
 
             for i in data:
                 if str(i["year"]) == year:
