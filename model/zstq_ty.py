@@ -11,7 +11,7 @@ class ZSTQ_TY(Base):
     export_docx = False
 
     field = [
-        'id', 'name', 'sex', 'job', 'phone', 'taiwanese_id'
+        'id', 'name', 'sex', 'job', 'taiwanese_id'
     ]
 
     zstq_id = Column(Integer, ForeignKey('zstq.id'))

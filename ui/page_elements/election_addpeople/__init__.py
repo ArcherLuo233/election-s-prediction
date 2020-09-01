@@ -76,7 +76,6 @@ class PeopleAdd(ModalDialog):
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.LineEdit.text()
 
-
         if peoplename == "":
             QMessageBox.warning(None, "添加候选人失败", "请输入正确人名!")
         else:

@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Text
 
 from model.base import Base
+from model.zstq_ty import ZSTQ_TY
 
 
 class ZSTQ(Base):
@@ -9,6 +10,8 @@ class ZSTQ(Base):
     class_name = '在绍台企'
 
     template_start_row = 3
+
+    ty = ZSTQ_TY
 
     field = [
         'id', 'name', 'establishment_time', 'address', 'phone', 'credit_code', 'legal_representative', 'business_scope'

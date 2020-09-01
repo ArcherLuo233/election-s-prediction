@@ -19,7 +19,6 @@ class JG(Base):
         'director', 'supervisor', 'representative', 'historical_staff', 'remark', 'type'
     ]
 
-
     combo_field = {
         'type': {
             'exclude': True,

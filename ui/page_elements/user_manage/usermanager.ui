@@ -1,199 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>524</width>
-    <height>300</height>
-   </rect>
-  </property>
-  <property name="font">
-   <font>
-    <family>华文新魏</family>
-    <pointsize>14</pointsize>
-   </font>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="font">
-         <font>
-             <family>楷体</family>
-             <pointsize>20</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-         </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(68, 126, 217);
+    <class>Dialog</class>
+    <widget class="QDialog" name="Dialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>524</width>
+                <height>300</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+                <family>华文新魏</family>
+                <pointsize>14</pointsize>
+            </font>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+                <widget class="QLabel" name="label">
+                    <property name="font">
+                        <font>
+                            <family>楷体</family>
+                            <pointsize>20</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                        </font>
+                    </property>
+                    <property name="styleSheet">
+                        <string notr="true">background-color: rgb(68, 126, 217);
                             padding: 10px
                         </string>
-     </property>
-     <property name="text">
-      <string>用户管理</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
+                    </property>
+                    <property name="text">
+                        <string>用户管理</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QTableWidget" name="tableWidget">
+                    <property name="font">
+                        <font>
+                            <family>黑体</family>
+                            <pointsize>16</pointsize>
+                        </font>
+                    </property>
+                    <property name="dragEnabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="alternatingRowColors">
+                        <bool>true</bool>
+                    </property>
+                    <attribute name="verticalHeaderVisible">
+                        <bool>false</bool>
+                    </attribute>
+                    <column>
+                        <property name="text">
+                            <string>用户名</string>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>黑体</family>
+                                <pointsize>14</pointsize>
+                            </font>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>姓名</string>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>黑体</family>
+                                <pointsize>14</pointsize>
+                            </font>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>管理员</string>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>黑体</family>
+                                <pointsize>14</pointsize>
+                            </font>
+                        </property>
+                    </column>
+                </widget>
+            </item>
+            <item>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
+                        <spacer name="horizontalSpacer">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="reload">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="text">
+                                <string>刷新</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btn_deluser">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="text">
+                                <string>删除用户</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btn_adduser">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="text">
+                                <string>增加用户</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btn_modify">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="text">
+                                <string>确认修改</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btn_close">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>16</pointsize>
+                                </font>
+                            </property>
+                            <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="text">
+                                <string>关闭</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+        </layout>
     </widget>
-   </item>
-   <item>
-    <widget class="QTableWidget" name="tableWidget">
-     <property name="font">
-         <font>
-             <family>黑体</family>
-             <pointsize>16</pointsize>
-         </font>
-     </property>
-     <property name="dragEnabled">
-      <bool>false</bool>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>用户名</string>
-      </property>
-      <property name="font">
-       <font>
-           <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>姓名</string>
-      </property>
-      <property name="font">
-       <font>
-           <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>管理员</string>
-      </property>
-      <property name="font">
-       <font>
-           <family>黑体</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="reload">
-       <property name="font">
-           <font>
-               <family>华文新魏</family>
-               <pointsize>16</pointsize>
-           </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>刷新</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_deluser">
-       <property name="font">
-           <font>
-               <family>华文新魏</family>
-               <pointsize>16</pointsize>
-           </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>删除用户</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_adduser">
-       <property name="font">
-           <font>
-               <family>华文新魏</family>
-               <pointsize>16</pointsize>
-           </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>增加用户</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_modify">
-       <property name="font">
-           <font>
-               <family>华文新魏</family>
-               <pointsize>16</pointsize>
-           </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>确认修改</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_close">
-       <property name="font">
-           <font>
-               <family>华文新魏</family>
-               <pointsize>16</pointsize>
-           </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>关闭</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
- </widget>
- <resources/>
- <connections/>
+    <resources/>
+    <connections/>
 </ui>

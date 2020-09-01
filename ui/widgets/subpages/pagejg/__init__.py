@@ -1,5 +1,7 @@
 from libs.link_manager import link_manager
 from model.jg import JG
+from model.zstq import ZSTQ
+from model.zstq_ty import ZSTQ_TY
 from ui.page_elements.search_page import SearchPage
 
 
@@ -27,10 +29,14 @@ class Pagejg_ztjg(Pagejg):
     default_conditions = {'type': '在台机构'}
 
 
-class Pagejg_zstq(Pagejg):
+class Pagejg_zstq(SearchPage):
     title = '机构-在绍台企'
-    page_name = 'jg_zstq'
-    default_conditions = {'type': '在绍台企'}
+    model = ZSTQ
+
+
+class Pagezstq_ty(SearchPage):
+    title = "在绍台企团员"
+    model = ZSTQ_TY
 
 
 class Pagejg_zsjg(Pagejg):
