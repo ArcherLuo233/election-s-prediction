@@ -22,7 +22,7 @@ class JG(Base):
     combo_field = {
         'type': {
             'exclude': True,
-            'items': ['在台机构', '在绍台企', '在绍机构', '其他']
+            'items': ['在台机构', '在绍机构', '其他']
         }
     }
 
