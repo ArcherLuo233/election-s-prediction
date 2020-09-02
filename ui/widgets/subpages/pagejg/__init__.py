@@ -20,6 +20,8 @@ class Pagejg(SearchPage):
         widget = PageManager.get_page("jgxq")
         widget.set_data_id(data['id'])
         widget.set_back_page(self.page_name)
+        if 'type' in self.default_conditions.keys():
+            widget.type = self.default_conditions['type']
         link_manager.activate("#goto:jgxq")
 
 
