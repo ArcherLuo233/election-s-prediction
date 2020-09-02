@@ -289,6 +289,6 @@ class DetailPage(ModalDialog):
                 if self.ui.tableWidget.item(j, 5):
                     self.projects.append(self.ui.tableWidget.item(j, 5))
         self.ui.tableWidget.resizeColumnsToContents()
-        self.ui.tableWidget.horizontalHeader.setSectionResizeMode(QHeaderView.ResizeToContents)
-        self.ui.tableWidget.verticalHeader.setSectionResizeMode(QHeaderView.Fixed)
-        self.ui.tableWidget.horizontalHeader.setMinimumSectionSize(100)
+        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.ui.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        self.ui.tableWidget.horizontalHeader().setMinimumSectionSize(100)
