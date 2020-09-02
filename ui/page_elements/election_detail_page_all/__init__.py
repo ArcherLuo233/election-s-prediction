@@ -358,6 +358,7 @@ class DetailPage(ModalDialog):
                     self.additem(beg + sublen, 11, votes_reported, -1)
                     self.additem(beg + sublen, 12, reference_assignment, -1)
                     sublen += 1
+
             beg += height_year
             self.year = []
             l = self.ui.tableWidget.rowCount()
@@ -369,3 +370,8 @@ class DetailPage(ModalDialog):
             for j in range(l):
                 if self.ui.tableWidget.item(j, 5):
                     self.projects.append(self.ui.tableWidget.item(j, 5))
+
+        self.ui.tableWidget.resizeColumnsToContents()
+        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.ui.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        self.ui.tableWidget.horizontalHeader().setMinimumSectionSize(100)

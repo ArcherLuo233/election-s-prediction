@@ -41,6 +41,11 @@ class Pagejg_zstq(SearchPage):
 
 class Pagezstq_ty(SearchPage):
     title = "在绍台企团员"
+    summary = [
+        '姓名',
+        '性别',
+        '单位职务'
+    ]
     model = ZSTQ_TY
 
 
