@@ -259,7 +259,7 @@ class DetailPage(ModalDialog):
                                                     if data_pe['cpwl'] != 0:
                                                         data_all_pe['cpwl'] = data_pe['cpwl']
                                                 elif data_all_pe['cpwl'] == -1:
-                                                    if data_pe['cpwl'] != 0 or data_pe['cpwl'] != -1:
+                                                    if data_pe['cpwl'] != 0 and data_pe['cpwl'] != -1:
                                                         data_all_pe['cpwl'] = data_pe['cpwl']
                                                 else:
                                                     if data_pe['cpwl'] != -1 and data_pe['cpwl'] != 0:
