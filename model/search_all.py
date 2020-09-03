@@ -43,9 +43,9 @@ def return_name_data_mh(name):
 def return_area_data_mh(areaname):
     data_all = {}
 
-    data_GWTZ = GWTZ.search(area=areaname)['data']
-    data_SWTZ = SWTZ.search(area=areaname)['data']
-    data_LFTZ = LFTZ.search(area=areaname)['data']
+    data_GWTZ = GWTZ.search(stroke=areaname)['data']
+    data_SWTZ = SWTZ.search(reason=areaname)['data']
+    data_LFTZ = LFTZ.search(stroke=areaname)['data']
 
     data_all.update({"公务团组": data_GWTZ})
     data_all.update({"商务团组": data_SWTZ})

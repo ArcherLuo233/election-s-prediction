@@ -223,10 +223,11 @@ class Base(base_class):
             ty_field.remove("id")
             for file in cls.ty.file_field:
                 ty_field.remove(file)
-            ty_list = cls.ty.search(**{cls.foreign_key: id_}, page_size=-1)['data']
+            ty_list = cls.ty.search(**{cls.ty.foreign_key: id_}, page_size=-1)['data']
             for ty in ty_list:
                 tmp = dict()
                 for item in ty_field:
+                    if item == 'identity': item = item + '_'
                     attr = getattr(cls.ty, item)
                     tmp[attr.comparator.comment] = getattr(ty, item) if getattr(ty, item) else ''
                 ty_data.append(tmp)

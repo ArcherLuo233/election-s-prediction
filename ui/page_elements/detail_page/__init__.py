@@ -97,13 +97,13 @@ class DetailPage(QDialog):
         filename = QFileDialog.getSaveFileName(None, "导出文档", default_name, "word文档(*.docx)")[0]
         if filename == "":
             return
-
-        try:
-            self.model.export_document(self.data_id, filename)
-        except Exception as e:
-            QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
-
-            return
+        self.model.export_document(self.data_id, filename)
+        # try:
+        #     self.model.export_document(self.data_id, filename)
+        # except Exception as e:
+        #     QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
+        #
+        #     return
 
         QMessageBox.information(None, "导出文档", "导出完成")
 

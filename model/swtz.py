@@ -15,7 +15,7 @@ class SWTZ(Base):
         'taiwan_company_address', 'taiwan_company_legal_people', 'topic', 'area', 'summary'
     ]
 
-    file_field = ['reason', 'summary']
+    file_field = ['summary']
     date_field = ['datetime']
     template_start_row = 3
 
