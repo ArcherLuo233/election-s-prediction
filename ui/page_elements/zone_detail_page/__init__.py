@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
 from libs.g import g
 from model.area import Area
 from ui.page_elements.modal_dialog import ModalDialog
+from ui.page_elements.detail_page import DetailPage
+from model.zyrs import ZYRS
 
 from .DetailpageUI import Ui_Dialog
 
@@ -69,6 +71,11 @@ class DetailPage(ModalDialog):
         self.message.setStandardButtons(QMessageBox.Yes)
         self.message.button(QMessageBox.Yes).setText('确认')
         self.reload()
+
+    def search(self):
+        dialog = DetailPage(self, ZYRS)
+        dialog.set_default_conditions(**self.default_conditions)
+        dialog.show_(False, '-1')
 
     def export(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区", "excel文件(*.xlsx)")[0]
