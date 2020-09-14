@@ -25,6 +25,9 @@ class DetailPage(QDialog):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        flags = self.windowFlags()
+        flags |= Qt.WindowMinMaxButtonsHint
+        self.setWindowFlags(flags)
         self.setMinimumSize(800, 400)
         self.default_conditions = {}
         # model
