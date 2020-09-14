@@ -75,7 +75,7 @@ class DetailPage(ModalDialog):
     def search(self):
         dialog = DetailPage(self, ZYRS)
         dialog.set_default_conditions(**self.default_conditions)
-        dialog.show_(False, '-1')
+        dialog.show_(False, id)
 
     def export(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区", "excel文件(*.xlsx)")[0]
