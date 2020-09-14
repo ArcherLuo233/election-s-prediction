@@ -5,10 +5,10 @@ from model.area import Area
 from model.user import User
 from ui.page_elements.modal_dialog import ModalDialog
 
-from .AddpeopleUI import Ui_Dialog
+from .Is_selectedUI import Ui_Dialog
 
 
-class PeopleAdd(ModalDialog):
+class Is_selected(ModalDialog):
     def __init__(self, parent):
         self.alltitle = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里",
                          "北投里",
@@ -33,7 +33,7 @@ class PeopleAdd(ModalDialog):
             data = Area.search(name=self.title)['data'][0].extra
         except Exception:
             data = []
-            QMessageBox.warning(None, "添加候选人失败", "请先添加年份!")
+            QMessageBox.warning(None, "添加当选人失败", "请先添加年份!")
             self.close()
 
         yearlist = []
@@ -61,7 +61,7 @@ class PeopleAdd(ModalDialog):
         for i in self.alltitle:
             self.title = i
             self.addpeople()
-        QMessageBox.information(None, "添加候选人", "添加候选人成功!")
+        QMessageBox.information(None, "添加当选人", "添加候选人成功!")
 
     def addpeople(self):
 
@@ -70,14 +70,14 @@ class PeopleAdd(ModalDialog):
             data = Area.search(name=self.title)['data'][0].extra
         except Exception:
             data = []
-            QMessageBox.warning(None, "添加候选人失败", "请先添加年份!")
+            QMessageBox.warning(None, "添加当选人失败", "请先添加年份!")
             self.close()
 
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.LineEdit.text()
 
         if peoplename == "":
-            QMessageBox.warning(None, "添加候选人失败", "请输入正确人名!")
+            QMessageBox.warning(None, "添加当选人失败", "请输入正确人名!")
         else:
             fg = 0
             source = Area.search(name=self.title)['data'][0]
@@ -90,20 +90,7 @@ class PeopleAdd(ModalDialog):
                         for j in i["projects"]:
                             if j["name"] == proname:
                                 ffg = 1
-                                tmp = {
-                                    "nickname": peoplename,
-                                    "vote_number": 0,
-                                    "vote_rate": 0,
-                                    "reference_assignment": 0,
-                                    "votes_reported": 0,
-                                    "cpwl": 0,
-                                    "YoY": -1
-                                }
-                                if len(j["people"]) == 1 and j["people"][0]["nickname"] == "":
-                                    j["people"] = []
-                                    j["people"].append(tmp)
-                                else:
-                                    j["people"].append(tmp)
+                                j["is_selected"] = peoplename
                                 break
                     if ffg: break
                 # source.extra=data #待修改

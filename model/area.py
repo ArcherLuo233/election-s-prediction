@@ -20,6 +20,7 @@ class Area(Base):
     community = Column(String(100), comment='社区')
     peasant_association = Column(String(100), comment='农会')
     civil_organization = Column(String(100), comment='民间组织')
+    other = Column(Text, comment='其他')
     extra_ = Column('extra', Text, comment='额外信息')
 
     @property

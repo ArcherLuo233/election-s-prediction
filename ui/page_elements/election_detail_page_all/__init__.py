@@ -9,6 +9,7 @@ from ui.page_elements.election_addpeople import PeopleAdd
 from ui.page_elements.election_addproject import ProjectAdd
 from ui.page_elements.election_addyear import YearAdd
 from ui.page_elements.modal_dialog import ModalDialog
+from ui.page_elements.election_is_selected import Is_selected
 
 from .DetailPageUI import Ui_Dialog
 
@@ -39,6 +40,7 @@ class DetailPage(ModalDialog):
         self.ui.btn_addpro.clicked.connect(self.addpro)
         self.ui.btn_addpeo.clicked.connect(self.addpeople)
         self.ui.btn_delete.clicked.connect(self.deleteall)
+        self.ui.btn_addis_selected.clicked.connect(self.addis_selected)
         # _init
 
         # messagebox
@@ -48,6 +50,7 @@ class DetailPage(ModalDialog):
         # init
         self.empty_pro = {
             "name": "",
+            "is_selected": "",
             "people": [
                 {
                     "nickname": "",
@@ -80,7 +83,7 @@ class DetailPage(ModalDialog):
 
         self.ui.tableWidget.setFont(self.font)
         self.ui.tableWidget.setHorizontalHeaderLabels(
-            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '姓名', '票数', '得票率', '与上期相比', '预估票数', '参考赋值', '上报票数'])
+            ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '当选人', '候选人', '票数', '得票率', '与上期相比', '预估票数', '参考赋值', '上报票数'])
         self.ui.tableWidget.horizontalHeader().setStyleSheet("QHeaderView::section{font:12pt '黑体' ;color: black;};")
         self.ui.tableWidget.setRowCount(27)
 
@@ -105,6 +108,12 @@ class DetailPage(ModalDialog):
 
         self.reload()
 
+    def addis_selected(self):
+        dialog = Is_selected(self)
+        dialog.exec_()
+
+        self.reload()
+
     def addpeople(self):
         dialog = PeopleAdd(self)
         dialog.exec_()
@@ -125,7 +134,9 @@ class DetailPage(ModalDialog):
             QMessageBox.information(None, "删除", "删除年度成功!")
         elif select_Column == 5:
             QMessageBox.information(None, "删除", "删除项目成功!")
-        elif select_Column > 5:
+        elif select_Column == 6:
+            QMessageBox.information(None, "删除", "删除当选者成功!")
+        elif select_Column > 6:
             QMessageBox.information(None, "删除", "删除候选者成功!")
 
         self.reload()
@@ -165,7 +176,7 @@ class DetailPage(ModalDialog):
                                 i["projects"].append(self.empty_pro)
                             break
                 if fg == 0: break
-        elif select_Column > 5:
+        elif select_Column == 6:
             tgyear = self.year[0]
             for index, i in enumerate(self.year):
                 irow = i.row()
@@ -186,7 +197,37 @@ class DetailPage(ModalDialog):
                     break
             year = tgyear.text()
             pro = tgpro.text()
-            name = self.ui.tableWidget.item(select_row, 6).text()
+            for i in data:
+                fg = 1
+                if str(i["year"]) == year:
+                    for j in i["projects"]:
+                        if (str(j["name"]) == pro):
+                            fg = 0
+                            j["is_selected"] = ""
+                            break
+                if fg == 0: break
+        elif select_Column > 6:
+            tgyear = self.year[0]
+            for index, i in enumerate(self.year):
+                irow = i.row()
+                if (irow > select_row):
+                    tgyear = self.year[index - 1]
+                    break
+                if index == len(self.year) - 1:
+                    tgyear = i
+                    break
+            tgpro = self.projects[0]
+            for index, i in enumerate(self.projects):
+                irow = i.row()
+                if (irow > select_row):
+                    tgpro = self.projects[index - 1]
+                    break
+                if index == len(self.projects) - 1:
+                    tgpro = i
+                    break
+            year = tgyear.text()
+            pro = tgpro.text()
+            name = self.ui.tableWidget.item(select_row, 7).text()
             for i in data:
                 fg = 1
                 if str(i["year"]) == year:
@@ -308,9 +349,11 @@ class DetailPage(ModalDialog):
                 vailidvote_rate = str(round(i["vote_number"] / i["election_number"], 3))
             height_year = 0
             pro = {}
+            pro_selected = {}
             for j in i["projects"]:
                 height_year += len(j["people"])
                 pro.update({str(j["name"]): len(j["people"])})
+                pro_selected.update({str(j['name']): j["is_selected"]})
 
             self.additem(beg, 0, year, height_year)
             self.additem(beg, 1, election_number, height_year)
@@ -321,6 +364,7 @@ class DetailPage(ModalDialog):
             sublen = 0
             for j in pro:
                 self.additem(beg + sublen, 5, j, pro[j])
+                self.additem(beg + sublen, 6, pro_selected[j], pro[j])
                 sublen = sublen + pro[j]
             sublen = 0
             for j in i["projects"]:
@@ -350,13 +394,13 @@ class DetailPage(ModalDialog):
 
                         pvote_rate = str(round(k["vote_number"] / i["valid_number"], 3))
                     YoY = str(k["YoY"])
-                    self.additem(beg + sublen, 6, nickname, -1)
-                    self.additem(beg + sublen, 7, pvote_number, -1)
-                    self.additem(beg + sublen, 8, pvote_rate, -1)
-                    self.additem(beg + sublen, 9, cpwl, -1)
-                    self.additem(beg + sublen, 10, YoY, -1)
-                    self.additem(beg + sublen, 11, votes_reported, -1)
-                    self.additem(beg + sublen, 12, reference_assignment, -1)
+                    self.additem(beg + sublen, 7, nickname, -1)
+                    self.additem(beg + sublen, 8, pvote_number, -1)
+                    self.additem(beg + sublen, 9, pvote_rate, -1)
+                    self.additem(beg + sublen, 10, cpwl, -1)
+                    self.additem(beg + sublen, 11, YoY, -1)
+                    self.additem(beg + sublen, 12, votes_reported, -1)
+                    self.additem(beg + sublen, 13, reference_assignment, -1)
                     sublen += 1
 
             beg += height_year
@@ -364,12 +408,14 @@ class DetailPage(ModalDialog):
             l = self.ui.tableWidget.rowCount()
             for j in range(l):
                 if self.ui.tableWidget.item(j, 0):
-                    self.year.append(self.ui.tableWidget.item(j, 0))
+                    if self.ui.tableWidget.item(j, 0).text():
+                        self.year.append(self.ui.tableWidget.item(j, 0))
             self.projects = []
             l = self.ui.tableWidget.rowCount()
             for j in range(l):
                 if self.ui.tableWidget.item(j, 5):
-                    self.projects.append(self.ui.tableWidget.item(j, 5))
+                    if self.ui.tableWidget.item(j, 5).text():
+                        self.projects.append(self.ui.tableWidget.item(j, 5))
 
         self.ui.tableWidget.resizeColumnsToContents()
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)

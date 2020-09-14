@@ -60,6 +60,7 @@ class YearAdd(ModalDialog):
                     "projects": [
                         {
                             "name": "",
+                            "is_selected": "",
                             "people": [
                                 {
                                     "nickname": "",

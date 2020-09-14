@@ -70,6 +70,7 @@ class ProjectAdd(ModalDialog):
                     if str(i["year"]) == year:
                         tmp = {
                             "name": project,
+                            "is_selected": "2",
                             "people": [
                                 {
                                     "nickname": "",

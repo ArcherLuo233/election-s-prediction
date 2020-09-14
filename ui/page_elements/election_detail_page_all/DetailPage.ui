@@ -93,6 +93,19 @@
                         </widget>
                     </item>
                     <item>
+                        <widget class="QPushButton" name="btn_addis_selected">
+                            <property name="font">
+                                <font>
+                                    <family>华文新魏</family>
+                                    <pointsize>18</pointsize>
+                                </font>
+                            </property>
+                            <property name="text">
+                                <string>修改当选人</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
                         <widget class="QPushButton" name="btn_addpeo">
                             <property name="font">
                                 <font>

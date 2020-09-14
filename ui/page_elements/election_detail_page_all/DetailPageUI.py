@@ -23,8 +23,8 @@ class Ui_Dialog(object):
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-                                 "       padding: 10px\n"
-                                 "      ")
+                                 "                            padding: 10px\n"
+                                 "                        ")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
@@ -54,6 +54,13 @@ class Ui_Dialog(object):
         self.btn_addpro.setFont(font)
         self.btn_addpro.setObjectName("btn_addpro")
         self.horizontalLayout.addWidget(self.btn_addpro)
+        self.btn_addis_selected = QtWidgets.QPushButton(Dialog)
+        font = QtGui.QFont()
+        font.setFamily("华文新魏")
+        font.setPointSize(18)
+        self.btn_addis_selected.setFont(font)
+        self.btn_addis_selected.setObjectName("btn_addis_selected")
+        self.horizontalLayout.addWidget(self.btn_addis_selected)
         self.btn_addpeo = QtWidgets.QPushButton(Dialog)
         font = QtGui.QFont()
         font.setFamily("华文新魏")
@@ -292,6 +299,7 @@ class Ui_Dialog(object):
         self.btn_reflash.setText(_translate("Dialog", "刷新"))
         self.btn_addyear.setText(_translate("Dialog", "添加年度"))
         self.btn_addpro.setText(_translate("Dialog", "添加项目"))
+        self.btn_addis_selected.setText(_translate("Dialog", "修改当选人"))
         self.btn_addpeo.setText(_translate("Dialog", "添加候选人"))
         self.btn_delete.setText(_translate("Dialog", "删除对象"))
         self.btn_close.setText(_translate("Dialog", "关闭"))

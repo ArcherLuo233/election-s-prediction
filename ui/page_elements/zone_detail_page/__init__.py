@@ -140,3 +140,4 @@ class DetailPage(ModalDialog):
             self.additem(index, 5, i.community)
             self.additem(index, 6, i.peasant_association)
             self.additem(index, 7, i.civil_organization)
+            self.additem(index, 8, i.other)
