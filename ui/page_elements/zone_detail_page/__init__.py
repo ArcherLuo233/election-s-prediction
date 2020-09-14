@@ -58,6 +58,7 @@ class DetailPage(ModalDialog):
         self.ui.button_ok.clicked.connect(self.close)
         self.ui.btn_save.clicked.connect(self.save)
         self.ui.btn_export.clicked.connect(self.export)
+        self.ui.btn_search.clicked.connect(self.search)
         # _init
         header = ['选区', '子选区']
         for i in Area.field:
@@ -91,12 +92,14 @@ class DetailPage(ModalDialog):
             ws.cell(beg, 6, value=i.community)
             ws.cell(beg, 7, value=i.peasant_association)
             ws.cell(beg, 8, value=i.civil_organization)
+            ws.cell(beg, 9, value=i.other)
             ws.cell(beg, 3).font = fontObj1
             ws.cell(beg, 4).font = fontObj1
             ws.cell(beg, 5).font = fontObj1
             ws.cell(beg, 6).font = fontObj1
             ws.cell(beg, 7).font = fontObj1
             ws.cell(beg, 8).font = fontObj1
+            ws.cell(beg, 9).font = fontObj1
             beg += 1
         try:
             wb.save(filename)
