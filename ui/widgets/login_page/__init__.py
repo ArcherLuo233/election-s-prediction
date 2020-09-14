@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QPoint, QSize, Qt
 from PyQt5.QtGui import QBrush, QPalette, QPixmap
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
@@ -40,6 +40,7 @@ class LoginPage(QWidget):
         ])
         self.ui.xx_sf.ui.pushButton.setCursor(Qt.PointingHandCursor)
         self.ui.xx_sf.setFont(self.font())
+        self.bgpix = QPixmap("./static/assets/login.jpg")
         with open("./static/qss/login.qss") as f:
             s = f.read()
             self.setStyleSheet(s)
@@ -53,17 +54,19 @@ class LoginPage(QWidget):
 
     def paintEvent(self, e):
         pal = self.palette()
-        pixmap = QPixmap("./static/assets/login.jpeg").scaled(self.size())
+        pixmap = self.bgpix.scaled(self.size())
         pal.setBrush(QPalette.Background, QBrush(pixmap))
         self.setPalette(pal)
         if not g.current_user:
             self.ui.widget_main.hide()
             self.ui.loginWidget.show()
             self.ui.label_title.show()
+            self.ui.btn_logout.hide()
         else:
             self.ui.loginWidget.hide()
             self.ui.widget_main.show()
             self.ui.label_title.hide()
+            self.ui.btn_logout.show()
 
     def login(self):
         un = self.ui.lineEdit_un.text()

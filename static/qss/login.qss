@@ -7,6 +7,12 @@ QLineEdit{
     background-color: rgb(237, 239, 251);
 }
 
+#btn_dq, #btn_jg, #btn_ry{
+    color: black;
+    background-color: transparent;
+    border-image: url("./static/assets/button.png");
+}
+
 #widget_un{
     border-bottom: 1px dashed;
     border-radius: 0px;

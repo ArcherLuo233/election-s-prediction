@@ -243,7 +243,7 @@ class SearchPage(QWidget):
             detail_label = QLabel(self)
             detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
             if self.model and self.members_model:
-                detail_text += '   <a href="#members:{}">团员信息</a>'.format(info.id)
+                detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
             detail_label.setText(detail_text)
             detail_label.setFont(table_widget.font())
             detail_label.linkActivated.connect(self.detail)

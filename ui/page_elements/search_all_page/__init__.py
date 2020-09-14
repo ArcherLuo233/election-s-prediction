@@ -48,7 +48,7 @@ class SearchAllPage(QDialog):
                 detail_label = QLabel(self)
                 detail_text = '<a href="#detail:{}\">详细信息</a>'.format(row)
                 if obj.ty:
-                    detail_text += '   <a href="#members:{}">团员信息</a>'.format(row)
+                    detail_text += '   <a href="#members:{}">人员信息</a>'.format(row)
                 detail_label.setText(detail_text)
                 detail_label.setFont(widget.font())
                 detail_label.linkActivated.connect(self.handle_link)
