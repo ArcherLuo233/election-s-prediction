@@ -15,6 +15,41 @@ from model.tstg import TSTG
 from model.zyrs import ZYRS
 
 
+def search_allatt(cls, keyword):
+    res = []
+    for i in cls.field:
+        tmp = cls.search(**{i: keyword})['data']
+        for j in tmp:
+            if j not in res:
+                res.append(j)
+    return res
+
+
+def return_all_data_mh(keyword):
+    data_all = {}
+    data_LSJL = search_allatt(LSJL, keyword)
+    data_TSTG = search_allatt(TSTG, keyword)
+    data_ZYRS = search_allatt(ZYRS, keyword)
+    data_LP = search_allatt(LP, keyword)
+    data_LS = search_allatt(LS, keyword)
+    data_TS = search_allatt(TS, keyword)
+    data_JZZ = search_allatt(JZZ, keyword)
+    data_gwtz_ty = search_allatt(GWTZ_TY, keyword)
+    data_lftz_ty = search_allatt(LFTZ_TY, keyword)
+    data_swtz_ty = search_allatt(SWTZ_TY, keyword)
+    data_all.update({"来绍交流": data_LSJL})
+    data_all.update({"台商台干": data_TSTG})
+    data_all.update({"重要人士": data_ZYRS})
+    data_all.update({"陆配": data_LP})
+    data_all.update({"陆生": data_LS})
+    data_all.update({"台属": data_TS})
+    data_all.update({"居住证人员": data_JZZ})
+    data_all.update({"公务团组": data_gwtz_ty})
+    data_all.update({"商务团组": data_swtz_ty})
+    data_all.update({"来访台胞": data_lftz_ty})
+    return data_all
+
+
 def return_name_data_mh(name):
     data_all = {}
     data_LSJL = LSJL.search(nickname=name)['data']
