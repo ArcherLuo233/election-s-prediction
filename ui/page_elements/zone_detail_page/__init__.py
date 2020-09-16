@@ -7,21 +7,21 @@ from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
 
 from libs.g import g
 from model.area import Area
-from ui.page_elements.modal_dialog import ModalDialog
-from ui.page_elements.detail_page import DetailPage
 from model.zyrs import ZYRS
+from ui.page_elements.detail_page import DetailPage
+from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailpageUI import Ui_Dialog
 
 
-class DetailPage(ModalDialog):
+class ZoneDetailPage(ModalDialog):
     def __init__(self, parent):
         super().__init__(parent, size=(1000, 800))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         # tableWidget
         table_widget = self.ui.tableWidget
-        table_widget.setSelectionMode(QTableWidget.NoSelection)
+        table_widget.setSelectionMode(QTableWidget.SingleSelection)
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
@@ -74,8 +74,17 @@ class DetailPage(ModalDialog):
 
     def search(self):
         dialog = DetailPage(self, ZYRS)
-        dialog.set_default_conditions(**self.default_conditions)
-        dialog.show_(False, id)
+        try:
+            name = self.ui.tableWidget.selectedItems()[0].text()
+            if name == '':
+                raise ValueError
+            data = ZYRS.search(nickname=name)['data']
+            if data:
+                dialog.show_(True, {'id': data[0].id})
+            else:
+                QMessageBox.warning(None, "查询", "查无此人")
+        except (IndexError, ValueError):
+            QMessageBox.warning(None, "查询", "你没有选中任何项目")
 
     def export(self):
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区", "excel文件(*.xlsx)")[0]

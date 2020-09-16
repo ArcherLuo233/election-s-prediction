@@ -10,7 +10,7 @@ from libs.g import g
 from libs.service import upload_file
 from model.area import Area
 from ui.page_elements.election_detail_page_all import DetailPage as edpa
-from ui.page_elements.zone_detail_page import DetailPage
+from ui.page_elements.zone_detail_page import ZoneDetailPage
 
 from .pageUI import Ui_Form
 
@@ -48,7 +48,7 @@ class Page2_0(QWidget):
         dialog.exec_()
 
     def findzone(self):
-        dialog = DetailPage(self)
+        dialog = ZoneDetailPage(self)
         dialog.exec_()
 
     def paintEvent(self, e):

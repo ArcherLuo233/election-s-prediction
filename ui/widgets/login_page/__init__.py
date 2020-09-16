@@ -5,8 +5,7 @@ from PyQt5.QtWidgets import QMessageBox, QWidget
 from libs.exception import AppException
 from libs.g import g
 from libs.page_magager import PageManager
-from model.search_all import (return_all_area, return_area_data_mh,
-                              return_detail_people, return_name_data_mh)
+from model.search_all import return_all_data_mh
 from model.user import User
 from ui.page_elements.search_all_page import SearchAllPage
 
@@ -29,17 +28,7 @@ class LoginPage(QWidget):
         self.ui.btn_logout.clicked.connect(self.logout)
         self.ui.btn_search.clicked.connect(self.search)
         self.ui.widget_main.hide()
-        self.setFixedWidth(1100)
-        self.ui.cb_target.currentTextChanged.connect(self.search_method_changed)
-        self.search_method_changed(self.ui.cb_target.currentText())
-        self.ui.xx_dq.set_items(return_all_area())
-        self.ui.xx_dq.ui.pushButton.setCursor(Qt.PointingHandCursor)
-        self.ui.xx_dq.setFont(self.font())
-        self.ui.xx_sf.set_items([
-            '基层', '青年', '商界', '学界', '政界'
-        ])
-        self.ui.xx_sf.ui.pushButton.setCursor(Qt.PointingHandCursor)
-        self.ui.xx_sf.setFont(self.font())
+        self.setFixedWidth(900)
         self.bgpix = QPixmap("./static/assets/login.jpg")
         with open("./static/qss/login.qss") as f:
             s = f.read()
@@ -60,12 +49,10 @@ class LoginPage(QWidget):
         if not g.current_user:
             self.ui.widget_main.hide()
             self.ui.loginWidget.show()
-            self.ui.label_title.show()
             self.ui.btn_logout.hide()
         else:
             self.ui.loginWidget.hide()
             self.ui.widget_main.show()
-            self.ui.label_title.hide()
             self.ui.btn_logout.show()
 
     def login(self):
@@ -163,29 +150,8 @@ class LoginPage(QWidget):
         g.current_user = None
         self.update()
 
-    def search_method_changed(self, s):
-        if s == '模糊搜索':
-            self.ui.frame_xiangxi.hide()
-            self.ui.frame_mohu.show()
-        else:
-            self.ui.frame_mohu.hide()
-            self.ui.frame_xiangxi.show()
-
     def search(self):
-        s = self.ui.cb_target.currentText()
-        if s == '模糊搜索':
-            method = self.ui.mh_method.currentText()
-            name = self.ui.mh_kw.text()
-            if method == '按人名搜索':
-                data = return_name_data_mh(name)
-            else:
-                data = return_area_data_mh(name)
-        else:
-            bt = self.ui.xx_sj1.text()
-            et = self.ui.xx_sj2.text()
-            dq = self.ui.xx_dq.selected_items
-            sf = self.ui.xx_sf.selected_items
-            data = return_detail_people(bt, et, dq, sf)
+        data = return_all_data_mh(self.ui.mh_kw.text())
         dialog = SearchAllPage()
         dialog.refresh_data(data)
         dialog.exec()

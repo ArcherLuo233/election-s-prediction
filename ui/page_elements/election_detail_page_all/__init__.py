@@ -8,8 +8,8 @@ from model.area import Area
 from ui.page_elements.election_addpeople import PeopleAdd
 from ui.page_elements.election_addproject import ProjectAdd
 from ui.page_elements.election_addyear import YearAdd
-from ui.page_elements.modal_dialog import ModalDialog
 from ui.page_elements.election_is_selected import Is_selected
+from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailPageUI import Ui_Dialog
 
