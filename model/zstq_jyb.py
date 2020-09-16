@@ -7,7 +7,7 @@ class ZSTQ_JYB(Base):
     __tablename__ = 'zstq_jyb'
 
     class_name = '在绍台企经营情况'
-    template_start_row = 3
+    template_start_row = 4
     field = [
         'id', 'times', 'company_name', 'asset_investment_situation_now', 'asset_investment_situation_accumulative',
         'income_now', 'income_last', 'profit_now', 'profit_last', 'tax_now', 'tax_last', 'tax_accumulative',

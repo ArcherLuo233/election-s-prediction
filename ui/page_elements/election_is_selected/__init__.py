@@ -61,7 +61,7 @@ class Is_selected(ModalDialog):
         for i in self.alltitle:
             self.title = i
             self.addpeople()
-        QMessageBox.information(None, "添加当选人", "添加候选人成功!")
+        QMessageBox.information(None, "修改当选人", "修改当选人成功!")
 
     def addpeople(self):
 
@@ -70,14 +70,14 @@ class Is_selected(ModalDialog):
             data = Area.search(name=self.title)['data'][0].extra
         except Exception:
             data = []
-            QMessageBox.warning(None, "添加当选人失败", "请先添加年份!")
+            QMessageBox.warning(None, "修改当选人失败", "请先添加年份!")
             self.close()
 
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.LineEdit.text()
 
         if peoplename == "":
-            QMessageBox.warning(None, "添加当选人失败", "请输入正确人名!")
+            QMessageBox.warning(None, "修改当选人失败", "请输入正确人名!")
         else:
             fg = 0
             source = Area.search(name=self.title)['data'][0]
