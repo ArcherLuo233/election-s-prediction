@@ -10,6 +10,7 @@ from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
 from libs.g import g
+from model.zstq_jyb import ZSTQ_JYB
 from model.zyrs import ZYRS
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
@@ -244,6 +245,8 @@ class SearchPage(QWidget):
             detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
             if self.model and self.members_model:
                 detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
+            if self.model.class_name == '在绍台企':
+                detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
             detail_label.setText(detail_text)
             detail_label.setFont(table_widget.font())
             detail_label.linkActivated.connect(self.detail)
@@ -315,6 +318,8 @@ class SearchPage(QWidget):
             self.open_members({'id': int(link[len("#members:"):])})
         elif link.startswith('#zyrs:'):
             self.open_zyrs(True, data={'id': int(link[len("#zyrs:"):])})
+        elif link.startswith('#jyb:'):
+            self.open_jyb({'id': int(link[len("#jyb:"):])})
 
     def action_add(self):
         self.open_detail(True, data={'id': -1})
@@ -324,16 +329,9 @@ class SearchPage(QWidget):
         page_name = self.members_model.__name__
         dialog = create_dialog_like_widget(self.dialog_parent, page_name.lower())
         dialog.setFixedSize(1500, 800)
-        field = self.model.__name__.lower() + '_id'
-        dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
+        dialog.wrapped_widget.set_default_conditions(**{'zstq_id': data['id']})
         dialog.wrapped_widget.set_dialog_parent(self)
         dialog.exec_()
-        self.refresh_page(self.ui.page_controller.page)
-
-    def open_zyrs(self, enable: bool, data):
-        dialog = DetailPage(self.dialog_parent, ZYRS)
-        dialog.set_default_conditions(**self.default_conditions)
-        dialog.show_(enable, data)
         self.refresh_page(self.ui.page_controller.page)
 
     def open_detail(self, enable: bool, data):
@@ -343,6 +341,22 @@ class SearchPage(QWidget):
         dialog = DetailPage(self.dialog_parent, self.model)
         dialog.set_default_conditions(**self.default_conditions)
         dialog.show_(enable, data)
+        self.refresh_page(self.ui.page_controller.page)
+
+    def open_zyrs(self, enable: bool, data):
+        dialog = DetailPage(self.dialog_parent, ZYRS)
+        dialog.set_default_conditions(**self.default_conditions)
+        dialog.show_(enable, data)
+        self.refresh_page(self.ui.page_controller.page)
+
+    def open_jyb(self, data):
+        page_name = 'zstq_jyb'
+        dialog = create_dialog_like_widget(self.dialog_parent, page_name.lower())
+        dialog.setFixedSize(1500, 800)
+        field = self.model.__name__.lower() + '_id'
+        dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
+        dialog.wrapped_widget.set_dialog_parent(self)
+        dialog.exec_()
         self.refresh_page(self.ui.page_controller.page)
 
     def resizeEvent(self, e):

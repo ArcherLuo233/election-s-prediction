@@ -1,6 +1,7 @@
 from libs.link_manager import link_manager
 from model.jg import JG
 from model.zstq import ZSTQ
+from model.zstq_jyb import ZSTQ_JYB
 from model.zstq_ty import ZSTQ_TY
 from ui.page_elements.search_page import SearchPage
 
@@ -49,6 +50,15 @@ class Pagezstq_ty(SearchPage):
         '单位职务'
     ]
     model = ZSTQ_TY
+
+
+class Pagezstq_jyb(SearchPage):
+    title = "在绍台企经营表"
+    summary = [
+        '企业名称',
+        '时间'
+    ]
+    model = ZSTQ_JYB
 
 
 class Pagejg_zsjg(Pagejg):

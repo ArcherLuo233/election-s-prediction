@@ -1,19 +1,20 @@
-from sqlalchemy import Column, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String
 
 from model.base import Base
 
 
-class ZSTQ_jyb(Base):
+class ZSTQ_JYB(Base):
     __tablename__ = 'zstq_jyb'
 
     class_name = '在绍台企经营情况'
     template_start_row = 3
     field = [
-        'id', 'times', 'Company_name', 'asset_investment_situation_now', 'asset_investment_situation_accumulative',
+        'id', 'times', 'company_name', 'asset_investment_situation_now', 'asset_investment_situation_accumulative',
         'income_now', 'income_last', 'profit_now', 'profit_last', 'tax_now', 'tax_last', 'tax_accumulative',
         'employed_population_now', 'employed_population_last', 'export_now', 'export_last'
     ]
-    Company_name = Column(String(100), comment='企业名称')
+    zstq_id = Column(Integer, ForeignKey('zstq.id'))
+    company_name = Column(String(100), comment='企业名称')
     asset_investment_situation_now = Column(String(100), comment='资产投资情况-当期数')
     times = Column(String(100), comment='时间')
     asset_investment_situation_accumulative = Column(String(100), comment='资产投资情况-累计数')

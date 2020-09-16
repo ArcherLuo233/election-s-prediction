@@ -78,6 +78,15 @@ class Base(base_class):
             if value is not None:
                 if hasattr(cls, key):
                     if isinstance(value, str):
+                        if value.startswith(('>=', '==', '<=', '<', '>', '=')):
+                            try:
+                                if value.startswith('=') and not value.startswith('=='):
+                                    value = '=' + value
+                                cmd = 'res.filter(getattr(cls, key)' + value + ')'
+                                res = eval(cmd)
+                                continue
+                            except Exception:
+                                pass
                         if cls.disable_mh:
                             try:
                                 res = res.filter(getattr(cls, key).like(value))

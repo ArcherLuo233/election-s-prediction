@@ -27,13 +27,13 @@ class JG(Base):
     }
 
     staff_names = {
-        '理事': 'director',
-        '监事': 'supervisor',
-        '成员': 'representative',
         '会长': 'president',
-        '副会长': 'vice_president',
         '理事长': 'chairman',
+        '副会长': 'vice_president',
+        '监事': 'supervisor',
         '总干事(秘书长)': 'secretary_general',
+        '理事': 'director',
+        '成员': 'representative',
         '历史人员': 'historical_staff'
     }
 
