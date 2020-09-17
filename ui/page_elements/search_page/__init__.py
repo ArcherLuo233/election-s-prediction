@@ -10,7 +10,6 @@ from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
 from libs.g import g
-from model.zstq_jyb import ZSTQ_JYB
 from model.zyrs import ZYRS
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
@@ -25,6 +24,7 @@ class SearchPage(QWidget):
     summary = {}
     title: str = None
     default_conditions = {}
+    member_page_name = ''
     cant_add = False
 
     def __init__(self):
@@ -329,8 +329,8 @@ class SearchPage(QWidget):
         self.refresh_page()
 
     def open_members(self, data):
-        page_name = self.members_model.__name__
-        dialog = create_dialog_like_widget(self.dialog_parent, page_name.lower())
+        page_name = self.member_page_name
+        dialog = create_dialog_like_widget(self.dialog_parent, page_name)
         field = self.model.__name__.lower() + '_id'
         dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
         # dialog.setFixedSize(1500, 800)

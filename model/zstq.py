@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Text
 
 from model.base import Base
-from model.zstq_ty import ZSTQ_TY
+from model.tstg import TSTG
 
 
 class ZSTQ(Base):
@@ -11,7 +11,7 @@ class ZSTQ(Base):
 
     template_start_row = 3
 
-    ty = ZSTQ_TY
+    ty = TSTG
 
     field = [
         'id', 'name', 'establishment_time', 'address', 'phone', 'credit_code', 'legal_representative', 'business_scope'

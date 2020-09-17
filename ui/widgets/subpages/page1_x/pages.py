@@ -129,6 +129,7 @@ class Pagegwtz(SearchPage):
         '联系人',
         '台湾邀请单位'
     ]
+    member_page_name = 'gwtz_ty'
 
 
 class Pagegwtz_ty(SearchPage):
@@ -149,6 +150,7 @@ class Pageswtz(SearchPage):
         '台方企业名称',
         '时间',
     ]
+    member_page_name = 'swtz_ty'
 
 
 class Pageswtz_ty(SearchPage):
@@ -174,6 +176,7 @@ class Pagelftz(SearchPage):
         '考察内容',
         '备注'
     ]
+    member_page_name = 'lftz_ty'
 
 
 class Pagelftz_jc(Pagelftz):
@@ -213,7 +216,7 @@ class Pagelftz_ty(SearchPage):
 
 
 class Pageall_lftz_ty(SearchPage):
-    title = "来访台胞团员"
+    title = "来访台胞人员汇总"
     model = LFTZ_TY
     summary = [
         '姓名',

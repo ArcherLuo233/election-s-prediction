@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Text
 
 from model.base import Base
 
@@ -27,6 +27,7 @@ class TSTG(Base):
 
     template_start_row = 4
 
+    zstq_id = Column(Integer, ForeignKey('zstq.id'))
     photo = Column(String(100), comment='照片')
     nickname = Column(String(100), nullable=False, comment='姓名')
     sex = Column(String(100), comment='性别')

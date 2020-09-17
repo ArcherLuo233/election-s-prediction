@@ -1,21 +1,23 @@
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
-                             QTableWidget, QTableWidgetItem)
+from PyQt5.QtWidgets import (QDialog, QHeaderView, QMessageBox, QTableWidget,
+                             QTableWidgetItem)
 
 from libs.g import g
 from model.area import Area
 from ui.page_elements.election_modifypeople import PeopleModify
 from ui.page_elements.election_modifyyear import YearModify
-from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailPageUI import Ui_Dialog
 
 
-class DetailPage(ModalDialog):
+class DetailPage(QDialog):
     def __init__(self, parent, title):
         self.title = title
-        super().__init__(parent, size=(1300, 800))
+        super().__init__(parent)
+        flags = self.windowFlags()
+        flags |= Qt.WindowMinMaxButtonsHint
+        self.setWindowFlags(flags)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.year = []

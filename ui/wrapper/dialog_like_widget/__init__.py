@@ -14,6 +14,7 @@ class DialogLikeWidgetWrapper(QDialog):
         self.setWindowFlags(flags)
         self.wrapped_widget = w
         self.setWindowTitle(w.windowTitle())
+        self.setAttribute(Qt.WA_DeleteOnClose)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(w)

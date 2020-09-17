@@ -1,24 +1,25 @@
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QHeaderView, QMessageBox, QTableWidget,
+from PyQt5.QtWidgets import (QDialog, QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
-from libs.g import g
 from model.area import Area
 from ui.page_elements.election_addpeople import PeopleAdd
 from ui.page_elements.election_addproject import ProjectAdd
 from ui.page_elements.election_addyear import YearAdd
 from ui.page_elements.election_is_selected import Is_selected
-from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailPageUI import Ui_Dialog
 
 
-class DetailPage(ModalDialog):
+class DetailPage(QDialog):
     def __init__(self, parent):
         self.title = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里", "北投里",
                       "石川里", "加老里", "新庄里", "新丰里", "御史里", "北势里", "中原里", "富寮里", "南埔里", "坪顶里", "土城里", "平林里", "双冬里"]
-        super().__init__(parent, size=(1300, 800))
+        super().__init__(parent)
+        flags = self.windowFlags()
+        flags |= Qt.WindowMinMaxButtonsHint
+        self.setWindowFlags(flags)
         self.sx = []
         self.data_all = []
         self.ui = Ui_Dialog()

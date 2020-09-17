@@ -1,8 +1,9 @@
 from libs.link_manager import link_manager
 from model.jg import JG
+from model.tstg import TSTG
 from model.zstq import ZSTQ
 from model.zstq_jyb import ZSTQ_JYB
-from model.zstq_ty import ZSTQ_TY
+from ui.page_elements.detail_page import DetailPage
 from ui.page_elements.search_page import SearchPage
 
 
@@ -40,6 +41,7 @@ class Pagejg_zstq(SearchPage):
         '法定代表人姓名'
     ]
     model = ZSTQ
+    member_page_name = 'zstq_ty'
 
 
 class Pagezstq_ty(SearchPage):
@@ -47,9 +49,15 @@ class Pagezstq_ty(SearchPage):
     summary = [
         '姓名',
         '性别',
-        '单位职务'
+        '单位职位'
     ]
-    model = ZSTQ_TY
+    model = TSTG
+
+    def open_detail(self, enable: bool, data):
+        dialog = DetailPage(self.dialog_parent, self.model)
+        dialog.set_default_conditions(**self.default_conditions, type='台商台干')
+        dialog.show_(enable, data)
+        self.refresh_page(self.ui.page_controller.page)
 
 
 class Pagezstq_jyb(SearchPage):

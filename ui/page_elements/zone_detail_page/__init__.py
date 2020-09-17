@@ -1,24 +1,25 @@
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Border, Font, Side
-from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QFileDialog, QHeaderView, QMessageBox,
+from PyQt5.QtWidgets import (QDialog, QFileDialog, QHeaderView, QMessageBox,
                              QTableWidget, QTableWidgetItem)
 
 from libs.g import g
 from model.area import Area
 from model.zyrs import ZYRS
 from ui.page_elements.detail_page import DetailPage
-from ui.page_elements.modal_dialog import ModalDialog
 
 from .DetailpageUI import Ui_Dialog
 
 
-class ZoneDetailPage(ModalDialog):
+class ZoneDetailPage(QDialog):
     def __init__(self, parent):
-        super().__init__(parent, size=(1000, 800))
+        super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        flags = self.windowFlags()
+        flags |= Qt.WindowMinMaxButtonsHint
+        self.setWindowFlags(flags)
         # tableWidget
         table_widget = self.ui.tableWidget
         table_widget.setSelectionMode(QTableWidget.SingleSelection)
