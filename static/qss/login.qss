@@ -1,10 +1,6 @@
 QLineEdit{
     border: 0px;
-}
-
-.QFrame{
     border-radius: 10px;
-    background-color: rgb(237, 239, 251);
 }
 
 #btn_dq, #btn_jg, #btn_ry{
@@ -14,14 +10,9 @@ QLineEdit{
     border-image: url("./static/assets/button.png");
 }
 
-#widget_un{
-    border-bottom: 1px dashed;
-    border-radius: 0px;
-}
-
 #widget_login_form{
     border-radius: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 150);
 }
 
 QPushButton{
