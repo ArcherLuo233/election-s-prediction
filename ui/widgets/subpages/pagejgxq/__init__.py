@@ -195,7 +195,7 @@ class Pagejgxq(QWidget):
             widget.set_default_conditions(nickname=name)
             widget.set_dialog_parent(self)
             dialog = create_dialog_like_widget(self, widget)
-            dialog.setFixedSize(1500, 800)
+            # dialog.setFixedSize(1500, 800)
             dialog.exec_()
 
     def export_word(self):

@@ -72,7 +72,7 @@ class DetailPage(QDialog):
                         else:
                             from .pages import ZYRSChoicePage
                             dialog = create_dialog_like_widget(self.parent(), ZYRSChoicePage())
-                            dialog.setFixedSize(1500, 800)
+                            # dialog.setFixedSize(1500, 800)
                             dialog.wrapped_widget.set_default_conditions(nickname=data['nickname'])
                             dialog.exec_()
                     return

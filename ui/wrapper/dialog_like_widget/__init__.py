@@ -1,16 +1,19 @@
-from PyQt5.QtWidgets import QHBoxLayout
+from PyQt5.QtWidgets import QHBoxLayout, QDialog
+from PyQt5.QtCore import Qt
 
-from ui.page_elements.modal_dialog import ModalDialog
 
-
-class DialogLikeWidgetWrapper(ModalDialog):
+class DialogLikeWidgetWrapper(QDialog):
     def __init__(self, parent, w):
         super().__init__(parent)
         try:
             w.set_wrapper(self)
         except:
             pass
+        flags = self.windowFlags()
+        flags |= Qt.WindowMinMaxButtonsHint
+        self.setWindowFlags(flags)
         self.wrapped_widget = w
+        self.setWindowTitle(w.windowTitle())
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(w)
