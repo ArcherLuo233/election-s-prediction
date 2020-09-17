@@ -7,6 +7,7 @@ from libs.g import g
 from libs.page_magager import PageManager
 from model.search_all import return_all_data_mh
 from model.user import User
+from model.lftz_ty import LFTZ_TY
 from ui.page_elements.search_all_page import SearchAllPage
 
 from .pageUI import Ui_Form
@@ -73,7 +74,9 @@ class LoginPage(QWidget):
                 '在绍机构': 'jg_zsjg',
                 '其他': 'jg_qt'
             }),
-            ('在绍台企', 'jg_zstq', {})
+            ('在绍台企', 'jg_zstq', {
+                '经营情况汇总': 'all_zstq_jyb'
+            })
         ]
         self.open_main(menu)
 
@@ -97,7 +100,8 @@ class LoginPage(QWidget):
                     "青年": "lftz_qn",
                     "商界": "lftz_sj",
                     "学界": "lftz_xj",
-                    "政界": "lftz_zj"
+                    "政界": "lftz_zj",
+                    "人员汇总": "all_lftz_ty"
                 }
             ),
             ("公务团组", "gwtz", {}),

@@ -212,6 +212,18 @@ class Pagelftz_ty(SearchPage):
     ]
 
 
+class Pageall_lftz_ty(SearchPage):
+    title = "来访台胞团员"
+    model = LFTZ_TY
+    summary = [
+        '姓名',
+        '团组名称',
+        '单位职务',
+        '人物类型',
+    ]
+    cant_add = True
+
+
 class Pagejzz(SearchPage):
     title = "居住证人员"
     model = JZZ

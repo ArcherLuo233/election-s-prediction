@@ -35,6 +35,7 @@ class Base(base_class):
     date_field = []
     export_handle_file = []
     combo_field = {}
+    translations = {}
 
     template_start_row = 0
 
@@ -82,8 +83,13 @@ class Base(base_class):
                             try:
                                 if value.startswith('=') and not value.startswith('=='):
                                     value = '=' + value
-                                cmd = 'res.filter(getattr(cls, key)' + value + ')'
-                                res = eval(cmd)
+                                try:
+                                    cmd = 'res.filter(getattr(cls, key)' + value + ')'
+                                    res = eval(cmd)
+                                except Exception:
+                                    key = key + "_"
+                                    cmd = 'res.filter(getattr(cls, key)' + value + ')'
+                                    res = eval(cmd)
                                 continue
                             except Exception:
                                 pass

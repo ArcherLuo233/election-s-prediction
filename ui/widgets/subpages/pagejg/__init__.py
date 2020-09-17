@@ -61,6 +61,16 @@ class Pagezstq_jyb(SearchPage):
     model = ZSTQ_JYB
 
 
+class Pageall_zstq_jyb(SearchPage):
+    title = "在绍台企经营表"
+    summary = [
+        '企业名称',
+        '时间'
+    ]
+    model = ZSTQ_JYB
+    cant_add = True
+
+
 class Pagejg_zsjg(Pagejg):
     title = '机构-在绍机构'
     page_name = 'jg_zsjg'

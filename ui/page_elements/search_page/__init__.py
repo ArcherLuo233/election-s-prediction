@@ -25,6 +25,7 @@ class SearchPage(QWidget):
     summary = {}
     title: str = None
     default_conditions = {}
+    cant_add = False
 
     def __init__(self):
         QWidget.__init__(self)
@@ -65,6 +66,8 @@ class SearchPage(QWidget):
         self.ui.button_search.clicked.connect(self.refresh_page)
         # button_add
         self.ui.button_add.clicked.connect(self.action_add)
+        if self.cant_add:
+            self.ui.button_add.hide()
         # btn_select_all
         self.ui.btn_select_all.clicked.connect(self.select_all)
         # btn_select_null
@@ -328,8 +331,9 @@ class SearchPage(QWidget):
     def open_members(self, data):
         page_name = self.members_model.__name__
         dialog = create_dialog_like_widget(self.dialog_parent, page_name.lower())
+        field = self.model.__name__.lower() + '_id'
+        dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
         dialog.setFixedSize(1500, 800)
-        dialog.wrapped_widget.set_default_conditions(**{'zstq_id': data['id']})
         dialog.wrapped_widget.set_dialog_parent(self)
         dialog.exec_()
         self.refresh_page(self.ui.page_controller.page)
@@ -376,7 +380,8 @@ class SearchPage(QWidget):
             self.ui.button_add.hide()
         else:
             self.ui.btn_mul_delete.show()
-            self.ui.button_add.show()
+            if not self.cant_add:
+                self.ui.button_add.show()
 
     def download_template(self):
         default_name = './{model}-模板'.format(model=self.model.class_name)

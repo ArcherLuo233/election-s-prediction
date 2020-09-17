@@ -1,14 +1,15 @@
 class FieldsTranslater:
-    default_translations = {'id': '编号', 'head': '团长', 'sex': '性别'}
 
     def __init__(self, model):
         field2text = dict()
         text2field = dict()
-        for idx, tr in self.default_translations.items():
+        default_translations = {'id': '编号', 'head': '团长', 'sex': '性别'}
+        default_translations.update(model.translations)
+        for idx, tr in default_translations.items():
             field2text[idx] = tr
             text2field[tr] = idx
         for idx in model.field:
-            if idx in self.default_translations:
+            if idx in default_translations:
                 continue
             if hasattr(getattr(model, idx), 'comment'):
                 comment = getattr(model, idx).comment

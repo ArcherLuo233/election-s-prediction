@@ -11,8 +11,9 @@ class LFTZ_TY(Base):
     export_docx = False
     export_handle_file = ['identity']
     field = [
-        'id', 'nickname', 'job', 'type', 'remark', 'identity'
+        'id', 'lftz_name', 'nickname', 'job', 'type', 'remark', 'identity'
     ]
+    read_field = ['lftz_name']
     combo_field = {
         'identity': {
             'exclude': False,
@@ -23,6 +24,7 @@ class LFTZ_TY(Base):
     template_start_row = 3
 
     lftz_id = Column(Integer, ForeignKey('lftz.id'))
+    lftz_name_ = Column('lftz_name', String(100), comment='团组名称')
     nickname = Column(String(100), comment='姓名')
     job = Column(String(100), comment='单位职务')
     type = Column(String(100), comment='人物类型')
@@ -40,3 +42,11 @@ class LFTZ_TY(Base):
         while '' in val:
             val.remove('')
         self.identity_ = ' '.join(val)
+
+    @property
+    def lftz_name(self):
+        from model.lftz import LFTZ
+        name = LFTZ.get_by_id(self.lftz_id).name
+        if self.lftz_name_ != name:
+            self.modify(lftz_name_=name)
+        return name
