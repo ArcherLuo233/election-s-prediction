@@ -10,6 +10,7 @@ class TS(Base):
 
     field = [
         'id', 'area', 'nickname', 'sex', 'birth', 'hometown', 'mailing_address', 'job', 'social_identity', 'phone',
+        'activity',
         'tendency',
         'family_member_nickname', 'family_member_birth', 'family_member_job', 'relatives_relation',
         'relatives_nickname', 'relatives_sex', 'relatives_birth', 'relatives_address', 'relatives_job',
@@ -24,6 +25,7 @@ class TS(Base):
     birth = Column(String(100), comment='出生年月')
     hometown = Column(String(100), comment='籍贯')
     mailing_address = Column(String(100), comment='通讯地址')
+    activity = Column(String(100), comment='活跃度')
     job = Column(String(100), comment='单位职务')
     social_identity = Column(String(100), comment='社会身份')
     phone = Column(String(100), comment='联系电话')

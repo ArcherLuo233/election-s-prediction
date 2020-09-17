@@ -11,7 +11,8 @@ class LFTZ(Base):
     ty = LFTZ_TY
 
     field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'head',
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'assisting_unit',
+        'head',
         'type', 'area', 'content', 'remark'
     ]
     read_field = ['head']
@@ -32,6 +33,7 @@ class LFTZ(Base):
     number_of_day = Column(String(100), comment='天数')
     stroke = Column(String(100), comment='行程')
     group_organization = Column(String(100), comment='组团单位')
+    assisting_unit = Column(String(100), comment='协助单位')
     remark = Column(Text, comment='备注')
     type_ = Column('type', String(100), comment='身份')
     area = Column(String(100), comment='地区')

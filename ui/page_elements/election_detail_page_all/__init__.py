@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import (QDialog, QHeaderView, QMessageBox, QTableWidget,
                              QTableWidgetItem)
 
 from model.area import Area
+from libs.g import g
 from ui.page_elements.election_addpeople import PeopleAdd
 from ui.page_elements.election_addproject import ProjectAdd
 from ui.page_elements.election_addyear import YearAdd
@@ -43,7 +44,18 @@ class DetailPage(QDialog):
         self.ui.btn_delete.clicked.connect(self.deleteall)
         self.ui.btn_addis_selected.clicked.connect(self.addis_selected)
         # _init
-
+        if g.current_user.permission == 0:
+            self.ui.btn_addyear.hide()
+            self.ui.btn_addpro.hide()
+            self.ui.btn_addpeo.hide()
+            self.ui.btn_delete.hide()
+            self.ui.btn_addis_selected.hide()
+        else:
+            self.ui.btn_addyear.show()
+            self.ui.btn_addpro.show()
+            self.ui.btn_addpeo.show()
+            self.ui.btn_delete.show()
+            self.ui.btn_addis_selected.show()
         # messagebox
         self.message = QMessageBox()
         self.message.setStandardButtons(QMessageBox.Yes)
