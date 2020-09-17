@@ -9,6 +9,7 @@ QLineEdit{
 
 #btn_dq, #btn_jg, #btn_ry{
     color: black;
+    font-size: 20pt;
     background-color: transparent;
     border-image: url("./static/assets/button.png");
 }

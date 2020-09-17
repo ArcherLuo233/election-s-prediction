@@ -29,7 +29,7 @@ class LoginPage(QWidget):
         self.ui.btn_logout.clicked.connect(self.logout)
         self.ui.btn_search.clicked.connect(self.search)
         self.ui.widget_main.hide()
-        self.setFixedWidth(900)
+        self.setFixedWidth(1000)
         self.bgpix = QPixmap("./static/assets/login.jpg")
         with open("./static/qss/login.qss") as f:
             s = f.read()
