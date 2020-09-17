@@ -10,7 +10,7 @@ QLineEdit{
     border-image: url("./static/assets/button.png");
 }
 
-#widget_login_form{
+#widget_login_form, #widget_search{
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 150);
 }
