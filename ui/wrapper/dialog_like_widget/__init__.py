@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QHBoxLayout, QDialog
 from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QDialog, QHBoxLayout
 
 
 class DialogLikeWidgetWrapper(QDialog):

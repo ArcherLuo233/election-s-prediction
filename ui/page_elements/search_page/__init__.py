@@ -356,7 +356,7 @@ class SearchPage(QWidget):
     def open_jyb(self, data):
         page_name = 'zstq_jyb'
         dialog = create_dialog_like_widget(self.dialog_parent, page_name.lower())
-        #dialog.setFixedSize(1500, 800)
+        # dialog.setFixedSize(1500, 800)
         field = self.model.__name__.lower() + '_id'
         dialog.wrapped_widget.set_default_conditions(**{field: data['id']})
         dialog.wrapped_widget.set_dialog_parent(self)

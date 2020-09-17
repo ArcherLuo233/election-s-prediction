@@ -5,9 +5,9 @@ from PyQt5.QtWidgets import QMessageBox, QWidget
 from libs.exception import AppException
 from libs.g import g
 from libs.page_magager import PageManager
+from model.lftz_ty import LFTZ_TY
 from model.search_all import return_all_data_mh
 from model.user import User
-from model.lftz_ty import LFTZ_TY
 from ui.page_elements.search_all_page import SearchAllPage
 
 from .pageUI import Ui_Form
