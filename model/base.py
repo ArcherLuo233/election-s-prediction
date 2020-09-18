@@ -112,9 +112,15 @@ class Base(base_class):
             for key, value in kwargs['order'].items():
                 if hasattr(cls, key):
                     if value == 'asc':
-                        res = res.order_by(asc(getattr(cls, key)))
+                        try:
+                            res = res.order_by(asc(getattr(cls, key)))
+                        except Exception:
+                            res = res.order_by(asc(getattr(cls, key + '_')))
                     if value == 'desc':
-                        res = res.order_by(desc(getattr(cls, key)))
+                        try:
+                            res = res.order_by(desc(getattr(cls, key)))
+                        except Exception:
+                            res = res.order_by(desc(getattr(cls, key + '_')))
 
         page = kwargs.get('page') if kwargs.get('page') else 1
         page_size = kwargs.get('page_size') if kwargs.get('page_size') else DEFAULT_PAGE_SIZE
