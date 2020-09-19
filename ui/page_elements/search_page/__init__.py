@@ -26,6 +26,7 @@ class SearchPage(QWidget):
     default_conditions = {}
     member_page_name = ''
     cant_add = False
+    table_header_height = 30
 
     def __init__(self):
         QWidget.__init__(self)
@@ -83,7 +84,7 @@ class SearchPage(QWidget):
         table_widget.setColumnCount(cols)
         table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Fixed)
         table_widget.horizontalHeader().setStretchLastSection(True)
-        table_widget.horizontalHeader().setFixedHeight(30)
+        table_widget.horizontalHeader().setFixedHeight(self.table_header_height)
         table_widget.horizontalHeader().sectionClicked.connect(self.section_clicked)
         table_widget.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         table_widget.cellChanged.connect(self.cell_changed)
@@ -256,9 +257,11 @@ class SearchPage(QWidget):
             detail_label.show()
             table_widget.setCellWidget(i, cols - 1, detail_label)
         table_widget.resizeColumnsToContents()
+        if table_widget.columnWidth(1) < 50:
+            table_widget.setColumnWidth(1, 50)
         for i in range(2, table_widget.horizontalHeader().count()):
-            if table_widget.columnWidth(i) < 120:
-                table_widget.setColumnWidth(i, 120)
+            if table_widget.columnWidth(i) < 150:
+                table_widget.setColumnWidth(i, 150)
         table_widget.setSortingEnabled(True)
 
     def cell_changed(self, row, col):

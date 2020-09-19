@@ -78,19 +78,14 @@ class Pagezstq_jyb(SearchPage):
 
 class Pageall_zstq_jyb(SearchPage):
     title = "在绍台企经营表"
-    summary = [
-        '企业名称',
-        '时间',
-        '资产投资情况(当期数)',
-        '营业收入(当期数)',
-        '营业利润(当期数)',
-        '实缴税收(当期数)',
-        '就业人数(当期数)',
-        '出口额(当期数)'
-
-    ]
+    summary = {
+        '企业名称': 'company_name',
+        '时间': 'times',
+        '资产投资情况\n当期数': 'asset_investment_situation_now',
+    }
     model = ZSTQ_JYB
     cant_add = True
+    table_header_height = 70
 
 
 class Pagejg_zsjg(Pagejg):
