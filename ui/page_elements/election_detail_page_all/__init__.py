@@ -309,6 +309,11 @@ class DetailPage(QDialog):
                                                     data_all_pe['reference_assignment'] += data_pe[
                                                         'reference_assignment']
 
+                                                if data_pe['YoY'] == -1:
+                                                    data_all_pe['YoY'] += 0
+                                                else:
+                                                    data_all_pe['YoY'] += data_pe['YoY']
+
                                                 if data_all_pe['cpwl'] == 0:
                                                     if data_pe['cpwl'] != 0:
                                                         data_all_pe['cpwl'] = data_pe['cpwl']
@@ -404,7 +409,6 @@ class DetailPage(QDialog):
                             cpwl = "缺失"
                         else:
                             cpwl = str(round(k["vote_number"] / k["cpwl"], 2))
-
                         pvote_rate = str(round(k["vote_number"] / i["valid_number"], 3))
                     YoY = str(k["YoY"])
                     self.additem(beg + sublen, 7, nickname, -1)
@@ -429,7 +433,6 @@ class DetailPage(QDialog):
                 if self.ui.tableWidget.item(j, 5):
                     if self.ui.tableWidget.item(j, 5).text():
                         self.projects.append(self.ui.tableWidget.item(j, 5))
-
         self.ui.tableWidget.resizeColumnsToContents()
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.ui.tableWidget.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
