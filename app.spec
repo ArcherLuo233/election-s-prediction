@@ -5,15 +5,16 @@ block_cipher = None
 path = 'E:\python\election-s-prediction'
 
 a = Analysis(['app.py'],
-             pathex=[path, 'C:\\Windows\\System32\\downlevel'],
+             pathex=[path,'C:\\Windows\\System32\\downlevel'],
              binaries=[],
              datas=[
                 (path + '\\static','static'),
                 (path + '\\template','template'),
                 (path + '\\file','file'),
-                (path + '\\database.db','.')
-             ],
-             hiddenimports=['pkg_resources.py2_warn','pymysql'],
+                (path + '\\database.db','.'),
+                (path + '\\resource','.')
+                ],
+             hiddenimports=['pkg_resources.py2_warn','pymysql',"pandas","pandas._libs.tslibs.np_datetime",'matplotlib','numpy','sklearn'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],

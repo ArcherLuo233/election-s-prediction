@@ -2,14 +2,10 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox, QDialog
 
 from model.area import Area
-from model.user import User
 
-import sklearn
 import pandas as pd
 from pandas.core.frame import DataFrame
 import pickle
-import numpy as np
-import xgboost as xgb
 from sklearn.preprocessing import StandardScaler
 
 from .predict_elementUI import Ui_Dialog
