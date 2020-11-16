@@ -39,7 +39,7 @@ class NavigateLabel(QLabel):
         self.setText(s)
         textcolor = color.NavigateTextHighlight if self.checked else color.NavigateText
         bgcolor = color.NavigateBackgroundHighlight if self.checked else color.NavigateBackground
-        palette: QPalette = self.palette()
+        palette = self.palette()
         palette.setColor(QPalette.WindowText, textcolor)
         palette.setColor(QPalette.Background, bgcolor)
         self.setPalette(palette)

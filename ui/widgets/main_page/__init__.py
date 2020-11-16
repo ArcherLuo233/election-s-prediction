@@ -30,7 +30,7 @@ class MainPage(QWidget):
         link_manager.linkActivated.connect(self.handle_link)
         # header-palette
         self.ui.widget_header.setAutoFillBackground(True)
-        pal: QPalette = self.ui.widget_header.palette()
+        pal = self.ui.widget_header.palette()
         pal.setColor(QPalette.WindowText, color.HeaderText)
         pal.setColor(QPalette.Background, color.HeaderBackground)
         self.ui.widget_header.setPalette(pal)

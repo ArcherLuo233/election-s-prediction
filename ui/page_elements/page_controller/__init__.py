@@ -33,8 +33,8 @@ class PageController(QWidget):
             self.ui.button_right.hide()
         else:
             self.ui.button_right.show()
-        left: int = self.page - 2
-        right: int = self.page + 2
+        left = self.page - 2
+        right = self.page + 2
         if left <= 2:
             right = min(5, self.maxpage)
         if right >= self.maxpage - 1:

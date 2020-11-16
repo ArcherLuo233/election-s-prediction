@@ -22,7 +22,7 @@ from .pageUI import Ui_Form
 class SearchPage(QWidget):
     model = None
     summary = {}
-    title: str = None
+    title = None
     default_conditions = {}
     member_page_name = ''
     cant_add = False

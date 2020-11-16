@@ -16,7 +16,7 @@ from .pageUI import Ui_Form
 
 
 class Page2_0(QWidget):
-    title: str = None
+    title = None
 
     def __init__(self):
         QWidget.__init__(self)

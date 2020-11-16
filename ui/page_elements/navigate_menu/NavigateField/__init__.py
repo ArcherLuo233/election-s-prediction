@@ -11,8 +11,8 @@ from .NavigateFieldUI import Ui_Form
 class NavigateField(QWidget):
     def __init__(self, title: str, alias: str = ""):
         QWidget.__init__(self)
-        self.menu_labels: [NavigateLabel] = []
-        self.is_hide: bool = True
+        self.menu_labels = []
+        self.is_hide = True
         self.title = title
         self.ui = Ui_Form()
         self.ui.setupUi(self)
