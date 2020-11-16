@@ -1,12 +1,12 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QMessageBox, QDialog
+import pickle
 
-from model.area import Area
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QDialog, QMessageBox
+from sklearn.preprocessing import StandardScaler
 
 import pandas as pd
+from model.area import Area
 from pandas.core.frame import DataFrame
-import pickle
-from sklearn.preprocessing import StandardScaler
 
 from .predict_elementUI import Ui_Dialog
 
