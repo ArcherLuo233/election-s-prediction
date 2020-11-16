@@ -361,6 +361,11 @@
                     </column>
                     <column>
                         <property name="text">
+                            <string>当选者</string>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
                             <string>得票率</string>
                         </property>
                     </column>

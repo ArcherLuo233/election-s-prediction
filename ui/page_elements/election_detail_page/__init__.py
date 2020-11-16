@@ -7,6 +7,7 @@ from libs.g import g
 from model.area import Area
 from ui.page_elements.election_modifypeople import PeopleModify
 from ui.page_elements.election_modifyyear import YearModify
+from ui.page_elements.election_predict_element import Prediction
 
 from .DetailPageUI import Ui_Dialog
 
@@ -41,6 +42,7 @@ class DetailPage(QDialog):
         self.ui.btn_reflash.clicked.connect(self.reload)
         self.ui.btn_addyear.clicked.connect(self.addyear)
         self.ui.btn_addpeople.clicked.connect(self.addpeople)
+        self.ui.btn_predict.clicked.connect(self.predict)
         # _init
         self.empty_pro = {
             "name": "",
@@ -99,6 +101,42 @@ class DetailPage(QDialog):
                                peasant_association=peasant_association)
         QMessageBox.information(None, "选区", "保存成功!")
         self.reload()
+
+    def predict(self):
+        select_Column = self.ui.tableWidget.currentColumn()
+        select_row = self.ui.tableWidget.currentRow()
+        select_item = self.ui.tableWidget.currentItem()
+
+        if select_Column == -1 or select_Column < 7:
+            QMessageBox.warning(None, "预测", "未选定候选者!")
+            return
+
+        source = Area.search(name=self.title)['data'][0]
+        data = Area.search(name=self.title)['data'][0].extra
+
+        tgyear = self.year[0]
+        for index, i in enumerate(self.year):
+            irow = i.row()
+            if (irow > select_row):
+                tgyear = self.year[index - 1]
+                break
+            if index == len(self.year) - 1:
+                tgyear = i
+                break
+        tgpro = self.projects[0]
+        for index, i in enumerate(self.projects):
+            irow = i.row()
+            if (irow > select_row):
+                tgpro = self.projects[index - 1]
+                break
+            if index == len(self.projects) - 1:
+                tgpro = i
+                break
+        year = tgyear.text()
+        pro = tgpro.text()
+        name = self.ui.tableWidget.item(select_row, 7).text()
+        dialog = Prediction(self, self.title, year, pro, name)
+        dialog.exec_()
 
     def addyear(self):
         dialog = YearModify(self, self.title)

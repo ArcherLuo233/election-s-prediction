@@ -96,16 +96,28 @@ class PeopleModify(ModalDialog):
 
     def addpeople(self):
 
+        is_pvote_number = 0
+        is_reference_assignment = 0
+        is_votes_reported = 0
+
         year = self.ui.ComboBox.currentText()
         proname = self.ui.ComboBox_2.currentText()
         peoplename = self.ui.ComboBox_3.currentText()
-        pvote_number = self.ui.LineEdit_2.text()
-        reference_assignment = self.ui.reference_assignment.text()
-        votes_reported = self.ui.votes_reported.text()
+        if self.ui.LineEdit_2.text():
+            pvote_number = self.ui.LineEdit_2.text()
+            is_pvote_number = 1
+        else:
+            pvote_number = 0
 
-        if pvote_number == "":
-            QMessageBox.warning(None, "添加候选人数据失败", "请输入正确选票数!")
-        elif int(pvote_number) > self.allvotenumber:
+        if self.ui.reference_assignment.text():
+            reference_assignment = self.ui.reference_assignment.text()
+            is_reference_assignment = 1
+
+        if self.ui.votes_reported.text():
+            votes_reported = self.ui.votes_reported.text()
+            is_votes_reported = 1
+
+        if int(pvote_number) > self.allvotenumber:
             QMessageBox.warning(None, "添加候选人数据失败", "选票数大于有效票数!")
         else:
             fg = 0
@@ -123,12 +135,15 @@ class PeopleModify(ModalDialog):
                                 ffg = 1
                                 for k in j['people']:
                                     if k['nickname'] == peoplename:
-                                        k['vote_number'] = int(pvote_number)
-                                        k['vote_rate'] = round(int(pvote_number) / self.allvotenumber, 3)
-                                        k['reference_assignment'] = int(reference_assignment)
-                                        k['votes_reported'] = int(votes_reported)
+                                        if is_pvote_number == 1:
+                                            k['vote_number'] = int(pvote_number)
+                                            k['vote_rate'] = round(int(pvote_number) / self.allvotenumber, 3)
+                                        if is_reference_assignment == 1:
+                                            k['reference_assignment'] = int(reference_assignment)
+                                        if is_votes_reported == 1:
+                                            k['votes_reported'] = int(votes_reported)
                                         k['cpwl'] = int(cpwl)
-                                        k['YoY'] = -1
+
                                 break
                     if ffg: break
                 # source.extra=data #待修改

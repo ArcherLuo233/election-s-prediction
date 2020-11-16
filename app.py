@@ -25,6 +25,7 @@ def main():
     PageManager.pages['Login'] = login_widget
     main_widget = MainPage()
     PageManager.pages['Main'] = main_widget
+    login_widget.adjustSize()
     login_widget.show()
     app.exec_()
 
