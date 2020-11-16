@@ -20,7 +20,7 @@ class Ui_Form(object):
         font.setFamily("文鼎中隶")
         Form.setFont(font)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 20)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.title_widget = QtWidgets.QWidget(Form)
@@ -69,8 +69,6 @@ class Ui_Form(object):
         self.layout_menu.setSpacing(0)
         self.layout_menu.setObjectName("layout_menu")
         self.verticalLayout.addLayout(self.layout_menu)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem1)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -80,5 +78,5 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_title.setText(_translate("Form", "测试文本"))
         self.label_switch.setText(_translate("Form", "<html><head/><body><p><a href=\"#open\"><span\n"
-                                                     "                                  style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>\n"
-                                                     "                              "))
+                                                     "                                        style=\" text-decoration: none; color:white;\">展开</span></a></p></body></html>\n"
+                                                     "                                    "))

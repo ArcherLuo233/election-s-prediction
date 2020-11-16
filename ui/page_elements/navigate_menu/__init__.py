@@ -1,7 +1,7 @@
-from typing import Union
+from PyQt5.QtGui import QPalette
+from PyQt5.QtWidgets import QSizePolicy, QSpacerItem, QVBoxLayout, QWidget
 
-from PyQt5.QtWidgets import QVBoxLayout, QWidget
-
+from config.uicolor import UIColor
 from libs.link_manager import link_manager
 
 from .NavigateField import NavigateField
@@ -15,8 +15,12 @@ class NavigateMenu(QWidget):
         layout.setContentsMargins(0, 20, 0, 0)
         layout.setSpacing(20)
         self.setLayout(layout)
-        self.fields: [NavigateField] = []
-        self.checked_label: Union[None, NavigateLabel] = None
+        self.fields = []
+        self.checked_label = None
+        pal = self.palette()
+        pal.setBrush(QPalette.Background, UIColor.NavigateBackground)
+        self.setPalette(pal)
+        self.spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
     def add_field(self, title: str, alias: str, menu: [tuple]):
         field = NavigateField(title, alias)
@@ -26,7 +30,10 @@ class NavigateMenu(QWidget):
             label = field.append_menu(text, alias)
             label.linkActivated.connect(self.labelClicked)
         self.fields.append(field)
+        if self.layout().count() > 0:
+            self.layout().removeItem(self.spacer)
         self.layout().addWidget(field)
+        self.layout().addItem(self.spacer)
 
     def clear_fields(self):
         self.checked_label = None

@@ -32,7 +32,7 @@
                 <number>0</number>
             </property>
             <property name="bottomMargin">
-                <number>0</number>
+                <number>20</number>
             </property>
             <item>
                 <widget class="QWidget" name="title_widget" native="true">
@@ -155,26 +155,13 @@
                     </property>
                 </layout>
             </item>
-            <item>
-                <spacer name="verticalSpacer">
-                    <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                        <size>
-                            <width>20</width>
-                            <height>40</height>
-                        </size>
-                    </property>
-                </spacer>
-            </item>
         </layout>
     </widget>
     <customwidgets>
         <customwidget>
             <class>NavigateLabel</class>
             <extends>QLabel</extends>
-            <header>ui.page_elements.NavigateMenu.NavigateField</header>
+            <header>ui.page_elements.navigate_menu.NavigateField</header>
         </customwidget>
     </customwidgets>
     <resources/>
