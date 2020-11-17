@@ -3,3 +3,4 @@ SQLAlchemy
 openpyxl
 docxtpl
 pillow
+pandas
