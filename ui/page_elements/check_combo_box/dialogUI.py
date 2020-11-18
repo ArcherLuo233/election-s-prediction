@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(553, 407)
+        Dialog.resize(125, 131)
         font = QtGui.QFont()
         font.setFamily("华文新魏")
         font.setPointSize(22)
@@ -32,8 +32,8 @@ class Ui_Dialog(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("background-color: rgb(68, 126, 217);\n"
-                                   "                            padding: 10px\n"
-                                   "                        ")
+                                   "       padding: 10px\n"
+                                   "      ")
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
