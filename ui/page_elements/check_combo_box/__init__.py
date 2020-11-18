@@ -10,6 +10,7 @@ class ChoiceDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.done)
+        self.setWindowTitle("请选择")
         self.button_group = QButtonGroup()
 
     def get_choices(self, items, selected):
@@ -48,7 +49,6 @@ class CheckComboBox(QWidget):
 
     def open_dialog(self):
         self.dialog.button_group.setExclusive(self.exclude)
-        self.dialog.setFont(self.font())
         self._selected = self.dialog.get_choices(self._items, self._selected)
         if self.exclude and self._selected:
             self._selected = [self._selected[0]]

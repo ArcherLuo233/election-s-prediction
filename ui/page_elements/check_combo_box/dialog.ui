@@ -1,85 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>Dialog</class>
-    <widget class="QDialog" name="Dialog">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>141</width>
-                <height>143</height>
-            </rect>
-        </property>
-        <property name="font">
-            <font>
-                <family>华文新魏</family>
-                <pointsize>11</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-            </font>
-        </property>
-        <property name="windowTitle">
-            <string></string>
-        </property>
-        <property name="modal">
-            <bool>true</bool>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-                <spacer name="verticalSpacer_2">
-                    <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                        <size>
-                            <width>20</width>
-                            <height>40</height>
-                        </size>
-                    </property>
-                </spacer>
-            </item>
-            <item>
-                <layout class="QVBoxLayout" name="layout"/>
-            </item>
-            <item>
-                <layout class="QHBoxLayout" name="horizontalLayout">
-                    <item>
-                        <spacer name="horizontalSpacer">
-                            <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                                <size>
-                                    <width>40</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </item>
-                    <item>
-                        <widget class="QPushButton" name="pushButton">
-                            <property name="text">
-                                <string>确定</string>
-                            </property>
-                        </widget>
-                    </item>
-                </layout>
-            </item>
-            <item>
-                <spacer name="verticalSpacer">
-                    <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                        <size>
-                            <width>20</width>
-                            <height>40</height>
-                        </size>
-                    </property>
-                </spacer>
-            </item>
-        </layout>
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>553</width>
+    <height>407</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>华文新魏</family>
+    <pointsize>22</pointsize>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <family>楷体</family>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(68, 126, 217);
+       padding: 10px
+      </string>
+     </property>
+     <property name="text">
+      <string>请选择</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
-    <resources/>
-    <connections/>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="layout"/>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>确定</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
