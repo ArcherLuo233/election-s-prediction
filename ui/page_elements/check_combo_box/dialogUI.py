@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(125, 131)
+        Dialog.resize(163, 233)
         font = QtGui.QFont()
         font.setFamily("华文新魏")
         font.setPointSize(22)
@@ -23,6 +23,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle("")
         Dialog.setModal(True)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
+        self.verticalLayout.setContentsMargins(20, -1, 20, -1)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label_2 = QtWidgets.QLabel(Dialog)
         font = QtGui.QFont()

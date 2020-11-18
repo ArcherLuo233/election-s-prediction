@@ -10,6 +10,7 @@ class ChoiceDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.done)
+        self.setMinimumWidth(300)
         self.setWindowTitle("请选择")
         self.button_group = QButtonGroup()
 
