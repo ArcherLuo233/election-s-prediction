@@ -6,8 +6,8 @@
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>892</width>
-                <height>734</height>
+                <width>869</width>
+                <height>1177</height>
             </rect>
         </property>
         <property name="font">
@@ -204,14 +204,7 @@
                             </layout>
                         </item>
                         <item>
-                            <widget class="QLabel" name="label_staff">
-                                <property name="text">
-                                    <string/>
-                                </property>
-                                <property name="wordWrap">
-                                    <bool>true</bool>
-                                </property>
-                            </widget>
+                            <layout class="QGridLayout" name="staff_layout"/>
                         </item>
                         <item>
                             <widget class="QLabel" name="label_5">

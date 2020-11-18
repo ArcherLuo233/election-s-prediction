@@ -1,4 +1,7 @@
-from PyQt5.QtWidgets import QFileDialog, QMessageBox, QWidget
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QColor, QPalette
+from PyQt5.QtWidgets import (QFileDialog, QLabel, QMessageBox, QSizePolicy,
+                             QSpacerItem, QWidget)
 
 from libs.enumrations import UserPermission
 from libs.g import g
@@ -29,7 +32,6 @@ class Pagejgxq(QWidget):
         self.staff_info = {i: [] for i in self.staff_names.keys()}
         self.type = None
         self.ui.pushButton.clicked.connect(self.go_back)
-        self.ui.label_staff.linkActivated.connect(self.handle_link)
         self.ui.btn_modify_name.clicked.connect(self.modify_name)
         self.ui.btn_modify_summary.clicked.connect(self.modify_summary)
         self.ui.btn_append.clicked.connect(self.append)
@@ -157,9 +159,18 @@ class Pagejgxq(QWidget):
         return s
 
     def set_staff_info(self, info):
-        s = str()
-        for position, infos in info.items():
-            s += position + ':'
+        while self.ui.staff_layout.count():
+            w = self.ui.staff_layout.takeAt(0)
+            if w.widget():
+                w.widget().deleteLater()
+        for i, (position, infos) in enumerate(info.items()):
+            label1 = QLabel(position)
+            label1.setFont(self.font())
+            label1.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+            pal = label1.palette()
+            pal.setBrush(QPalette.WindowText, QColor(122, 122, 122))
+            label1.setPalette(pal)
+            self.ui.staff_layout.addWidget(label1, i, 0)
             ss = ''
             for name in infos:
                 if name == '':
@@ -167,10 +178,13 @@ class Pagejgxq(QWidget):
                 ss += ' '
                 ss += self.staff_info2str(position, name)
             if ss == '':
-                ss = ' 无'
-            s += ss
-            s += '<br>'
-        self.ui.label_staff.setText(s)
+                ss = '无'
+            label2 = QLabel(ss)
+            label2.setFont(self.font())
+            label2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+            label2.setWordWrap(True)
+            label2.linkActivated.connect(self.handle_link)
+            self.ui.staff_layout.addWidget(label2, i, 1)
 
     def go_back(self):
         link_manager.activate("#goto:" + self.back_page)

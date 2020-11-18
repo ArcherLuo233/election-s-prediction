@@ -1,12 +1,12 @@
 import pickle
 
+import pandas as pd
+from pandas.core.frame import DataFrame
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from sklearn.preprocessing import StandardScaler
 
-import pandas as pd
 from model.area import Area
-from pandas.core.frame import DataFrame
 
 from .predict_elementUI import Ui_Dialog
 

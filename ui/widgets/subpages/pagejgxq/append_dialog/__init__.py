@@ -5,7 +5,7 @@ from .append_pageUI import Ui_Dialog
 
 class AppendDialog(ModalDialog):
     def __init__(self, parent, keys=None):
-        super().__init__(parent, size=(300, 300))
+        super().__init__(parent, size=(500, 300))
         if keys is None:
             keys = ['理事', '监事', '代表']
         self.ui = Ui_Dialog()
