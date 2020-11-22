@@ -237,7 +237,10 @@ class Base(base_class):
 
         for item in field:
             attr = getattr(cls, item)
-            data[attr.comparator.comment] = getattr(base, item) if getattr(base, item) else ''
+            try:
+                data[attr.comparator.comment] = getattr(base, item) if getattr(base, item) else ''
+            except AttributeError:
+                pass
         ty_data = []
         if cls.ty:
             ty_field = cls.ty.field.copy()

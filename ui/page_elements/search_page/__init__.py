@@ -387,7 +387,7 @@ class SearchPage(QWidget):
                 self.ui.button_add.show()
 
     def download_template(self):
-        default_name = './{model}-模板'.format(model=self.model.class_name)
+        default_name = './{model}-模板.xlsx'.format(model=self.model.class_name)
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
         if filename == "":
             return
@@ -416,7 +416,7 @@ class SearchPage(QWidget):
         self.refresh_page()
 
     def export_to_file(self):
-        default_name = './{model}'.format(model=self.model.class_name)
+        default_name = './{model}.xlsx'.format(model=self.model.class_name)
         for i, j in self.default_conditions.items():
             default_name += '-{data}'.format(data=j)
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]

@@ -4,3 +4,5 @@ openpyxl
 docxtpl
 pillow
 pandas
+xgboost
+sklearn
