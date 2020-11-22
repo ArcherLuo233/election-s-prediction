@@ -25,7 +25,7 @@ class DetailPage(QDialog):
         self.projects = []
         # tableWidget
         table_widget = self.ui.tableWidget
-        table_widget.setSelectionMode(QTableWidget.NoSelection)
+        table_widget.setSelectionMode(QTableWidget.SingleSelection)
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
@@ -231,7 +231,7 @@ class DetailPage(QDialog):
 
     def additem(self, row, col, text, l):
         item = QTableWidgetItem()
-        item.setFlags(Qt.ItemIsEnabled)
+        # item.setFlags(Qt.ItemIsEnabled)
         item.setText(text)
         item.setTextAlignment(Qt.AlignCenter)
         if l != -1:
