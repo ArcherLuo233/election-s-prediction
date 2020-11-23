@@ -18,9 +18,7 @@ class Prediction(QDialog):
         self.pro = pro
         self.name = name
         super().__init__(parent)
-        flags = self.windowFlags()
-        flags |= Qt.WindowMinMaxButtonsHint
-        self.setWindowFlags(flags)
+        self.setWindowFlags(Qt.Window)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 

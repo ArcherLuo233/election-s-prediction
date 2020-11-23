@@ -18,9 +18,7 @@ class DetailPage(QDialog):
         self.title = ["炎峰里", "中正里", "玉峰里", "明正里", "和平里", "中山里", "敦和里", "山脚里", "新厝里", "上林里", "碧峰里", "碧洲里", "复兴里", "北投里",
                       "石川里", "加老里", "新庄里", "新丰里", "御史里", "北势里", "中原里", "富寮里", "南埔里", "坪顶里", "土城里", "平林里", "双冬里"]
         super().__init__(parent)
-        flags = self.windowFlags()
-        flags |= Qt.WindowMinMaxButtonsHint
-        self.setWindowFlags(flags)
+        self.setWindowFlags(Qt.Window)
         self.sx = []
         self.data_all = []
         self.ui = Ui_Dialog()
@@ -29,7 +27,7 @@ class DetailPage(QDialog):
         self.projects = []
         # tableWidget
         table_widget = self.ui.tableWidget
-        table_widget.setSelectionMode(QTableWidget.NoSelection)
+        table_widget.setSelectionMode(QTableWidget.SingleSelection)
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
@@ -102,7 +100,6 @@ class DetailPage(QDialog):
 
     def additem(self, row, col, text, l):
         item = QTableWidgetItem()
-        item.setFlags(Qt.ItemIsEnabled)
         item.setText(str(text))
         item.setTextAlignment(Qt.AlignCenter)
         if l != -1:

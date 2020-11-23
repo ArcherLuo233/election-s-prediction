@@ -17,9 +17,7 @@ class ZoneDetailPage(QDialog):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        flags = self.windowFlags()
-        flags |= Qt.WindowMinMaxButtonsHint
-        self.setWindowFlags(flags)
+        self.setWindowFlags(Qt.Window)
         # tableWidget
         table_widget = self.ui.tableWidget
         table_widget.setSelectionMode(QTableWidget.SingleSelection)
