@@ -16,9 +16,7 @@ class DetailPage(QDialog):
     def __init__(self, parent, title):
         self.title = title
         super().__init__(parent)
-        flags = self.windowFlags()
-        flags |= Qt.WindowMinMaxButtonsHint
-        self.setWindowFlags(flags)
+        self.setWindowFlags(Qt.Window)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.year = []

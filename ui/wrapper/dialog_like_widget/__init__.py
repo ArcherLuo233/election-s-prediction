@@ -9,9 +9,7 @@ class DialogLikeWidgetWrapper(QDialog):
             w.set_wrapper(self)
         except:
             pass
-        flags = self.windowFlags()
-        flags |= Qt.WindowMinMaxButtonsHint
-        self.setWindowFlags(flags)
+        self.setWindowFlags(Qt.Window)
         self.wrapped_widget = w
         self.setWindowTitle(w.windowTitle())
         self.setAttribute(Qt.WA_DeleteOnClose)
