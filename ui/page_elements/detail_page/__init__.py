@@ -94,7 +94,11 @@ class DetailPage(QDialog):
         self.close()
 
     def export(self):
-        default_name = "./{model}-{id}.docx".format(model=self.model.class_name, id=self.data_id)
+        try:
+            name = self.model.get_by_id(self.data_id).nickname
+        except:
+            name = self.data_id
+        default_name = "./{model}-{name}.docx".format(model=self.model.class_name, name=name)
         filename = QFileDialog.getSaveFileName(None, "导出文档", default_name, "word文档(*.docx)")[0]
         if filename == "":
             return

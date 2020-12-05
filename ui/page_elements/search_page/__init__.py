@@ -295,7 +295,7 @@ class SearchPage(QWidget):
             return
         for id_ in self.id_selected:
             try:
-                name = self.model.search(id=id_)['data'][0].nickname
+                name = self.model.get_by_id(id_).nickname
             except:
                 name = id_
             filename = '/{model}-{name}.docx'.format(model=self.model.class_name, name=name)
