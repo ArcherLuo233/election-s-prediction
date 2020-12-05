@@ -154,10 +154,10 @@ class Base(base_class):
                 time = data['datetime']
                 flag = 1
                 answer = ""
-                1  # 全数字 8位
-                2  # 有符号 无0
-                3  # 有符号 有0
-                4  # 无法判断
+                # 1 全数字 8位
+                # 2 有符号 无0
+                # 3 有符号 有0
+                # 4 无法判断
                 fh = []
                 for j in time:
                     if j > '9' or j < '0':
