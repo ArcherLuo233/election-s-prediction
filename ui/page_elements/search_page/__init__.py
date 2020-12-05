@@ -294,7 +294,11 @@ class SearchPage(QWidget):
         if filedir == '':
             return
         for id_ in self.id_selected:
-            filename = '/{model}-{id}.docx'.format(model=self.model.class_name, id=id_)
+            try:
+                name = self.model.search(id=id_)['data'][0].nickname
+            except:
+                name = id_
+            filename = '/{model}-{name}.docx'.format(model=self.model.class_name, name=name)
             filename = filedir + filename
             self.model.export_document(id_, filename)
         QMessageBox.information(None, "批量导出", "批量导出完成")
