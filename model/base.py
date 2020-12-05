@@ -175,14 +175,14 @@ class Base(base_class):
                         ele = []
                         ind = 1
                         for indx, j in enumerate(time):
-                            if j <= '9' and j >= '0':
+                            if '9' >= j >= '0':
                                 if len(ele) < ind:
                                     ele.append(j)
                                 else:
                                     ele[ind - 1] += j
                             else:
                                 if indx == 0: continue
-                                if time[indx - 1] <= '9' and time[indx - 1] >= '0':
+                                if '9' >= time[indx - 1] >= '0':
                                     ind += 1
                         if len(ele) < 3:
                             flag = 4
