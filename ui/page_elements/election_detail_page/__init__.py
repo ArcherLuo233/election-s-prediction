@@ -24,6 +24,7 @@ class DetailPage(QDialog):
         # tableWidget
         table_widget = self.ui.tableWidget
         table_widget.setSelectionMode(QTableWidget.SingleSelection)
+        table_widget.setEditTriggers(QTableWidget.NoEditTriggers)
         # tableWidget-header
         hor_header = self.ui.tableWidget.horizontalHeader()
         hor_header.setSectionResizeMode(QHeaderView.Stretch)
