@@ -182,27 +182,27 @@ class Pagelftz(SearchPage):
 
 class Pagelftz_jc(Pagelftz):
     title = "来访台胞-基层"
-    default_conditions = {'type': ['基层']}
+    default_conditions = {'type': '基层'}
 
 
 class Pagelftz_qn(Pagelftz):
     title = "来访台胞-青年"
-    default_conditions = {'type': ['青年']}
+    default_conditions = {'type': '青年'}
 
 
 class Pagelftz_sj(Pagelftz):
     title = "来访台胞-商界"
-    default_conditions = {'type': ['商界']}
+    default_conditions = {'type': '商界'}
 
 
 class Pagelftz_xj(Pagelftz):
     title = "来访台胞-学界"
-    default_conditions = {'type': ['学界']}
+    default_conditions = {'type': '学界'}
 
 
 class Pagelftz_zj(Pagelftz):
     title = "来访台胞-政界"
-    default_conditions = {'type': ['政界']}
+    default_conditions = {'type': '政界'}
 
 
 class Pagelftz_ty(SearchPage):

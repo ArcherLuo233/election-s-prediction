@@ -41,6 +41,8 @@ class LFTZ(Base):
 
     @property
     def head(self):
+        if self.id is None:
+            return None
         from model.lftz_ty import LFTZ_TY
         try:
             return LFTZ_TY.search(lftz_id=self.id)['data'][0].nickname
@@ -54,7 +56,9 @@ class LFTZ(Base):
         return self.type_.split(' ')
 
     @type.setter
-    def type(self, val: list):
+    def type(self, val):
+        if isinstance(val, str):
+            val = [val]
         while '' in val:
             val.remove('')
         self.type_ = ' '.join(val)

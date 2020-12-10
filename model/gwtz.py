@@ -46,6 +46,8 @@ class GWTZ(Base):
 
     @property
     def head(self):
+        if self.id is None:
+            return None
         from model.gwtz_ty import GWTZ_TY
         try:
             return GWTZ_TY.search(gwtz_id=self.id)['data'][0].nickname
