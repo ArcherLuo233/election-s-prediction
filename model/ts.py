@@ -10,7 +10,6 @@ class TS(Base):
 
     field = [
         'id', 'area', 'nickname', 'sex', 'birth', 'hometown', 'mailing_address', 'job', 'social_identity', 'phone',
-        'activity',
         'tendency',
         'family_member_nickname', 'family_member_birth', 'family_member_job', 'relatives_relation',
         'relatives_nickname', 'relatives_sex', 'relatives_birth', 'relatives_address', 'relatives_job',
