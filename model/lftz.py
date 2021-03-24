@@ -11,7 +11,7 @@ class LFTZ(Base):
     ty = LFTZ_TY
 
     field = [
-        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization', 'assisting_unit',
+        'id', 'datetime', 'name', 'number_of_people', 'number_of_day', 'stroke', 'group_organization',
         'head',
         'type', 'area', 'content', 'remark'
     ]
@@ -57,8 +57,9 @@ class LFTZ(Base):
 
     @type.setter
     def type(self, val):
-        if isinstance(val, str):
-            val = [val]
-        while '' in val:
-            val.remove('')
-        self.type_ = ' '.join(val)
+        if isinstance(val, list):
+            while '' in val:
+                val.remove('')
+            self.type_ = ' '.join(val)
+        else:
+            self.type_ = val

@@ -53,7 +53,10 @@ class Base(base_class):
         base = cls()
         for key, value in kwargs.items():
             if hasattr(cls, key) and key not in cls.read_field:
-                setattr(base, key, value)
+                try:
+                    setattr(base, key, value)
+                except:
+                    pass
         session.add(base)
         session.commit()
         return base
@@ -194,7 +197,7 @@ class Base(base_class):
                 data.update(kwargs)
             if cls.__tablename__ != 'jg':
                 if cls.search(**data)['meta']['count'] == 0:
-                    cls.create(**data)
+                    cls.create(**data, **kwargs)
             else:
                 for k in cls.import_handle_file:
                     if not data[k]:
@@ -202,7 +205,7 @@ class Base(base_class):
                     else:
                         peo = data[k].split(',')
                     data[k] = peo
-                cls.create(**data)
+                cls.create(**data, **kwargs)
 
     @classmethod
     def export(cls, filename, **kwargs):

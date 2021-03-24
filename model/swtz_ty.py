@@ -37,7 +37,11 @@ class SWTZ_TY(Base):
         return self.identity_.split(' ')
 
     @identity.setter
-    def identity(self, val: list):
-        while '' in val:
-            val.remove('')
-        self.identity_ = ' '.join(val)
+    def identity(self, val):
+        if isinstance(val, list):
+            while '' in val:
+                val.remove('')
+            self.identity_ = ' '.join(val)
+        else:
+            self.identity_ = val
+
