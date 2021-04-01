@@ -86,10 +86,10 @@ class ZoneDetailPage(QDialog):
             QMessageBox.warning(None, "查询", "你没有选中任何项目")
 
     def export(self):
-        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区", "excel文件(*.xlsx)")[0]
+        filename = QFileDialog.getSaveFileName(self, "选择保存地址", "选区.xlsx", "excel文件(*.xlsx)")[0]
         if filename == "":
             return
-        wb = load_workbook(r"E:\python\election-s-prediction\template\xq.xlsx")
+        wb = load_workbook(r"template/xq.xlsx")
         ws = wb.active
         fontObj1 = Font(name=u'等线', size=11)
         thin_border = Border(left=Side(style='thin'),
