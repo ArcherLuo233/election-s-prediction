@@ -1,7 +1,8 @@
 from sqlalchemy import Column, Integer, asc, create_engine, desc
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
+from libs.exception import AppException
 from config.secure import SQLALCHEMY_URL
 from config.settings import DEFAULT_PAGE_SIZE
 from libs.service import (download_file, read_excel, save_excel,
@@ -57,9 +58,15 @@ class Base(base_class):
                     setattr(base, key, value)
                 except:
                     pass
-        session.add(base)
-        session.commit()
-        return base
+        try:
+            session.add(base)
+            session.commit()
+        except SQLAlchemyError as e:
+            session.rollback()
+            error = str(e.__dict__['orig'])
+            raise AppException(":" + error)
+        else:
+            return base
 
     def modify(self, **kwargs):
         for key, value in kwargs.items():
@@ -144,68 +151,73 @@ class Base(base_class):
 
     @classmethod
     def import_(cls, filename, **kwargs):
-        res = read_excel(filename, cls.template_start_row, cls.class_name)
-        for kk, i in enumerate(res):
-            field = cls.field.copy()
-            field.remove('id')
-            for file in cls.file_field:
-                field.remove(file)
-            for file in cls.read_field:
-                field.remove(file)
-            data = {field[idx]: i[idx] for idx in range(len(field))}
-            if cls.__tablename__ == 'swtz' or cls.__tablename__ == 'lftz':
-                time = data['datetime']
-                flag = 1
-                answer = ""
-                # 1 全数字 8位
-                # 2 有符号 无0
-                # 3 有符号 有0
-                # 4 无法判断
-                fh = []
-                for j in time:
-                    if j > '9' or j < '0':
-                        flag = 2
-                        fh.append(j)
-                if flag == 1:
-                    if len(time) < 8:
-                        flag = 4
-                    else:
-                        answer = time[0:4] + "/" + time[4:6] + "/" + time[6:8]
-                else:
-                    if len(fh) < 2:
-                        flag = 4
-                    else:
-                        ele = []
-                        ind = 1
-                        for indx, j in enumerate(time):
-                            if '9' >= j >= '0':
-                                if len(ele) < ind:
-                                    ele.append(j)
-                                else:
-                                    ele[ind - 1] += j
-                            else:
-                                if indx == 0: continue
-                                if '9' >= time[indx - 1] >= '0':
-                                    ind += 1
-                        if len(ele) < 3:
+        try:
+            res = read_excel(filename, cls.template_start_row, cls.class_name)
+            for kk, i in enumerate(res):
+                field = cls.field.copy()
+                field.remove('id')
+                for file in cls.file_field:
+                    field.remove(file)
+                for file in cls.read_field:
+                    field.remove(file)
+                data = {field[idx]: i[idx] for idx in range(len(field))}
+                if cls.__tablename__ == 'swtz' or cls.__tablename__ == 'lftz':
+                    time = data['datetime']
+                    flag = 1
+                    answer = ""
+                    # 1 全数字 8位
+                    # 2 有符号 无0
+                    # 3 有符号 有0
+                    # 4 无法判断
+                    fh = []
+                    for j in time:
+                        if j > '9' or j < '0':
+                            flag = 2
+                            fh.append(j)
+                    if flag == 1:
+                        if len(time) < 8:
                             flag = 4
                         else:
-                            answer = ele[0].rjust(4, '0') + "/" + ele[1].rjust(2, '0') + '/' + ele[2].rjust(2, '0')
-                if flag == 4:
-                    answer = time
-                data['datetime'] = answer
-                data.update(kwargs)
-            if cls.__tablename__ != 'jg':
-                if cls.search(**data)['meta']['count'] == 0:
-                    cls.create(**data, **kwargs)
-            else:
-                for k in cls.import_handle_file:
-                    if not data[k]:
-                        peo = []
+                            answer = time[0:4] + "/" + time[4:6] + "/" + time[6:8]
                     else:
-                        peo = data[k].split(',')
-                    data[k] = peo
-                cls.create(**data, **kwargs)
+                        if len(fh) < 2:
+                            flag = 4
+                        else:
+                            ele = []
+                            ind = 1
+                            for indx, j in enumerate(time):
+                                if '9' >= j >= '0':
+                                    if len(ele) < ind:
+                                        ele.append(j)
+                                    else:
+                                        ele[ind - 1] += j
+                                else:
+                                    if indx == 0: continue
+                                    if '9' >= time[indx - 1] >= '0':
+                                        ind += 1
+                            if len(ele) < 3:
+                                flag = 4
+                            else:
+                                answer = ele[0].rjust(4, '0') + "/" + ele[1].rjust(2, '0') + '/' + ele[2].rjust(2, '0')
+                    if flag == 4:
+                        answer = time
+                    data['datetime'] = answer
+                    data.update(kwargs)
+                if cls.__tablename__ != 'jg':
+                    if cls.search(**data)['meta']['count'] == 0:
+                        if 'type' in kwargs:
+                            del data['type']
+                        cls.create(**data, **kwargs)
+                else:
+                    for k in cls.import_handle_file:
+                        if not data[k]:
+                            peo = []
+                        else:
+                            peo = data[k].split(',')
+                        data[k] = peo
+                    cls.create(**data, **kwargs)
+        except AppException as e:
+            raise AppException("发生不可预料的错误" + e.msg)
 
     @classmethod
     def export(cls, filename, **kwargs):

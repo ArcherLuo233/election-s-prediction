@@ -43,6 +43,7 @@ class GWTZ(Base):
     topic = Column(String(100), comment='主题词')
     approval_form = Column(String(100), comment='审批表')
     area = Column(String(100), comment='地区')
+    head_ = Column(String(100), comment='团长')
 
     @property
     def head(self):
@@ -50,6 +51,9 @@ class GWTZ(Base):
             return None
         from model.gwtz_ty import GWTZ_TY
         try:
-            return GWTZ_TY.search(gwtz_id=self.id)['data'][0].nickname
+            tmp = GWTZ_TY.search(gwtz_id=self.id)['data'][0].nickname
+            if self.head_ == None and tmp != None:
+                self.modify(head_=tmp)
+            return tmp
         except IndexError:
             return None

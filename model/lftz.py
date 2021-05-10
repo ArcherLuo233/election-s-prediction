@@ -38,6 +38,7 @@ class LFTZ(Base):
     type_ = Column('type', String(100), comment='身份')
     area = Column(String(100), comment='地区')
     content = Column(Text, comment='考察内容')
+    head_ = Column(String(100), comment='团长')
 
     @property
     def head(self):
@@ -45,7 +46,10 @@ class LFTZ(Base):
             return None
         from model.lftz_ty import LFTZ_TY
         try:
-            return LFTZ_TY.search(lftz_id=self.id)['data'][0].nickname
+            tmp = LFTZ_TY.search(lftz_id=self.id)['data'][0].nickname
+            if self.head_ == None and tmp != None:
+                self.modify(head_=tmp)
+            return tmp
         except IndexError:
             return None
 

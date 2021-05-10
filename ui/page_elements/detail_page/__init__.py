@@ -160,10 +160,12 @@ class DetailPage(QDialog):
         table_widget.clearContents()
         table_widget.setRowCount(row_count)
         table_widget.setColumnCount(column_count)
+        print(1)
         # pic-item
         if self.need_pic:
             table_widget.setSpan(0, 2, pic_height, 1)
             table_widget.setSpan(0, 3, pic_height, 1)
+            print(2)
             item = QTableWidgetItem()
             item.setFlags(Qt.ItemIsEnabled)
             item.setText("照片")

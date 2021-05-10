@@ -17,6 +17,7 @@ class PicWidget(QWidget):
         self.pixmap = None
         self.path = ""
         self.ui.btn_upload.clicked.connect(self.upload_picture)
+        self.defaultsc = -1
 
     def set_picture(self, pic_path):
         self.pixmap = QPixmap()
@@ -46,5 +47,6 @@ class PicWidget(QWidget):
         if pixmap is None:
             self.ui.label_pic.setText("")
             return
-        pixmap = pixmap.scaledToHeight(self.ui.label_pic.height(), Qt.SmoothTransformation)
+        if self.defaultsc == -1:  self.defaultsc = self.ui.label_pic.height()
+        pixmap = pixmap.scaledToHeight(self.defaultsc, Qt.SmoothTransformation)
         self.ui.label_pic.setPixmap(pixmap)
