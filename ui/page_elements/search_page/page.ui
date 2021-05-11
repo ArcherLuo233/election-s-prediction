@@ -6,8 +6,8 @@
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>683</width>
-                <height>474</height>
+                <width>1028</width>
+                <height>719</height>
             </rect>
         </property>
         <property name="font">
@@ -351,6 +351,32 @@
                                         </property>
                                         <property name="text">
                                             <string>全不选</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="QLabel" name="lable_11">
+                                        <property name="font">
+                                            <font>
+                                                <family>黑体</family>
+                                                <pointsize>16</pointsize>
+                                            </font>
+                                        </property>
+                                        <property name="text">
+                                            <string>人数总计:</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="QLabel" name="sum">
+                                        <property name="font">
+                                            <font>
+                                                <family>黑体</family>
+                                                <pointsize>16</pointsize>
+                                            </font>
+                                        </property>
+                                        <property name="text">
+                                            <string>TextLabel</string>
                                         </property>
                                     </widget>
                                 </item>

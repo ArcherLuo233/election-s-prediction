@@ -1,6 +1,7 @@
 import pickle
 
 import pandas as pd
+import xgboost
 from pandas.core.frame import DataFrame
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QMessageBox
@@ -104,26 +105,44 @@ class Prediction(QDialog):
         item.append(whether_reselected)
         item.append(gender)
         item.append(times)
+        old = last_rate
         target = []
         target.append(item)
-        df = pd.read_csv('./static/prediction/X_train.csv')
-        X_train = df.values
-        df = DataFrame(target)
-        X_test = df.values
-        scaler = StandardScaler()
-        scaler.fit(X_train)
-        X_test = scaler.transform(X_test)
+        target = DataFrame(target)
+        # df = pd.read_csv('./static/prediction/X_train.csv')
+        # X_train = df.values
+        # df = DataFrame(target)
+        # X_test = df.values
+        # scaler = StandardScaler()
+        # scaler.fit(X_train)
+        # X_test = scaler.transform(X_test)
+        #
+        # with open('./static/prediction/xgb_model_isselected.pickle', 'rb') as fr:
+        #     xgb_model = pickle.load(fr)
 
-        with open('./static/prediction/xgb_model_isselected.pickle', 'rb') as fr:
-            xgb_model = pickle.load(fr)
-        y_pred_isselected = xgb_model.predict(X_test)
-        with open('./static/prediction/xgb_model_rate.pickle', 'rb') as fr:
-            xgb_model = pickle.load(fr)
-        y_pred_rate = xgb_model.predict(X_test)
+        model1 = xgboost.XGBClassifier()
+        model1.load_model('./static/prediction/isselected_model')
+        y_pred_isselected = model1.predict(target)
+        print(y_pred_isselected)
+        model2 = xgboost.XGBRegressor()
+        model2.load_model('./static/prediction/rate_model')
+        y_pred_rate = model2.predict(target)
 
-        self.ui.label_3.setText(str(round(y_pred_rate[0], 4)))
+        # y_pred_isselected = xgb_model.predict(X_test)
+        # with open('./static/prediction/xgb_model_rate.pickle', 'rb') as fr:
+        #     xgb_model = pickle.load(fr)
+        # y_pred_rate = xgb_model.predict(X_test)
 
-        if y_pred_isselected[0] == 1:
+        y_pred_rate = round(y_pred_rate[0], 4)
+        hh = y_pred_rate
+        if y_pred_rate < old:
+            y_pred_rate = max(y_pred_rate + (old - y_pred_rate) / 3, old * 0.9)
+        elif y_pred_rate > old:
+            y_pred_rate = min(y_pred_rate - (y_pred_rate - old) / 3, old * 1.1)
+
+        self.ui.label_3.setText(str(round(y_pred_rate, 4)))
+
+        if y_pred_isselected[0] == 1 or round(y_pred_rate, 4) >= 0.5:
             self.ui.label_5.setText("当选")
         else:
             self.ui.label_5.setText("未当选")

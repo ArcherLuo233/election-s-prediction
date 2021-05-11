@@ -178,19 +178,20 @@ class SearchPage(QWidget):
         self.refresh_page()
 
     def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
-        if self.model is None:
-            count = 0
-        else:
-            count = self.model.search()['meta']['count']
-        max_page = math.ceil(count / page_size)
-        self.ui.page_controller.set_max_page(max_page)
-        if self.model is None:
-            return
         conditions = self.get_conditions()
         data = self.model.search(page=page,
                                  page_size=page_size,
                                  order={self.sort_field: self.sort_order},
                                  **conditions)
+        if self.model is None:
+            count = 0
+        else:
+            count = data['meta']['count']
+        max_page = math.ceil(count / page_size)
+        self.ui.page_controller.set_max_page(max_page)
+        if self.model is None:
+            return
+        self.ui.sum.setText(str(data['meta']['count']))
         self.refresh_table(data['data'], page_size)
 
     def get_conditions(self):
