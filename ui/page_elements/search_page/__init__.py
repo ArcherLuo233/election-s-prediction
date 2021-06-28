@@ -414,7 +414,7 @@ class SearchPage(QWidget):
             if self.model is None:
                 raise AppException("Undefined Import: %s" % self.title)
             self.model.import_(filename, **self.default_conditions)
-        except AppException as e:
+        except BaseException as e:
             QMessageBox.warning(None, "导入数据", e.msg)
             return
         QMessageBox.information(None, "导入数据", "导入完毕")
@@ -422,6 +422,8 @@ class SearchPage(QWidget):
 
     def export_to_file(self):
         default_name = './{model}.xlsx'.format(model=self.model.class_name)
+        if len(self.default_conditions) != 0:
+            default_name = default_name[:-5]
         for i, j in self.default_conditions.items():
             default_name += '-{data}'.format(data=j)
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]

@@ -70,8 +70,11 @@ class Base(base_class):
 
     def modify(self, **kwargs):
         for key, value in kwargs.items():
-            if hasattr(self, key):
-                setattr(self, key, value)
+            try:
+                if hasattr(self, key):
+                    setattr(self, key, value)
+            except BaseException as e:
+                pass
         session.commit()
 
     def delete(self):
@@ -215,6 +218,8 @@ class Base(base_class):
                         else:
                             peo = data[k].split(',')
                         data[k] = peo
+                    if 'type' in data and 'type' in kwargs:
+                        del data['type']
                     cls.create(**data, **kwargs)
         except AppException as e:
             raise AppException("发生不可预料的错误" + e.msg)

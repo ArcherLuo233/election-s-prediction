@@ -221,6 +221,7 @@ class Pagejgxq(QWidget):
         try:
             JG.export_document(self.data_id, filename)
         except Exception as e:
-            QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
+            # QMessageBox.warning(None, "导出数据", "导出失败,请关闭目标文件!")
+            QMessageBox.warning(None, "导出数据", str(e))
             return
         QMessageBox.information(None, "导出文档", "导出完成")

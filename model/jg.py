@@ -8,15 +8,18 @@ class JG(Base):
 
     class_name = '机构'
 
-    import_handle_file = ['president', 'vice_president', 'chairman', 'secretary_general',
-                          'director', 'supervisor', 'representative', 'historical_staff'
+    import_handle_file = ['president', 'vice_president', 'executive_vice_president', 'chairman', 'secretary_general',
+                          'deputy_secretary_general', 'director', 'chief_supervisor', 'supervisor', 'representative',
+                          'historical_staff'
                           ]
-    export_handle_file = ['president', 'vice_president', 'chairman', 'secretary_general',
-                          'director', 'supervisor', 'representative', 'historical_staff', 'type'
+    export_handle_file = ['president', 'vice_president', 'executive_vice_president', 'chairman', 'secretary_general',
+                          'deputy_secretary_general', 'director', 'chief_supervisor', 'supervisor', 'representative',
+                          'historical_staff', 'type'
                           ]
     field = [
-        'id', 'name', 'introduction', 'president', 'vice_president', 'chairman', 'secretary_general',
-        'director', 'supervisor', 'representative', 'historical_staff', 'remark', 'type'
+        'id', 'name', 'introduction', 'president', 'vice_president', 'executive_vice_president', 'chairman',
+        'secretary_general', 'deputy_secretary_general',
+        'director', 'chief_supervisor', 'supervisor', 'representative', 'historical_staff', 'remark', 'type'
     ]
 
     combo_field = {
@@ -30,8 +33,11 @@ class JG(Base):
         '会长': 'president',
         '理事长': 'chairman',
         '副会长': 'vice_president',
+        '常务副会长': 'executive_vice_president',
+        '监事长': 'chief_supervisor',
         '监事': 'supervisor',
         '总干事(秘书长)': 'secretary_general',
+        '副秘书长': 'deputy_secretary_general',
         '理事': 'director',
         '成员': 'representative',
         '历史人员': 'historical_staff'
@@ -42,15 +48,58 @@ class JG(Base):
     name = Column(String(100), comment='名称')
     introduction = Column(String(1000), comment='简介')
     director_ = Column('director', Text, comment='理事')
+    # 123
+    chief_supervisor_ = Column('chief_supervisor', Text, comment='监事长')
     supervisor_ = Column('supervisor', Text, comment='监事')
     representative_ = Column('representative', Text, comment='成员')
     president_ = Column('president', Text, comment='会长')
     vice_president_ = Column('vice_president', Text, comment='副会长')
+    # 123
+    executive_vice_president_ = Column('executive_vice_president', Text, comment='常务副会长')
+
     chairman_ = Column('chairman', Text, comment='理事长')
     secretary_general_ = Column('secretary_general', Text, comment='总干事(秘书长)')
+    # 123
+    deputy_secretary_general_ = Column('deputy_secretary_general', Text, comment='副秘书长')
     historical_staff_ = Column('historical_staff', Text, comment='历史人员')
     remark = Column(Text, comment='备注')
     type_ = Column('type', Text, comment='机构类型')
+
+    @property
+    def deputy_secretary_general(self):
+        if self.deputy_secretary_general_ is None:
+            return []
+        return self.deputy_secretary_general_.split(' ')
+
+    @deputy_secretary_general.setter
+    def deputy_secretary_general(self, raw: list):
+        while '' in raw:
+            raw.remove('')
+        self.deputy_secretary_general_ = " ".join(raw)
+
+    @property
+    def executive_vice_president(self):
+        if self.executive_vice_president_ is None:
+            return []
+        return self.executive_vice_president_.split(' ')
+
+    @executive_vice_president.setter
+    def executive_vice_president(self, raw: list):
+        while '' in raw:
+            raw.remove('')
+        self.executive_vice_president_ = " ".join(raw)
+
+    @property
+    def chief_supervisor(self):
+        if self.chief_supervisor_ is None:
+            return []
+        return self.chief_supervisor_.split(' ')
+
+    @chief_supervisor.setter
+    def chief_supervisor(self, raw: list):
+        while '' in raw:
+            raw.remove('')
+        self.chief_supervisor_ = " ".join(raw)
 
     @property
     def president(self):

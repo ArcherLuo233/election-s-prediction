@@ -121,12 +121,21 @@ def save_jg_detial(filename, title, data):
     run = p.add_run(data['简介'])
     run.font.size = Pt(14)
 
-    table = document.add_table(rows=6, cols=4, style="Table Grid")
+    table = document.add_table(rows=8, cols=4, style="Table Grid")
     table.style.font.size = Pt(14)
-    content = ['会长', '副会长', '理事长', '总干事(秘书长)', '理事', '监事', '成员', '历史人员', '机构类型']
+    content = ['会长', '副会长', '常务副会长', '总干事(秘书长)', '副秘书长', '理事长', '理事', '监事长', '监事', '成员', '历史人员', '机构类型']
     index = 0
-    for i in range(6):
-        if i <= 2:
+    for i in range(8):
+        if i == 0:
+            table.cell(i, 1).merge(table.cell(i, 3))
+            cell_v = table.cell(i, 0)
+            cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            cell_v.text = content[index]
+            index += 1
+            cell_v = table.cell(i, 1)
+            cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            cell_v.text = data[content[index - 1]]
+        elif i <= 4:
             for j in range(2):
                 cell_v = table.cell(i, j * 2)
                 cell_v.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
