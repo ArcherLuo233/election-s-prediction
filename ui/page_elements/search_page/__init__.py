@@ -179,10 +179,13 @@ class SearchPage(QWidget):
 
     def refresh_page(self, page: int = 1, page_size=DEFAULT_PAGE_SIZE):
         conditions = self.get_conditions()
-        data = self.model.search(page=page,
-                                 page_size=page_size,
-                                 order={self.sort_field: self.sort_order},
-                                 **conditions)
+        try:
+            data = self.model.search(page=page,
+                                     page_size=page_size,
+                                     order={self.sort_field: self.sort_order},
+                                     **conditions)
+        except AppException as e:
+            QMessageBox.warning(None, "导出数据", e.msg)
         if self.model is None:
             count = 0
         else:

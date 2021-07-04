@@ -8,6 +8,7 @@ from config.settings import DEFAULT_PAGE_SIZE
 from libs.service import (download_file, read_excel, save_excel,
                           save_jg_detial, save_word)
 
+
 engine = create_engine(SQLALCHEMY_URL)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
@@ -87,70 +88,73 @@ class Base(base_class):
 
     @classmethod
     def search(cls, **kwargs):  # noqa: C901
-        res = session.query(cls)
-        for key, value in kwargs.items():
-            if value is not None:
-                if hasattr(cls, key):
-                    if isinstance(value, str):
-                        if value.startswith(('>=', '==', '<=', '<', '>', '=')):
-                            try:
-                                if value.startswith('=') and not value.startswith('=='):
-                                    value = '=' + value
+        try:
+            res = session.query(cls)
+            for key, value in kwargs.items():
+                if value is not None:
+                    if hasattr(cls, key):
+                        if isinstance(value, str):
+                            if value.startswith(('>=', '==', '<=', '<', '>', '=')):
                                 try:
-                                    cmd = 'res.filter(getattr(cls, key)' + value + ')'
-                                    res = eval(cmd)
+                                    if value.startswith('=') and not value.startswith('=='):
+                                        value = '=' + value
+                                    try:
+                                        cmd = 'res.filter(getattr(cls, key)' + value + ')'
+                                        res = eval(cmd)
+                                    except Exception:
+                                        key = key + "_"
+                                        cmd = 'res.filter(getattr(cls, key)' + value + ')'
+                                        res = eval(cmd)
+                                    continue
+                                except Exception:
+                                    pass
+                            if cls.disable_mh:
+                                try:
+                                    res = res.filter(getattr(cls, key).like(value))
                                 except Exception:
                                     key = key + "_"
-                                    cmd = 'res.filter(getattr(cls, key)' + value + ')'
-                                    res = eval(cmd)
-                                continue
-                            except Exception:
-                                pass
-                        if cls.disable_mh:
-                            try:
-                                res = res.filter(getattr(cls, key).like(value))
-                            except Exception:
-                                key = key + "_"
-                                res = res.filter(getattr(cls, key).like(value))
+                                    res = res.filter(getattr(cls, key).like(value))
+                            else:
+                                try:
+                                    res = res.filter(getattr(cls, key).like("%" + value + "%"))
+                                except Exception:
+                                    key = key + "_"
+                                    res = res.filter(getattr(cls, key).like("%" + value + "%"))
                         else:
+                            res = res.filter(getattr(cls, key) == value)
+
+            if kwargs.get('order'):
+                for key, value in kwargs['order'].items():
+                    if hasattr(cls, key):
+                        if value == 'asc':
                             try:
-                                res = res.filter(getattr(cls, key).like("%" + value + "%"))
+                                res = res.order_by(asc(getattr(cls, key)))
                             except Exception:
-                                key = key + "_"
-                                res = res.filter(getattr(cls, key).like("%" + value + "%"))
-                    else:
-                        res = res.filter(getattr(cls, key) == value)
+                                res = res.order_by(asc(getattr(cls, key + '_')))
+                        if value == 'desc':
+                            try:
+                                res = res.order_by(desc(getattr(cls, key)))
+                            except Exception:
+                                res = res.order_by(desc(getattr(cls, key + '_')))
 
-        if kwargs.get('order'):
-            for key, value in kwargs['order'].items():
-                if hasattr(cls, key):
-                    if value == 'asc':
-                        try:
-                            res = res.order_by(asc(getattr(cls, key)))
-                        except Exception:
-                            res = res.order_by(asc(getattr(cls, key + '_')))
-                    if value == 'desc':
-                        try:
-                            res = res.order_by(desc(getattr(cls, key)))
-                        except Exception:
-                            res = res.order_by(desc(getattr(cls, key + '_')))
-
-        page = kwargs.get('page') if kwargs.get('page') else 1
-        page_size = kwargs.get('page_size') if kwargs.get('page_size') else DEFAULT_PAGE_SIZE
-        if page_size == -1:
-            page_size = 100000000
-        data = {
-            'meta': {
-                'count': res.count(),
-                'page': page,
-                'page_size': page_size
+            page = kwargs.get('page') if kwargs.get('page') else 1
+            page_size = kwargs.get('page_size') if kwargs.get('page_size') else DEFAULT_PAGE_SIZE
+            if page_size == -1:
+                page_size = 100000000
+            data = {
+                'meta': {
+                    'count': res.count(),
+                    'page': page,
+                    'page_size': page_size
+                }
             }
-        }
 
-        res = res.offset((page - 1) * page_size).limit(page_size)
-        res = res.all()
-        data['data'] = res
-        return data
+            res = res.offset((page - 1) * page_size).limit(page_size)
+            res = res.all()
+            data['data'] = res
+            return data
+        except Exception as e:
+            raise AppException("发生异常数据,请加载备份数据" + str(e))
 
     @classmethod
     def import_(cls, filename, **kwargs):
