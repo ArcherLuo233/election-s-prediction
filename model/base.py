@@ -7,7 +7,14 @@ from config.secure import SQLALCHEMY_URL
 from config.settings import DEFAULT_PAGE_SIZE
 from libs.service import (download_file, read_excel, save_excel,
                           save_jg_detial, save_word)
+import traceback
+import logging
 
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(filename)s - %(levelname)s %(message)s',
+                    datefmt='%a %d %b %Y %H:%M:%S',
+                    filename=r'info.log',
+                    filemode='a')
 
 engine = create_engine(SQLALCHEMY_URL)
 DBSession = sessionmaker(bind=engine)
@@ -154,7 +161,8 @@ class Base(base_class):
             data['data'] = res
             return data
         except Exception as e:
-            raise AppException("发生异常数据,请加载备份数据" + str(e))
+            logging.info(traceback.format_exc())
+            raise AppException("发生异常数据,请查看日志info.log或加载可用的备份数据")
 
     @classmethod
     def import_(cls, filename, **kwargs):
@@ -226,7 +234,8 @@ class Base(base_class):
                         del data['type']
                     cls.create(**data, **kwargs)
         except AppException as e:
-            raise AppException("发生不可预料的错误" + e.msg)
+            logging.info(traceback.format_exc())
+            raise AppException("发生不可预料的错误,请查看日志info.log")
 
     @classmethod
     def export(cls, filename, **kwargs):

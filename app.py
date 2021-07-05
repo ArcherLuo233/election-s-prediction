@@ -1,4 +1,5 @@
 import sys
+import traceback
 from threading import Thread
 
 from PyQt5 import QtWidgets
@@ -10,6 +11,13 @@ from libs.service import auto_backup
 from model.base import init_database
 from ui.widgets.login_page import LoginPage
 from ui.widgets.main_page import MainPage
+import logging
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(filename)s - %(levelname)s %(message)s',
+                    datefmt='%a %d %b %Y %H:%M:%S',
+                    filename=r'info.log',
+                    filemode='a')
 
 
 def main():
