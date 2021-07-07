@@ -38,7 +38,7 @@ class LFTZ(Base):
     type_ = Column('type', String(100), comment='身份')
     area = Column(String(100), comment='地区')
     content = Column(Text, comment='考察内容')
-    head_ = Column(String(100), comment='团长')
+    head_ = Column('head', String(100), comment='团长')
 
     @property
     def head(self):

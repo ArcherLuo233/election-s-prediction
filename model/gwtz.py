@@ -43,7 +43,7 @@ class GWTZ(Base):
     topic = Column(String(100), comment='主题词')
     approval_form = Column(String(100), comment='审批表')
     area = Column(String(100), comment='地区')
-    head_ = Column(String(100), comment='团长')
+    head_ = Column('head', String(100), comment='团长')
 
     @property
     def head(self):
