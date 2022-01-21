@@ -17,7 +17,7 @@ class LFTZ_TY(Base):
     combo_field = {
         'identity': {
             'exclude': False,
-            'items': ['基层', '青年', '商界', '学界', '政界']
+            'items': ['基层', '青年', '商界', '学界', '政界', '其他']
         }
     }
 

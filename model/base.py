@@ -56,6 +56,12 @@ class Base(base_class):
     @classmethod
     def get_by_id(cls, id_):
         return session.query(cls).get(id_)
+    
+    #删除表单全部数据
+    @classmethod
+    def delete_all(cls):
+        session.query(cls).delete()
+        session.commit()
 
     @classmethod
     def create(cls, **kwargs):

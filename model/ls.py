@@ -31,7 +31,7 @@ class LS(Base):
     undergraduate_major = Column(String(100), comment='本科就读专业')
     master_college = Column(String(100), comment='硕士毕业院校')
     master_major = Column(String(100), comment='硕士就读专业')
-    phone = Column(String(100), comment='手机号码')
+    phone = Column(String(100), comment='联系方式')
     join_clubs_and_duties = Column(String(100), comment='参加社团及职务')
     address = Column(String(100), comment='家庭住址')
     community = Column(String(100), comment='所在社区/镇村')

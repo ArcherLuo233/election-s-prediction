@@ -75,6 +75,8 @@ class SearchPage(QWidget):
         self.ui.btn_select_null.clicked.connect(self.select_null)
         # btn_mul_delete
         self.ui.btn_mul_delete.clicked.connect(self.mul_delete)
+        # btn_mul_delete_all 全部删除按钮绑定
+        self.ui.btn_mul_delete_all.clicked.connect(self.table_all_delete)
         # btn_mul_export
         self.ui.btn_mul_export.clicked.connect(self.mul_export)
         # tableWidget
@@ -96,13 +98,19 @@ class SearchPage(QWidget):
         item = QTableWidgetItem()
         item.setText("编号")
         table_widget.setHorizontalHeaderItem(1, item)
-        for i, text in enumerate(self.summary.keys(), 2):
+
+        # 详情字段提前
+        item = QTableWidgetItem()
+        item.setText("详情")
+        table_widget.setHorizontalHeaderItem(2, item)
+        
+        for i, text in enumerate(self.summary.keys(), 3):
             item = QTableWidgetItem()
             item.setText(text)
             table_widget.setHorizontalHeaderItem(i, item)
-        item = QTableWidgetItem()
-        item.setText("详情")
-        table_widget.setHorizontalHeaderItem(cols - 1, item)
+        # item = QTableWidgetItem()
+        # item.setText("详情")
+        # table_widget.setHorizontalHeaderItem(cols - 1, item)
 
         # download-template
         self.ui.btn_downloadTemplate.clicked.connect(self.download_template)
@@ -225,8 +233,22 @@ class SearchPage(QWidget):
             item = QTableWidgetItem()
             item.setData(Qt.DisplayRole, info.id)
             table_widget.setItem(i, 1, item)
+
+            # detail_label 详细信息提前
+            detail_label = QLabel(self)
+            detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
+            if self.model and self.members_model:
+                detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
+            if self.model.class_name == '在绍台企':
+                detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
+            detail_label.setText(detail_text)
+            detail_label.setFont(table_widget.font())
+            detail_label.linkActivated.connect(self.detail)
+            detail_label.show()
+            table_widget.setCellWidget(i, 2, detail_label)
+
             # summarys
-            for j, k in enumerate(self.summary.keys(), 2):
+            for j, k in enumerate(self.summary.keys(), 3):
                 item = QTableWidgetItem()
                 data = getattr(info, self.summary[k])
                 if data is None:
@@ -248,18 +270,19 @@ class SearchPage(QWidget):
                         continue
                 item.setText(str(data))
                 table_widget.setItem(i, j, item)
-            # detail_label
-            detail_label = QLabel(self)
-            detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
-            if self.model and self.members_model:
-                detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
-            if self.model.class_name == '在绍台企':
-                detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
-            detail_label.setText(detail_text)
-            detail_label.setFont(table_widget.font())
-            detail_label.linkActivated.connect(self.detail)
-            detail_label.show()
-            table_widget.setCellWidget(i, cols - 1, detail_label)
+            # # detail_label
+            # detail_label = QLabel(self)
+            # detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
+            # if self.model and self.members_model:
+            #     detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
+            # if self.model.class_name == '在绍台企':
+            #     detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
+            # detail_label.setText(detail_text)
+            # detail_label.setFont(table_widget.font())
+            # detail_label.linkActivated.connect(self.detail)
+            # detail_label.show()
+            # table_widget.setCellWidget(i, cols - 1, detail_label)
+
         table_widget.resizeColumnsToContents()
         if table_widget.columnWidth(1) < 50:
             table_widget.setColumnWidth(1, 50)
@@ -289,6 +312,14 @@ class SearchPage(QWidget):
         for id_ in self.id_selected:
             rec = self.model.get_by_id(id_)
             rec.delete()
+        self.refresh_page()
+    
+    #删除表单全部数据
+    def table_all_delete(self):
+        res = QMessageBox.question(None, "删除", "确认删除表单内全部数据吗？")
+        if res == QMessageBox.No:
+            return
+        self.model.delete_all()
         self.refresh_page()
 
     def mul_export(self):
@@ -425,6 +456,9 @@ class SearchPage(QWidget):
 
     def export_to_file(self):
         default_name = './{model}.xlsx'.format(model=self.model.class_name)
+        if self.model.class_name == "在绍台企":
+            print("正在导出整体数据")
+            
         if len(self.default_conditions) != 0:
             default_name = default_name[:-5]
         for i, j in self.default_conditions.items():
