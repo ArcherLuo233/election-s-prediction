@@ -100,6 +100,10 @@ class Base(base_class):
         session.commit()
 
     @classmethod
+    def get_all_id(cls):
+        return session.query(cls.id).all()
+
+    @classmethod
     def search(cls, **kwargs):  # noqa: C901
         try:
             res = session.query(cls)

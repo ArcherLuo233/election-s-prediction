@@ -1,4 +1,5 @@
 import math
+import os
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
@@ -10,6 +11,9 @@ from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
 from libs.g import g
+from libs.service import save_excel
+from model.tstg import TSTG
+from model.zstq_jyb import ZSTQ_JYB
 from model.zyrs import ZYRS
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
@@ -17,6 +21,7 @@ from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .pageUI import Ui_Form
+# from ...widgets.subpages.pagejg import Pagezstq_jyb
 
 
 class SearchPage(QWidget):
@@ -456,14 +461,12 @@ class SearchPage(QWidget):
 
     def export_to_file(self):
         default_name = './{model}.xlsx'.format(model=self.model.class_name)
-        if self.model.class_name == "在绍台企":
-            print("正在导出整体数据")
-            
         if len(self.default_conditions) != 0:
             default_name = default_name[:-5]
         for i, j in self.default_conditions.items():
             default_name += '-{data}.xlsx'.format(data=j)
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
+        save_path = os.path.split(filename)[0]
         if filename == "":
             return
         try:
@@ -478,4 +481,22 @@ class SearchPage(QWidget):
         #     raise AppException("Undefined Export: %s" % self.title)
         # conditions = self.get_conditions()
         # self.model.export(filename, **conditions)
+        if self.model.class_name == "在绍台企":
+            print("正在导出整体数据")
+            id_group = self.model.get_all_id()
+            id_all = [int(str(i)[1:-2]) for i in id_group]
+            print(id_all)
+            for item in id_all:
+                res_tstg = TSTG.search(page_size=-1, **{'zstq_id': item})['data']
+                field = TSTG.field.copy()
+                data = [[getattr(i, key) for key in field] for i in res_tstg]
+                save_excel('template/{}.xlsx'.format(TSTG.__tablename__), TSTG.template_start_row, data,
+                           save_path + "/台商台干-{}.xlsx".format(item))
+
+                res = ZSTQ_JYB.search(page_size=-1, **{'zstq_id': item})['data']
+                field = ZSTQ_JYB.field.copy()
+                data = [[getattr(i, key) for key in field] for i in res]
+                save_excel('template/{}.xlsx'.format(ZSTQ_JYB.__tablename__), ZSTQ_JYB.template_start_row, data,
+                           save_path + "/在绍台企经营情况-{}.xlsx".format(item))
+
         QMessageBox.information(None, "导出数据", "导出完毕")
