@@ -42,10 +42,15 @@ class ProjectAdd(ModalDialog):
         self.ui.ComboBox.addItems(yearlist)
 
     def addallproject(self):
+        flag = 0
         for i in self.alltitle:
             self.title = i
-            self.addproject()
-        QMessageBox.information(None, "添加项目", "添加项目成功!")
+            flag = self.addproject()
+            if flag: break
+        if flag:
+            QMessageBox.warning(None, "添加项目失败", "该项目已存在!")
+        else:
+            QMessageBox.information(None, "添加项目", "添加项目成功!")
 
     def addproject(self):
         year = self.ui.ComboBox.currentText()
@@ -63,8 +68,8 @@ class ProjectAdd(ModalDialog):
                     for j in i["projects"]:
                         if j["name"] == project:
                             fg = 1
-                            QMessageBox.warning(None, "添加项目失败", "该项目已存在!")
-                            break
+
+                            return 1
             if fg == 0:
                 for i in data:
                     if str(i["year"]) == year:
@@ -93,3 +98,4 @@ class ProjectAdd(ModalDialog):
                 source.modify(extra=data)
 
                 self.close()
+                return 0

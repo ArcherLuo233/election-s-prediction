@@ -285,7 +285,7 @@ class Base(base_class):
             except AttributeError:
                 pass
         ty_data = []
-        if cls.ty:
+        if cls.ty and cls.class_name != '在绍台企':
             ty_field = cls.ty.field.copy()
             ty_field.remove("id")
             for file in cls.ty.file_field:
@@ -294,10 +294,11 @@ class Base(base_class):
             for ty in ty_list:
                 tmp = dict()
                 for item in ty_field:
-                    if item == 'identity': item = item + '_'
+                    if item == 'identity' or item == 'type': item = item + '_'
                     attr = getattr(cls.ty, item)
                     tmp[attr.comparator.comment] = getattr(ty, item) if getattr(ty, item) else ''
                 ty_data.append(tmp)
+
         if cls.class_name == '机构':
             save_jg_detial(filename, cls.class_name, data)
         else:

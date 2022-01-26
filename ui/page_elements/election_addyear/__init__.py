@@ -30,53 +30,58 @@ class YearAdd(ModalDialog):
         # init
 
     def addallyear(self):
+        flag = 0
         for i in self.alltitle:
             self.title = i
-            self.addyear()
-        QMessageBox.information(None, "添加年度", "添加年度成功!")
+            flag = self.addyear()
+            if flag: break
+        if flag == 1:
+            QMessageBox.warning(None, "添加年度失败", "该年度已存在!")
+        else:
+            QMessageBox.information(None, "添加年度", "添加年度成功!")
 
     def addyear(self):
         year = self.ui.LineEdit.text()
-        if year == "" or int(year) < 0 or int(year) > 3000:
-            QMessageBox.warning(None, "添加年度失败", "请输入正确年份!")
-        else:
-            source = Area.search(name=self.title)['data'][0]
-            try:
-                data = source.extra
-            except Exception:
-                data = []
-            fg = 0
-            for i in data:
-                if str(i["year"]) == year:
-                    fg = 1
-                    QMessageBox.warning(None, "添加年度失败", "该年度已存在!")
-                    break
-            if fg == 0:
-                tmp = {
-                    "year": int(year),
-                    "election_number": 0,
-                    "vote_number": 0,
-                    "valid_number": 0,
-                    "projects": [
-                        {
-                            "name": "",
-                            "is_selected": "",
-                            "people": [
-                                {
-                                    "nickname": "",
-                                    "cpwl": 0,
-                                    "vote_number": 0,
-                                    "vote_rate": 0,
-                                    "reference_assignment": 0,
-                                    "votes_reported": 0,
-                                    "YoY": 0
-                                }
-                            ]
-                        }
-                    ]
-                }
-                data.append(tmp)
-                # source.extra=data #待修改
-                source.modify(extra=data)
+        # if year == "" or int(year) < 0 or int(year) > 3000:
+        #     QMessageBox.warning(None, "添加年度失败", "请输入正确年份!")
+        # else:
+        source = Area.search(name=self.title)['data'][0]
+        try:
+            data = source.extra
+        except Exception:
+            data = []
+        fg = 0
+        for i in data:
+            if str(i["year"]) == year:
+                fg = 1
+                return 1
+        if fg == 0:
+            tmp = {
+                "year": int(year),
+                "election_number": 0,
+                "vote_number": 0,
+                "valid_number": 0,
+                "projects": [
+                    {
+                        "name": "",
+                        "is_selected": "",
+                        "people": [
+                            {
+                                "nickname": "",
+                                "cpwl": 0,
+                                "vote_number": 0,
+                                "vote_rate": 0,
+                                "reference_assignment": 0,
+                                "votes_reported": 0,
+                                "YoY": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+            data.append(tmp)
+            # source.extra=data #待修改
+            source.modify(extra=data)
 
-                self.close()
+            self.close()
+            return 0
