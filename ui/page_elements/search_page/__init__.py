@@ -1,4 +1,5 @@
 import math
+import os
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
@@ -10,6 +11,9 @@ from libs.enumrations import UserPermission
 from libs.exception import AppException
 from libs.fields_translater import FieldsTranslater
 from libs.g import g
+from libs.service import save_excel
+from model.tstg import TSTG
+from model.zstq_jyb import ZSTQ_JYB
 from model.zyrs import ZYRS
 from ui.page_elements.condition_box import ConditionBox
 from ui.page_elements.condition_group import ConditionGroup
@@ -17,6 +21,7 @@ from ui.page_elements.detail_page import DetailPage
 from ui.wrapper.dialog_like_widget import create_dialog_like_widget
 
 from .pageUI import Ui_Form
+# from ...widgets.subpages.pagejg import Pagezstq_jyb
 
 
 class SearchPage(QWidget):
@@ -75,6 +80,8 @@ class SearchPage(QWidget):
         self.ui.btn_select_null.clicked.connect(self.select_null)
         # btn_mul_delete
         self.ui.btn_mul_delete.clicked.connect(self.mul_delete)
+        # btn_mul_delete_all 全部删除按钮绑定
+        self.ui.btn_mul_delete_all.clicked.connect(self.table_all_delete)
         # btn_mul_export
         self.ui.btn_mul_export.clicked.connect(self.mul_export)
         # tableWidget
@@ -96,13 +103,19 @@ class SearchPage(QWidget):
         item = QTableWidgetItem()
         item.setText("编号")
         table_widget.setHorizontalHeaderItem(1, item)
-        for i, text in enumerate(self.summary.keys(), 2):
+
+        # 详情字段提前
+        item = QTableWidgetItem()
+        item.setText("详情")
+        table_widget.setHorizontalHeaderItem(2, item)
+        
+        for i, text in enumerate(self.summary.keys(), 3):
             item = QTableWidgetItem()
             item.setText(text)
             table_widget.setHorizontalHeaderItem(i, item)
-        item = QTableWidgetItem()
-        item.setText("详情")
-        table_widget.setHorizontalHeaderItem(cols - 1, item)
+        # item = QTableWidgetItem()
+        # item.setText("详情")
+        # table_widget.setHorizontalHeaderItem(cols - 1, item)
 
         # download-template
         self.ui.btn_downloadTemplate.clicked.connect(self.download_template)
@@ -225,8 +238,22 @@ class SearchPage(QWidget):
             item = QTableWidgetItem()
             item.setData(Qt.DisplayRole, info.id)
             table_widget.setItem(i, 1, item)
+
+            # detail_label 详细信息提前
+            detail_label = QLabel(self)
+            detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
+            if self.model and self.members_model:
+                detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
+            if self.model.class_name == '在绍台企':
+                detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
+            detail_label.setText(detail_text)
+            detail_label.setFont(table_widget.font())
+            detail_label.linkActivated.connect(self.detail)
+            detail_label.show()
+            table_widget.setCellWidget(i, 2, detail_label)
+
             # summarys
-            for j, k in enumerate(self.summary.keys(), 2):
+            for j, k in enumerate(self.summary.keys(), 3):
                 item = QTableWidgetItem()
                 data = getattr(info, self.summary[k])
                 if data is None:
@@ -248,18 +275,19 @@ class SearchPage(QWidget):
                         continue
                 item.setText(str(data))
                 table_widget.setItem(i, j, item)
-            # detail_label
-            detail_label = QLabel(self)
-            detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
-            if self.model and self.members_model:
-                detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
-            if self.model.class_name == '在绍台企':
-                detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
-            detail_label.setText(detail_text)
-            detail_label.setFont(table_widget.font())
-            detail_label.linkActivated.connect(self.detail)
-            detail_label.show()
-            table_widget.setCellWidget(i, cols - 1, detail_label)
+            # # detail_label
+            # detail_label = QLabel(self)
+            # detail_text = '<a href="#detail:{}">详细信息</a>'.format(info.id)
+            # if self.model and self.members_model:
+            #     detail_text += '   <a href="#members:{}">人员信息</a>'.format(info.id)
+            # if self.model.class_name == '在绍台企':
+            #     detail_text += '   <a href="#jyb:{}">经营情况</a>'.format(info.id)
+            # detail_label.setText(detail_text)
+            # detail_label.setFont(table_widget.font())
+            # detail_label.linkActivated.connect(self.detail)
+            # detail_label.show()
+            # table_widget.setCellWidget(i, cols - 1, detail_label)
+
         table_widget.resizeColumnsToContents()
         if table_widget.columnWidth(1) < 50:
             table_widget.setColumnWidth(1, 50)
@@ -289,6 +317,14 @@ class SearchPage(QWidget):
         for id_ in self.id_selected:
             rec = self.model.get_by_id(id_)
             rec.delete()
+        self.refresh_page()
+    
+    #删除表单全部数据
+    def table_all_delete(self):
+        res = QMessageBox.question(None, "删除", "确认删除表单内全部数据吗？")
+        if res == QMessageBox.No:
+            return
+        self.model.delete_all()
         self.refresh_page()
 
     def mul_export(self):
@@ -430,6 +466,7 @@ class SearchPage(QWidget):
         for i, j in self.default_conditions.items():
             default_name += '-{data}.xlsx'.format(data=j)
         filename = QFileDialog.getSaveFileName(self, "选择保存地址", default_name, "excel文件(*.xlsx)")[0]
+        save_path = os.path.split(filename)[0]
         if filename == "":
             return
         try:
@@ -444,4 +481,22 @@ class SearchPage(QWidget):
         #     raise AppException("Undefined Export: %s" % self.title)
         # conditions = self.get_conditions()
         # self.model.export(filename, **conditions)
+        if self.model.class_name == "在绍台企":
+            print("正在导出整体数据")
+            id_group = self.model.get_all_id()
+            id_all = [int(str(i)[1:-2]) for i in id_group]
+            print(id_all)
+            for item in id_all:
+                res_tstg = TSTG.search(page_size=-1, **{'zstq_id': item})['data']
+                field = TSTG.field.copy()
+                data = [[getattr(i, key) for key in field] for i in res_tstg]
+                save_excel('template/{}.xlsx'.format(TSTG.__tablename__), TSTG.template_start_row, data,
+                           save_path + "/台商台干-{}.xlsx".format(item))
+
+                res = ZSTQ_JYB.search(page_size=-1, **{'zstq_id': item})['data']
+                field = ZSTQ_JYB.field.copy()
+                data = [[getattr(i, key) for key in field] for i in res]
+                save_excel('template/{}.xlsx'.format(ZSTQ_JYB.__tablename__), ZSTQ_JYB.template_start_row, data,
+                           save_path + "/在绍台企经营情况-{}.xlsx".format(item))
+
         QMessageBox.information(None, "导出数据", "导出完毕")

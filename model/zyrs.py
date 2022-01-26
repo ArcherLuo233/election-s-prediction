@@ -39,7 +39,7 @@ class ZYRS(Base):
     competitors = Column(String(100), comment='竞争对手')
     competition = Column(String(100), comment='竞争状况')
     address = Column(String(100), comment='常驻地址')
-    phone = Column(String(100), comment='手机号')
+    phone = Column(String(100), comment='联系方式')
     social_relationship = Column(String(100), comment='社会关系')
     job = Column(String(100), comment='单位职务')
     education = Column(String(100), comment='学历')

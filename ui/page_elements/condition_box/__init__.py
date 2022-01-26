@@ -24,6 +24,13 @@ class ConditionBox(QWidget):
         return self.ui.comboBox.currentText()
 
     def set_fields(self, fields: list):
+        #姓名字段设为默认
+        if "姓名" in fields:
+            temp_index = fields.index("姓名")
+            temp = fields[temp_index]
+            fields[temp_index] = fields[0]
+            fields[0] = temp  
+
         self.fields = fields
         self.ui.comboBox.clear()
         self.ui.comboBox.addItems(fields)
