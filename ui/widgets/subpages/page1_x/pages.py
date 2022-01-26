@@ -140,6 +140,7 @@ class Pagegwtz_ty(SearchPage):
         '姓名',
         '单位职务',
         '人物类型',
+        '身份'
     ]
 
 
@@ -161,7 +162,8 @@ class Pageswtz_ty(SearchPage):
         '姓名',
         '单位职务',
         '身份证号',
-        '备注'
+        '备注',
+        '身份'
     ]
 
 
@@ -212,7 +214,8 @@ class Pagelftz_ty(SearchPage):
         '姓名',
         '单位职务',
         '人物类型',
-        '备注'
+        '备注',
+        '身份'
     ]
 
 
@@ -224,6 +227,7 @@ class Pageall_lftz_ty(SearchPage):
         '团组名称',
         '单位职务',
         '人物类型',
+        '身份'
     ]
     cant_add = True
 
