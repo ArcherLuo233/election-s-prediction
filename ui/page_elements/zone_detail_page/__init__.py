@@ -129,14 +129,15 @@ class ZoneDetailPage(QDialog):
         row = self.ui.tableWidget.rowCount()
         for i in range(row):
             mayor = self.ui.tableWidget.item(i, 2).text()
-            area_mayor = self.ui.tableWidget.item(i, 3).text()
-            representative = self.ui.tableWidget.item(i, 4).text()
+            area_mayor = self.ui.tableWidget.item(i, 4).text()
+            representative = self.ui.tableWidget.item(i, 3).text()
             community = self.ui.tableWidget.item(i, 5).text()
             peasant_association = self.ui.tableWidget.item(i, 6).text()
             civil_organization = self.ui.tableWidget.item(i, 7).text()
+            other = self.ui.tableWidget.item(i, 8).text()
             target_area = Area.search(id=i + 1)["data"][0]
             target_area.modify(mayor=mayor, area_mayor=area_mayor, representative=representative, community=community,
-                               peasant_association=peasant_association, civil_organization=civil_organization)
+                               peasant_association=peasant_association, civil_organization=civil_organization, other=other)
         QMessageBox.information(None, "选区", "保存成功!")
         self.reload()
 
