@@ -97,7 +97,7 @@ class DetailPage(QDialog):
         self.ui.tableWidget.setHorizontalHeaderLabels(
             ['年度', '选举人数', '投票数', '投票率', '有效票数', '项目', '当选人', '候选人', '票数', '得票率', '与上期相比', '预估票数', '参考赋值', '上报票数'])
         self.ui.tableWidget.horizontalHeader().setStyleSheet("QHeaderView::section{font:12pt '黑体' ;color: black;};")
-        self.ui.tableWidget.setRowCount(27)
+        self.ui.tableWidget.setRowCount(300)
 
     def additem(self, row, col, text, l):
         item = QTableWidgetItem()
